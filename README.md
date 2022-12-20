@@ -19,3 +19,39 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+
+# TODO FEATURES
+- intercomm feature
+- business idea pitch
+- business ideas
+- call to action
+- copy writing framework aida
+- copy writing framework pas
+- coverletter
+- facebook,twitter,linkedin ads
+- googlesearch ads
+- interview questions
+- job description
+- keyword generator
+- landing page website copies
+- post caption ideas
+- product description bullets
+- profile bio
+- question answer
+- reply to review and messages
+- sms notifications
+- song lyrics
+- story plot
+- custom use case
+
+# Running  Functions Locally steps 
+
+clone 
+npm i 
+
+npm run build-func
+
+npm run func-serve
+
+npm run shell

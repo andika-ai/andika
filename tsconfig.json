@@ -19,7 +19,11 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@andika/config": ["libs/app/config/src/index.ts"],
+      "@andika/model/api/openai": ["libs/model/api/openai/src/index.ts"]
+    }
   },
   "files": [],
   "include": [],

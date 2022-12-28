@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~quill/dist/quill.bubble.css'; 
+// or
+@import '~quill/dist/quill.snow.css';
+
 /* You can add global styles to this file, and also import other style files */
 $yellow-200: #FFDE59;
 

@@ -44,7 +44,6 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 - song lyrics
 - story plot
 - custom use case
-
 # Running  Functions Locally steps 
 
 clone 
@@ -55,3 +54,12 @@ npm run build-func
 npm run func-serve
 
 npm run shell
+
+
+npm install --no-package-lock lodash 
+
+This will install the lodash package in the root-level node_modules directory, rather than creating a new node_modules directory inside the my-lib library.
+
+Keep in mind that using the --no-package-lock flag may cause issues with package versions and dependencies, as it prevents the package-lock.json file from being updated with the correct versions of installed packages. It is generally recommended to use the package-lock.json file to ensure consistent and reproducible dependencies across different environments
+
+CTRL+ C - stop emulators

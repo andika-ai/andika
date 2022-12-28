@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "dist/apps/andika-functions",
+      "source": "dist/apps/andika-backend",
       "codebase": "default",
       "ignore": [
         "node_modules",
@@ -18,13 +18,13 @@
   ],
   "emulators": {
     "functions": {
-      "port": 4403
+      "port": 4401
     },
     "firestore": {
       "port": 8005
     },
     "database": {
-      "port": 9008
+      "port": 9001
     },
     "ui": {
       "enabled": true

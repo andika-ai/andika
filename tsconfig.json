@@ -22,6 +22,9 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@andika/config": ["libs/app/config/src/index.ts"],
+      "@andika/elements": ["libs/elements/src/index.ts"],
+      "@andika/features": ["libs/features/src/index.ts"],
+      "@andika/libs/functions": ["libs/functions/src/index.ts"],
       "@andika/model/api/openai": ["libs/model/api/openai/src/index.ts"]
     }
   },

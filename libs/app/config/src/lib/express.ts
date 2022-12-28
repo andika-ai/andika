@@ -1,7 +1,11 @@
 import * as express from 'express';
+import { Request, Response } from 'express';
+import * as cors from 'cors';
+
+
 
 const app = express();
 
-// Add your express configuration here
+app.use(cors({ origin: true }));
 
-export default app;
+export {app, Request, Response}

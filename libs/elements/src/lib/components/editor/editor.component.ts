@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild , Input} from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 
@@ -10,13 +10,15 @@ import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
+  hide = false;
+  form: FormGroup;
   // form 
   @Input() control: FormControl;
   ////////////////////////////////
   @ViewChild('editor') editor: QuillEditorComponent | undefined;
   content = '<p>Rich Text Editor Example </p>';
   format = 'html';
-  form: any;
+
   blured = false
   focused = false
 
@@ -53,25 +55,34 @@ export class EditorComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { 
     this.control = new FormControl()
+    this.form = this.initializeForm();
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      editor: this.content,
-    });
+    console.log(
+     'e'
+    )
+    // this.initializeForm()
     // let icons = Quill.import('ui/icons');
     // icons['source'] = '[source]';
     
+  }
+
+  initializeForm(){
+    return this.fb.group({
+      editor: [this.content, []]
+      
+    })
   }
 
   formatChange() {
     this.format = this.format === 'html' ? 'text' : 'html';
 
     if (this.format === 'text' && this.editor) {
-      const htmlText = this.form.get('editor').value;
+      const htmlText = this.form.get('editor')?.value;
       this.editor.quillEditor.setText(htmlText);
     } else if (this.format === 'html' && this.editor) {
-      const htmlText = this.form.get('editor').value;
+      const htmlText = this.form.get('editor')?.value;
       this.editor.quillEditor.setText('');
       this.editor.quillEditor.pasteHTML(0, htmlText);
     }
@@ -99,4 +110,7 @@ export class EditorComponent implements OnInit {
     this.focused = false
     this.blured = true
   }
+
+
+  patchValue(){}
 }

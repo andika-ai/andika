@@ -11,7 +11,7 @@ import { LandingComponent } from './pages/landing/landing.component';
   ],
   imports: [
     CommonModule,
-    ElementsModule
+    ElementsModule,
   ],
   exports:[
     LandingComponent

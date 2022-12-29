@@ -8,7 +8,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, QuillModule, ReactiveFormsModule],
+  imports: [CommonModule, QuillModule, ReactiveFormsModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     FooterComponent,
     NavbarComponent,

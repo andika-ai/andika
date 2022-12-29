@@ -5,7 +5,7 @@ import { QuillEditorComponent } from 'ngx-quill';
 
 
 @Component({
-  selector: 'andika-editor',
+  selector: 'andika-element-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })

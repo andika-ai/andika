@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { QuillEditorComponent } from 'ngx-quill';
+import { Component, OnInit, ViewChild , Input} from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 
 
@@ -10,10 +10,15 @@ import { QuillEditorComponent } from 'ngx-quill';
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
+  // form 
+  @Input() control: FormControl;
+  ////////////////////////////////
   @ViewChild('editor') editor: QuillEditorComponent | undefined;
   content = '<p>Rich Text Editor Example </p>';
   format = 'html';
   form: any;
+  blured = false
+  focused = false
 
   quillConfig = {
     toolbar: {
@@ -46,7 +51,9 @@ export class EditorComponent implements OnInit {
     ],
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+    this.control = new FormControl()
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -54,6 +61,7 @@ export class EditorComponent implements OnInit {
     });
     // let icons = Quill.import('ui/icons');
     // icons['source'] = '[source]';
+    
   }
 
   formatChange() {
@@ -68,10 +76,27 @@ export class EditorComponent implements OnInit {
       this.editor.quillEditor.pasteHTML(0, htmlText);
     }
   }
-  onFocus = () => {
-    console.log('On Focus');
-  };
-  onBlur = () => {
-    console.log('Blurred');
-  };
+  created(event: any) {
+    // tslint:disable-next-line:no-console
+    console.log('editor-created', event)
+  }
+
+  changedEditor(event: EditorChangeContent | EditorChangeSelection) {
+    // tslint:disable-next-line:no-console
+    console.log('editor-change', event)
+  }
+
+  focus($event: any) {
+    // tslint:disable-next-line:no-console
+    console.log('focus', $event)
+    this.focused = true
+    this.blured = false
+  }
+
+  blur($event: any) {
+    // tslint:disable-next-line:no-console
+    console.log('blur', $event)
+    this.focused = false
+    this.blured = true
+  }
 }

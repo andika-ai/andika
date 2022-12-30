@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-write-form',
+  selector: 'andika-write-form',
   templateUrl: './write-form.component.html',
   styleUrls: ['./write-form.component.css']
 })

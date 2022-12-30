@@ -1,5 +1,6 @@
 <!-- [modules]="quillConfig" -->
 
+<div class="container mx-auto px-4">
 
 
 {{control.getRawValue()}}
@@ -30,3 +31,4 @@
     (onBlur)="blur($event)" (onEditorCreated)="created($event)" formControlName="editor">
   </quill-editor>
 </form>
+</div>

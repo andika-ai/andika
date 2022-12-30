@@ -1,6 +1,14 @@
-<andika-element-editor></andika-element-editor>
-<div class="row-auto">
-    <div class="col-auto">hello</div>
-    <div class="col-auto">world</div>
-    <div class="col-auto">column</div>
+<div class="md:container md:mx-auto">
+
+<div class="flex ...">
+    <div class="flex-auto ...">
+        <!-- Will grow and shrink as needed taking initial size into account -->
+        <andika-write-form></andika-write-form>
+    </div>
+    <div class="flex-auto ...">
+        <andika-element-editor></andika-element-editor>
+        <!-- Will grow and shrink as needed taking initial size into account -->
+    </div>
+</div>
+
 </div>

@@ -1,3 +1,4 @@
+import { WriteFormComponent } from './components/write-form/write-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,11 +14,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     NavbarComponent,
     EditorComponent,
+    WriteFormComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     EditorComponent,
+    WriteFormComponent,
   ]
 })
 export class ElementsModule {}

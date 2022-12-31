@@ -27,7 +27,7 @@
 <div class="container mx-auto">
 <form [formGroup]="form" class="mt-10">
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
-    [styles]="{'min-height': '120px'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"
+    [styles]="{'min-height': '480px'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"
     (onBlur)="blur($event)" (onEditorCreated)="created($event)" formControlName="editor">
   </quill-editor>
 </form>

@@ -1,29 +1,11 @@
-<!-- [modules]="quillConfig" -->
-
-
-
 
 <!-- {{control.getRawValue()}} -->
 
+<!-- <button type="button" (click)="patchValue()">Account</button>
+<button type="button" (click)="patchValue()">Logout</button>
+<button type="button" (click)="patchValue()">Back to projects</button> -->
+<!-- TODO add save options-->
 
-<!-- <h3 id="reactiveForms">Reactive Forms and patch value</h3> -->
-
-<!-- <button type="button" (click)="hide=!(!!hide)">
-  hide / show
-</button> -->
-
-<!-- <button type="button" (click)="form.enabled ? form.disable() : form.enable()">
-  disable / enable
-</button> -->
-
-<!-- <button type="button" (click)="backgroundColor = backgroundColor ? '' : 'grey'">toggle
-  backgroundColor
-</button> -->
-
-<!-- <pre>{{ form.get('editor').value }}</pre> -->
-<!-- <button type="button" (click)="patchValue()">patchValue</button> -->
-<!-- <button type="button" (click)="setControl()">setControl</button> -->
-<!-- [formControl]="control" -->
 <div class="container mx-auto">
 <form [formGroup]="form" class="mt-10">
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"

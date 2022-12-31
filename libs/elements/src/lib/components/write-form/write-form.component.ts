@@ -164,4 +164,14 @@ export class WriteFormComponent implements OnInit {
     this.selectedUseCase = result[0]
   }
 
+  /**
+   * A service is triggered using this function to return a response we 
+   * get the data and then we move it to the quill editor the form can have different states
+   * draft etc 
+   * on submit emit value to the quill editor. 
+   */
+  onSubmit(){
+
+  }
+
 }

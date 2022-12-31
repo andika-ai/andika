@@ -1,31 +1,31 @@
 <!-- [modules]="quillConfig" -->
 
-<div class="container mx-auto px-4">
 
 
-{{control.getRawValue()}}
+
+<!-- {{control.getRawValue()}} -->
 
 
-<h3 id="reactiveForms">Reactive Forms and patch value</h3>
+<!-- <h3 id="reactiveForms">Reactive Forms and patch value</h3> -->
 
-<button type="button" (click)="hide=!(!!hide)">
+<!-- <button type="button" (click)="hide=!(!!hide)">
   hide / show
-</button>
+</button> -->
 
-<button type="button" (click)="form.enabled ? form.disable() : form.enable()">
+<!-- <button type="button" (click)="form.enabled ? form.disable() : form.enable()">
   disable / enable
-</button>
+</button> -->
 
 <!-- <button type="button" (click)="backgroundColor = backgroundColor ? '' : 'grey'">toggle
   backgroundColor
 </button> -->
 
 <!-- <pre>{{ form.get('editor').value }}</pre> -->
-<button type="button" (click)="patchValue()">patchValue</button>
+<!-- <button type="button" (click)="patchValue()">patchValue</button> -->
 <!-- <button type="button" (click)="setControl()">setControl</button> -->
 <!-- [formControl]="control" -->
-
-<form [formGroup]="form">
+<div class="container mx-auto">
+<form [formGroup]="form" class="mt-10">
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
     [styles]="{'min-height': '120px'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"
     (onBlur)="blur($event)" (onEditorCreated)="created($event)" formControlName="editor">

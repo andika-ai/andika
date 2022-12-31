@@ -28,16 +28,17 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 - call to action
 - copy writing framework aida
 - copy writing framework pas
-- coverletter
+- coverletter [x]
 - facebook,twitter,linkedin ads
 - googlesearch ads
+- email [x]
 - interview questions
-- job description
+- job description [x]
 - keyword generator
 - landing page website copies
 - post caption ideas
 - product description bullets
-- profile bio
+- profile bio [x]
 - question answer
 - reply to review and messages
 - sms notifications

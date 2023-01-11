@@ -7,7 +7,7 @@ import { PreloadAllModules, Route, RouterModule } from '@angular/router';
 
 export const BASE_ROUTES: Route[] = [
     {
-        path: 'login',
+        path: 'auth',
         loadChildren: () => import('libs/features/authentication/src/lib/features-authentication.module').then(m => m.FeaturesAuthenticationModule),
 
     },

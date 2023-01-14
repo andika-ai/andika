@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/dist/{projectRoot}"
+      ],
       "options": {
         "project": "libs/elements/ng-package.json",
         "tailwindConfig": "libs/elements/tailwind.config.js"
@@ -24,7 +26,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/elements/jest.config.ts",
         "passWithNoTests": true
@@ -33,7 +37,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/elements/**/*.ts", "libs/elements/**/*.html"]
+        "lintFilePatterns": [
+          "libs/elements/**/*.ts",
+          "libs/elements/**/*.html"
+        ]
       }
     }
   },

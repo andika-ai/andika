@@ -6,7 +6,7 @@ import { IUseCase } from './usecase.interface';
 @Component({
   selector: 'andika-write-form',
   templateUrl: './write-form.component.html',
-  styleUrls: ['./write-form.component.css']
+  styleUrls: ['./write-form.component.scss']
 })
 export class WriteFormComponent implements OnInit {
 

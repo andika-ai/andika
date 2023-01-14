@@ -2,27 +2,35 @@
   "name": "andika",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "./src",
+  "sourceRoot": "./apps/andika-frontend/src",
   "prefix": "andika",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/andika",
         "index": "./src/index.html",
         "main": "./src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "./tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": [
-          "./src/styles.scss",
-          "./node_modules/quill/dist/quill.core.css",
-          "./node_modules/quill/dist/quill.snow.css",
-          "./libs/theming/andika-theme.scss"
+        "assets": [
+          "./src/favicon.ico",
+          "./src/assets"
         ],
-        "scripts": ["./node_modules/quill/dist/quill.js"]
+        "styles": [
+          "./node_modules/quill/dist/quill.core.css",
+          "./node_modules/quill/dist/quill.snow.css", 
+          "./apps/andika-frontend/src/styles.scss"
+        ],
+        "scripts": [
+          "./node_modules/quill/dist/quill.js"
+        ]
       },
       "configurations": {
         "production": {
@@ -71,17 +79,34 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["./src/**/*.ts", "./src/**/*.html"]
+        "lintFilePatterns": [
+          "./src/**/*.ts",
+          "./src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectName}"
+      ],
       "options": {
         "jestConfig": "jest.config.app.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "andika:build:production",
+        "firebaseProject": "andika-16cf6",
+        "firebaseHostingSite": "andika-16cf6"
       }
     }
   },

@@ -18,4 +18,4 @@ import { EditorComponent } from './pages/editor/editor.component';
     EditorComponent
   ]
 })
-export class HomeModule {}
+export class FeaturesHomeModule {}

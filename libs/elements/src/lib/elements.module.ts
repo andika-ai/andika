@@ -7,16 +7,19 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { QuillModule } from 'ngx-quill'
 import { EditorComponent } from './components/editor/editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 
 @NgModule({
   imports: [CommonModule, QuillModule, ReactiveFormsModule,  FormsModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
+    TopNavbarComponent,
     FooterComponent,
     NavbarComponent,
     EditorComponent,
     WriteFormComponent
   ],
   exports: [
+    TopNavbarComponent,
     FooterComponent,
     NavbarComponent,
     EditorComponent,

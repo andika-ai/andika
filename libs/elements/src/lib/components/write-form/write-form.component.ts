@@ -119,7 +119,7 @@ export class WriteFormComponent implements OnInit {
 
   selectedUseCase: any;
   form: FormGroup;
-  constructor( private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder) {
     this.selectedUseCase = this.useCaseData[0];
     this.form =this.initForm();
   }

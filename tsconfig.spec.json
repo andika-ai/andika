@@ -6,11 +6,11 @@
     "types": ["jest", "node"],
     "lib": ["es2017", "dom"],
   },
-  "files": ["src/test-setup.ts"],
+  "files": ["apps/andika-frontend/src/test-setup.ts"],
   "include": [
     "jest.config.ts",
-    "src/**/*.test.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "apps/andika-frontend/src/**/*.test.ts",
+    "apps/andika-frontend/src/**/*.spec.ts",
+    "apps/andika-frontend/src/**/*.d.ts"
   ]
 }

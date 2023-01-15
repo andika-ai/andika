@@ -1,3 +1,4 @@
+
 import { AuthService } from '@andika/libs/utilities';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
@@ -20,16 +21,21 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat'
+import { MaterialModule } from '@andika/libs/material';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
     //
-    FormsModule,    //added here too
-    ReactiveFormsModule,//added here too
+    // FormsModule,    //added here too
+    // ReactiveFormsModule,//added here too
+    MaterialModule,
     ElementsModule,
     FeaturesHomeModule,
     FeaturesAuthenticationModule,
@@ -51,3 +57,5 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat'
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+

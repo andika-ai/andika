@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '@andika/libs/utilities';
+import {
+  faCoffee,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faStackOverflow,
+  faGithub,
+  faGoogle,
+  faMedium,
+} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'andika-login',
@@ -8,7 +17,7 @@ import { AuthService } from '@andika/libs/utilities';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  faCoffee = faCoffee;
   form!: FormGroup;
   constructor(private _fb: FormBuilder, public authService: AuthService) { 
     this._initializeForm();

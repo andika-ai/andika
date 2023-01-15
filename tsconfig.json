@@ -20,15 +20,19 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@andika/config": ["libs/app/config/src/index.ts"],
       "@andika/elements": ["libs/elements/src/index.ts"],
-      "@andika/feature/home": ["libs/features/home/src/index.ts"],
-      "@andika/features": ["libs/features/src/index.ts"],
       "@andika/features/authentication": [
         "libs/features/authentication/src/index.ts"
       ],
+      "@andika/features/home": ["libs/features/home/src/index.ts"],
       "@andika/libs/functions": ["libs/functions/src/index.ts"],
+      "@andika/libs/material": ["libs/material/src/index.ts"],
+      "@andika/libs/shared": ["libs/shared/src/index.ts"],
+      "@andika/libs/utilities": ["libs/utilities/src/index.ts"],
+      "@andika/model": ["libs/model/src/index.ts"],
       "@andika/model/api/openai": ["libs/model/api/openai/src/index.ts"]
     }
   },

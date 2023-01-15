@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "include": ["apps/andika-frontend/src/**/*.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

@@ -5,7 +5,7 @@ import { EditorComponent } from './pages/editor/editor.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 const HOME_ROUTES: Route[] = [
-    { path: '', component: LandingComponent}, // Home when user not logged in
+    { path: 'landing', component: LandingComponent}, // Home when user not logged in
     { path: 'edit', component: EditorComponent }, //home when user loggged in
 ];
 

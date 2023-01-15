@@ -1,0 +1,82 @@
+@use '@angular/material' as mat;
+@use './palettes.scss';
+
+@include mat.core();
+/* ======== Angular material custom themes ======== */
+
+// Define the color palette
+// $mustard-50: #fefbe8;
+// $mustard-100: #fff8c2;
+// $mustard-200: #ffec89;
+// $mustard-300: #ffde59;
+// $mustard-400: #fdc512;
+// $mustard-500: #ecab06;
+// $mustard-600: #cc8302;
+// $mustard-700: #a35c05;
+// $mustard-800: #86480d;
+// $mustard-900: #723b11;
+
+// $primary: mat.define-palette(mat-palette($mustard-500));
+// $accent: mat.define-palette(mat-palette($mustard-300));
+// $warn: mat.define-palette(mat-palette($mustard-700));
+// $theme: mat.define-palette(mat-light-theme($primary, $accent, $warn));
+
+// $primary: mat-palette($theme-primary);
+// $accent: mat-palette($theme-accent);
+
+// $theme: mat-light-theme($primary, $accent);
+
+// @include angular-material-theme($theme);
+
+// mat-card {
+//     padding: 0px !important;
+
+//     mat-card-title, mat-card-content {
+//         padding: 0.5em;
+//     }
+// }
+
+//Create custom CSS classes for specific elements, such as hover states, active states, and error states:
+// .custom-button {
+//     background-color: mat-color($primary);
+//     color: white;
+
+//     &:hover {
+//         background-color: darken(mat-color($primary), 10%);
+//     }
+
+//     &.active {
+//         background-color: mat-color($accent);
+//     }
+
+//     &.error {
+//         background-color: mat-color($warn);
+//     }
+// }
+
+
+// //Customize theme for AI Writer application
+// .ai-writer-toolbar {
+//     background-color: mat-color($primary);
+//     color: white;
+// }
+
+// .ai-writer-toolbar mat-icon {
+//     color: white;
+// }
+
+// .ai-writer-toolbar .mat-form-field {
+//     color: white;
+// }
+
+// .ai-writer-toolbar .mat-form-field .mat-form-field-underline {
+//     background-color: white;
+// }
+
+// .ai-writer-toolbar .mat-form-field .mat-form-field-label {
+//     color: white;
+// }
+
+// .ai-writer-toolbar .mat-form-field .mat-form-field-label.mat-focused {
+//     color: mat-color($primary);
+// }

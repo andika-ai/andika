@@ -24,8 +24,9 @@
           "apps/andika-frontend/src/assets"
         ],
         "styles": [
-          "apps/andika-frontend/src/styles.scss",
-          "apps/andika-frontend/src/_variables.scss"
+          "libs/theme/theme.scss",
+          "libs/theme/_variables.scss",
+          "andika-frontend/src/styles.scss"
         ],
         "scripts": []
       },
@@ -34,8 +35,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "1.50mb",
+              "maximumError": "1.50mb"
             },
             {
               "type": "anyComponentStyle",

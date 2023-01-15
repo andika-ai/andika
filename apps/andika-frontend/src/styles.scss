@@ -2,4 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Vendor css 
+@import '../src/assets/vendor/bootstrap/css/bootstrap.min.css';
+@import '../src/assets/vendor/bootstrap-icons/bootstrap-icons.css';
+// @import '../src/assets/vendor/aos/aos.css'; // this has an issue when uncommented TODO: Investigate this.
+@import '../src/assets/vendor/glightbox/css/glightbox.min.css';
+@import '../src/assets/vendor/swiper/swiper-bundle.min.css';
+
+// //Variables CSS Files. Uncomment your preferred color scheme -->
+@import '../src/assets/css/variables.css';
+@import '../src/assets/css/variables-blue.css';
+@import '../src/assets/css/variables-green.css';
+@import '../src/assets/css/variables-orange.css';
+@import '../src/assets/css/variables-purple.css';
+@import '../src/assets/css/variables-red.css';
+@import '../src/assets/css/variables-pink.css';
+
+// //Template Main CSS File -->
+@import '../src/assets/css/main.css';
+
+
+@import '../../../libs/theme/theme.scss';
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

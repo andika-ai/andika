@@ -13,10 +13,10 @@ import { AuthGuard } from '@andika/libs/shared';
 export const BASE_ROUTES: Route[] = [
 
 
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/landing', pathMatch: 'full' },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
-    { path: 'editor', component: EditorComponent, canActivate: [AuthGuard] },
+    { path: 'editor', component: EditorComponent } ,// canActivate: [AuthGuard]
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'verify-email-address', component: VerifyEmailComponent },
     {

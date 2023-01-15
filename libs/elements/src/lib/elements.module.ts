@@ -11,10 +11,12 @@ import { TopNavbarComponent } from './components/top-navbar/top-navbar.component
 import { MaterialModule } from '@andika/libs/material'
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
+    PreloaderComponent,
     HeroComponent,
     TopNavbarComponent,
     HeaderComponent,
@@ -24,6 +26,7 @@ import { HeroComponent } from './components/hero/hero.component';
     WriteFormComponent
   ],
   exports: [
+    PreloaderComponent,
     HeroComponent,
     HeaderComponent,
     TopNavbarComponent,

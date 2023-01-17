@@ -10,20 +10,22 @@ export class PreloaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    document.addEventListener('DOMContentLoaded', () => {
-      "use strict";
-    
-      /**
-       * Preloader
-       */
-      const preloader = document.querySelector('#preloader');
-      if (preloader) {
-        window.addEventListener('load', () => {
-          this.load = false;
-          preloader.remove();
-        });
-      }
-    });
+    this.preloader();
+  } 
+
+
+  /**
+   * Preloader
+   */
+  preloader() {
+    const preloader = document.querySelector('#preloader') as HTMLElement;
+    if (preloader) {
+      window.addEventListener('load', () => {
+        preloader.remove();
+      });
+    }
   }
 
 }
+
+

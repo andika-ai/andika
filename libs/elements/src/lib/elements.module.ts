@@ -1,3 +1,7 @@
+import { DocumentsComponent } from './components/documents/documents.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { WriteFormComponent } from './components/write-form/write-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,9 +16,11 @@ import { MaterialModule } from '@andika/libs/material'
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [CommonModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,
@@ -23,7 +29,12 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
     FooterComponent,
     NavbarComponent,
     EditorComponent,
-    WriteFormComponent
+    WriteFormComponent,
+    ToolbarComponent,
+    SidebarComponent,
+    AppFooterComponent,
+    DocumentsComponent,
+    NavbarComponent
   ],
   exports: [
     PreloaderComponent,
@@ -34,6 +45,11 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
     NavbarComponent,
     EditorComponent,
     WriteFormComponent,
+    ToolbarComponent,
+    SidebarComponent,
+    AppFooterComponent,
+    DocumentsComponent,
+    NavbarComponent
   ]
 })
 export class ElementsModule {}

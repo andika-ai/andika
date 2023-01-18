@@ -1,3 +1,5 @@
+<andika-toolbar></andika-toolbar>
+
 <form [formGroup]="form">
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
     [styles]="{'min-height': '500px'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"

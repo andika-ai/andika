@@ -35,3 +35,11 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+
+.text_link:hover{
+  text-decoration: underline;
+  text-decoration-color: rgb(250, 114, 64);
+  -moz-text-decoration-color: rgb(250, 114, 64);
+  text-decoration-thickness: 5px;
+}

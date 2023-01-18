@@ -1,3 +1,4 @@
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
 import { HomeRouterModule } from './home-router.module';
@@ -16,7 +17,8 @@ import { MaterialModule } from '@andika/libs/material'
 
   declarations: [
     LandingComponent,
-    EditorComponent
+    EditorComponent,
+    DashboardComponent
   ]
 })
 export class FeaturesHomeModule {}

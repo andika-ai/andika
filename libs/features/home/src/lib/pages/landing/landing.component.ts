@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
   heroTitle = 'A better, 10x faster way to write.';
-  heroSubTitle = 'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
+  aboutTxt = 'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
 
   text = [
     'Interview Questions',
@@ -21,6 +21,7 @@ export class LandingComponent implements OnInit {
     'story plots','instagram posts',
     'YouTube descriptions','taglines & headlines'];
   randomText: string = this.text[0];
+  
   constructor() { }
 
   ngOnInit() {

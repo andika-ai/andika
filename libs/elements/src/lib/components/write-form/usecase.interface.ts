@@ -11,5 +11,6 @@ export interface IUseCase{
     context?: string;
     keyPoints?: string;
     jobRole?: string;
+    text?: string;
 
 }

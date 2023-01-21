@@ -190,8 +190,8 @@ export class WriteFormComponent implements OnInit {
       blogIdea:  this._fb.group({
         blogIdea: []
       }),
-      grammerCorrection:  this._fb.group({
-        text: [null]
+      grammarCorrection:  this._fb.group({
+        text: []
       }),
     });
     /**
@@ -236,7 +236,7 @@ export class WriteFormComponent implements OnInit {
    * on submit emit value to the quill editor. 
    */
   onSubmit(){
-    const payload = {...this.form.value};
+    const payload = this._sharedForm.getFormValues(this.form)
     
     alert(JSON.stringify(payload))
     // To enable the typing effect when waiting for data from server.

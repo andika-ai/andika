@@ -8,3 +8,4 @@ export * from './lib/components/header/header.component';
 export * from './lib/components/hero/hero.component';
 export * from './lib/components/sidebar/sidebar.component';
 export * from './lib/components/documents/documents.component';
+export * from './lib/services/shared-write-form/shared-write-form.service';

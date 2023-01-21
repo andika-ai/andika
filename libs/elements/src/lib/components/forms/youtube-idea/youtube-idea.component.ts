@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { SharedWriteFormService } from '../../../services/shared-write-form/shared-write-form.service';
 
 @Component({
   selector: 'andika-youtube-idea-form',
@@ -7,14 +8,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./youtube-idea.component.css']
 })
 export class YoutubeIdeaComponent implements OnInit {
-  @Input() form: FormGroup
-  constructor(_fb: FormBuilder) { 
-    this.form = _fb.group({
-      keywords: []
-    });
-  }
+  @Input() formGroupName!: string
+  form!: FormGroup;
+
+  constructor(private rootFormGroup: FormGroupDirective) { }
 
   ngOnInit() {
+    this.form = this.rootFormGroup.control.get(this.formGroupName) as FormGroup
   }
 
 }

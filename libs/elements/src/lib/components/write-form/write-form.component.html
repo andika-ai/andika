@@ -34,7 +34,7 @@
       <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-password">
         Choose use case
       </label>
-      <select formControlName="usecase"
+      <select formControlName="usecase" (change)="selectUsecase()"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option *ngFor="let useCase of useCaseData" [value]="useCase.id">{{ useCase.name }}</option>
       </select>
@@ -48,73 +48,76 @@
       <!-- Show relevant inputs based on the selected use case -->
       <div class="mt-2" [ngSwitch]="selectedUseCase?.id">
         <div *ngSwitchCase="'1'">
-          <andika-youtube-idea-form [form]="form"></andika-youtube-idea-form>
+          <andika-youtube-idea-form formGroupName="youtubeIdea"></andika-youtube-idea-form>
         </div>
         <div *ngSwitchCase="'2'">
 
-          <andika-youtube-video-description-form [form]="form"></andika-youtube-video-description-form>
+          <andika-youtube-video-description-form formGroupName="youtubeDescription">
+          </andika-youtube-video-description-form>
         </div>
         <div *ngSwitchCase="'3'">
 
-          <andika-youtube-channel-description-form [form]="form"></andika-youtube-channel-description-form>
+          <andika-youtube-channel-description-form formGroupName="youtubeChannelDescription">
+          </andika-youtube-channel-description-form>
         </div>
 
         <div *ngSwitchCase="'4'">
 
-          <andika-testimonial-and-review-form [form]="form"></andika-testimonial-and-review-form>
+          <andika-testimonial-and-review-form formGroupName="testimonialAndReview"></andika-testimonial-and-review-form>
 
         </div>
         <div *ngSwitchCase="'5'">
 
-          <andika-tagline-headline-form [form]="form"></andika-tagline-headline-form>
+          <andika-tagline-headline-form formGroupName="taglineHeadline"></andika-tagline-headline-form>
 
         </div>
 
         <div *ngSwitchCase="'12'">
 
-          <andika-cover-letter-form [form]="form"></andika-cover-letter-form>
+          <andika-cover-letter-form formGroupName="coverLetter"></andika-cover-letter-form>
         </div>
 
         <div *ngSwitchCase="'10'">
 
-          <andika-job-description-form [form]="form"></andika-job-description-form>
+          <andika-job-description-form formGroupName="jobDescription"></andika-job-description-form>
         </div>
 
         <div *ngSwitchCase="'13'">
 
-          <andika-profile-bio-form [form]="form"></andika-profile-bio-form>
+          <andika-profile-bio-form formGroupName="profileBio"></andika-profile-bio-form>
 
         </div>
         <div *ngSwitchCase="'6'">
 
-          <andika-story-plots-form [form]="form"></andika-story-plots-form>
+          <andika-story-plots-form formGroupName="storyPlot"></andika-story-plots-form>
 
         </div>
 
         <div *ngSwitchCase="'7'">
 
-          <andika-song-idea-form [form]="form"></andika-song-idea-form>
+          <andika-song-idea-form formGroupName="songIdea"></andika-song-idea-form>
 
         </div>
 
         <div *ngSwitchCase="'9'">
 
-          <andika-email-form [form]="form"></andika-email-form>
+          <andika-email-form formGroupName="email"></andika-email-form>
         </div>
 
         <div *ngSwitchCase="'8'">
 
-          <andika-sms-and-notifications-form [form]="form"></andika-sms-and-notifications-form>
+          <andika-sms-and-notifications-form formGroupName="smsAndNotifications"></andika-sms-and-notifications-form>
         </div>
 
         <div *ngSwitchCase="'14'">
-          <andika-reply-to-reviews-or-email-form [form]="form"></andika-reply-to-reviews-or-email-form>
+          <andika-reply-to-reviews-or-email-form formGroupName="replyToReviewsOrEmail">
+          </andika-reply-to-reviews-or-email-form>
         </div>
         <div *ngSwitchCase="'11'">
-          <andika-blog-idea-form [form]="form"></andika-blog-idea-form>
+          <andika-blog-idea-form formGroupName="blogIdea"></andika-blog-idea-form>
         </div>
         <div *ngSwitchCase="'15'">
-          <andika-grammer-correction-form [form]="form"></andika-grammer-correction-form>
+          <andika-grammer-correction-form ormGroupName="grammerCorrection"></andika-grammer-correction-form>
         </div>
         <!-- Defaults dont show any thing  there fore submit should be disabled -->
         <div *ngSwitchDefault>
@@ -132,7 +135,7 @@
       </label>
       <select formControlName="numberOfVariants"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option *ngFor="let num of [1,2,3]">{{num}}</option>
+        <option *ngFor="let num of [1,2,3]" [value]="num">{{num}}</option>
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -145,7 +148,7 @@
       </label>
       <select formControlName="creativityLevel"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option *ngFor="let clv of  creativityLevels">{{clv.name}}</option>
+        <option *ngFor="let clv of  creativityLevels" [value]="clv.name">{{clv.name}}</option>
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

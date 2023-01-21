@@ -1,11 +1,15 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { YoutubeIdeaComponent } from './../forms/youtube-idea/youtube-idea.component';
+
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 // import * as __ from 'lodash';
 
 import { UseCase } from './usecase.enum';
 import { IUseCase } from './usecase.interface';
 import { OpenAIService } from '@andika/services/openai';
+import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
+
 
 @Component({
   selector: 'andika-write-form',
@@ -129,40 +133,87 @@ export class WriteFormComponent implements OnInit {
 ];
 
   selectedUseCase: any;
-  form: FormGroup;
-  constructor(private _fb: FormBuilder, private _openAIService: OpenAIService) {
+  form!: FormGroup;
+  constructor(private _fb: FormBuilder, private _openAIService: OpenAIService,  private _sharedForm: SharedWriteFormService) {
     this.selectedUseCase = this.useCaseData[0];
-    this.form =this.initForm();
   }
 
   
   ngOnInit() {
+    this.form = new FormGroup({
+      language: new FormControl(this.languages[0].name),
+      tone: new FormControl(this.tones[1].name),
+      usecase: new FormControl(this.useCaseData[0].id),
+      creativityLevel: new FormControl(this.creativityLevels[1].name),
+      numberOfVariants: new FormControl(1),
+      youtubeIdea: this._fb.group({
+        keywords: []
+      }),
+      youtubeDescription: this._fb.group({
+        videoTitle: []
+      }),
+      youtubeChannelDescription: this._fb.group({
+        channelDescription: []
+      }),
+      testimonialAndReview: this._fb.group({
+        productOrServiceName: [],
+        reviewTitle: []
+      }),
+      taglineHeadline: this._fb.group({
+        keyPoints: []
+      }),
+      coverLetter: this._fb.group({
+        jobRole: [],
+        skills: []
+      }),
+      jobDescription: this._fb.group({
+        jobRole: []
+      }),
+      profileBio: this._fb.group({
+        description: []
+      }),
+      storyPlot: this._fb.group({
+        storyIdea: []
+      }),
+      songIdea: this._fb.group({
+        songIdea: []
+      }),
+      email: this._fb.group({
+        description: []
+      }),
+      smsAndNotifications: this._fb.group({
+        context: []
+      }),
+      replyToReviewsOrEmail:  this._fb.group({
+        message: []
+      }),
+      blogIdea:  this._fb.group({
+        blogIdea: []
+      }),
+      grammerCorrection:  this._fb.group({
+        text: [null]
+      }),
+    });
     /**
      * TODO: Refactor this in the future on select item 
      */
     this.form.valueChanges.subscribe((data: any) => {
       this.getSelectedUseCase(data.usecase)
+
+    
     })
 
   }
 
-  initForm(){
-    return this._fb.group({
-      language: [this.languages[0].name, {
-        validators: [Validators.required, Validators.email] // validators: [Validators.required, Validators.email]
-      }],
-      tone: [this.tones[0].name, []],
-      usecase: [this.selectedUseCase.id, []],
-      creativityLevel: [],
-      numberOfVariants: []
+  selectUsecase(){
+    const usecase = this.selectedUseCase;
 
-    });
   }
+
 
   onClickUseCase(val: IUseCase){
     this.selectedUseCase = val;
-    debugger
-    console.log(val)
+    alert('hello')
 
   }
 
@@ -185,14 +236,19 @@ export class WriteFormComponent implements OnInit {
    * on submit emit value to the quill editor. 
    */
   onSubmit(){
-    const payload = this.form.value;
+    const payload = {...this.form.value};
+    
+    alert(JSON.stringify(payload))
     // To enable the typing effect when waiting for data from server.
-    this.isLoading.emit(true);
+    // this.isLoading.emit(true);
     // Make a request to Open AI API  depending on the selected use case.
-    this._openAIService.postCorrectGrammer(JSON.stringify({"text": 'me love you'})).subscribe(response=>{
-      this.promptResponse.emit(response)
-      this.isLoading.emit(false);
-    })
+    // this._openAIService.postCorrectGrammer(JSON.stringify({"text": 'me love you'})).subscribe(response=>{
+    //   this.promptResponse.emit(response)
+    //   this.isLoading.emit(false);
+    // })
   }
 
+
 }
+
+

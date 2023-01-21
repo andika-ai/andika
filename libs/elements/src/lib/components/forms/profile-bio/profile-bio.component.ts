@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'andika-profile-bio-form',
@@ -8,15 +8,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ProfileBioComponent implements OnInit {
 
+  @Input() formGroupName!: string
+  form!: FormGroup;
 
-  @Input() form: FormGroup
-  constructor(_fb: FormBuilder) { 
-    this.form = _fb.group({
-      description: []
-    });
-  }
+  constructor(private rootFormGroup: FormGroupDirective) { }
 
   ngOnInit() {
+    this.form = this.rootFormGroup.control.get(this.formGroupName) as FormGroup
   }
 
 }

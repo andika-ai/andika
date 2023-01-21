@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'andika-cover-letter-form',
@@ -7,16 +7,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./cover-letter.component.css']
 })
 export class CoverLetterComponent implements OnInit {
+  @Input() formGroupName!: string
+  form!: FormGroup;
 
-  @Input() form: FormGroup
-  constructor(_fb: FormBuilder) { 
-    this.form = _fb.group({
-      jobRole: [],
-      skills: []
-    });
-  }
+  constructor(private rootFormGroup: FormGroupDirective) { }
 
   ngOnInit() {
+    this.form = this.rootFormGroup.control.get(this.formGroupName) as FormGroup
   }
 
 }

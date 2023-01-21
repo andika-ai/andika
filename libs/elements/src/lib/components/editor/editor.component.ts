@@ -13,7 +13,7 @@ export class EditorComponent implements OnInit, OnChanges{
   @Input() loading = true;
   @Input() promptResponseData: any = null;
   hide = false;
-  form: FormGroup;
+  @Input() form: FormGroup
   // form 
   @Input() control: FormControl;
   ////////////////////////////////

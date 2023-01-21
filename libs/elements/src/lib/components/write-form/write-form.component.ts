@@ -189,7 +189,7 @@ export class WriteFormComponent implements OnInit {
     // To enable the typing effect when waiting for data from server.
     this.isLoading.emit(true);
     // Make a request to Open AI API  depending on the selected use case.
-    this._openAIService.postCorrectGrammer(JSON.stringify(payload)).subscribe(response=>{
+    this._openAIService.postCorrectGrammer(JSON.stringify({"text": 'me love you'})).subscribe(response=>{
       this.promptResponse.emit(response)
       this.isLoading.emit(false);
     })

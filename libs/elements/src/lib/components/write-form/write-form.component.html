@@ -88,7 +88,7 @@
         <div *ngSwitchCase="'6'">
 
           <andika-story-plots-form [form]="form"></andika-story-plots-form>
-          
+
         </div>
 
         <div *ngSwitchCase="'7'">
@@ -117,10 +117,10 @@
           <andika-grammer-correction-form [form]="form"></andika-grammer-correction-form>
         </div>
         <!-- Defaults dont show any thing  there fore submit should be disabled -->
-        <!-- <div *ngSwitchDefault> -->
-           <!-- //Show some info message to the user  -->
-            <!-- <div></div> -->
-        <!-- </div> -->
+        <div *ngSwitchDefault>
+          <!-- //Show some info message to the user  -->
+          <div></div>
+        </div>
 
       </div>
     </div>
@@ -130,8 +130,7 @@
       <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-first-name">
         Number of variants
       </label>
-      <select
-        formControlName="numberOfVariants"
+      <select formControlName="numberOfVariants"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option *ngFor="let num of [1,2,3]">{{num}}</option>
       </select>
@@ -144,8 +143,7 @@
       <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-last-name">
         Creativity level
       </label>
-      <select
-        formControlName="creativityLevel"
+      <select formControlName="creativityLevel"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option *ngFor="let clv of  creativityLevels">{{clv.name}}</option>
       </select>

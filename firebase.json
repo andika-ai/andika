@@ -20,7 +20,7 @@
       "port": 4401
     },
     "firestore": {
-      "port": 8005
+      "port": 8001
     },
     "database": {
       "port": 9001

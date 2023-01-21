@@ -25,6 +25,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat'
 import { MaterialModule } from '@andika/libs/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { USE_EMULATOR } from '@angular/fire/compat/functions';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -35,6 +37,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     //
     // FormsModule,    //added here too
     // ReactiveFormsModule,//added here too
+    HttpClientModule,
     MaterialModule,
     ElementsModule,
     FeaturesHomeModule,
@@ -52,7 +55,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   providers: [
     ScreenTrackingService,UserTrackingService,
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
   ],
   bootstrap: [AppComponent],
 })

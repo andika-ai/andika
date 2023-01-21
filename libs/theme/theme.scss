@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use './palettes.scss';
+@use './index';
 
 @include mat.core();
 /* ======== Angular material custom themes ======== */

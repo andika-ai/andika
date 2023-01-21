@@ -46,275 +46,81 @@
       <p class="mt-1 text-xs text-gray-400"><a class="text-orange-300" href="#">Click here </a> to get enhanced
         keywords suggestions.</p>
       <!-- Show relevant inputs based on the selected use case -->
-      <div class="mt-10" [ngSwitch]="selectedUseCase?.id">
+      <div class="mt-2" [ngSwitch]="selectedUseCase?.id">
         <div *ngSwitchCase="'1'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-first-name">
-              Keywords
-            </label>
-            <input
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text" placeholder="AI Writing assistants">
-
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-youtube-idea-form [form]="form"></andika-youtube-idea-form>
         </div>
         <div *ngSwitchCase="'2'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Video title
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes"></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-youtube-video-description-form [form]="form"></andika-youtube-video-description-form>
         </div>
         <div *ngSwitchCase="'3'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Channel purpose
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area" placeholder="learn all about AI and writing tools ..."></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-youtube-channel-description-form [form]="form"></andika-youtube-channel-description-form>
         </div>
 
         <div *ngSwitchCase="'4'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Name
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area" placeholder="product/service name">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-testimonial-and-review-form [form]="form"></andika-testimonial-and-review-form>
 
-          <div class="mt-4 w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Review Title
-            </label>
-            <textarea
-              rows="5"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area" placeholder="learn all about AI and writing tools ..."></textarea>
-
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
         </div>
-        <div *ngSwitchCase="'9'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Key points
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes"></textarea>
+        <div *ngSwitchCase="'5'">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-tagline-headline-form [form]="form"></andika-tagline-headline-form>
+
         </div>
 
         <div *ngSwitchCase="'12'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Job Role
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area" placeholder="Writter">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
-
-          <div class="mt-4 w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Job Skills
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area" placeholder="Writting, email , excel,communication"></textarea>
-
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-cover-letter-form [form]="form"></andika-cover-letter-form>
         </div>
 
         <div *ngSwitchCase="'10'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Job Role
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text" placeholder="Product manager">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-job-description-form [form]="form"></andika-job-description-form>
         </div>
 
         <div *ngSwitchCase="'13'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              About you
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes..125 max"></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-profile-bio-form [form]="form"></andika-profile-bio-form>
+
         </div>
         <div *ngSwitchCase="'6'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Story Idea
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes..125 max"></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-story-plots-form [form]="form"></andika-story-plots-form>
+          
         </div>
 
         <div *ngSwitchCase="'7'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Song idea
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes..125 max"></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-song-idea-form [form]="form"></andika-song-idea-form>
+
         </div>
 
-        <div *ngSwitchCase="'5'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Description
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes..125 max"></textarea>
+        <div *ngSwitchCase="'9'">
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-email-form [form]="form"></andika-email-form>
         </div>
 
         <div *ngSwitchCase="'8'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Context
-            </label>
-            <textarea
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="How to use AI Writers to Create High Quality Blogs in Minutes..125 max"></textarea>
 
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-sms-and-notifications-form [form]="form"></andika-sms-and-notifications-form>
         </div>
 
         <div *ngSwitchCase="'14'">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Message
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="just paste here the email or review and see the ai respond to it .125 max"></textarea>
-
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+          <andika-reply-to-reviews-or-email-form [form]="form"></andika-reply-to-reviews-or-email-form>
         </div>
-        <!-- Defaults to blog  -->
-        <div *ngSwitchDefault>
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Blog Idea
-            </label>
-            <textarea
-              rows="10"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name" type="text-area"
-              placeholder="just paste here the email or review and see the ai respond to it .125 max"></textarea>
-
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-          </div>
+        <div *ngSwitchCase="'11'">
+          <andika-blog-idea-form [form]="form"></andika-blog-idea-form>
         </div>
+        <div *ngSwitchCase="'15'">
+          <andika-grammer-correction-form [form]="form"></andika-grammer-correction-form>
+        </div>
+        <!-- Defaults dont show any thing  there fore submit should be disabled -->
+        <!-- <div *ngSwitchDefault> -->
+           <!-- //Show some info message to the user  -->
+            <!-- <div></div> -->
+        <!-- </div> -->
 
       </div>
     </div>
@@ -325,6 +131,7 @@
         Number of variants
       </label>
       <select
+        formControlName="numberOfVariants"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option *ngFor="let num of [1,2,3]">{{num}}</option>
       </select>
@@ -338,6 +145,7 @@
         Creativity level
       </label>
       <select
+        formControlName="creativityLevel"
         class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option *ngFor="let clv of  creativityLevels">{{clv.name}}</option>
       </select>

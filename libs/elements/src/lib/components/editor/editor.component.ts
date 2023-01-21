@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild , Input} from '@angular/core';
+import { Component, OnInit, ViewChild , Input, OnChanges, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
@@ -9,7 +9,9 @@ import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnChanges{
+  @Input() loading = true;
+  @Input() promptResponseData: any = null;
   hide = false;
   form: FormGroup;
   // form 
@@ -56,6 +58,11 @@ export class EditorComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
     this.control = new FormControl()
     this.form = this.initializeForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const data = this.promptResponseData?.data;
+    this.form.get('editor')?.patchValue(data)
   }
 
   ngOnInit() {
@@ -113,4 +120,13 @@ export class EditorComponent implements OnInit {
 
 
   patchValue(){}
+
+  // // Fetch data
+  // this.dataService.fetchData().subscribe((data) => {
+  //   this.content = data;
+  //   this.isLoading = false;
+  // });
+
+
+  
 }

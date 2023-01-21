@@ -1,7 +1,11 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+// import * as __ from 'lodash';
+
 import { UseCase } from './usecase.enum';
 import { IUseCase } from './usecase.interface';
+import { OpenAIService } from '@andika/services/openai';
 
 @Component({
   selector: 'andika-write-form',
@@ -9,7 +13,8 @@ import { IUseCase } from './usecase.interface';
   styleUrls: ['./write-form.component.scss']
 })
 export class WriteFormComponent implements OnInit {
-
+  @Output() isLoading = new EventEmitter<boolean>();
+  @Output() promptResponse = new EventEmitter<any>();
   creativityLevels = [
     {id: 1 , name: 'low'},
     {id: 2 , name: 'medium'},
@@ -114,12 +119,18 @@ export class WriteFormComponent implements OnInit {
       name: 'Reply to Reviews & Messages',
       info: 'Write responses for messages, reviews, emails & more',
       message: '>>> paste information here and let the bot reply',
+    },
+    {
+      id: UseCase.GrammarCorrection,
+      name: 'Grammar correction',
+      info: 'Write your text in correct grammar',
+      message: '>>> paste information here and let the bot correct the grammar',
     }
 ];
 
   selectedUseCase: any;
   form: FormGroup;
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _openAIService: OpenAIService) {
     this.selectedUseCase = this.useCaseData[0];
     this.form =this.initForm();
   }
@@ -141,7 +152,10 @@ export class WriteFormComponent implements OnInit {
         validators: [Validators.required, Validators.email] // validators: [Validators.required, Validators.email]
       }],
       tone: [this.tones[0].name, []],
-      usecase: [this.selectedUseCase.id, []]
+      usecase: [this.selectedUseCase.id, []],
+      creativityLevel: [],
+      numberOfVariants: []
+
     });
   }
 
@@ -171,7 +185,14 @@ export class WriteFormComponent implements OnInit {
    * on submit emit value to the quill editor. 
    */
   onSubmit(){
-
+    const payload = this.form.value;
+    // To enable the typing effect when waiting for data from server.
+    this.isLoading.emit(true);
+    // Make a request to Open AI API  depending on the selected use case.
+    this._openAIService.postCorrectGrammer(JSON.stringify(payload)).subscribe(response=>{
+      this.promptResponse.emit(response)
+      this.isLoading.emit(false);
+    })
   }
 
 }

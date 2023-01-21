@@ -1,3 +1,18 @@
+import { GrammerCorrectionComponent } from './components/forms/grammer-correction/grammer-correction.component';
+import { ReplyToReviewsOrEmailComponent } from './components/forms/reply-to-reviews-or-email/reply-to-reviews-or-email.component';
+import { ProfileBioComponent } from './components/forms/profile-bio/profile-bio.component';
+import { CoverLetterComponent } from './components/forms/cover-letter/cover-letter.component';
+import { BlogIdeaComponent } from './components/forms/blog-idea/blog-idea.component';
+import { JobDescriptionComponent } from './components/forms/job-description/job-description.component';
+import { EmailComponent } from './components/forms/email/email.component';
+import { SmsAndNotificationsComponent } from './components/forms/sms-and-notifications/sms-and-notifications.component';
+import { SongIdeaComponent } from './components/forms/song-idea/song-idea.component';
+import { StoryPlotsComponent } from './components/forms/story-plots/story-plots.component';
+import { TaglineHeadlineComponent } from './components/forms/tagline-headline/tagline-headline.component';
+import { TestimonialAndReviewComponent } from './components/forms/testimonial-and-review/testimonial-and-review.component';
+import { YoutubeChannelDescriptionComponent } from './components/forms/youtube-channel-description/youtube-channel-description.component';
+import { YoutubeVideoDescriptionComponent } from './components/forms/youtube-video-description/youtube-video-description.component';
+import { YoutubeIdeaComponent } from './components/forms/youtube-idea/youtube-idea.component';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
@@ -18,9 +33,10 @@ import { HeroComponent } from './components/hero/hero.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ServicesOpenAiModule } from '@andika/services/openai';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [CommonModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesOpenAiModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,
@@ -34,7 +50,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SidebarComponent,
     AppFooterComponent,
     DocumentsComponent,
-    NavbarComponent
+    NavbarComponent,
+    YoutubeIdeaComponent,
+    YoutubeVideoDescriptionComponent,
+    YoutubeChannelDescriptionComponent,
+    TestimonialAndReviewComponent,
+    TaglineHeadlineComponent,
+    StoryPlotsComponent,
+    SongIdeaComponent,
+    SmsAndNotificationsComponent,
+    EmailComponent,
+    JobDescriptionComponent,
+    BlogIdeaComponent,
+    CoverLetterComponent,
+    ProfileBioComponent,
+    ReplyToReviewsOrEmailComponent,
+    GrammerCorrectionComponent
   ],
   exports: [
     PreloaderComponent,
@@ -49,7 +80,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SidebarComponent,
     AppFooterComponent,
     DocumentsComponent,
-    NavbarComponent
+    NavbarComponent,
+    YoutubeIdeaComponent,
+    YoutubeVideoDescriptionComponent,
+    YoutubeChannelDescriptionComponent,
+    TestimonialAndReviewComponent,
+    TaglineHeadlineComponent,
+    StoryPlotsComponent,
+    SongIdeaComponent,
+    SmsAndNotificationsComponent,
+    EmailComponent,
+    JobDescriptionComponent,
+    BlogIdeaComponent,
+    CoverLetterComponent,
+    ProfileBioComponent,
+    ReplyToReviewsOrEmailComponent,
+    GrammerCorrectionComponent
   ]
 })
 export class ElementsModule {}

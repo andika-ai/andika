@@ -122,3 +122,18 @@ https://firebase.google.com/docs/functions/local-shell
 https://medium.com/@moki298/test-your-firebase-cloud-functions-locally-using-cloud-functions-shell-32c821f8a5ce
 
 use npm run func-shell
+
+firebase emulators:start --only functions
+
+
+# Testing Cloud Functions with firebase Emulator 
+
+__Example__
+```bash
+grammerCorrection.post().form({'text': 'mi name is philip'})
+
+```
+
+# Stop Emulator 
+
+**Ctrl+ c**

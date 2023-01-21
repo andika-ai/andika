@@ -43,3 +43,11 @@ body {
   -moz-text-decoration-color: rgb(250, 114, 64);
   text-decoration-thickness: 5px;
 }
+
+.center-screen{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);  
+}

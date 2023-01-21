@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   faTeletype,
   faTimes,
@@ -20,10 +20,21 @@ import {
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
+  loading = false;
+  promptResponseData: any;
+
   faArrowLeft = faArrowLeft;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  isLoading(event: boolean){
+    this.loading = event;
+  }
+
+  promptResponse(event: any) {
+    this.promptResponseData = event;
   }
 
 }

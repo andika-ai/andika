@@ -21,6 +21,7 @@ import {
 })
 export class EditorComponent implements OnInit {
   loading = false;
+  showOptions = false;
   promptResponseData: any;
 
   faArrowLeft = faArrowLeft;
@@ -35,6 +36,11 @@ export class EditorComponent implements OnInit {
 
   promptResponse(event: any) {
     this.promptResponseData = event;
+  }
+
+
+  toggleMenu() {
+    this.showOptions = !this.showOptions;
   }
 
 }

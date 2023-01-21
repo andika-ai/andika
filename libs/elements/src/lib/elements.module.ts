@@ -1,3 +1,4 @@
+import { AlertComponent } from './components/snackbar/alert/alert.component';
 import { GrammerCorrectionComponent } from './components/forms/grammer-correction/grammer-correction.component';
 import { ReplyToReviewsOrEmailComponent } from './components/forms/reply-to-reviews-or-email/reply-to-reviews-or-email.component';
 import { ProfileBioComponent } from './components/forms/profile-bio/profile-bio.component';
@@ -65,7 +66,8 @@ import { ServicesOpenAiModule } from '@andika/services/openai';
     CoverLetterComponent,
     ProfileBioComponent,
     ReplyToReviewsOrEmailComponent,
-    GrammerCorrectionComponent
+    GrammerCorrectionComponent,
+    AlertComponent
   ],
   exports: [
     PreloaderComponent,
@@ -95,7 +97,8 @@ import { ServicesOpenAiModule } from '@andika/services/openai';
     CoverLetterComponent,
     ProfileBioComponent,
     ReplyToReviewsOrEmailComponent,
-    GrammerCorrectionComponent
+    GrammerCorrectionComponent,
+    AlertComponent
   ]
 })
 export class ElementsModule {}

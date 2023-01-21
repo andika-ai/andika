@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UseCase } from '../../components/write-form/usecase.enum';
-
+// interface MyObject {
+//   key1: string;
+//   key2: string;
+//   key3: string;
+//   // other keys and their types
+// }
 @Injectable({
   providedIn: 'root'
 })
@@ -110,6 +115,15 @@ export class SharedWriteFormService {
       default:
         return '';
     }
+  }
+
+  checkAllKeysHaveValues(obj: any) {
+    for (const key in obj) {
+      if (!obj[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 

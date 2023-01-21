@@ -1,4 +1,4 @@
-import { YoutubeIdeaComponent } from './../forms/youtube-idea/youtube-idea.component';
+import { AlertComponent } from '../snackbar/alert/alert.component';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
@@ -9,6 +9,8 @@ import { UseCase } from './usecase.enum';
 import { IUseCase } from './usecase.interface';
 import { OpenAIService } from '@andika/services/openai';
 import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 
 
 @Component({
@@ -17,6 +19,7 @@ import { SharedWriteFormService } from '../../services/shared-write-form/shared-
   styleUrls: ['./write-form.component.scss']
 })
 export class WriteFormComponent implements OnInit {
+  emptyFieldsDetected = false;
   @Output() isLoading = new EventEmitter<boolean>();
   @Output() promptResponse = new EventEmitter<any>();
   creativityLevels = [
@@ -134,7 +137,7 @@ export class WriteFormComponent implements OnInit {
 
   selectedUseCase: any;
   form!: FormGroup;
-  constructor(private _fb: FormBuilder, private _openAIService: OpenAIService,  private _sharedForm: SharedWriteFormService) {
+  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _openAIService: OpenAIService,  private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar) {
     this.selectedUseCase = this.useCaseData[0];
   }
 
@@ -237,8 +240,13 @@ export class WriteFormComponent implements OnInit {
    */
   onSubmit(){
     const payload = this._sharedForm.getFormValues(this.form)
-    
-    alert(JSON.stringify(payload))
+    const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
+    // If empty values dont submitt show a prompt 
+    // alert(hasAllValues)
+    if(!hasAllValues){
+      this.emptyFieldsDetected=true;
+      this.showAlert();
+    }
     // To enable the typing effect when waiting for data from server.
     // this.isLoading.emit(true);
     // Make a request to Open AI API  depending on the selected use case.
@@ -246,6 +254,12 @@ export class WriteFormComponent implements OnInit {
     //   this.promptResponse.emit(response)
     //   this.isLoading.emit(false);
     // })
+  }
+
+  showAlert(){
+    this._snackBarService.openSnackBar(
+      'Error!','Common code to implement using service',
+      'Okey', 'center', 'top', 'red-snackbar');
   }
 
 

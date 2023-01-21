@@ -9,3 +9,5 @@ export * from './lib/components/hero/hero.component';
 export * from './lib/components/sidebar/sidebar.component';
 export * from './lib/components/documents/documents.component';
 export * from './lib/services/shared-write-form/shared-write-form.service';
+export * from './lib/components/snackbar/alert/alert.component';
+export * from './lib/services/snackbar/snack-bar.service';

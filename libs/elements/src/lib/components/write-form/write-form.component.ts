@@ -1,3 +1,4 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { AlertComponent } from '../snackbar/alert/alert.component';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -20,7 +21,7 @@ import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 })
 export class WriteFormComponent implements OnInit {
   emptyFieldsDetected = false;
-  @Output() isLoading = new EventEmitter<boolean>();
+  @Output() isLoading = new EventEmitter<boolean>(false);
   @Output() promptResponse = new EventEmitter<any>();
   creativityLevels = [
     {id: 1 , name: 'low'},
@@ -246,6 +247,7 @@ export class WriteFormComponent implements OnInit {
     if(!hasAllValues){
       this.emptyFieldsDetected=true;
       this.showAlert();
+      this.isLoading.emit(false);
     }
     this.isLoading.emit(true);
     // after retrieving the data is loading will be false 

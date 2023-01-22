@@ -1,16 +1,15 @@
-// @use '../../node_modules/@angular/material/_theming.scss';
-@use '@angular/material' as mat;
-@use './palettes.scss';
-@use './index';
 
+
+@use '@angular/material' as mat;
+@use './index';
+@import '_palettes';
+@import '../../node_modules/@angular/material/_theming.scss';
 
 
 @include mat.core();
 
 
-
 /* ======== Angular material custom themes ======== */
-
 // Define the color palette
 $mustard-50: #fefbe8;
 $mustard-100: #fff8c2;
@@ -23,212 +22,12 @@ $mustard-700: #a35c05;
 $mustard-800: #86480d;
 $mustard-900: #723b11;
 
-$color-50: #fefbe8;
-$color-100: #fff8c2;
-$color-200: #ffec89;
-$color-300: #ffde59;
-$color-400: #fdc512;
-$color-500: #ecab06;
-$color-600: #cc8302;
-$color-700: #a35c05;
-$color-800: #86480d;
-$color-900: #723b11;
-$color-A100: #fefbe8;
-$color-A200: #f7f3d3;
-$color-A300: #f2edc2;
-$color-A400: #ebe7b4;
-$color-A500: #e5e2a8;
-$color-A600: #d9d299;
-$color-A700: #c8c28b;
-
-
-
-/* For use in src/lib/core/theming/_palette.scss */
-$mat-theme-palette: (
-50: #fefbe8,
-100: #fff8c2,
-200: #ffec89,
-300: #ffde59,
-400: #fdc512,
-500: #ecab06,
-600: #cc8302,
-700: #a35c05,
-800: #86480d,
-900: #723b11,
-A-100: #fefbe8,
-A-200: #f7f3d3,
-A-300: #f2edc2,
-A-400: #ebe7b4,
-A-500: #e5e2a8,
-A-600: #d9d299,
-A-700: #c8c28b,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #ffffff,
-        A700 : #ffffff,
-    )
-);
-
-
-
-
 // Copy the palettes from your selected theme (usually theme.scss).
-$primary: mat.define-palette($mat-theme-palette, 500);
-$accent:  mat.define-palette($mat-theme-palette, 200);
-$warn:    mat.define-palette($mat-theme-palette, 900);
+$primary: mat-palette($theme-palette);
+$accent:  mat-palette($theme-palette, A200, A100, A400);
+$warn:    mat-palette($mat-red);
 
+$theme: mat-light-theme($primary,$accent,$warn);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$theme: mat.define-light-theme((
- color: (
-   primary: $primary,
-   accent: $accent,
-   warn: $warn,
- ),
- typography: mat.define-typography-config(),
- density: 0,
-));
-
-// Emit theme-dependent styles for common features used across multiple components.
-@include mat.core-theme($theme);
-
-
-// Emit styles for MatButton based on `$my-theme`. Because the configuration
-// passed to `define-light-theme` omits typography, `button-theme` will not
-// emit any typography styles.
-@include mat.button-theme($theme);
-
-::ng-deep .mat-progress-bar-fill::after {
-    background-color: green;
-}
-
-::ng-deep .mat-progress-bar-buffer {
-    background: #E4E8EB;
-}
-// Include the theme mixins for other components you use here.
-// Include the theme styles for only specified components.
-// @include mat-core-theme($andika-theme);
-// @include mat-button-theme($andika-theme);
-// @include mat-checkbox-theme($andika-theme);
-
-// $theme: mat-light-theme($primary, $accent, $warn);
-// @include angular-material-theme($theme);
-
-
-
-// $mat-custom: (
-// $mustard-50: #fefbe8,
-// $mustard-100: #fff8c2,
-// $mustard-200: #ffec89,
-// $mustard-300: #ffde59,
-// $mustard-400: #fdc512,
-// $mustard-500: #ecab06,
-// $mustard-600: #cc8302,
-// $mustard-700: #a35c05,
-// $mustard-800: #86480d,
-// $mustard-900: #723b11,
-//   A100: #cfd8dc,
-//   A200: #b0bec5,
-//   A400: #78909c,
-//   A700: #455a64,
-//   contrast: (
-//     50: $black-87-opacity,
-//     100: $black-87-opacity,
-//     200: $black-87-opacity,
-//     300: $black-87-opacity,
-//     400: white,
-//     500: white,
-//     600: $white-87-opacity,
-//     700: $white-87-opacity,
-//     800: $white-87-opacity,
-//     900: $white-87-opacity,
-//     A100: $black-87-opacity,
-//     A200: $black-87-opacity,
-//     A400: white,
-//     A700: $white-87-opacity,
-//   )
-// );
-
-
-// $my-app-primary: mat-palette($mustard-500);
-// $my-app-accent: mat-palette($mustard-400, $mustard-200,$mustard-100,$mustard-400);
-
-// $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
-
-// @use angular-material-theme($my-app-theme);
-
-// $primary: mat.define-palette(mat-palette($mustard-500));
-// $accent: mat.define-palette(mat-palette($mustard-300));
-// $warn: mat.define-palette(mat-palette($mustard-700));
-// $theme: mat.define-palette(mat-light-theme($primary, $accent, $warn));
-
-// $primary: mat-palette($theme-primary);
-// $accent: mat-palette($theme-accent);
-
-// $theme: mat-light-theme($primary, $accent);
-
-// @include angular-material-theme($theme);
-
-// mat-card {
-//     padding: 0px !important;
-
-//     mat-card-title, mat-card-content {
-//         padding: 0.5em;
-//     }
-// }
-
-//Create custom CSS classes for specific elements, such as hover states, active states, and error states:
-// .custom-button {
-//     background-color: mat-color($primary);
-//     color: white;
-
-//     &:hover {
-//         background-color: darken(mat-color($primary), 10%);
-//     }
-
-//     &.active {
-//         background-color: mat-color($accent);
-//     }
-
-//     &.error {
-//         background-color: mat-color($warn);
-//     }
-// }
-
-
-// //Customize theme for AI Writer application
-// .ai-writer-toolbar {
-//     background-color: mat-color($primary);
-//     color: white;
-// }
-
-// .ai-writer-toolbar mat-icon {
-//     color: white;
-// }
-
-// .ai-writer-toolbar .mat-form-field {
-//     color: white;
-// }
-
-// .ai-writer-toolbar .mat-form-field .mat-form-field-underline {
-//     background-color: white;
-// }
-
-// .ai-writer-toolbar .mat-form-field .mat-form-field-label {
-//     color: white;
-// }
-
-// .ai-writer-toolbar .mat-form-field .mat-form-field-label.mat-focused {
-//     color: mat-color($primary);
-// }
+// Include all theme styles for the components.
+@include angular-material-theme($theme);

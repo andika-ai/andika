@@ -2,7 +2,7 @@
 
 
 <form [formGroup]="form" >
-  <mat-progress-bar color="warn" mode="query"></mat-progress-bar>
+  <mat-progress-bar *ngIf="loading" color="primary" mode="query"></mat-progress-bar>
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
     [styles]="{'min-height': '500px', background: 'white'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"
     (onBlur)="blur($event)" (onEditorCreated)="created($event)" formControlName="editor">

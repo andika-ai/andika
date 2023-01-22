@@ -10,7 +10,7 @@ import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit, OnChanges{
-  @Input() loading = true;
+  @Input() loading = false;
   @Input() promptResponseData: any = null;
   hide = false;
   @Input() form: FormGroup

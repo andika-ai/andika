@@ -1,4 +1,6 @@
 
+
+
 <form [formGroup]="form" *ngIf="!loading; else typing">
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
     [styles]="{'min-height': '500px', background: 'white'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"

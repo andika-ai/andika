@@ -247,6 +247,9 @@ export class WriteFormComponent implements OnInit {
       this.emptyFieldsDetected=true;
       this.showAlert();
     }
+    this.isLoading.emit(true);
+    // after retrieving the data is loading will be false 
+    // this.isLoading.emit(false);
     // To enable the typing effect when waiting for data from server.
     // this.isLoading.emit(true);
     // Make a request to Open AI API  depending on the selected use case.

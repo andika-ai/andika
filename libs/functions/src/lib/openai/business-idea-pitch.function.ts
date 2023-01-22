@@ -18,21 +18,21 @@ Note that the above prompt is an example, it is possible to modify it according 
  * @param req 
  * @param res 
  */
-const generateCitation = (req: any, res: Response) => {
+const generateBusinessIdeaPitch = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { title, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { businessIdea, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:\n
-                        Title: ${title}\n
-                        Author: ${author}\n
-                        Edition: ${edition}\n
-                        Publisher: ${publisher}\n
-                        Publication Date: ${publicationDate}\n
-                        Citation Style: ${citationStyle}`
+        const prompt = `Please generate a [number] business idea pitches in [language] that align with the tone and message of [business idea].
+                        The pitch should be suitable for [specific use case, e.g. a startup pitch, a crowdfunding campaign, etc.].
+                        The tone of the pitch should be [specific tone, e.g. persuasive, confident, enthusiastic, etc.]. The pitch should clearly and concisely explain the business idea and its potential for success, highlighting its unique features and benefits.
+                        Please provide [number] variations of the pitch, each with a different angle or emphasis on the business idea.
+                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the pitches are unique and engaging.
+                        Additionally, please include any relevant statistics or data that support the viability of the business idea, and a clear call-to-action for the audience.
+                        Finally, please indicate the target audience for the pitch, so that it can be tailored accordingly, and it should be easy to understand by the general public and not just by the industry experts.`
         
         try {
             const completion = await openAI.createCompletion({
@@ -57,4 +57,4 @@ const generateCitation = (req: any, res: Response) => {
 
 };
 
-exports.generateCitation = functions.https.onRequest(generateCitation);
+exports.generateBusinessIdeaPitch = functions.https.onRequest(generateBusinessIdeaPitch);

@@ -12,19 +12,21 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const correctGrammar = (req: any, res: Response) => {
+const generateStory = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { storyIdea, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        console.log(text);
+        const prompt=
+        // `Please paraphrase the following text:\n\n${text}\n\n
+                `Generate a story based on the following idea: [insert story idea], in the language of [insert language], with a tone that is [insert tone (e.g. dramatic, comedic, suspenseful)]. The use case is to [insert use case (e.g. entertain, educate, inspire)]. Generate [insert number] variants of the story, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include a clear and compelling plot, with well-developed characters and a satisfying resolution. Also, pay attention to the pacing, ensuring that the story maintains a balance of tension and release. Use descriptive language to create vivid imagery and bring the story to life. Lastly, ensure that the story aligns with the chosen tone and evokes the desired emotions in the audience.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
-                prompt: `Correct the following text to standard English:\n\n${text}`,
+                prompt: prompt,
                 temperature: 0,
                 max_tokens: 60,
                 top_p: 1.0,
@@ -44,4 +46,4 @@ const correctGrammar = (req: any, res: Response) => {
 
 };
 
-exports.correctGrammar  = functions.https.onRequest(correctGrammar);
+exports.generateStory  = functions.https.onRequest(generateStory);

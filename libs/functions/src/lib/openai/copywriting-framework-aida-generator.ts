@@ -12,19 +12,25 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const correctGrammar = (req: any, res: Response) => {
+const generateCopywritingFrameworkAIDA = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { description, tone, usecase, variants, creativityLevel, language } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        console.log(text);
+        const prompt = `Generate a copywriting framework using AIDA (Attention, Interest, Desire, Action) for a product or brand, described as [insert product or brand description].
+                        The language should be [insert language], with a tone that is [insert tone (e.g. persuasive, informative, conversational)].
+                        The use case is [insert use case (e.g. promoting a new product launch, increasing brand awareness)].
+                        The framework should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+                        Make sure to grab the attention of the audience, create interest in the product or brand, build desire for the product or brand and finally create a sense of urgency to take action.`
+        
+        
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
-                prompt: `Correct the following text to standard English:\n\n${text}`,
+                prompt: prompt,
                 temperature: 0,
                 max_tokens: 60,
                 top_p: 1.0,
@@ -44,4 +50,4 @@ const correctGrammar = (req: any, res: Response) => {
 
 };
 
-exports.correctGrammar  = functions.https.onRequest(correctGrammar);
+exports.generateCopywritingFrameworkAIDA= functions.https.onRequest(generateCopywritingFrameworkAIDA);

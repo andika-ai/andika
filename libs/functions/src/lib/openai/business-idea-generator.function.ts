@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const summarizeText = (req: any, res: Response) => {
+const generateBusinessIdea = (req: any, res: Response) => {
     cors(req,res, async() => {
         const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!text) {
@@ -20,11 +20,14 @@ const summarizeText = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Please summarize the given text in [language] by identifying the main ideas and key points.\n
-                        The summary should be concise and convey the overall message of the text.\n
-                        In addition, please include any important details or information that is relevant to the topic.\n
-                        Also, please indicate the text length reduction rate you used while summarizing the text.\n
-                        Finally, please provide a title that accurately represents the content of the summarized text.`
+        const prompt =`Please generate [number] unique business ideas in [language] that align with the interests, skills and tone specified.\n
+                        The idea should be suitable for [specific use case, e.g. a startup, a small business, a side hustle, etc.].
+                        The tone of the business idea should be [specific tone, e.g. innovative, sustainable, impactful, etc.] .\n
+                        The idea should be based on your interests [specific interests] and skills [specific skills].
+                        Please provide [number] variations of the business idea, each with a different angle or emphasis.
+                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the ideas are unique and have potential for success.
+                        Additionally, please include a brief explanation for each idea, describing how it aligns with the interests and skills specified, and its potential for profitability.
+                        Finally, please indicate the target market and target audience for each idea, so that it can be tailored accordingly and it should be easy to implement and manage.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -48,4 +51,4 @@ const summarizeText = (req: any, res: Response) => {
 
 };
 
-exports.summarizeText = functions.https.onRequest(summarizeText);
+exports.generateBusinessIdea= functions.https.onRequest(generateBusinessIdea);

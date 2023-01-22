@@ -18,21 +18,20 @@ Note that the above prompt is an example, it is possible to modify it according 
  * @param req 
  * @param res 
  */
-const generateCitation = (req: any, res: Response) => {
+const generateCallToAction = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { title, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { businessIdea, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:\n
-                        Title: ${title}\n
-                        Author: ${author}\n
-                        Edition: ${edition}\n
-                        Publisher: ${publisher}\n
-                        Publication Date: ${publicationDate}\n
-                        Citation Style: ${citationStyle}`
+        const prompt = `Generate a call to action in the language of [insert language],
+                        with a tone that is [insert tone (e.g. persuasive, urgent, friendly)],
+                        for the use case of [insert use case (e.g. promoting a product, encouraging sign-ups)],
+                        in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+                        The call to action should be written in a clear and compelling manner, 
+                        using persuasive language and persuasive techniques to encourage the reader to take action.`
         
         try {
             const completion = await openAI.createCompletion({
@@ -57,4 +56,4 @@ const generateCitation = (req: any, res: Response) => {
 
 };
 
-exports.generateCitation = functions.https.onRequest(generateCitation);
+exports.generateCallToAction = functions.https.onRequest(generateCallToAction);

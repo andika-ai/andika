@@ -11,29 +11,18 @@ const configuration = new Configuration({
 
 const openAI = new OpenAIApi(configuration);
 
-/**
- * It is also possible to specify different citation styles such as MLA, Chicago, Harvard, IEEE, etc. by replacing APA with the desired citation style in the prompt.
 
-Note that the above prompt is an example, it is possible to modify it according to the source you want to cite, and the citation style you want to use.
- * @param req 
- * @param res 
- */
-const generateCitation = (req: any, res: Response) => {
+const generateSeoMetaDescription = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { title, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { pageMetaTitle, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:\n
-                        Title: ${title}\n
-                        Author: ${author}\n
-                        Edition: ${edition}\n
-                        Publisher: ${publisher}\n
-                        Publication Date: ${publicationDate}\n
-                        Citation Style: ${citationStyle}`
-        
+        const prompt=
+        // `Please paraphrase the following text:\n\n${text}\n\n
+                `Generate an SEO meta description for a page with the meta title of [insert meta title], in the language of [insert language], with a tone that is [insert tone (e.g. informative, compelling, memorable)]. The use case is to [insert use case (e.g. optimize for search engines, increase click-through rate, provide a brief summary of the page content)]. Generate [insert number] variants of the meta description, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include relevant keywords and to accurately summarize the content of the page in a compelling way. Also, pay attention to the character limit, as the description should be no more than 150-160 characters. Use persuasive language to create a sense of urgency and inspire users to click on the link. Lastly, ensure that the meta description aligns with the content of the page and the meta title.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -57,4 +46,4 @@ const generateCitation = (req: any, res: Response) => {
 
 };
 
-exports.generateCitation = functions.https.onRequest(generateCitation);
+exports.generateSeoMetaDescription  = functions.https.onRequest(generateSeoMetaDescription);

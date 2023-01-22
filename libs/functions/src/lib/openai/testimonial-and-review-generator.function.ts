@@ -12,19 +12,17 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const summarizeText = (req: any, res: Response) => {
+const generateTestimonialAndReview = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please summarize the given text in [language] by identifying the main ideas and key points.\n
-                        The summary should be concise and convey the overall message of the text.\n
-                        In addition, please include any important details or information that is relevant to the topic.\n
-                        Also, please indicate the text length reduction rate you used while summarizing the text.\n
-                        Finally, please provide a title that accurately represents the content of the summarized text.`
+        const prompt=
+        // `Please paraphrase the following text:\n\n${text}\n\n
+                `Generate a testimonial or review for a customer named [insert customer name], with a review title of [insert review title], in the language of [insert language], with a tone that is [insert tone (e.g. positive, neutral, constructive)]. The use case is to [insert use case (e.g. promote a product, provide feedback to the company)]. Generate [insert number] variants of the testimonial or review, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include specific details and examples about the product or service being reviewed. Also, highlight the key benefits and features of the product or service that you found useful. Use persuasive language to encourage others to try the product or service. Lastly, include your overall rating and recommendation for the product or service.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -48,4 +46,4 @@ const summarizeText = (req: any, res: Response) => {
 
 };
 
-exports.summarizeText = functions.https.onRequest(summarizeText);
+exports.generateTestimonialAndReview  = functions.https.onRequest(generateTestimonialAndReview);

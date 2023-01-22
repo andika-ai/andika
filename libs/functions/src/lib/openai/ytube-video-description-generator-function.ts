@@ -12,19 +12,22 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const summarizeText = (req: any, res: Response) => {
+const generateYTubeVideoDescription  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please summarize the given text in [language] by identifying the main ideas and key points.\n
-                        The summary should be concise and convey the overall message of the text.\n
-                        In addition, please include any important details or information that is relevant to the topic.\n
-                        Also, please indicate the text length reduction rate you used while summarizing the text.\n
-                        Finally, please provide a title that accurately represents the content of the summarized text.`
+        const prompt=
+        `Generate a YouTube video description for a video titled [insert video title], in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)].
+        The use case is to [insert use case (e.g. provide information about the video, increase engagement and viewership)].
+        The video description should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        Make sure to include a brief summary of the video content, highlighting the key points and main takeaways.
+        Also, include relevant keywords and hashtags to optimize the video for search engines.
+        Use persuasive language to encourage viewers to watch the video and to subscribe to your channel.
+        Lastly, include a call-to-action, such as asking viewers to leave a comment or to check out a related video or website.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -48,4 +51,4 @@ const summarizeText = (req: any, res: Response) => {
 
 };
 
-exports.summarizeText = functions.https.onRequest(summarizeText);
+exports.generateYTubeVideoDescription  = functions.https.onRequest(generateYTubeVideoDescription);

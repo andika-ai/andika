@@ -12,19 +12,23 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const correctGrammar = (req: any, res: Response) => {
+const generateQuestionAnswer  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { topicDescription, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        console.log(text);
+        const prompt=`Please paraphrase the following text:\n\n${tone}\n\n
+                The paraphrased version should accurately convey the same meaning as the original, but should not simply copy the wording or structure.\n\n
+                Make sure to properly cite the original text and include all of the key points and supporting details.\n
+                The text should be written in standard language ${language}\n
+                Consider the intended audience and purpose of the text when paraphrasing, and tailor the language and style accordingly.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
-                prompt: `Correct the following text to standard English:\n\n${text}`,
+                prompt: prompt,
                 temperature: 0,
                 max_tokens: 60,
                 top_p: 1.0,
@@ -44,4 +48,4 @@ const correctGrammar = (req: any, res: Response) => {
 
 };
 
-exports.correctGrammar  = functions.https.onRequest(correctGrammar);
+exports.generateQuestionAnswer  = functions.https.onRequest(generateQuestionAnswer );

@@ -1,145 +1,67 @@
 
-// /** *
-// This Cloud Function accepts the following parameters in the request body:
-
-// language: The language to use for text generation (e.g. en for English).
-// tone: The tone to use for text generation (e.g. formal, informal, etc.).
-// usecase: The use case for the generated text (e.g. marketing, article, etc.).
-// about: The topic for the generated text.
-// variants: The number of variations to generate.
-// creativityLevel: The level of creativity to use for text generation (high, medium, or low).
-// The Cloud Function uses these parameters to set the model, prompt, and temperature for the OpenAI API request, and then generates the text using the client.completions.create method. 
-// The generated text is returned in the response.
-// */
-
 import { Configuration, OpenAIApi } from 'openai';
-import * as express from 'express';
+import { Request, Response } from '@andika/config';
+import { app } from '@andika/config';
 import * as functions from 'firebase-functions';
-import { Request, Response } from 'express';
-import * as cors from 'cors';
+import * as corsModule from 'cors';
 
-// const app = express();
-
-// // console.log(process.env['OPENAI_API_KEY'])
-// const configuration = new Configuration({
-//     apiKey: "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",
-
-// });
-
-// const openAI = new OpenAIApi(configuration);
-// // Set the model to the desired language model
-// const model = 'text-davinci-002';
-
+const cors  = corsModule({origin: true})
 const configuration = new Configuration({
     apiKey: "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",
 });
 
 const openAI = new OpenAIApi(configuration);
-export const generateBio = functions.https.onRequest(async (req: Request, res: Response) => {
 
-    // Get the input parameters from the request body
-    const {
-        language,
-        tone,
-        usecase,
-        about,
-        variants,
-        creativityLevel,
-    } = req.body;
+
+const generateProfileBio = (req: any, res: Response) => {
+    cors(req,res, async() => {
+        const { about, tone, usecase, variants, creativityLevel, language } = req.body;
+        if(!req.body) {
+            res.status(400).json({status: 'error', message: 'text is missing in request'});
+            return;
+        }
     
-
-    const prompt =
+        const prompt =
         `
+        Generate a professional bio for a person named [Name]\n,
+        who is [Age] years old, works as a [Occupation], \n
+        holds a [Degree] from [University], and has [X] years of experience in the field.\n
+        Include information about their achievements, interests, and a quote or personal motto.\n
+        Additionally, mention a specific accomplishment or \n
+        project they have worked on that they are proud of and a fun fact about themselves.\n
         generate a profile bio from the following text:\n\n
         Hi, my name is [YOUR NAME] and I am a [YOUR OCCUPATION].
         ${about}
-        Some of my accomplishments include [YOUR ACCOMPLISHMENTS] and my personal values include [YOUR VALUES].
-        I am passionate about [YOUR PASSIONS] and I consider myself to be [UNIQUE CHARACTERISTICS].
-        In my free time, I enjoy [YOUR HOBBIES] and I am always looking for new opportunities to [GROW/LEARN].
 
         I am writing this bio in a ${tone} tone, suitable for a ${usecase}.
         I would like to write about [TOPIC FOR "ABOUT ME" SECTION] and share my experiences and perspectives.
         I would like to generate ${variants} variations with a ${creativityLevel} level of creativity in ${language}.`
+        try {
+            const completion = await openAI.createCompletion({
+                model: "text-davinci-003",
+                prompt: prompt,
+                temperature: 0,
+                max_tokens: 60,
+                top_p: 1.0,
+                frequency_penalty: 0.0,
+                presence_penalty: 0.0,
+                // n: number of variations
+            });
+            res.status(200).send({
+                status: 'success',
+                message: 'results from chat gpt',
+                data: completion.data.choices[0].text
+            })
+        } catch (error: any) {
+            res.status(500).json(error.message)
+        }
+    })
 
-    // Set the temperature based on the creativity level
-    let temperature = 0.5;
-    if (creativityLevel === 'high') {
-        temperature = 0.9;
-    } else if (creativityLevel === 'low') {
-        temperature = 0.1;
-    }
+};
 
-    // Set the options for the OpenAI API request
-    const options = {
-        model: "text-davinci-003",
-        prompt,
-        temperature,
-        max_tokens: 2048,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-        best_of: variants,
-    };
-
-    // Generate the bio using the OpenAI API
-    try {
-        const response = await openAI.createCompletion(options);
-
-        // Return the generated bio in the response
-        res.send({ bio: response.data.choices[0].text });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ error: 'Error generating bio' });
-    }
-});
+exports.generateProfileBio = functions.https.onRequest(generateProfileBio);
 
 
-// // generateBio({
-// //     language: 'en',
-// //     tone: 'friendly',
-// //     usecase: 'personal website',
-// //     about: 'my hobbies',
-// //     variants: 3,
-// //     creativityLevel: 'high',
-// //   })
-
-// let x = {
-//     language: 'en',
-//     tone: 'friendly',
-//     usecase: 'personal website',
-//     about: 'my hobbies',
-//     variants: 3,
-//     creativityLevel: 'high',
-//   }
-// // The creativity level is a parameter that can be used to control the level of creativity and originality in the text generated by the OpenAI API. There are several options for the creativity level, including:
-
-// // low: This setting produces text that is more predictable and sticks closer to the patterns and structure of the training data. The text generated at this level may be less creative and more straightforward.
-
-// // medium: This setting produces text that is more balanced between creativity and predictability. The text generated at this level may be more varied and unpredictable, but still grounded in the structure and patterns of the training data.
-
-// // high: This setting produces text that is more creative and original, but may also be more unpredictable and less coherent. The text generated at this level may include more unusual or unexpected combinations of words and phrases, and may be less grounded in the structure and patterns of the training data.
-
-// // You can choose the appropriate creativity level based on your needs and the desired level of originality and creativity in the generated text.
-
-
-
-
-
-// // The tone of the text generated by the OpenAI API refers to the emotional or attitudinal quality of the text. There are many possible tones that can be used in text, and the appropriate tone will depend on the context and intended audience. Some examples of possible tones include:
-
-// // friendly: This tone is warm, approachable, and welcoming. It is often used to create a sense of connection or rapport with the reader.
-
-// // professional: This tone is formal, businesslike, and respectful. It is often used in business or technical contexts to convey information or instructions in a clear and concise manner.
-
-// // playful: This tone is lighthearted, humorous, and whimsical. It is often used to create a sense of fun or levity in the text.
-
-// // serious: This tone is somber, earnest, and respectful. It is often used to convey important or weighty information or ideas.
-
-// // sarcastic: This tone is ironic, mocking, or insincere. It is often used to convey a sense of humor or to make a point in a subtle or indirect way.
-
-// // These are just a few examples of possible tones, and there are many other options depending on the context and intended audience. It is important to choose the appropriate tone for your text to ensure that it is effective and appropriate for your intended purpose.
-
-// // I hope this helps! Let me know if you have any further questions.
 
 
 

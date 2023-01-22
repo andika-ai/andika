@@ -12,19 +12,20 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const summarizeText = (req: any, res: Response) => {
+const generateBrandName = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { description, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please summarize the given text in [language] by identifying the main ideas and key points.\n
-                        The summary should be concise and convey the overall message of the text.\n
-                        In addition, please include any important details or information that is relevant to the topic.\n
-                        Also, please indicate the text length reduction rate you used while summarizing the text.\n
-                        Finally, please provide a title that accurately represents the content of the summarized text.`
+        const prompt =`Please generate [number] brand names in [language] that align with the tone and message of [brand description].\n
+                        The brand names should be suitable for [specific use case, e.g. a new product line, a rebranding, etc.].\n
+                        In terms of tone, the brand name should be [specific tone, e.g. modern, playful, professional, etc.].\n
+                        Please make sure that the brand name is unique and not already in use by another company. Additionally, please provide a brief explanation for each brand name, describing how it aligns with the [brand description].\n
+                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the brand names are unique and memorable.\n
+                        Please make sure that the brand name should be easy to pronounce and spell and it should be easy to remember and easy to be registered as a domain name.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -48,4 +49,4 @@ const summarizeText = (req: any, res: Response) => {
 
 };
 
-exports.summarizeText = functions.https.onRequest(summarizeText);
+exports.generateBrandName = functions.https.onRequest(generateBrandName);

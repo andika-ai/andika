@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const generateEmail = (req: any, res: Response) => {
+const generateGoogleSearchAd = (req: any, res: Response) => {
     cors(req,res, async() => {
         const { subject, recipient, sender, date, purpose, additionalInfo, cc, bcc ,tone, usecase, variants, creativityLevel, language } = req.body;
         if(!req.body) {
@@ -20,17 +20,15 @@ const generateEmail = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Please generate an email with the following information and format the output as an HTML string with proper styling:\n
-                    Subject: ${subject}\n
-                    Recipient: ${recipient}\n
-                    Sender: ${sender}\n
-                    Date: ${date}\n
-                    Purpose: ${purpose}\n
-                    Additional Information: ${additionalInfo}
-                    Cc: ${cc}\n
-                    Bcc: ${bcc}
-        
-        `
+        const prompt = `Generate a Google search ad for a product named [insert product name], described as [insert product description].
+                        The language should be [insert language], with a tone that is [insert tone (e.g. persuasive, informative, exciting)].
+                        The use case is to promote [insert use case (e.g. a new product launch, a sale, a limited-time offer)].
+                        The ad should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+                        Make sure to include the product name and a compelling headline that grabs the attention of the audience.
+                        Use persuasive language, images and videos to grab the audience's attention and create a sense of urgency.
+                        Use appropriate keywords to make the ad rank higher in search results.
+                        Also, include a clear call-to-action, trackable link and structured snippet to encourage conversions.
+                        Also, include ad extension like sitelink, call, location and review extension to make the ad more informative and user-friendly.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -54,4 +52,4 @@ const generateEmail = (req: any, res: Response) => {
 
 };
 
-exports.generateEmail= functions.https.onRequest(generateEmail);
+exports.generateGoogleSearchAd = functions.https.onRequest(generateGoogleSearchAd);

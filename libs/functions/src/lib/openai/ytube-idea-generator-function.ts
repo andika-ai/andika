@@ -1,50 +1,48 @@
-// import express from 'express';
-// import openai from 'openai';
+import { Configuration, OpenAIApi } from 'openai';
+import { Request, Response } from '@andika/config';
+import { app } from '@andika/config';
+import * as functions from 'firebase-functions';
+import * as corsModule from 'cors';
 
-// const app = express();
+const cors  = corsModule({origin: true})
+const configuration = new Configuration({
+    apiKey: "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",
+});
 
-// app.post('/generate-ideas', async (req, res) => {
-//   try {
-//     const { text, tone, numVariants, creativity, language } = req.body;
-//     openai.apiKey = process.env.OPENAI_API_KEY;
+const openAI = new OpenAIApi(configuration);
 
-//     const ideas = [];
-//     for (let i = 0; i < numVariants; i++) {
-//       const idea = await openai.completion.create({
-//         model: 'text-davinci-002',
-//         prompt: text,
-//         temperature: creativity,
-//         max_tokens: 2048,
-//         top_p: 1,
-//         frequency_penalty: 0,
-//         presence_penalty: 0,
-//         tone: tone,
-//         stop: '\n',
-//         n: 1,
-//         max_tries: 1,
-//         presence_penalty: 0,
-//         frequency_penalty: 0,
-//         best_of: 1,
-//         stream: false,
-//         stop: '\n',
-//         temperature: [0.5, 0.9, 0.2][i % 3],
-//         top_p: 1,
-//         frequency_cap: 0,
-//         presence_bias: 0,
-//         best_of: 1,
-//         max_tokens: 2048,
-//         n: 1,
-//         stream: false
-//       });
-//       ideas.push(idea.text);
-//     }
 
-//     res.send({ ideas });
-//   } catch (error) {
-//     res.status(500).send({ error: error.message });
-//   }
-// });
+const generateYTubeIdea  = (req: any, res: Response) => {
+    cors(req,res, async() => {
+        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        if(!req.body) {
+            res.status(400).json({status: 'error', message: 'text is missing in request'});
+            return;
+        }
+    
+        const prompt=
+                `Generate a YouTube video idea based on the keywords of [insert keywords], in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)]. The use case is to [insert use case (e.g. entertain, educate, persuade)]. Generate [insert number] variants of video ideas, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to come up with ideas that are relevant to the keywords and that will appeal to the target audience. Also, consider the current trends and popular topics in the industry related to the keywords. Additionally, make sure to include a clear and compelling hook in the video title and a well-defined structure for the video content. Lastly, think about how the video will drive engagement and generate conversions (if applicable)`
+        try {
+            const completion = await openAI.createCompletion({
+                model: "text-davinci-003",
+                prompt: prompt,
+                temperature: 0,
+                max_tokens: 60,
+                top_p: 1.0,
+                frequency_penalty: 0.0,
+                presence_penalty: 0.0,
+                // n: number of variations
+            });
+            res.status(200).send({
+                status: 'success',
+                message: 'results from chat gpt',
+                data: completion.data.choices[0].text
+            })
+        } catch (error: any) {
+            res.status(500).json(error.message)
+        }
+    })
 
-// app.listen(3000, () => {
-//   console.log('Server listening on port 3000');
-// });
+};
+
+exports.generateYTubeIdea  = functions.https.onRequest(generateYTubeIdea);

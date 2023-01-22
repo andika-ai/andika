@@ -12,9 +12,9 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const generateYTubeChannelDescription  = (req: any, res: Response) => {
+const generateSmsAndNotification = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { context, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -22,7 +22,7 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a YouTube channel description for a channel with a purpose of [insert channel purpose], in the language of [insert language], with a tone that is [insert tone (e.g. professional, friendly, engaging)]. Generate [insert number] variants of the channel description, with a creativity level of [insert level (e.g. high, medium, low)]. The use case is to [insert use case (e.g. attract and inform potential subscribers, provide detailed information about the channel)]. Make sure to include a detailed and clear overview of the channel, including the type of content, target audience, and unique selling points. Also, include a call-to-action, encouraging viewers to subscribe to the channel. Use appropriate keywords to optimize the channel description for search engines and make sure to align the tone with the channel's purpose and target audience.`
+                `Generate SMS and push notifications based on the following context: [insert context], in the language of [insert language], with a tone that is [insert tone (e.g. friendly, urgent, personalized)]. The use case is to [insert use case (e.g. increase engagement, promote a new feature, remind of an upcoming event)]. Generate [insert number] variants of the SMS and notifications, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include a clear and concise message that is relevant to the user and the current context. Also, pay attention to the timing and frequency of the SMS and notifications, ensuring that they are not too frequent or disruptive. Use persuasive language and images to grab the user's attention and create a sense of urgency. Additionally, make sure to consider the character limit of SMS and to provide a clear call-to-action to encourage the user to take action. Lastly, make sure that the SMS and notifications align with the user's preferences and opt-in status.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -46,4 +46,4 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
 
 };
 
-exports.generateYTubeChannelDescription  = functions.https.onRequest(generateYTubeChannelDescription );
+exports.generateSmsAndNotification  = functions.https.onRequest(generateSmsAndNotification);

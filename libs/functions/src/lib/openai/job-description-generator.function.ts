@@ -11,29 +11,21 @@ const configuration = new Configuration({
 
 const openAI = new OpenAIApi(configuration);
 
-/**
- * It is also possible to specify different citation styles such as MLA, Chicago, Harvard, IEEE, etc. by replacing APA with the desired citation style in the prompt.
 
-Note that the above prompt is an example, it is possible to modify it according to the source you want to cite, and the citation style you want to use.
- * @param req 
- * @param res 
- */
-const generateCitation = (req: any, res: Response) => {
+const generateJobDescription = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { title, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { jobRole, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:\n
-                        Title: ${title}\n
-                        Author: ${author}\n
-                        Edition: ${edition}\n
-                        Publisher: ${publisher}\n
-                        Publication Date: ${publicationDate}\n
-                        Citation Style: ${citationStyle}`
-        
+        const prompt = `Generate a job description for a role of [insert job role], in the language of [insert language], with a tone that is [insert tone (e.g. professional, enthusiastic, concise)].
+                        The use case is to [insert use case (e.g. attract and inform potential candidates, provide detailed information to hiring managers)].
+                        The job description should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+                        Make sure to include a detailed and clear overview of the role, including the responsibilities, qualifications, and requirements for the position.
+                        Also, include information about the company culture and benefits to give an idea about the working environment to the potential candidates.
+                        Use appropriate keywords to optimize the job description for search engines and include a clear call-to-action to apply for the role.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -57,4 +49,4 @@ const generateCitation = (req: any, res: Response) => {
 
 };
 
-exports.generateCitation = functions.https.onRequest(generateCitation);
+exports.generateJobDescription = functions.https.onRequest(generateJobDescription);

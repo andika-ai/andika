@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const correctGrammar = (req: any, res: Response) => {
+const generateBlogSection = (req: any, res: Response) => {
     cors(req,res, async() => {
         const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!text) {
@@ -20,11 +20,18 @@ const correctGrammar = (req: any, res: Response) => {
             return;
         }
     
-        console.log(text);
+        const prompt =`Please write a blog section for the given topic in [language].\n
+                        The tone of the blog section should be [specific tone, e.g. informative, persuasive, etc.].\n
+                        This blog section will be used for [specific use case, e.g. marketing, educating, etc.].\n
+                        Please provide [number] variations of the blog section to choose from.\n
+                        The blog section should be at least [number of words] and should include information on the topic, any relevant statistics or data, personal anecdotes, and examples.\n
+                        It should also include a call-to-action that is relevant to the use case.\n
+                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the blog section is unique and stands out.\n
+                        Additionally, please provide a brief summary of the topic and indicate the target audience of the text, so that the blog section can be tailored accordingly.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
-                prompt: `Correct the following text to standard English:\n\n${text}`,
+                prompt: prompt,
                 temperature: 0,
                 max_tokens: 60,
                 top_p: 1.0,
@@ -44,4 +51,4 @@ const correctGrammar = (req: any, res: Response) => {
 
 };
 
-exports.correctGrammar  = functions.https.onRequest(correctGrammar);
+exports.generateBlogSection = functions.https.onRequest(generateBlogSection);

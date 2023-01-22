@@ -18,8 +18,8 @@ export class PreloaderComponent implements OnInit {
    * Preloader
    */
   preloader() {
-    const preloader = document.querySelector('#preloader') as HTMLElement;
-    if (this.load) {
+    const preloader = document.querySelector('#pre-loader') as HTMLElement;
+    if (preloader) {
       window.addEventListener('load', () => {
         preloader.remove();
       });

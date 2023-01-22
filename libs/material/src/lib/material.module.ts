@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   imports: [
     FlexLayoutModule,
@@ -29,7 +29,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatSelectModule,
     MatTabsModule,
-    MatSnackBarModule 
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   exports: [
     FlexLayoutModule,
@@ -45,7 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatSelectModule,
     MatTabsModule,
-    MatSnackBarModule 
+    MatSnackBarModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule {}

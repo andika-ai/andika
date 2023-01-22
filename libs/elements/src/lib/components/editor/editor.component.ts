@@ -3,13 +3,27 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'andika-element-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+  styleUrls: ['./editor.component.css'],
+  animations: [
+    trigger('dotsAnimation', [
+      state('start', style({
+        transform: 'scale(1)'
+      })),
+      state('end', style({
+        transform: 'scale(1.5)'
+      })),
+      transition('start <=> end', animate('300ms ease-in'))
+    ])
+  ]
 })
 export class EditorComponent implements OnInit, OnChanges{
+  color: ThemePalette = 'warn';
   @Input() loading = false;
   @Input() promptResponseData: any = null;
   hide = false;

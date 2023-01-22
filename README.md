@@ -133,3 +133,39 @@ This is a comprehensive list of various possible prompt tones that could be used
 
 Please note that you can also combine or mix different tones together to create a more nuanced and complex prompt. Also, it's important to note that the tone you choose will depend on the context and purpose of your text generation task. 
 ```
+
+# Future features
+
+Personalization: One way to implement personalization could be to use machine learning algorithms to analyze the user's writing style and preferences. For example, the AI assistant could learn the user's preferred writing tone (formal or casual), sentence structure, and choice of words. Once the AI assistant has learned the user's writing style, it could provide more personalized suggestions and corrections.
+
+Emotion detection and language generation: This feature could be implemented using natural language processing (NLP) techniques to analyze the emotional tone of a piece of text. Once the tone has been determined, the AI assistant could suggest words and phrases that match the desired tone. For example, if the text is determined to be sad, the AI assistant could suggest words and phrases that are more upbeat to improve the overall tone.
+
+Multi-language support: This feature could be implemented using machine translation algorithms to translate text from one language to another in real-time. For example, the AI assistant could translate a piece of text from English to Spanish or vice versa.
+
+Sentiment analysis: This feature could be implemented using NLP techniques to analyze the overall sentiment of a piece of text. The AI assistant could then provide feedback on how to improve the sentiment of the text, such as suggesting words or phrases that are more positive.
+
+Integration with other tools: This feature could be implemented by integrating the AI assistant with other productivity tools such as calendars, task managers, and project management software. This would allow the AI assistant to provide context-aware suggestions and corrections.
+
+Content generation: This feature could be implemented using GPT based models to generate original content based on specific topics or prompts.
+
+Collaborative Writing: This feature could be implemented by allowing multiple users to work on a document together in real-time, with the AI assistant providing suggestions and corrections for each user.
+
+Audio-based dictation and transcription: This feature could be implemented using automatic speech recognition (ASR) and natural language understanding (NLU) technologies to transcribe spoken words into written text and vice versa.
+
+Summarization: This feature could be implemented by using NLP algorithms to extract key points from a piece of text and condense them into a shorter summary.
+
+Real-time feedback and error correction: This feature could be implemented by using NLP algorithms to identify grammar, spelling, and style errors as the user writes and providing feedback in real-time.
+
+
+
+# Business
+It's possible that an AI writing assistant could be a viable business in the Kenyan market, but it would depend on a number of factors such as the target market, the quality of the application, and the pricing model.
+
+Kenya is a developing country with a growing economy and a relatively high penetration of technology, especially mobile phones and internet. There is a large pool of talented people in Kenya, who can benefit from AI-based tools like writing assistant. Additionally, Kenya has a large pool of young people who are proficient in English and are in need of tools that can improve their writing skills.
+
+However, there are a few things to consider:
+
+The Kenyan market for AI writing assistant might be relatively small compared to other countries, so it's important to target the right market segments and price the product accordingly.
+It's also important to consider the competition in the Kenyan market and differentiate your product from others on the market.
+There may be cultural and linguistic barriers to adoption of an AI writing assistant in Kenya, so it's important to consider local market factors when developing the product.
+It would be a good idea to conduct market research and speak with industry experts to get a better understanding of the viability of an AI writing assistant in the Kenyan market, and to validate your business model.

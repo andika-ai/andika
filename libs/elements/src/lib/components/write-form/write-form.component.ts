@@ -48,91 +48,106 @@ export class WriteFormComponent implements OnInit {
         name: 'Youtube Idea',
         info: 'Generate video ideas based on keywords & topics',
         keywords: 'random keywords',
+        img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.YoutubeDescription,
         info: 'Write short description for your YouTube video',
         name: 'Youtube Description',
         title: 'random title',
+        img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.YoutubeChannelDescription,
         name: 'Youtube Channel Description',
         info: 'Write short description for your YouTube channel',
         purpose: 'random channel purpose',
+        img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.TestimonialAndReview,
         info: 'Write short tagline for your product or brand',
         name: 'Testimonial & Review',
         reviewTile: 'random review title',
+        img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.TagLineAndHeadline,
         name: 'Tag Line & Headline',
         info: 'Write short tagline for your product or brand',
         description: 'description for tagline',
+        img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.StoryPlots,
         name: 'Story Plots',
         info: 'Generate creative plot outline based on story ideas',
         idea: 'description for idea',
+         img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.SongLyrics,
         name: 'Song Lyrics',
         info: 'Generate short lyrics based on a song idea',
         idea: 'description for idea',
+         img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.SmsAndNotifications,
         name: 'SMS and Notifications',
         info: 'Write engaging micro-copies for SMS or app notifications',
         context: 'context for SMS or app notifications',
+         img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.Email,
         name: 'Email',
         info: 'Turn a few key points into a ready to send email',
         keyPoints: 'random key points',
+         img: 'assets/icons/content-writing.png'
     },
     {
         id: UseCase.JobDescription,
         name: 'Job Description',
         info: 'Write a job description based on the role',
-        jobRole: 'Software Engineer'
+        jobRole: 'Software Engineer',
+         img: 'assets/icons/content-writing.png'
     },
     {
       id: UseCase.BlogIdeaAndOutline,
       name: 'Blog Idea and Outline',
       info: 'Generate ideas and content structure for articles',
-      jobRole: 'Software Engineer'
+      jobRole: 'Software Engineer',
+       img: 'assets/icons/content-writing.png'
     },
     {
       id: UseCase.CoverLetter,
       name: 'Cover Letter',
       info: 'Write cover letters based on job role & skills',
       jobRole: 'Software Engineer',
-      jobSkills: 'add job skills here'
+      jobSkills: 'add job skills here',
+       img: 'assets/icons/content-writing.png'
     },
     {
       id: UseCase.ProfileBio,
       name: 'Profile Bio',
       info: 'Write introduction & about me bios for your profile',
       about: 'Software Engineer based in nairobi kenya',
+       img: 'assets/icons/content-writing.png'
     },
     {
       id: UseCase.ReplyToReviewsAndMassages,
       name: 'Reply to Reviews & Messages',
       info: 'Write responses for messages, reviews, emails & more',
       message: '>>> paste information here and let the bot reply',
+       img: 'assets/icons/content-writing.png'
     },
     {
       id: UseCase.GrammarCorrection,
       name: 'Grammar correction',
       info: 'Write your text in correct grammar',
       message: '>>> paste information here and let the bot correct the grammar',
+       img: 'assets/icons/content-writing.png'
     }
 ];
 

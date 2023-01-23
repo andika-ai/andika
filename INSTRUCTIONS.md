@@ -137,3 +137,7 @@ grammerCorrection.post().form({'text': 'mi name is philip'})
 # Stop Emulator 
 
 **Ctrl+ c**
+
+
+
+# Running app on different port

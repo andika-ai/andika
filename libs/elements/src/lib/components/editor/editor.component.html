@@ -1,6 +1,7 @@
 
 
-
+<div class="container">
+<andika-top-editor-toolbar></andika-top-editor-toolbar>
 <form [formGroup]="form" >
   <mat-progress-bar *ngIf="loading" color="primary" mode="query"></mat-progress-bar>
   <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
@@ -9,8 +10,4 @@
     <div class="center-screen dot-elastic"></div>
   </quill-editor>
 </form>
-
-
-
-
-  
+</div>

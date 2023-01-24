@@ -1,45 +1,42 @@
-<!-- <div class="flex flex-row">
-    <div class="w-1/1">
-        
-    </div>
-</div> -->
-<andika-navbar></andika-navbar>
 
-  <div class="flex md:flex-row flex-wrap">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg w-full md:w-1/4 bg-yellow-50 p-4 text-center text-black-900">
-    <andika-write-form (isLoading)="isLoading($event)" (promptResponse)="promptResponse($event)"></andika-write-form></div>
-    <div class="mt-20 w-full md:w-3/4 bg-white-900 p-4 text-center text-black-900">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center justify-start">
-          
-          <fa-icon [icon]="faArrowLeft"></fa-icon>&nbsp;&nbsp;&nbsp;<input class="hover:underline text-lg bg-transparent outline-none" value="First Document"  />
+<!-- <andika-navbar></andika-navbar> -->
+
+<div style="background-color: #f9f9f9 !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-        <div class="flex items-center justify-end">
-          <div class="relative inline-block text-left">
-            <div>
-              <button (click)="toggleMenu()" type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                Options
-                <!-- Heroicon name: mini/chevron-down -->
-                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                </svg>
-              </button>
-            </div>
-          
-            <div *ngIf="showOptions" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-              <div class="py-1" role="none">
-                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-                <div >
-                  <button type="button" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <andika-element-editor [loading]="loading" [promptResponseData]="promptResponseData"></andika-element-editor>
-    </div>
+      </li>
+    </ul>
   </div>
+</nav>
+<div class="row">
+  <div class="col-md-5"><andika-write-form (isLoading)="isLoading($event)" (promptResponse)="promptResponse($event)"></andika-write-form></div>
+  <div class="col-md-7" ><andika-element-editor [loading]="loading" [promptResponseData]="promptResponseData"></andika-element-editor></div>
+</div>
+
+<div class="row">
+  <andika-app-footer></andika-app-footer>
+</div>
+</div>

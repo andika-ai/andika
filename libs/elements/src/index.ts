@@ -11,3 +11,5 @@ export * from './lib/components/documents/documents.component';
 export * from './lib/services/shared-write-form/shared-write-form.service';
 export * from './lib/components/snackbar/alert/alert.component';
 export * from './lib/services/snackbar/snack-bar.service';
+export * from './lib/components/select-usecase/select-usecase.component';
+export * from './lib/components/top-editor-toolbar/top-editor-toolbar.component';

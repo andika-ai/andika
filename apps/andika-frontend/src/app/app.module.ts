@@ -27,6 +27,7 @@ import { MaterialModule } from '@andika/libs/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { USE_EMULATOR } from '@angular/fire/compat/functions';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -42,6 +43,7 @@ import { USE_EMULATOR } from '@angular/fire/compat/functions';
     ElementsModule,
     FeaturesHomeModule,
     FeaturesAuthenticationModule,
+    NgxMatSelectSearchModule,
     /////
     AppRoutingModule,
     QuillModule.forRoot(),

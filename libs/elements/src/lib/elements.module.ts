@@ -1,3 +1,5 @@
+import { TopEditorToolbarComponent } from './components/top-editor-toolbar/top-editor-toolbar.component';
+import { SelectUsecaseComponent } from './components/select-usecase/select-usecase.component';
 import { AlertComponent } from './components/snackbar/alert/alert.component';
 import { GrammerCorrectionComponent } from './components/forms/grammer-correction/grammer-correction.component';
 import { ReplyToReviewsOrEmailComponent } from './components/forms/reply-to-reviews-or-email/reply-to-reviews-or-email.component';
@@ -35,9 +37,10 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServicesOpenAiModule } from '@andika/services/openai';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesOpenAiModule],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [CommonModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesOpenAiModule],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,
@@ -67,7 +70,9 @@ import { ServicesOpenAiModule } from '@andika/services/openai';
     ProfileBioComponent,
     ReplyToReviewsOrEmailComponent,
     GrammerCorrectionComponent,
-    AlertComponent
+    AlertComponent,
+    SelectUsecaseComponent,
+    TopEditorToolbarComponent
   ],
   exports: [
     PreloaderComponent,
@@ -98,7 +103,9 @@ import { ServicesOpenAiModule } from '@andika/services/openai';
     ProfileBioComponent,
     ReplyToReviewsOrEmailComponent,
     GrammerCorrectionComponent,
-    AlertComponent
+    AlertComponent,
+    SelectUsecaseComponent,
+    TopEditorToolbarComponent
   ]
 })
 export class ElementsModule {}

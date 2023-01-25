@@ -422,7 +422,7 @@ section {
   .navbar .megamenu ul {
     right: 0;
     padding: 10px;
-    display: flex;
+    /* display: flex; */
   }
 
   .navbar .megamenu ul li {

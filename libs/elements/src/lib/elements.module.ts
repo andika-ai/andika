@@ -1,3 +1,4 @@
+import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
 import { TopEditorToolbarComponent } from './components/top-editor-toolbar/top-editor-toolbar.component';
 import { SelectUsecaseComponent } from './components/select-usecase/select-usecase.component';
 import { AlertComponent } from './components/snackbar/alert/alert.component';
@@ -72,7 +73,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     GrammerCorrectionComponent,
     AlertComponent,
     SelectUsecaseComponent,
-    TopEditorToolbarComponent
+    TopEditorToolbarComponent,
+    MainNavbarComponent
   ],
   exports: [
     PreloaderComponent,
@@ -105,7 +107,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     GrammerCorrectionComponent,
     AlertComponent,
     SelectUsecaseComponent,
-    TopEditorToolbarComponent
+    TopEditorToolbarComponent,
+    MainNavbarComponent
   ]
 })
 export class ElementsModule {}

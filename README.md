@@ -169,3 +169,18 @@ The Kenyan market for AI writing assistant might be relatively small compared to
 It's also important to consider the competition in the Kenyan market and differentiate your product from others on the market.
 There may be cultural and linguistic barriers to adoption of an AI writing assistant in Kenya, so it's important to consider local market factors when developing the product.
 It would be a good idea to conduct market research and speak with industry experts to get a better understanding of the viability of an AI writing assistant in the Kenyan market, and to validate your business model.
+
+
+
+# Icon Attributions (https://www.flaticon.com/)
+TODO: provide attributions for the assets in use to:
+<a href="https://www.flaticon.com/free-icons/cover-letter" title="cover letter icons">Cover letter icons created by Flat Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/mail" title="mail icons">Mail icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/grammar" title="grammar icons">Grammar icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/interview" title="interview icons">Interview icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/job-description" title="job description icons">Job description icons created by surang - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/meeting" title="meeting icons">Meeting icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/dictionary" title="dictionary icons">Dictionary icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/blog" title="blog icons">Blog icons created by Freepik - Flaticon</a>

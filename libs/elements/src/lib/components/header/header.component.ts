@@ -1,4 +1,17 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  faTeletype,
+  faTimes,
+  faExpand,
+  faQuestionCircle,
+  faLightbulb,
+  faPen,
+  faPenNib,
+  faClockRotateLeft,
+  faUser,
+  faArrowRight
+
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'andika-header',
@@ -6,7 +19,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-
+  faArrowRight = faArrowRight;
   constructor() { }
 
   ngOnInit() {

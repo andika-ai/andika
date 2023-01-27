@@ -20,9 +20,9 @@ const generateJobDescription = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Generate a job description for a role of [insert job role], in the language of [insert language], with a tone that is [insert tone (e.g. professional, enthusiastic, concise)].
-                        The use case is to [insert use case (e.g. attract and inform potential candidates, provide detailed information to hiring managers)].
-                        The job description should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        const prompt = `Generate a job description for a role of ${jobRole}, in the language of${language}, with a tone that is ${tone}.
+                        The use case is to ${usecase}.
+                        The job description should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
                         Make sure to include a detailed and clear overview of the role, including the responsibilities, qualifications, and requirements for the position.
                         Also, include information about the company culture and benefits to give an idea about the working environment to the potential candidates.
                         Use appropriate keywords to optimize the job description for search engines and include a clear call-to-action to apply for the role.`

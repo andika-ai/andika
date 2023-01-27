@@ -184,3 +184,8 @@ TODO: provide attributions for the assets in use to:
 <a href="https://www.flaticon.com/free-icons/dictionary" title="dictionary icons">Dictionary icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/blog" title="blog icons">Blog icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/briefing" title="briefing icons">Briefing icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/call-to-action" title="call to action icons">Call to action icons created by Flat Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/portal" title="portal icons">Portal icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/marketing" title="marketing icons">Marketing icons created by Freepik - Flaticon</a>

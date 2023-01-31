@@ -189,3 +189,39 @@ TODO: provide attributions for the assets in use to:
 <a href="https://www.flaticon.com/free-icons/portal" title="portal icons">Portal icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/marketing" title="marketing icons">Marketing icons created by Freepik - Flaticon</a>
+
+
+# Target
+Based on my research, the following professionals in Kenya could potentially benefit from an AI writing tool:
+
+Content creators: Including bloggers, journalists, and copywriters who need to produce high-quality content quickly and efficiently.
+
+Marketing professionals: Including social media managers, email marketers, and content marketers who need to create engaging marketing materials on a regular basis.
+
+Software developers: Including web developers, mobile developers, and software engineers who need to generate code documentation, bug reports, and release notes.
+
+Business owners: Including entrepreneurs and small business owners who need to create professional business documents such as reports, proposals, and contracts.
+
+Legal professionals: Including lawyers, paralegals, and legal secretaries who need to generate legal documents and contracts.
+
+Educators: Including teachers, lecturers, and trainers who need to create educational materials and assessments.
+
+# Features 
+
+Here's a general list of categories that can be added in the navigation bar for an AI writing tool:
+
+Home: A landing page that provides an overview of the tool and its features.
+
+Use Cases: A section detailing various use cases for the tool, such as business proposals, financial reports, and bug reports.
+
+Features: A section highlighting the key features of the tool, such as custom templates, real-time updates, and collaborative editing.
+
+Pricing: A section detailing the pricing plans available for the tool, including free and paid options.
+
+Integration: A section outlining the integration options for the tool, such as integration with other software or services.
+
+Support: A section with resources for getting help with the tool, including a knowledge base, forums, and contact information.
+
+About: A section with information about the company or organization behind the tool, including mission, values, and team.
+
+Note: This list is a general guide and the specific categories added to the navigation bar will depend on the needs and requirements of the tool.

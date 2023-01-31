@@ -28,7 +28,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { USE_EMULATOR } from '@angular/fire/compat/functions';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-
+// ✨ New 👇
+import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
@@ -44,6 +45,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     FeaturesHomeModule,
     FeaturesAuthenticationModule,
     NgxMatSelectSearchModule,
+
     /////
     AppRoutingModule,
     QuillModule.forRoot(),
@@ -53,7 +55,13 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()) // Quill Angular WYSIWYG Editor Module 
+    providePerformance(() => getPerformance()), // Quill Angular WYSIWYG Editor Module 
+    // ✨ New 👇
+    environment.production
+    ? []
+    : AkitaNgDevtools.forRoot({
+        maxAge: 25,
+      }),
   ],
   providers: [
     ScreenTrackingService,UserTrackingService,

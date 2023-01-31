@@ -4,4 +4,8 @@ export interface User {
     displayName: string;
     photoURL: string;
     emailVerified: boolean;
+    isSubscribed?: boolean;
+    subscriptionDate?: Date;
+    apiTokens?: string;
+    
 }

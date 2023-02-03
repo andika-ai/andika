@@ -19,15 +19,22 @@ const generateBlogSection = (req: any, res: Response) => {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
-    
-        const prompt =`Please write a blog section for the given topic in [language].\n
-                        The tone of the blog section should be [specific tone, e.g. informative, persuasive, etc.].\n
-                        This blog section will be used for [specific use case, e.g. marketing, educating, etc.].\n
-                        Please provide [number] variations of the blog section to choose from.\n
-                        The blog section should be at least [number of words] and should include information on the topic, any relevant statistics or data, personal anecdotes, and examples.\n
-                        It should also include a call-to-action that is relevant to the use case.\n
-                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the blog section is unique and stands out.\n
-                        Additionally, please provide a brief summary of the topic and indicate the target audience of the text, so that the blog section can be tailored accordingly.`
+        // TODO: Based on subscription the number of words is determined.
+        const number_of_words = 100;
+        const prompt =`Please write a blog section for the given topic in ${text}.\n
+                        The blog should be in ${language} language.
+                        The tone of the blog section should be ${tone}.
+                        This blog section will be used for ${usecase}.
+                        Please provide ${variants} variations of the blog section to choose from.
+                        The blog section should be at ${number_of_words} and should include information on the topic, any relevant statistics or data, personal anecdotes, and examples.
+                        It should also include a call-to-action that is relevant to the use case.
+                        In terms of creativity, please aim for a level of ${creativityLevel} to ensure that the blog section is unique and stands out.
+                        Additionally, please provide a brief summary of the topic and indicate the target audience of the text, so that the blog section can be tailored accordingly.
+                        Return the blog idea in HTML format, with the following styles applied:\n
+                            - Headings: Use h1 for main headings with a font-family of 'Montserrat', sans-serif, font-size of 36px, font-weight of bold, text-transform of uppercase, and letter-spacing of 2px. Use h2 for subheadings with a font-family of 'Open Sans', sans-serif, font-size of 24px, font-weight of bold, and text-transform of capitalize.
+                            - Paragraphs: Style the paragraphs with a font-family of 'Open Sans', sans-serif, font-size of 16px, line-height of 1.5, and margin of 20px 0.
+                            - Text styling: Style the bold text with font-weight of bold and color of #333. Style the italic text with font-style of italic and color of #333. Style the underlined text with text-decoration of underline and color of #333.
+                        `
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +44,6 @@ const generateBlogSection = (req: any, res: Response) => {
                 top_p: 1.0,
                 frequency_penalty: 0.0,
                 presence_penalty: 0.0,
-                // n: number of variations
             });
             res.status(200).send({
                 status: 'success',

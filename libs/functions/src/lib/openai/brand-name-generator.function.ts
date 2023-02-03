@@ -20,11 +20,11 @@ const generateBrandName = (req: any, res: Response) => {
             return;
         }
     
-        const prompt =`Please generate [number] brand names in [language] that align with the tone and message of [brand description].\n
-                        The brand names should be suitable for [specific use case, e.g. a new product line, a rebranding, etc.].\n
-                        In terms of tone, the brand name should be [specific tone, e.g. modern, playful, professional, etc.].\n
-                        Please make sure that the brand name is unique and not already in use by another company. Additionally, please provide a brief explanation for each brand name, describing how it aligns with the [brand description].\n
-                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the brand names are unique and memorable.\n
+        const prompt =`Please generate ${variants} brand names in ${language} that align with the tone and message of ${description}.
+                        The brand names should be suitable for ${usecase}.
+                        In terms of tone, the brand name should be ${tone}.
+                        Please make sure that the brand name is unique and not already in use by another company. Additionally, please provide a brief explanation for each brand name, describing how it aligns with the ${description}.
+                        In terms of creativity, please aim for a level of ${creativityLevel} to ensure that the brand names are unique and memorable.
                         Please make sure that the brand name should be easy to pronounce and spell and it should be easy to remember and easy to be registered as a domain name.`
         try {
             const completion = await openAI.createCompletion({

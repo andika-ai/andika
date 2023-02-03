@@ -20,14 +20,14 @@ const generateBusinessIdea = (req: any, res: Response) => {
             return;
         }
     
-        const prompt =`Please generate [number] unique business ideas in [language] that align with the interests, skills and tone specified.\n
-                        The idea should be suitable for [specific use case, e.g. a startup, a small business, a side hustle, etc.].
-                        The tone of the business idea should be [specific tone, e.g. innovative, sustainable, impactful, etc.] .\n
-                        The idea should be based on your interests [specific interests] and skills [specific skills].
-                        Please provide [number] variations of the business idea, each with a different angle or emphasis.
-                        In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the ideas are unique and have potential for success.
-                        Additionally, please include a brief explanation for each idea, describing how it aligns with the interests and skills specified, and its potential for profitability.
-                        Finally, please indicate the target market and target audience for each idea, so that it can be tailored accordingly and it should be easy to implement and manage.`
+        const prompt =`Please generate ${variants} unique business ideas in ${language} that align with the interests, skills and tone specified.
+                       The idea should be suitable for ${usecase}.
+                       The tone of the business idea should be ${tone}.
+                       The idea should be based on your interests [specific interests] and skills [specific skills].
+                       Please provide [number] variations of the business idea, each with a different angle or emphasis.
+                       In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the ideas are unique and have potential for success.
+                       Additionally, please include a brief explanation for each idea, describing how it aligns with the interests and skills specified, and its potential for profitability.
+                       Finally, please indicate the target market and target audience for each idea, so that it can be tailored accordingly and it should be easy to implement and manage.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",

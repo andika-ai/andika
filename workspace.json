@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "projects": {
+        "workspace": {
+            "root": ".",
+            "targets": {
+                "version": {
+                    "executor": "@jscutlery/semver:version",
+                    "options": {
+                        "syncVersions": true
+                    }
+                }
+            }
+        },
+        "andika": "apps/andika-backend",
+        "b": "apps/andika-backend"
+    }
+}

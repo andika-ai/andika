@@ -1,37 +1,44 @@
-$color-accent:                      #177E89;
-$color-light:                       #ffffff;
-$color-dark:                        #2a2a2a;
-$menu-link-padding:                 20px 25px;
-$breakpoint:                        950px;
-$mega-menu-multiLevel-colWidth:     100/3 + 0%;
-$mobile-menu-back-height:           auto;
-$mobile-menu-back-offset:           auto;
-$menu-mobile-width:                 350px;
+$color-accent: #177E89;
+$color-light: #ffffff;
+$color-dark: #2a2a2a;
+$menu-link-padding: 20px 25px;
+$breakpoint: 950px;
+$mega-menu-multiLevel-colWidth: 33.33% + 0%;
+$mobile-menu-back-height: auto;
+$mobile-menu-back-offset: auto;
+$menu-mobile-width: 350px;
 
 
 
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-img{
+img {
   display: inline !important;
 }
 
 // ------------------ SHARED STYLES
 
 nav {
-   ul, li {
-     list-style: none;
-     padding: 0;
-     margin: 0;
-  } 
+
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   a {
     display: block;
     text-decoration: none;
-    &:hover, &:visited {
+
+    &:hover,
+    &:visited {
       text-decoration: none;
     }
   }
@@ -49,18 +56,20 @@ nav {
   transition: background .2s, color .2s;
   position: relative;
   z-index: 1;
+
   &[aria-haspopup="true"] {
     padding-right: 40px;
+
     &:after {
       content: "";
       background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowRight.svg#accent');
       background-size: 14px;
       width: 14px;
       height: 14px;
-      font-size:12px;
+      font-size: 12px;
       position: absolute;
       right: 10px;
-      top:50%;
+      top: 50%;
       transform: translateY(-50%);
     }
   }
@@ -87,86 +96,94 @@ nav {
 
 @media all and (min-width: $breakpoint + 1px) {
   // Desktop only
-  
+
   .nav {
     margin-top: 50px;
     background: $color-light;
-    > nav {
+
+    >nav {
       max-width: 900px;
       margin: 0 auto;
     }
   }
-  
+
   .menu {
     [aria-haspopup="true"] {
-      ~ ul {
+      ~ul {
         display: none;
       }
     }
   }
-  
+
   .menu-bar {
     position: relative;
-    > li {
-      > [aria-haspopup="true"] {
+
+    >li {
+      >[aria-haspopup="true"] {
+
         // STYLING: Down arrow on desktop
         &:after {
-            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#accent');
+          background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#accent');
         }
+
         &:hover {
           &:after {
             background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#light');
           }
         }
-        
+
         // FUNCTIONALITY: Open mega menu
         &:focus {
-          ~ ul {
+          ~ul {
             display: flex;
             transform-origin: top;
             animation: dropdown .2s ease-out;
           }
         }
+
         // FUNCTIONALITY: Keep mega menu open
-        ~ ul {
+        ~ul {
           &:hover {
             display: flex;
           }
         }
       }
-      
+
       // FUNCTIONALITY: Keep mega menu open
       &:focus-within {
-        > [aria-haspopup="true"] {
-          ~ ul {
+        >[aria-haspopup="true"] {
+          ~ul {
             display: flex;
           }
         }
       }
-      
+
       // STYLING: Hover/Active state
-      > [aria-haspopup="true"]:focus,
-      &:focus-within > [aria-haspopup="true"],
-      &:hover > a {
+      >[aria-haspopup="true"]:focus,
+      &:focus-within>[aria-haspopup="true"],
+      &:hover>a {
         background: $color-accent;
         color: $color-light;
+
         &:after {
           background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowTop.svg#light');
         }
       }
     }
   }
-  
+
   .mega-menu {
     // LAYOUT: Mega menu
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
+
     // FUNCTIONALITY: Keep mega menu open
     &:hover {
       display: flex;
     }
+
     a {
       &:hover {
         background: tint($color-accent, 85%);
@@ -174,16 +191,19 @@ nav {
       }
     }
   }
- 
-  
+
+
   .mega-menu--multiLevel {
+
     // LAYOUT: Multi level columns
-    > li {
+    >li {
       width: $mega-menu-multiLevel-colWidth;
-      > [aria-haspopup="true"] {
-        ~ ul {
+
+      >[aria-haspopup="true"] {
+        ~ul {
           left: $mega-menu-multiLevel-colWidth;
           width: $mega-menu-multiLevel-colWidth;
+
           ul {
             width: 100%;
             left: 100%;
@@ -191,78 +211,91 @@ nav {
         }
       }
     }
-    
+
     li {
+
       // FUNCTIONALITY: Opening flyouts
       &:hover {
-        > [aria-haspopup="true"] {
-          ~ ul {
+        >[aria-haspopup="true"] {
+          ~ul {
             display: block;
             transform-origin: left;
             animation: flyout .2s ease-out;
           }
         }
       }
-      
+
       // FUNCTIONALITY: Keeping flyouts open
       &:focus-within {
-        > [aria-haspopup="true"] {
-          ~ ul {
+        >[aria-haspopup="true"] {
+          ~ul {
             display: block;
           }
         }
       }
-      
+
       // STYLING: Flyout link active states
-      &:hover, &:focus-within {
-        > [aria-haspopup="true"], > a {
+      &:hover,
+      &:focus-within {
+
+        >[aria-haspopup="true"],
+        >a {
           background: tint($color-accent, 85%);
           color: darken($color-accent, 5%);
         }
       }
     }
+
     [aria-haspopup="true"] {
-      ~ ul, & {
+
+      ~ul,
+      & {
         border-left: 1px solid #f0f0f0;
+
         // FUNCTIONALITY: Keeping flyouts open
         &:hover {
           display: block;
         }
       }
+
       // LAYOUT: Flyouts
-      ~ ul {
+      ~ul {
         position: absolute;
         top: 0;
         height: 100%;
       }
     }
   }
-  
-  
+
+
   // STYLING: Flat mega menu columns
   .mega-menu--flat {
-    > * {
+    >* {
       flex: 1;
     }
   }
-  
+
   // Hide mobile specific elements
-  .mobile-menu-trigger, .mobile-menu-header, .mobile-menu-back-item {
+  .mobile-menu-trigger,
+  .mobile-menu-header,
+  .mobile-menu-back-item {
     display: none;
   }
 
 }
 
 @media all and (max-width: $breakpoint) {
-    
+
   .nav {
     padding: 20px;
   }
-  
-  .mobile-menu-trigger, .mobile-menu-header, .mobile-menu-back-item {
+
+  .mobile-menu-trigger,
+  .mobile-menu-header,
+  .mobile-menu-back-item {
     display: block;
   }
-  
+
   .mobile-menu-trigger {
     background: $color-accent;
     color: $color-light;
@@ -271,17 +304,18 @@ nav {
     font-size: 1.2em;
     border-radius: 4px;
   }
-  
+
   .mobile-menu-header {
     order: -1;
     background: grey;
+
     a {
       padding: $menu-link-padding;
       color: $color-light;
       visibility: visible;
     }
   }
-  
+
   .menu-bar {
     flex-direction: column;
     position: fixed;
@@ -293,10 +327,11 @@ nav {
     max-width: 90%;
     overflow-x: hidden;
     transition: left .3s;
-    box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.25);
-    > li {
-      > [aria-haspopup="true"] {
-        ~ ul {
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.25);
+
+    >li {
+      >[aria-haspopup="true"] {
+        ~ul {
           display: flex;
           flex-direction: column;
           background: $color-light;
@@ -306,18 +341,21 @@ nav {
           max-height: 100vh;
           width: 100%;
           transition: left .3s;
+
           // Second level
-          > li {
-            > [aria-haspopup="true"] {
+          >li {
+            >[aria-haspopup="true"] {
               font-size: 1.2em;
-              ~ ul {
+
+              ~ul {
                 a {
                   padding-left: 40px;
                 }
+
                 // Third level
-                > li {
-                  > [aria-haspopup="true"] {
-                    ~ ul {
+                >li {
+                  >[aria-haspopup="true"] {
+                    ~ul {
                       a {
                         padding-left: 80px;
                       }
@@ -327,8 +365,10 @@ nav {
               }
             }
           }
+
           [aria-haspopup="true"] {
             color: $color-dark;
+
             &:after {
               content: "+";
               background: none;
@@ -337,7 +377,8 @@ nav {
               height: 20px;
               line-height: 1;
             }
-            ~ ul {
+
+            ~ul {
               max-height: 0px;
               transform-origin: top;
               transform: scaleY(0);
@@ -348,20 +389,22 @@ nav {
       }
     }
   }
- 
-  
+
+
   .mega-menu-content {
     padding: $menu-link-padding;
   }
-  
+
   .mobile-menu-back-item {
     order: -1;
+
     a {
       background: tint(grey, 70%);
       color: $color-dark;
       max-height: $mobile-menu-back-height;
       margin-top: $mobile-menu-back-offset;
       pointer-events: none;
+
       &:before {
         content: "";
         width: 14px;
@@ -373,104 +416,117 @@ nav {
       }
     }
   }
-  
+
   // ------------------------ ALL DEVICES
-  
+
   .mobile-menu-trigger {
+
     // FUNCTIONALITY: Open mobile menu
     &:focus {
-      ~ ul {
+      ~ul {
         left: 0;
       }
     }
   }
-  
+
   .menu-bar {
+
     // FUNCTIONALITY: Keep menu open
-    &:hover, &:focus-within {
+    &:hover,
+    &:focus-within {
       left: 0;
     }
-    > li {
-      > [aria-haspopup="true"] {
+
+    >li {
+      >[aria-haspopup="true"] {
+
         // FUNCTIONALITY: Open mega menu
         &:focus {
-          ~ ul {
+          ~ul {
             left: 0;
           }
         }
-        ~ ul {
+
+        ~ul {
           // STYLING: Back button offset
           margin-top: $mobile-menu-back-height;
-      
+
           // FUNCTIONALITY: Keep mega menu open
-          &:hover, &:focus-within {
+          &:hover,
+          &:focus-within {
             left: 0;
           }
+
           // FUNCTIONALITY: Open dropdowns
           [aria-haspopup="true"] {
             &:focus {
-              ~ ul {
+              ~ul {
                 max-height: 500px;
                 animation: dropdown .3s forwards;
               }
             }
           }
+
           // FUNCTIONALITY: Keep dropdowns open
           li {
             &:focus-within {
-              > [aria-haspopup="true"] {
-                ~ ul {
+              >[aria-haspopup="true"] {
+                ~ul {
                   max-height: 500px;
                   transform: scaleY(1);
                 }
               }
             }
           }
-          
+
         }
       }
+
       // FUNCTIONALITY: Prevent clicks on link behind back button
-      &:focus-within ~ .mobile-menu-header a {
+      &:focus-within~.mobile-menu-header a {
         visibility: hidden;
       }
     }
   }
-  
+
   // ------------------------ TOUCH DEVICES
-  
+
   @media (hover: none) {
-    
+
     // FUNCTIONALITY: Open mobile menu 
     .mobile-menu-trigger {
       &:hover {
-        ~ ul {
+        ~ul {
           left: 0;
         }
       }
     }
-    
+
     // FUNCTIONALITY: Open mega menu
     .menu-bar {
-      > li {
-        > [aria-haspopup="true"] {
+      >li {
+        >[aria-haspopup="true"] {
           &:hover {
-            ~ ul {
+            ~ul {
               left: 0;
             }
           }
-          ~ ul {
+
+          ~ul {
             &:hover {
               left: 0;
             }
+
             // FUNCTIONALITY: Open dropdowns
             [aria-haspopup="true"] {
               &:hover {
-                ~ ul {
+                ~ul {
                   max-height: 500px;
                   animation: dropdown .3s forwards;
                 }
               }
-              ~ ul {
+
+              ~ul {
                 &:hover {
                   max-height: 500px;
                   transform: scaleY(1);
@@ -479,7 +535,8 @@ nav {
             }
           }
         }
-        &:hover ~ .mobile-menu-header {
+
+        &:hover~.mobile-menu-header {
           a {
             visibility: hidden;
           }
@@ -497,9 +554,11 @@ nav {
     opacity: 0;
     transform: scaleY(0);
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: scaleY(1);
   }
@@ -510,14 +569,15 @@ nav {
     opacity: 0;
     transform: scaleX(0);
   }
+
   100% {
     opacity: 1;
     transform: scaleX(1);
   }
 }
+
 // .toggle-input:checked+label {
 //     color: black;
 //     background: #ffde59;
 //     /* @apply bg-teal-700 */
 // }
-

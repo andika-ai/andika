@@ -1,15 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {
-  faTeletype,
-  faTimes,
-  faExpand,
-  faQuestionCircle,
-  faLightbulb,
-  faPen,
-  faPenNib,
-  faClockRotateLeft,
-  faUser,
-  faBackwardStep,
   faArrowLeft
 
 } from '@fortawesome/free-solid-svg-icons';

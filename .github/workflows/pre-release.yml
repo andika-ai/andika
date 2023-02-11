@@ -9,6 +9,11 @@ on:
         required: true
         type: string
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 jobs:
   release:
     runs-on: ubuntu-latest

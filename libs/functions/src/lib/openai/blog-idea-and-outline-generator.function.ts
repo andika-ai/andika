@@ -28,17 +28,14 @@ const generateBlogIdeaAndOutline  = (req: any, res: Response) => {
         Also, pay attention to the structure, ensuring that the blog post has an introduction, body, and conclusion.
         Use descriptive language and imagery to bring the blog idea to life and to create an emotional connection with the audience. 
         ensure that the blog aligns with the primary keyword and the chosen tone, and that it evokes the desired emotions in the audience.
-        Return the blog idea in HTML format, with the following styles applied:\n
-        - Headings: Use h1 for main headings with a font-family of 'Montserrat', sans-serif, font-size of 36px, font-weight of bold, text-transform of uppercase, and letter-spacing of 2px. Use h2 for subheadings with a font-family of 'Open Sans', sans-serif, font-size of 24px, font-weight of bold, and text-transform of capitalize.
-        - Paragraphs: Style the paragraphs with a font-family of 'Open Sans', sans-serif, font-size of 16px, line-height of 1.5, and margin of 20px 0.
-        - Text styling: Style the bold text with font-weight of bold and color of #333. Style the italic text with font-style of italic and color of #333. Style the underlined text with text-decoration of underline and color of #333.
+        Return the blog idea in HTML format.
         `
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
                 prompt: prompt,
                 temperature: 0,
-                max_tokens: 60,
+                max_tokens: 50,
                 top_p: 1.0,
                 frequency_penalty: 0.0,
                 presence_penalty: 0.0,

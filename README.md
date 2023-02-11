@@ -225,3 +225,16 @@ Support: A section with resources for getting help with the tool, including a kn
 About: A section with information about the company or organization behind the tool, including mission, values, and team.
 
 Note: This list is a general guide and the specific categories added to the navigation bar will depend on the needs and requirements of the tool.
+
+
+[]
+
+# Deployed hos 
+
+[https://andika-16cf6.web.app](https://andika-16cf6.web.app)
+
+
+
+# [Commitzen](https://medium.com/@linzhao/commitizen-setup-2021-a88d9cd7c46e)
+
+For conventional commits 

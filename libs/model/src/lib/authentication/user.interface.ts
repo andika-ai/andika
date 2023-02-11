@@ -6,6 +6,6 @@ export interface User {
     emailVerified: boolean;
     isSubscribed?: boolean;
     subscriptionDate?: Date;
-    apiTokens?: string;
+    tokens?: number;
     
 }

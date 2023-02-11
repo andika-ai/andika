@@ -3,17 +3,20 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "cm": "cz",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
     "lint": "eslint --ext .js,.ts .",
     "build:watch": "tsc --watch",
-    "build-func": "npm run build andika-backend && cp apps/andika-backend/package.json dist/apps/andika-backend",
-    "emulators:start": "npm run build-func && firebase emulators:start --inspect-functions",
-    "emulators:shell": "npm run build-func && firebase functions:shell",
+    "build-func": "yarn run build andika-backend && cp apps/andika-backend/package.json dist/apps/andika-backend",
+    "emulators:start": "yarn run build-func && firebase emulators:start --inspect-functions",
+    "emulators:shell": "yarn run build-func && firebase functions:shell",
     "emulators:stop": "lsof -ti tcp:4401 | xargs && lsof -ti tcp:8002 | xargs  && lsof -ti tcp:9001 | xargs",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "deploy-host": "firebase deploy --only hosting",
+    "logs": "firebase functions:log",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +26,6 @@
     "@angular/compiler": "~15.0.0",
     "@angular/core": "~15.0.0",
     "@angular/fire": "^7.5.0",
-    "@angular/flex-layout": "^14.0.0-beta.41",
     "@angular/forms": "~15.0.0",
     "@angular/platform-browser": "~15.0.0",
     "@angular/platform-browser-dynamic": "~15.0.0",
@@ -57,6 +59,8 @@
     "@angular/compiler-cli": "~15.0.0",
     "@angular/language-service": "~15.0.0",
     "@angular/material": "^15.1.0",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
     "@google-cloud/functions-framework": "^3.1.2",
     "@ngneat/tailwind": "^7.0.3",
     "@nrwl/cypress": "15.3.3",
@@ -66,18 +70,22 @@
     "@nrwl/node": "15.3.3",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "15.3.3",
+    "@theunderscorer/nx-semantic-release": "^1.14.0",
     "@types/jest": "28.1.1",
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^10.4.13",
+    "commitizen": "^4.3.0",
     "cypress": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "~8.15.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.25.4",
     "firebase-functions-test": "^0.2.0",
+    "husky": "^8.0.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "~12.2.3",
@@ -92,5 +100,24 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "typescript": "~4.8.2"
-  }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md,ts}": [
+      "yarn format --uncommitted"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+      }
+  },"commitlint": {
+    "extends": [
+    "@commitlint/config-conventional"
+    ]
+    }
 }

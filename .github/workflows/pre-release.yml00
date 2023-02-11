@@ -1,0 +1,36 @@
+
+name: 'Andika Pre-release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Specify the git branch you want to prerelease
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.branch }}
+      - uses: actions/setup-node@v2
+        with:
+          cache: yarn
+          node-version: "18"
+
+      - run: yarn install --frozen-lockfile --non-interactive --no-progress --prefer-offline
+      - name: Setup git user to "🤖 Release Bot"
+        run: git config user.email "-" && git config user.name "🤖 Release Bot"
+      - name: Version
+        id: version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Use npx instead of yarn because yarn auto-magically sets NPM_* environment variables
+        # like NPM_CONFIG_REGISTRY so npm publish ends up ignoring the .npmrc file
+        # which is set up by `setup-node` action.
+        # run: npx nx affected --base=master --releaseAs=minor --target=version
+        run: npx --no-install nx run workspace:pre-version --baseBranch=${{ github.event.inputs.branch }} --syncVersions  --releaseAs=prerelease --preid=${{ github.event.inputs.branch }}

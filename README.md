@@ -281,3 +281,7 @@ Weak version management neglects users.
 Users judge product value based on the version number.
 The stakeholder asks for a specific version number based on marketing choices or client’s preferences.
 Too many major versions are being released in a short time period. It discourages the users from adopting new versions. If you are required to make breaking changes, you need to thoroughly think through the impact of those changes. Plan the changes ahead with deprecation notices.
+
+# Github Actions
+
+[https://nx.dev/recipes/ci/monorepo-ci-github-actions](https://nx.dev/recipes/ci/monorepo-ci-github-actions)

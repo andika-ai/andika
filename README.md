@@ -228,3 +228,7 @@ Note: This list is a general guide and the specific categories added to the navi
 
 
 []
+
+# Deployed hos 
+
+[https://andika-16cf6.web.app](https://andika-16cf6.web.app)

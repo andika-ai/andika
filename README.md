@@ -232,3 +232,9 @@ Note: This list is a general guide and the specific categories added to the navi
 # Deployed hos 
 
 [https://andika-16cf6.web.app](https://andika-16cf6.web.app)
+
+
+
+# [Commitzen](https://medium.com/@linzhao/commitizen-setup-2021-a88d9cd7c46e)
+
+For conventional commits 

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "cm": "cz",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
@@ -75,7 +76,9 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^10.4.13",
+    "commitizen": "^4.3.0",
     "cypress": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "~8.15.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.1.0",
@@ -107,5 +110,14 @@
     "*.{js,json,md,ts}": [
       "yarn format --uncommitted"
     ]
-  }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+      }
+  },"commitlint": {
+    "extends": [
+    "@commitlint/config-conventional"
+    ]
+    }
 }

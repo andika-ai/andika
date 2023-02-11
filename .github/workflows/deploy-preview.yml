@@ -22,7 +22,7 @@ jobs:
         with:
             node-version: 16
             cache: yarn
-      - run: yarn install nx -g 
+      - run: yarn global add nx
       - run: yarn build
       
       - uses: FirebaseExtended/action-hosting-deploy@v0

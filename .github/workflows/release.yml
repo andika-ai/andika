@@ -1,25 +1,23 @@
-name: CI
+name: Auto Release Version
+
 on:
   push:
     branches:
-      - master
-  pull_request:
-
-permissions:
-  checks: write
-  contents: read
-  pull-requests: write
+      - 'master'
 
 jobs:
-  main:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v3
+
+      - name: configure git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
       - run:  yarn install --frozen-lockfile --non-interactive --no-progress --prefer-offline
 
-      - run: npx nx run andika-frontend:semantic-release && npx nx run andika-backend:semantic-release
+      - run: npx nx run my-app:semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

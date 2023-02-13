@@ -9,6 +9,9 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+  id-token: write
+  issues: write
+
 
 jobs:
   release:

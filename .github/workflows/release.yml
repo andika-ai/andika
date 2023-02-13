@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Configure Git User
         run: |
@@ -31,6 +34,6 @@ jobs:
 
 
       - name: Release
-        run: npx nx run andika-frontend:semantic-release &&  npx nx run andika-backend:semantic-release 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx nx run andika-frontend:semantic-release &&  npx nx run andika-backend:semantic-release 

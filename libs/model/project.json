@@ -10,11 +10,11 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/libs/model/api/openai",
-        "main": "libs/model/api/openai/src/index.ts",
-        "tsConfig": "libs/model/api/openai/tsconfig.lib.json",
+        "outputPath": "dist/libs/model",
+        "main": "libs/model/src/index.ts",
+        "tsConfig": "libs/model/tsconfig.lib.json",
         "assets": [
-          "libs/model/api/openai/*.md"
+          "libs/model/*.md"
         ]
       }
     },

@@ -77,5 +77,8 @@
   "defaultProject": "andika-frontend",
   "semantic-release": {
     "executor": "@theunderscorer/nx-semantic-release:semantic-release"
+  },
+  "cli": {
+    "packageManager": "yarn"
   }
 }

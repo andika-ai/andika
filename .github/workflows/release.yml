@@ -18,6 +18,6 @@ jobs:
 
       - run:  yarn install --frozen-lockfile --non-interactive --no-progress --prefer-offline
 
-      - run: npx nx run my-app:semantic-release
+      - run: npx nx run andika-frontend:semantic-release &&  npx nx run andika-backend:semantic-release 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

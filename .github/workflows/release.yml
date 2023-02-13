@@ -33,5 +33,5 @@ jobs:
       - name: Release
         run: npx nx run andika-frontend:semantic-release &&  npx nx run andika-backend:semantic-release 
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

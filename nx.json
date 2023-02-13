@@ -74,5 +74,8 @@
       "style": "scss"
     }
   },
-  "defaultProject": "andika-frontend"
+  "defaultProject": "andika-frontend",
+  "semantic-release": {
+    "executor": "@theunderscorer/nx-semantic-release:semantic-release"
+  }
 }

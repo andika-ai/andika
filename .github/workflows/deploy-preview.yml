@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       # Add any build steps here. For example:
       # - run: npm ci && npm run build
       - uses: actions/setup-node@v3

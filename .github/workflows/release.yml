@@ -36,3 +36,4 @@ jobs:
             ['master']
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN : ${{ github.token }}

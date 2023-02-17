@@ -70,7 +70,6 @@
     "@nrwl/node": "15.3.3",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "15.3.3",
-    "@theunderscorer/nx-semantic-release": "^1.14.0",
     "@types/jest": "28.1.1",
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
@@ -114,13 +113,14 @@
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
-      }
-  },"commitlint": {
-    "extends": [
-    "@commitlint/config-conventional"
-    ]
-    },
-    "nxrelease": {
-      "repositoryUrl": "https://github.com/andika-ai/andika"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "nxrelease": {
+    "repositoryUrl": "https://github.com/andika-ai/andika"
+  }
 }

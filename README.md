@@ -233,6 +233,10 @@ Note: This list is a general guide and the specific categories added to the navi
 
 [https://andika-16cf6.web.app](https://andika-16cf6.web.app)
 
+# test 
+
+add test 
+
 
 
 # [Commitzen](https://medium.com/@linzhao/commitizen-setup-2021-a88d9cd7c46e)
@@ -286,5 +290,5 @@ Too many major versions are being released in a short time period. It discourage
 
 [https://nx.dev/recipes/ci/monorepo-ci-github-actions](https://nx.dev/recipes/ci/monorepo-ci-github-actions)
 
-# Docs
-write 
+# SEMANTIC RELEASE Docs
+https://svdoscience.com/2020-10-31/versioning-with-semantic-release

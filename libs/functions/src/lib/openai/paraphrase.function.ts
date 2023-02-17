@@ -14,7 +14,8 @@ const openAI = new OpenAIApi(configuration);
 
 const paraphraseText = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
+        // const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { text,  language  } = req.body;
         if(!text) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;

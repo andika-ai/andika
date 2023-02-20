@@ -3,7 +3,7 @@ name: Auto Release Version
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 permissions:
   checks: write

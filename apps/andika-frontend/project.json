@@ -93,6 +93,15 @@
         "jestConfig": "apps/andika-frontend/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "github": true,
+        "changelog": true,
+        "npm": false,
+        "tagFormat": "andika-frontend-v${VERSION}"
+      }
     }
   },
   "tags": []

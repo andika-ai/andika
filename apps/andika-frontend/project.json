@@ -100,7 +100,7 @@
         "github": true,
         "changelog": true,
         "npm": false,
-        "tagFormat": "andika-frontend-v${VERSION}"
+        "tagFormat": "v${VERSION}"
       }
     }
   },

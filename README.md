@@ -294,8 +294,8 @@ Too many major versions are being released in a short time period. It discourage
 https://svdoscience.com/2020-10-31/versioning-with-semantic-release
 
 
-# **notes**
+# Generate Library 
 
-NOTES
-
-NOTES
+```shell
+nx g @nrwl/workspace:library pages --import-path=@andika/pages  --dry-run 
+```

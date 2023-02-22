@@ -33,6 +33,7 @@
       "@andika/libs/shared": ["libs/shared/src/index.ts"],
       "@andika/libs/utilities": ["libs/utilities/src/index.ts"],
       "@andika/model": ["libs/model/src/index.ts"],
+      "@andika/pages": ["libs/pages/src/index.ts"],
       "@andika/services/openai": ["libs/services/open-ai/src/index.ts"],
       "@andika/user": ["libs/state/user/src/index.ts"]
     }

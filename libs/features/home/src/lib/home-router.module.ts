@@ -7,7 +7,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 
 const HOME_ROUTES: Route[] = [
     { path: 'dashboard', component: DashboardComponent}, 
-    { path: 'landing', component: LandingComponent}, // Home when user not logged in
+    { path: '', component: LandingComponent}, // Home when user not logged in
     { path: 'edit', component: EditorComponent }, //home when user loggged in
 ];
 

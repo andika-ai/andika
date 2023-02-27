@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-navbar',
@@ -6,24 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-navbar.component.scss']
 })
 export class MainNavbarComponent implements OnInit {
-  showMenu = false;
-  constructor() { }
+
+  constructor(private _router: Router) { }
 
   ngOnInit() {
-    const trigger = document.querySelector('a.relative');
-    const dropdown = document.querySelector('.absolute');
-
-    trigger?.addEventListener('click', (e) => {
-      e.preventDefault();
-      dropdown?.classList.toggle('hidden');
-    });
   }
 
-  toggleNavbar(){
-    this.showMenu = !this.showMenu;
+  navigateToLogin() {
+      this._router.navigate(['/login']);
+  }
 
-
-
+  navigateToRegister() {
+    this._router.navigate(['/register']);
   }
 
 }

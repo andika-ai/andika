@@ -44,7 +44,8 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        // window.alert(error.message);
+        window.alert('Try Log In with Google button Instead')
       });
   }
   // Sign up with email/password
@@ -88,6 +89,24 @@ export class AuthService {
   // Sign in with Google
   googleAuth() {
     return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.router.navigate(['editor']);
+    }, err=>{
+      alert(err.message)
+    });
+  }
+
+  // Sign in with Facebook
+  facebookAuth() {
+    return this.authLogin(new auth.FacebookAuthProvider()).then((res: any) => {
+      this.router.navigate(['editor']);
+    }, err=>{
+      alert(err.message)
+    });
+  }
+
+  // Sign in with twitter
+  twitterAuth() {
+    return this.authLogin(new auth.TwitterAuthProvider()).then((res: any) => {
       this.router.navigate(['editor']);
     }, err=>{
       alert(err.message)

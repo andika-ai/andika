@@ -1,42 +1,54 @@
 <!-- ====== Forms Section Start -->
-<section class="bg-[#F4F7FF] py-20 lg:py-[120px]">
+<section class="bg-black-900 py-20 lg:py-[120px]" >
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4">
         <div
-          class="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]"
+          class="border rounded-lg hover:shadow-lg relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]"
         >
           <div class="mb-10 text-center md:mb-16">
-            <a
-              href="javascript:void(0)"
+            <h2 class="text-2xl">Login</h2>
+            <!-- <a -->
+              <!-- href="javascript:void(0)"
               class="mx-auto inline-block max-w-[160px]"
             >
-              <img
-                src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo.svg"
+            -->
+              <!-- TODO: Add proper logo with proper dimensions
+                <img
+                class="h-40"
+                src="assets/images/andika-logo-bg.png"
                 alt="logo"
-              />
-            </a>
+              /> -->
+            <!-- </a> -->
           </div>
-          <form>
+          <form [formGroup]="form">
             <div class="mb-6">
               <input
+                formControlName="email"
                 type="text"
                 placeholder="Email"
                 class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
               />
+              <!-- <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error> -->
+              <!-- <mat-error *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</mat-error> -->
             </div>
             <div class="mb-6">
               <input
+                formControlName="password"
                 type="password"
                 placeholder="Password"
                 class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none"
               />
+              <!-- <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error> -->
+              <!-- <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 6 characters long</mat-error> -->
             </div>
             <div class="mb-10">
               <input
+                (click)="login()"
                 type="submit"
+                [disabled]="form.invalid" 
                 value="Sign In"
-                class="bordder-primary w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
+                class="border-black w-full cursor-pointer rounded-md border bg-primary py-3 px-5 text-base text-white transition hover:bg-opacity-90"
               />
             </div>
           </form>
@@ -44,8 +56,8 @@
           <ul class="-mx-2 mb-12 flex justify-between">
             <li class="w-full px-2">
               <a
-                href="javascript:void(0)"
-                class="flex h-11 items-center justify-center rounded-md bg-[#4064AC] hover:bg-opacity-90"
+                (click)="authService.facebookAuth()"
+                class="cursor-pointer flex h-11 items-center justify-center rounded-md bg-[#4064AC] hover:bg-opacity-90"
               >
                 <svg
                   width="10"
@@ -61,10 +73,12 @@
                 </svg>
               </a>
             </li>
-            <li class="w-full px-2">
+
+            <!-- #TODO: Is twitter necessary
+              <li class="w-full px-2">
               <a
                 href="javascript:void(0)"
-                class="flex h-11 items-center justify-center rounded-md bg-[#1C9CEA] hover:bg-opacity-90"
+                class="cursor-pointer flex h-11 items-center justify-center rounded-md bg-[#1C9CEA] hover:bg-opacity-90"
               >
                 <svg
                   width="22"
@@ -79,11 +93,11 @@
                   />
                 </svg>
               </a>
-            </li>
+            </li> -->
             <li class="w-full px-2">
               <a
-                href="javascript:void(0)"
-                class="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
+                (click)="authService.googleAuth()"
+                class="cursor-pointer flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
               >
                 <svg
                   width="18"
@@ -101,15 +115,15 @@
             </li>
           </ul>
           <a
-            href="javascript:void(0)"
+            routerLink="/forgot-password"
             class="mb-2 inline-block text-base text-[#adadad] hover:text-primary hover:underline"
           >
             Forget Password?
           </a>
           <p class="text-base text-[#adadad]">
-            Not a member yet?
-            <a href="javascript:void(0)" class="text-primary hover:underline">
-              Sign Up
+            Don't have an account yet?
+            <a routerLink="/register" class="text-primary hover:underline">
+              Register
             </a>
           </p>
           <div>

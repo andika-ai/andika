@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/andika-ai/andika/compare/v1.0.1...v1.0.2) (2023-02-27)
+
+
+### Bug Fixes
+
+* **login:**   Add routers and social auth ([d06f3c1](https://github.com/andika-ai/andika/commit/d06f3c10c7c32588b5e72082cabbc9b35dffb74c))
+
 ## [1.0.1](https://github.com/andika-ai/andika/compare/v1.0.0...v1.0.1) (2023-02-27)
 
 

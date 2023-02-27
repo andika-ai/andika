@@ -1,35 +1,35 @@
-name: Auto Release Version
+# name: Auto Release Version
 
-on:
-  push:
-    branches:
-      - 'master'
+# on:
+#   push:
+#     branches:
+#       - 'master'
 
-permissions:
-  checks: write
-  pull-requests: write
-  issues: write
-  contents: write
+# permissions:
+#   checks: write
+#   pull-requests: write
+#   issues: write
+#   contents: write
 
 
-jobs:
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          persist-credentials: false
+# jobs:
+#   release:
+#     name: Release
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
+#           persist-credentials: false
 
-      - name: Configure Git User
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - name: Install npm dependencies
-        run:  yarn install --frozen-lockfile --non-interactive --no-progress --prefer-offline
+#       - name: Configure Git User
+#         run: |
+#           git config user.name "${GITHUB_ACTOR}"
+#           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+#       - name: Install npm dependencies
+#         run:  yarn install --frozen-lockfile --non-interactive --no-progress --prefer-offline
 
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx run andika-frontend:semantic-release --ignore-scripts
+#       - name: Release
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: npx nx run andika-frontend:semantic-release --ignore-scripts

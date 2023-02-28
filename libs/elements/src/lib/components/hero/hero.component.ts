@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
-  heroTitleSubTxt  = 'A better, 10x faster';
-  heroTitleSubTxt2 = 'way to write.';
+  heroTitleSubTxt  = 'Write 10X better and faster';
+  heroTitleSubTxt2 = 'than ever before with AI.';
   heroSubTitle = 'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
 
   text = [

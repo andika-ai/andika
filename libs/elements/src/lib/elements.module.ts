@@ -37,11 +37,11 @@ import { HeroComponent } from './components/hero/hero.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ServicesOpenAiModule } from '@andika/services/openai';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { ServicesModule } from '@andika/services';
 
 @NgModule({
-  imports: [CommonModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesOpenAiModule],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [CommonModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,

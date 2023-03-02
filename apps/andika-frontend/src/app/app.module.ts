@@ -1,5 +1,4 @@
 
-import { AuthService } from '@andika/libs/utilities';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
 import { FeaturesAuthenticationModule } from '@andika/features/authentication';
@@ -12,7 +11,6 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 
 import { AppRoutingModule } from './app.routes';
 import { QuillModule } from 'ngx-quill';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';

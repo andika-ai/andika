@@ -2,14 +2,14 @@
   "name": "services-open-ai",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/services/open-ai/src",
+  "sourceRoot": "libs/services/src",
   "prefix": "andika",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/services/open-ai/jest.config.ts",
+        "jestConfig": "libs/services/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -17,8 +17,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/services/open-ai/**/*.ts",
-          "libs/services/open-ai/**/*.html"
+          "libs/services/**/*.ts",
+          "libs/services/**/*.html"
         ]
       }
     }

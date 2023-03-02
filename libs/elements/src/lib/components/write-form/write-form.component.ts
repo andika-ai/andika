@@ -8,7 +8,6 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 
 import { UseCase } from './usecase.enum';
 import { IUseCase } from './usecase.interface';
-import { OpenAIService } from '@andika/services/openai';
 import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
@@ -153,7 +152,9 @@ export class WriteFormComponent implements OnInit {
 
   selectedUseCase: any;
   form!: FormGroup;
-  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _openAIService: OpenAIService,  private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar) {
+
+  // TODO: service to comunicate with OPEN AI API private _openAIService: OpenAIService,  
+  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar) {
     this.selectedUseCase = this.useCaseData[0];
   }
 

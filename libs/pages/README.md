@@ -1,5 +1,7 @@
 # pages
 
+All the static pages for the website
+
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests

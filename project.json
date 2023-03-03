@@ -27,12 +27,7 @@
           "./apps/andika-frontend/src/assets/vendor/glightbox/css/glightbox.min.css",
           "./apps/andika-frontend/src/assets/vendor/swiper/swiper-bundle.min.css",
           "./apps/andika-frontend/src/assets/css/variables.css",
-          "./apps/andika-frontend/src/assets/css/variables-blue.css",
-          "./apps/andika-frontend/src/assets/css/variables-green.css",
-          "./apps/andika-frontend/src/assets/css/variables-orange.css",
-          "./apps/andika-frontend/src/assets/css/variables-purple.css",
-          "./apps/andika-frontend/src/assets/css/variables-red.css",
-          "./apps/andika-frontend/src/assets/css/variables-pink.css",
+          "./apps/andika-frontend/src/assets/css/variables-theme.css",
           "./apps/andika-frontend/src/assets/css/main.css"
         ],
         "scripts": ["./node_modules/quill/dist/quill.js"]

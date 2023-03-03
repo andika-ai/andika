@@ -15,12 +15,8 @@
 
 // //Variables CSS Files. Uncomment your preferred color scheme -->
 @import '../src/assets/css/variables.css';
-@import '../src/assets/css/variables-blue.css';
-@import '../src/assets/css/variables-green.css';
-@import '../src/assets/css/variables-orange.css';
-@import '../src/assets/css/variables-purple.css';
-@import '../src/assets/css/variables-red.css';
-@import '../src/assets/css/variables-pink.css';
+
+@import 'assets/css/variables-theme.css';
 
 // //Template Main CSS File -->
 @import '../src/assets/css/main.css';

@@ -21,8 +21,8 @@ const generateCoverLetter = (req: any, res: Response) => {
         }
     
         const prompt = `Generate a personalized and detailed cover letter for a job role of [insert job role]${jobRole}, highlighting your specific skills, qualifications, and achievements that match the requirements of the position.
-                        The language should be [insert language]]${language}, with a tone that is [insert tone (e.g. professional, enthusiastic, confident)]]${tone}.
-                        The use case is to apply for [insert use case (e.g. a job opening, an internship)]]${usecase}.
+                        The language should be [insert language]${language}, with a tone that is [insert tone (e.g. professional, enthusiastic, confident)]]${tone}.
+                        The use case is to apply for [insert use case (e.g. a job opening, an internship)]${usecase}.
                         The cover letter should be written in [insert number]${variants} variants, with a creativity level of [insert level (e.g. high, medium, low)]]${creativityLevel}.
                         Make sure to tailor the letter to the specific job you are applying for, and to highlight your relevant skills and experience.
                         Show enthusiasm for the company and position, and express why you would be a great fit for the role [insert job skills]${jobSkills}.

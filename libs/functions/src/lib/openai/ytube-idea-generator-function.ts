@@ -21,7 +21,7 @@ const generateYTubeIdea  = (req: any, res: Response) => {
         }
     
         const prompt=
-                `Generate a YouTube video idea based on the keywords of [insert keywords], in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)]. The use case is to [insert use case (e.g. entertain, educate, persuade)]. Generate [insert number] variants of video ideas, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to come up with ideas that are relevant to the keywords and that will appeal to the target audience. Also, consider the current trends and popular topics in the industry related to the keywords. Additionally, make sure to include a clear and compelling hook in the video title and a well-defined structure for the video content. Lastly, think about how the video will drive engagement and generate conversions (if applicable)`
+                `Generate a YouTube video idea based on the keywords of ${targetKeyWords}, in the language of ${language}, with a tone that is ${tone}. The use case is to ${usecase}. Generate ${variants} variants of video ideas, with a creativity level of ${creativityLevel}. Make sure to come up with ideas that are relevant to the keywords and that will appeal to the target audience. Also, consider the current trends and popular topics in the industry related to the keywords. Additionally, make sure to include a clear and compelling hook in the video title and a well-defined structure for the video content. Lastly, think about how the video will drive engagement and generate conversions (if applicable)`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -36,7 +36,7 @@ const generateYTubeIdea  = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

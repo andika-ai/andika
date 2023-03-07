@@ -21,7 +21,7 @@ const generateBlogSection = (req: any, res: Response) => {
         }
         // TODO: Based on subscription the number of words is determined.
         const number_of_words = 100;
-        const prompt =`Please write a blog section for the given topic in ${text}.\n
+        const prompt =`Please write a blog section for the given topic in ${text}.
                         The blog should be in ${language} language.
                         The tone of the blog section should be ${tone}.
                         This blog section will be used for ${usecase}.
@@ -48,7 +48,7 @@ const generateBlogSection = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

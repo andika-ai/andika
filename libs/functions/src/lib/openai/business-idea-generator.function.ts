@@ -14,20 +14,20 @@ const openAI = new OpenAIApi(configuration);
 
 const generateBusinessIdea = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        const { text, tone, usecase, variants, creativityLevel, language, interests, skills, target, brief  } = req.body;
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt =`Please generate ${variants} unique business ideas in ${language} that align with the interests, skills and tone specified.
+        const prompt =`Please generate ${text} unique business ideas in ${language} that align with the interests, skills and tone specified.
                        The idea should be suitable for ${usecase}.
                        The tone of the business idea should be ${tone}.
-                       The idea should be based on your interests [specific interests] and skills [specific skills].
-                       Please provide [number] variations of the business idea, each with a different angle or emphasis.
-                       In terms of creativity, please aim for a level of [number, e.g. 3 out of 5] to ensure that the ideas are unique and have potential for success.
-                       Additionally, please include a brief explanation for each idea, describing how it aligns with the interests and skills specified, and its potential for profitability.
-                       Finally, please indicate the target market and target audience for each idea, so that it can be tailored accordingly and it should be easy to implement and manage.`
+                       The idea should be based on your interests ${interests} and skills ${skills}.
+                       Please provide ${variants} variations of the business idea, each with a different angle or emphasis.
+                       In terms of creativity, please aim for a level of ${creativityLevel} to ensure that the ideas are unique and have potential for success.
+                       Additionally, please include a brief explanation for each idea, describing how it aligns with the interests and skills specified, and its potential for profitability${brief}.
+                       Finally, please indicate the target market and target audience ${target} for each idea, so that it can be tailored accordingly and it should be easy to implement and manage.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -42,7 +42,7 @@ const generateBusinessIdea = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

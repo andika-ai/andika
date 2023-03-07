@@ -12,3 +12,7 @@ export * from './lib/payment-method.interface';
 export * from './lib/subscription-plan.interface';
 export * from './lib/token-usage.interface';
 export * from './lib/token-status.interface';
+export * from './lib/cost-estimator-config';
+export * from './lib/cost-estimator-result';
+export * from './lib/openai-model';
+export * from './lib/cost-per-token';

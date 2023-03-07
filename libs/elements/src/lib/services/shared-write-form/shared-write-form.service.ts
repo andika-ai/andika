@@ -5,7 +5,7 @@ import { UseCase } from '../../components/write-form/usecase.enum';
 //   key1: string;
 //   key2: string;
 //   key3: string;
-//   // other keys and their types
+//   // other keys and their openai-gpt-cost-estimator
 // }
 @Injectable({
   providedIn: 'root'

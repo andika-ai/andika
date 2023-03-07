@@ -34,7 +34,38 @@ num_words = num_tokens * 3 / 4
 num_words = num_chars / 4 * 3 / 4
 
 This is a rough approximation and the actual number of tokens and words may vary depending on the text.
-*/
+
+ @example
+ import openai from 'openai'; // Assuming you have installed the OpenAI API package
+
+ // Set up OpenAI API key
+ openai.api_key = "YOUR_API_KEY";
+
+ // Define function to calculate number of tokens and price
+ function calculateTokensAndPrice(prompt: string): Promise<{ tokens: number, price: number, chars: number }> {
+    // Clean up prompt to remove unwanted characters
+    prompt = prompt.replace(/[^\w\s]/g, '');
+    // Calculate number of tokens
+    const tokens = prompt.split(/\s+/).length;
+    // Calculate price based on number of tokens
+    return openai.Completion.create({
+        engine: "davinci",
+        prompt: prompt,
+        max_tokens: tokens,
+        n: 1,
+        stop: null,
+        temperature: 0.5,
+    }).then((response) => {
+        const price = response.total_cost;
+        const chars = prompt.length;
+        return { tokens, price, chars };
+    });
+}
+
+
+
+
+ */
 export const calculateTokensAndWords = (prompts: string) => {
   let totalTokens = 0;
   let totalWords = 0;

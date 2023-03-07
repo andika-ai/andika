@@ -21,7 +21,7 @@ const generateYTubeVideoDescription  = (req: any, res: Response) => {
         }
     
         const prompt=
-        `Generate a YouTube video description for a video titled [insert video title], in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)].
+        `Generate a YouTube video description for a video titled based on the following keywords ${targetKeyWords}, in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)].
         The use case is to [insert use case (e.g. provide information about the video, increase engagement and viewership)].
         The video description should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
         Make sure to include a brief summary of the video content, highlighting the key points and main takeaways.

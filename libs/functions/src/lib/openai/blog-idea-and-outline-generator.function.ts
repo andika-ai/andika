@@ -43,7 +43,7 @@ const generateBlogIdeaAndOutline  = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

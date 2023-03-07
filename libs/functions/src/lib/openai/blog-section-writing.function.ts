@@ -15,7 +15,7 @@ const openAI = new OpenAIApi(configuration);
 const generateBlogSection = (req: any, res: Response) => {
     cors(req,res, async() => {
         const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }

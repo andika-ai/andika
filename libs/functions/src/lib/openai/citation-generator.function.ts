@@ -20,18 +20,18 @@ Note that the above prompt is an example, it is possible to modify it according 
  */
 const generateCitation = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { title, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { title, author, edition, publisher, publicationDate, citationStyle  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:\n
-                        Title: ${title}\n
-                        Author: ${author}\n
-                        Edition: ${edition}\n
-                        Publisher: ${publisher}\n
-                        Publication Date: ${publicationDate}\n
+        const prompt = `Please generate a citation for the following source and format the output as an HTML string with proper styling based on the ${citationStyle} citation style:
+                        Title: ${title}
+                        Author: ${author}
+                        Edition: ${edition}
+                        Publisher: ${publisher}
+                        Publication Date: ${publicationDate}
                         Citation Style: ${citationStyle}`
         
         try {
@@ -48,7 +48,7 @@ const generateCitation = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

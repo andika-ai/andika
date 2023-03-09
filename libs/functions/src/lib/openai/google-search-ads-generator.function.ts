@@ -14,21 +14,21 @@ const openAI = new OpenAIApi(configuration);
 
 const generateGoogleSearchAd = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { subject, recipient, sender, date, purpose, additionalInfo, cc, bcc ,tone, usecase, variants, creativityLevel, language } = req.body;
+        const { subject, recipient, sender, purpose, additionalInfo, cc, bcc ,tone, usecase, variants, creativityLevel, language } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Generate a Google search ad for a product named [insert product name], described as [insert product description].
-                        The language should be [insert language], with a tone that is [insert tone (e.g. persuasive, informative, exciting)].
-                        The use case is to promote [insert use case (e.g. a new product launch, a sale, a limited-time offer)].
-                        The ad should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
-                        Make sure to include the product name and a compelling headline that grabs the attention of the audience.
-                        Use persuasive language, images and videos to grab the audience's attention and create a sense of urgency.
-                        Use appropriate keywords to make the ad rank higher in search results.
-                        Also, include a clear call-to-action, trackable link and structured snippet to encourage conversions.
-                        Also, include ad extension like sitelink, call, location and review extension to make the ad more informative and user-friendly.`
+        const prompt = `Generate a Google search ad for a product named ${subject}, described as ${additionalInfo}.
+                        The language should be ${language}, with a tone that is ${tone}.
+                        The use case is to promote ${usecase}.
+                        The ad should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
+                        Make sure to include the product name and a compelling headline that grabs the attention of the audience${purpose}.
+                        Use persuasive language, images and videos to grab the audience's attention and create a sense of urgency${recipient}.
+                        Use appropriate keywords to make the ad rank higher in search results${sender}.
+                        Also, include a clear call-to-action, trackable link and structured snippet to encourage conversions${cc}.
+                        Also, include ad extension like sitelink, call, location and review extension to make the ad more informative and user-friendly${bcc}.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",

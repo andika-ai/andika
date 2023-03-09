@@ -260,6 +260,7 @@ export class WriteFormComponent implements OnInit {
   onSubmit(){
     const payload = this._sharedForm.getFormValues(this.form)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
+    console.log(payload)
     // If empty values dont submitt show a prompt 
     // alert(hasAllValues)
     if(!hasAllValues){

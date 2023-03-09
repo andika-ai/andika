@@ -14,13 +14,15 @@ const openAI = new OpenAIApi(configuration);
 
 const summarizeText = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { text, tone, variants, creativityLevel, language  } = req.body;
         if(!text) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please summarize the given text in [language] by identifying the main ideas and key points.\n
+        const prompt = `Please summarize the given text in ${language}, with a tone that is ${tone} and by identifying the main ideas and key points.\n
+                        Generate ${variants} variants of the summarized text\n
+                        The creativity level should be ${creativityLevel}\n
                         The summary should be concise and convey the overall message of the text.\n
                         In addition, please include any important details or information that is relevant to the topic.\n
                         Also, please indicate the text length reduction rate you used while summarizing the text.\n
@@ -39,7 +41,7 @@ const summarizeText = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

@@ -20,14 +20,12 @@ const generateProductDescriptionWithBulletPoints= (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Generate a personalized and detailed cover letter for a job role of [insert job role], highlighting your specific skills, qualifications, and achievements that match the requirements of the position.
-                        The language should be [insert language], with a tone that is [insert tone (e.g. professional, enthusiastic, confident)].
-                        The use case is to apply for [insert use case (e.g. a job opening, an internship)].
-                        The cover letter should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
-                        Make sure to tailor the letter to the specific job you are applying for, and to highlight your relevant skills and experience.
-                        Show enthusiasm for the company and position, and express why you would be a great fit for the role.
-                        Also, include your specific achievements that are relevant to the role you are applying to, this could be in form of numbers, statistics or real-life examples.
-                        Lastly, end the letter with a call-to-action, encouraging the hiring manager to contact you for an interview.`
+        const prompt = `Generate a product description for ${productName} with ${tone} tone. The product is designed for ${usecase} and comes in ${variants}. The description should be written at a ${creativityLevel} level and in ${language}. Please list the features of the product using bullet points. Here's an example:
+
+        Feature 1: ${features}
+        Feature 2: ${features}
+        Feature 3: ${features}
+        Please provide at least three features to include in the description.`
         
         
         try {
@@ -44,7 +42,7 @@ const generateProductDescriptionWithBulletPoints= (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

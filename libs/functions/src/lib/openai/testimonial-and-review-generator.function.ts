@@ -14,7 +14,7 @@ const openAI = new OpenAIApi(configuration);
 
 const generateTestimonialAndReview = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { productName, reviewTitle, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -22,7 +22,11 @@ const generateTestimonialAndReview = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a testimonial or review for a customer named [insert customer name], with a review title of [insert review title], in the language of [insert language], with a tone that is [insert tone (e.g. positive, neutral, constructive)]. The use case is to [insert use case (e.g. promote a product, provide feedback to the company)]. Generate [insert number] variants of the testimonial or review, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include specific details and examples about the product or service being reviewed. Also, highlight the key benefits and features of the product or service that you found useful. Use persuasive language to encourage others to try the product or service. Lastly, include your overall rating and recommendation for the product or service.`
+                `Generate a testimonial or review  for ${productName} with a review title of ${reviewTitle}, in the language of ${language}, with a tone that is ${tone}.
+                The use case is to ${usecase}. Generate ${variants} variants of the testimonial or review, with a creativity level of ${creativityLevel}.
+                Make sure to include specific details and examples about the product or service being reviewed.
+                Also, highlight the key benefits and features of the product or service that you found useful.
+                Use persuasive language to encourage others to try the product or service. Lastly, include your overall rating and recommendation for the product or service.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +41,7 @@ const generateTestimonialAndReview = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

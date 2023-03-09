@@ -14,16 +14,16 @@ const openAI = new OpenAIApi(configuration);
 
 const generateYTubeVideoDescription  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { videoDescription, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
         const prompt=
-        `Generate a YouTube video description for a video titled based on the following keywords ${targetKeyWords}, in the language of [insert language], with a tone that is [insert tone (e.g. informative, engaging, exciting)].
-        The use case is to [insert use case (e.g. provide information about the video, increase engagement and viewership)].
-        The video description should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        `Generate a YouTube video description for a video titled based on the following description ${videoDescription}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+        The use case is to [insert use case ${usecase}.
+        The video description should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
         Make sure to include a brief summary of the video content, highlighting the key points and main takeaways.
         Also, include relevant keywords and hashtags to optimize the video for search engines.
         Use persuasive language to encourage viewers to watch the video and to subscribe to your channel.
@@ -42,7 +42,7 @@ const generateYTubeVideoDescription  = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion
             })
         } catch (error: any) {
             res.status(500).json(error.message)

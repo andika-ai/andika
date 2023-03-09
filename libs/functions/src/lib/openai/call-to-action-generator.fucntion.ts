@@ -20,18 +20,18 @@ Note that the above prompt is an example, it is possible to modify it according 
  */
 const generateCallToAction = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { businessIdea, author, edition, publisher, publicationDate, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { businessIdea, citationStyle,tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Generate a call to action in the language of [insert language],
-                        with a tone that is [insert tone (e.g. persuasive, urgent, friendly)],
-                        for the use case of [insert use case (e.g. promoting a product, encouraging sign-ups)],
-                        in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
-                        The call to action should be written in a clear and compelling manner, 
-                        using persuasive language and persuasive techniques to encourage the reader to take action.`
+        const prompt = `Generate a call to action in the language of ${language},
+                        with a tone that is ${tone},
+                        for the use case of ${usecase},
+                        in ${variants} variants, with a creativity level of ${creativityLevel}.
+                        The call to action should be written in a clear and compelling manner,${citationStyle} 
+                        using persuasive language and persuasive techniques to encourage the reader to take action${businessIdea}.`
         
         try {
             const completion = await openAI.createCompletion({
@@ -47,7 +47,7 @@ const generateCallToAction = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

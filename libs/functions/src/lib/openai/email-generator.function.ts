@@ -20,14 +20,14 @@ const generateEmail = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Please generate an email with the following information and format the output as an HTML string with proper styling:\n
-                    Subject: ${subject}\n
-                    Recipient: ${recipient}\n
-                    Sender: ${sender}\n
-                    Date: ${date}\n
-                    Purpose: ${purpose}\n
+        const prompt = `Please generate an email with the following information and format the output as an HTML string with proper styling:
+                    Subject: ${subject}
+                    Recipient: ${recipient}
+                    Sender: ${sender}
+                    Date: ${date}
+                    Purpose: ${purpose}
                     Additional Information: ${additionalInfo}
-                    Cc: ${cc}\n
+                    Cc: ${cc}
                     Bcc: ${bcc}
         
         `
@@ -45,7 +45,7 @@ const generateEmail = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

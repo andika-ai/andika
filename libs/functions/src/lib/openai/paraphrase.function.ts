@@ -21,10 +21,10 @@ const paraphraseText = (req: any, res: Response) => {
             return;
         }
     
-        const prompt=`Please paraphrase the following text:\n\n${text}\n\n
-                The paraphrased version should accurately convey the same meaning as the original, but should not simply copy the wording or structure.\n\n
-                Make sure to properly cite the original text and include all of the key points and supporting details.\n
-                The text should be written in standard language ${language}\n
+        const prompt=`Please paraphrase the following text:${text}
+                The paraphrased version should accurately convey the same meaning as the original, but should not simply copy the wording or structure.
+                Make sure to properly cite the original text and include all of the key points and supporting details.
+                The text should be written in standard language ${language}
                 Consider the intended audience and purpose of the text when paraphrasing, and tailor the language and style accordingly.`
         try {
             const completion = await openAI.createCompletion({
@@ -40,7 +40,7 @@ const paraphraseText = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

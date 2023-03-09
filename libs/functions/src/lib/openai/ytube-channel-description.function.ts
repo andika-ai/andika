@@ -22,7 +22,11 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a YouTube channel description for a channel with a purpose of [insert channel purpose], in the language of [insert language], with a tone that is [insert tone (e.g. professional, friendly, engaging)]. Generate [insert number] variants of the channel description, with a creativity level of [insert level (e.g. high, medium, low)]. The use case is to [insert use case (e.g. attract and inform potential subscribers, provide detailed information about the channel)]. Make sure to include a detailed and clear overview of the channel, including the type of content, target audience, and unique selling points. Also, include a call-to-action, encouraging viewers to subscribe to the channel. Use appropriate keywords to optimize the channel description for search engines and make sure to align the tone with the channel's purpose and target audience.`
+                `Generate a YouTube channel description for a channel with a purpose relating to the following ${targetKeyWords}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+                Generate ${variants} variants of the channel description, with a creativity level of ${creativityLevel}.
+                The use case is to [insert use case ${usecase}.
+                Make sure to include a detailed and clear overview of the channel, including the type of content, target audience, and unique selling points.
+                Also, include a call-to-action, encouraging viewers to subscribe to the channel. Use appropriate keywords to optimize the channel description for search engines and make sure to align the tone with the channel's purpose and target audience.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +41,7 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

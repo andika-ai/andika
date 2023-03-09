@@ -15,7 +15,7 @@ const openAI = new OpenAIApi(configuration);
 const correctGrammar = (req: any, res: Response) => {
     cors(req,res, async() => {
         const { text, tone, usecase, variants, creativityLevel, language  } = req.body;
-        if(!text) {
+        if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
@@ -35,7 +35,7 @@ const correctGrammar = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

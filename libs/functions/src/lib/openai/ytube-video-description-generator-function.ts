@@ -14,14 +14,14 @@ const openAI = new OpenAIApi(configuration);
 
 const generateYTubeVideoDescription  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { targetKeyWords, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { videoDescription, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
         const prompt=
-        `Generate a YouTube video description for a video titled based on the following keywords ${targetKeyWords}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+        `Generate a YouTube video description for a video titled based on the following description ${videoDescription}, in the language of ${language}, with a tone that is [insert tone ${tone}.
         The use case is to [insert use case ${usecase}.
         The video description should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
         Make sure to include a brief summary of the video content, highlighting the key points and main takeaways.

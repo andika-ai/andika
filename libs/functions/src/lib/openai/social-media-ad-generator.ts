@@ -20,10 +20,10 @@ const generateSocialMediaAd = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Generate social media ads for Facebook, Twitter, LinkedIn, etc. for a product named [insert product name], described as [insert product description].
-                        The language should be [insert language], with a tone that is [insert tone (e.g. persuasive, informative, exciting)].
-                        The use case is to promote [insert use case (e.g. a new product launch, a sale, a limited-time offer)].
-                        The ads should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        const prompt = `Generate social media ads for Facebook, Twitter, LinkedIn, etc. for a product named ${productName}, described as ${productDescription}.
+                        The language should be ${language}, with a tone that is ${tone}.
+                        The use case is to promote ${usecase}.
+                        The ads should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
                         Make sure to grab the attention of the audience, create interest in the product, and inspire them to take action by highlighting the product benefits and features.
                         Also, use persuasive language, images and videos to grab the audience's attention and create a sense of urgency. Use appropriate hashtags and emojis to make the ad more engaging.
                         Lastly, include a clear call-to-action and trackable link to encourage conversions.`
@@ -41,7 +41,7 @@ const generateSocialMediaAd = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

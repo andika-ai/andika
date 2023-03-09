@@ -20,10 +20,10 @@ const generateInterviewQuestions = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Generate a set of interview questions for an interviewee with the bio of [insert Interviewee bio], for an interview context of [insert Interview context (e.g. job interview, research interview)].
-                        The language should be [insert language], with a tone that is [insert tone (e.g. professional, friendly, curious)].
-                        The use case is to [insert use case (e.g. assess the candidate's qualifications, gather information for research)].
-                        The questions should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        const prompt = `Generate a set of interview questions for an interviewee with the bio of ${productName}, for an interview context of ${productDescription}.
+                        The language should be ${language}, with a tone that is ${tone}.
+                        The use case is to ${usecase}.
+                        The questions should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
                         Make sure to include a mix of open-ended and closed-ended questions, and to tailor the questions to the specific interviewee and context.
                         Also, include behavioral based questions to understand the interviewee's past experience and how they handle different situations.
                         Lastly, include a few creative and unique questions to understand the interviewee's thinking process and personality.`
@@ -41,7 +41,7 @@ const generateInterviewQuestions = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

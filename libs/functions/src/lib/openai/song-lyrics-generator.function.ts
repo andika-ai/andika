@@ -21,8 +21,10 @@ const generateSongLyric = (req: any, res: Response) => {
         }
     
         const prompt=
-        // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate song lyrics based on the following idea: [insert song idea], in the language of [insert language], with a tone that is [insert tone (e.g. romantic, upbeat, nostalgic)]. The use case is to [insert use case (e.g. entertain, express emotions, tell a story)]. Generate [insert number] variants of the song lyrics, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include a clear and compelling narrative, with well-crafted verses, chorus, and a memorable hook. Also, pay attention to the rhyme scheme and meter, ensuring that the lyrics flow smoothly and are easy to sing along. Use descriptive language and imagery to bring the song idea to life and to create an emotional connection with the audience. Lastly, make sure that the lyrics align with the chosen tone and evoke the desired emotions.`
+                `Generate song lyrics based on the following idea: ${songIdea}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+                The use case is to ${usecase}. Generate ${variants} variants of the song lyrics, with a creativity level of ${creativityLevel}.
+                Make sure to include a clear and compelling narrative, with well-crafted verses, chorus, and a memorable hook. Also, pay attention to the rhyme scheme and meter, ensuring that the lyrics flow smoothly and are easy to sing along.
+                Use descriptive language and imagery to bring the song idea to life and to create an emotional connection with the audience. Lastly, make sure that the lyrics align with the chosen tone and evoke the desired emotions.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +39,7 @@ const generateSongLyric = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

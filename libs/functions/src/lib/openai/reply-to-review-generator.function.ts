@@ -14,13 +14,17 @@ const openAI = new OpenAIApi(configuration);
 
 const generateReplyReview  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { message, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { product, message, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt = `Please provide a detailed review of the [product or service].\n
+        const prompt = `Please provide a detailed review of the ${product} in ${language} with the following message ${message}.\n
+                        The review should be in a ${tone} tone\n
+                        generate the review in ${variants} variants\n
+                        This is for ${usecase} usecase\n
+                        The review have creativity level of ${creativityLevel}\n
                         Include information about the design, functionality, ease of use,\n
                         and overall satisfaction with the product or service. If applicable,\n
                         also mention any additional features or benefits that you have discovered while using it.\n
@@ -40,7 +44,7 @@ const generateReplyReview  = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

@@ -22,7 +22,11 @@ const generateSeoMetaTitle = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate an SEO meta title based on the target keywords of [insert target keywords], in the language of [insert language], with a tone that is [insert tone (e.g. informative, compelling, memorable)]. The use case is to [insert use case (e.g. optimize for search engines, grab attention, increase click-through rate)]. Generate [insert number] variants of the meta title, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include the target keywords in the title and to make it compelling and informative. Also, pay attention to the character limit, as the title should be no more than 60-70 characters. Use persuasive language to create a sense of urgency and inspire users to click on the link. Lastly, ensure that the meta title aligns with the content of the page and accurately reflects the subject of the page.`
+                `Generate an SEO meta title based on the target keywords of ${targetKeyWords}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+                The use case is to ${usecase}. Generate ${variants} variants of the meta title, with a creativity level of ${creativityLevel}.
+                Make sure to include the target keywords in the title and to make it compelling and informative.
+                Also, pay attention to the character limit, as the title should be no more than 60-70 characters.
+                Use persuasive language to create a sense of urgency and inspire users to click on the link. Lastly, ensure that the meta title aligns with the content of the page and accurately reflects the subject of the page.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +41,7 @@ const generateSeoMetaTitle = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

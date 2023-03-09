@@ -22,7 +22,7 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a YouTube channel description for a channel with a purpose ${channelDescription}, in the language of ${language}, with a tone that is [insert tone ${tone}.
+                `Generate a YouTube channel description for a channel with a purpose ${channelDescription}, in the language of ${language}, with a tone that is ${tone}.
                 Generate ${variants} variants of the channel description, with a creativity level of ${creativityLevel}.
                 The use case is to [insert use case ${usecase}.
                 Make sure to include a detailed and clear overview of the channel, including the type of content, target audience, and unique selling points.

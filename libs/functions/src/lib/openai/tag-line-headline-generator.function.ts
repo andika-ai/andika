@@ -14,7 +14,7 @@ const openAI = new OpenAIApi(configuration);
 
 const generateTagLineHeadline = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { songIdea, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { keyPoints, tone, usecase, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -22,7 +22,11 @@ const generateTagLineHeadline = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a tagline and headline based on the following description [insert description], in the language of [insert language], with a tone that is [insert tone (e.g. catchy, persuasive, memorable)]. The use case is to [insert use case (e.g. promote a brand, grab attention, convey a message)]. Generate [insert number] variants of the tagline and headline, with a creativity level of [insert level (e.g. high, medium, low)]. Make sure to include key words and phrases that accurately reflect the brand or product being promoted. Also, make sure that the tagline and headline are concise and easily understandable by the target audience. Use persuasive language to create a sense of urgency and inspire the audience to take action. Lastly, ensure that the tagline and headline are unique and memorable in order to make a lasting impression.`
+                `Generate a tagline and headline based on the following key points ${keyPoints}, in the language of ${language}, with a tone that is ${tone}.
+                The use case is to ${usecase}. Generate ${variants} variants of the tagline and headline, with a creativity level of ${creativityLevel}.
+                Make sure to include key words and phrases that accurately reflect the brand or product being promoted.
+                Also, make sure that the tagline and headline are concise and easily understandable by the target audience. Use persuasive language to create a sense of urgency and inspire the audience to take action.
+                Lastly, ensure that the tagline and headline are unique and memorable in order to make a lasting impression.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -37,7 +41,7 @@ const generateTagLineHeadline = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

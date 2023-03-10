@@ -20,10 +20,10 @@ const generateCopywritingFrameworkAIDA = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Generate a copywriting framework using AIDA (Attention, Interest, Desire, Action) for a product or brand, described as [insert product or brand description].
-                        The language should be [insert language], with a tone that is [insert tone (e.g. persuasive, informative, conversational)].
-                        The use case is [insert use case (e.g. promoting a new product launch, increasing brand awareness)].
-                        The framework should be written in [insert number] variants, with a creativity level of [insert level (e.g. high, medium, low)].
+        const prompt = `Generate a copywriting framework using AIDA (Attention, Interest, Desire, Action) for a product or brand, described as ${description}.
+                        The language should be ${language}, with a tone that is ${tone}.
+                        The use case is ${usecase}.
+                        The framework should be written in ${variants} variants, with a creativity level of ${creativityLevel}.
                         Make sure to grab the attention of the audience, create interest in the product or brand, build desire for the product or brand and finally create a sense of urgency to take action.`
         
         
@@ -41,7 +41,7 @@ const generateCopywritingFrameworkAIDA = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

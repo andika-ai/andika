@@ -20,9 +20,9 @@ const keywordsExtractor = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `Extract relevant keywords from the text of [insert text], in the language of [insert language], with a focus on [insert use case (e.g. SEO optimization, text analysis)].
-                        The keywords should be relevant to the tone and context of the text, which is [insert tone (e.g. formal, casual, technical)].
-                        Generate [insert number] variants of keywords, with a creativity level of [insert level (e.g. high, medium, low)].
+        const prompt = `Extract relevant keywords from the text of ${text}, in the language of ${language}, with a focus on [insert use case (e.g. SEO optimization, text analysis)]${usecase}.
+                        The keywords should be relevant to the tone and context of the text, which is ${tone}.
+                        Generate ${variants} variants of keywords, with a creativity level of ${creativityLevel}.
                         Make sure to extract keywords that are specific and relevant to the text, and that can be used to effectively summarize or categorize the content.
                         Also, extract long-tail keywords that are more specific and less common, but still relevant to the text.
                         You can use tools like keyword research tools or algorithms to extract the keywords.`
@@ -40,7 +40,7 @@ const keywordsExtractor = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

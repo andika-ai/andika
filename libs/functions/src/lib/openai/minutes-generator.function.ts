@@ -35,7 +35,7 @@ const generateMinutes = (req: any, res: Response) => {
             return;
         }
     
-        const prompt = `"Please generate a comprehensive and accurate summary of the (Meeting Title) meeting held on (Date and Time of the meeting) in (Language) with a (Tone) tone. Please include the following variants in the summary: (Variants). Set the creativity level to (Creativity Level) and make sure the summary is grammatically correct, coherent, and coherent with the tone of the meeting."`
+        const prompt = `"Please generate a comprehensive and accurate summary of the ${description} meeting held on ${usecase} in ${language} with a ${tone} tone. Please include the following variants in the summary: ${variants}. Set the creativity level to ${creativityLevel} and make sure the summary is grammatically correct, coherent, and coherent with the tone of the meeting."`
         
         
         try {
@@ -52,7 +52,7 @@ const generateMinutes = (req: any, res: Response) => {
             res.status(200).send({
                 status: 'success',
                 message: 'results from chat gpt',
-                data: completion.data.choices[0].text
+                data: completion.data
             })
         } catch (error: any) {
             res.status(500).json(error.message)

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import {Endpoint, PromptFormI, UseCase} from '@andika/model';
+import {Endpoint, PromptFormI, UseCase, WriteFormInterface} from '@andika/model';
 
 import { ENDPOINTS } from './enpoints';
 
@@ -19,24 +19,15 @@ constructor(private _http: HttpClient) { }
      * This code defines a generic post method that is used to make a POST request to a server API using HttpClient.
      * The method has two type parameters, TRequest and TResponse, which represent the types of the request data and response data, respectively.
      * @param data
-     * @param usecase
-     * @returns {TResponse} Observable
+     * @returns Observable
      */
-    post<TRequest, TResponse>(
-        data: TRequest,
-        usecase: UseCase
-    ): Observable<TResponse> {
-        // Build the URL for the HTTP request using the provided use case
-        const url = this._getEndpoint(usecase).endpoint;
-        // Send the HTTP request and return the response as an observable
-        return this._http.post<TResponse>(url, data).pipe(
-            // Catch any errors that occur during the HTTP request
-            catchError(error => {
-                // Rethrow the error to propagate it to the caller
-                return throwError(error);
-            })
+    post(data: any): Observable<any> {
+        const url = this._getEndpoint(data.usecase).endpoint;
+        
+        return this._http.post<any>(url, data).pipe(
+            catchError(error => throwError(() => new Error(error)))
         );
-    }
+    }   
 
     /**
      * Generic Get method
@@ -52,7 +43,7 @@ constructor(private _http: HttpClient) { }
         return http.get<T>(url, { params }).pipe(
             catchError(error => {
                 // Rethrow the error to propagate it to the caller
-                return throwError(error);
+                return throwError(() => new Error(error));
             })
         );
     }
@@ -61,7 +52,7 @@ constructor(private _http: HttpClient) { }
      * Gets the cloud function endpoint for the specified use case.
      * @param useCase
      */
-    private _getEndpoint(useCase: UseCase): Endpoint {
+    private _getEndpoint(useCase: number): Endpoint {
         // Find the endpoint that matches the provided use case
         const endpoint = ENDPOINTS.find(e => e.usecase === useCase);
         if (!endpoint) {

@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { UseCase } from '../../components/write-form/usecase.enum';
-// interface MyObject {
-//   key1: string;
-//   key2: string;
-//   key3: string;
-//   // other keys and their openai-gpt-cost-estimator
-// }
+import {UseCase} from "@andika/model";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,35 +25,41 @@ export class SharedWriteFormService {
       case UseCase.YoutubeIdea:
         return {
           ...payload,
-          youtubeIdea: formValues.youtubeIdea.keywords
+          youtubeIdea: formValues.youtubeIdea.keywords,
+          usecase: UseCase.YoutubeIdea
         }
       case UseCase.YoutubeDescription:
         return {
           ...payload,
-          videoTitle: formValues.youtubeDescription.videoTitle
+          videoTitle: formValues.youtubeDescription.videoTitle,
+          usecase: UseCase.YoutubeDescription
         }
       case UseCase.YoutubeChannelDescription:
         return {
           ...payload,
-          channelDescription: formValues.youtubeChannelDescription.channelDescription
+          channelDescription: formValues.youtubeChannelDescription.channelDescription,
+          usecase: UseCase.YoutubeChannelDescription
         }
       case UseCase.TestimonialAndReview:
         return {
           ...payload,
           productOrServiceName: formValues.testimonialAndReview.productOrServiceName,
-          reviewTitle: formValues.testimonialAndReview.reviewTitle
+          reviewTitle: formValues.testimonialAndReview.reviewTitle,
+          usecase: UseCase.TestimonialAndReview
 
         }
       case UseCase.TagLineAndHeadline:
         return {
           ...payload,
           keyPoints: formValues.taglineHeadline.keyPoints,
+          usecase: UseCase.TagLineAndHeadline
         }
       case UseCase.CoverLetter:
         return {
           ...payload,
           jobRole: formValues.coverLetter.jobRole,
-          skills: formValues.coverLetter.skills
+          skills: formValues.coverLetter.skills,
+          usecase: UseCase.CoverLetter
         }
       case UseCase.JobDescription:
         return {
@@ -70,18 +71,21 @@ export class SharedWriteFormService {
         return {
           ...payload,
           description: formValues.profileBio.description,
+          usecase: UseCase.JobDescription
         }
 
       case UseCase.StoryPlots:
         return {
           ...payload,
           storyIdea: formValues.storyPlot.storyIdea,
+          usecase: UseCase.StoryPlots
         }
 
       case UseCase.SongLyrics:
         return {
           ...payload,
           songIdea: formValues.songIdea.songIdea,
+          usecase: UseCase.SongLyrics
         }
 
       case UseCase.Email:
@@ -93,24 +97,28 @@ export class SharedWriteFormService {
         return {
           ...payload,
           context: formValues.smsAndNotifications.context,
+          usecase: UseCase.Email
         }
 
       case UseCase.ReplyToReviewsAndMassages:
         return {
           ...payload,
           message: formValues.replyToReviewsOrEmail.message,
+          usecase: UseCase.ReplyToReviewsAndMassages
         }
 
       case UseCase.BlogIdeaAndOutline:
         return {
           ...payload,
           blogIdea: formValues.blogIdea.blogIdea,
+          usecase: UseCase.BlogIdeaAndOutline
         }
 
       case UseCase.GrammarCorrection:
         return {
           ...payload,
           text: formValues.grammarCorrection.text,
+          usecase:  UseCase.GrammarCorrection
         }
       default:
         return '';

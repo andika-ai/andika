@@ -14,7 +14,7 @@ const openAI = new OpenAIApi(configuration);
 
 const generateTestimonialAndReview = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { productName, reviewTitle, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { productName, reviewTitle, tone, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -23,7 +23,7 @@ const generateTestimonialAndReview = (req: any, res: Response) => {
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
                 `Generate a testimonial or review  for ${productName} with a review title of ${reviewTitle}, in the language of ${language}, with a tone that is ${tone}.
-                The use case is to ${usecase}. Generate ${variants} variants of the testimonial or review, with a creativity level of ${creativityLevel}.
+                Generate ${variants} variants of the testimonial or review, with a creativity level of ${creativityLevel}.
                 Make sure to include specific details and examples about the product or service being reviewed.
                 Also, highlight the key benefits and features of the product or service that you found useful.
                 Use persuasive language to encourage others to try the product or service. Lastly, include your overall rating and recommendation for the product or service.`
@@ -35,8 +35,7 @@ const generateTestimonialAndReview = (req: any, res: Response) => {
                 max_tokens: 60,
                 top_p: 1.0,
                 frequency_penalty: 0.0,
-                presence_penalty: 0.0,
-                // n: number of variations
+                presence_penalty: 0.0
             });
             res.status(200).send({
                 status: 'success',

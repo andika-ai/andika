@@ -273,15 +273,17 @@ export class WriteFormComponent implements OnInit {
     // To enable the typing effect when waiting for data from server.
     this.isLoading.emit(true);
 
+    console.log(payload)
+
     // Make a request to Open AI API  depending on the selected use case.
     this._openAIService.post(payload).subscribe((response: ChatGPTResponse )=>{
 
       //Emit Chat GPT response data to be accessed by the Quill Editor
       this.promptResponse.emit(response.data.choices[0].text)
 
-      // When the response is recieved emit isLoading=false 
+      // When the response is recieved emit isLoading=false
       this.isLoading.emit(false)
-      // disable typing animation 
+      // disable typing animation
       this.isTyping = false;
       
     })

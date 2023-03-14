@@ -14,7 +14,7 @@ const openAI = new OpenAIApi(configuration);
 
 const generateYTubeChannelDescription  = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { channelDescription, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { channelDescription, tone, variants, creativityLevel, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -24,7 +24,6 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
         // `Please paraphrase the following text:\n\n${text}\n\n
                 `Generate a YouTube channel description for a channel with a purpose ${channelDescription}, in the language of ${language}, with a tone that is ${tone}.
                 Generate ${variants} variants of the channel description, with a creativity level of ${creativityLevel}.
-                The use case is to [insert use case ${usecase}.
                 Make sure to include a detailed and clear overview of the channel, including the type of content, target audience, and unique selling points.
                 Also, include a call-to-action, encouraging viewers to subscribe to the channel. Use appropriate keywords to optimize the channel description for search engines and make sure to align the tone with the channel's purpose and target audience.`
         try {
@@ -35,8 +34,7 @@ const generateYTubeChannelDescription  = (req: any, res: Response) => {
                 max_tokens: 60,
                 top_p: 1.0,
                 frequency_penalty: 0.0,
-                presence_penalty: 0.0,
-                // n: number of variations
+                presence_penalty: 0.0
             });
             res.status(200).send({
                 status: 'success',

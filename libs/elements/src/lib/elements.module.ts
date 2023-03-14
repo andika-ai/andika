@@ -41,7 +41,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ServicesModule } from '@andika/services';
 
 @NgModule({
-  imports: [CommonModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [CommonModule,ServicesModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,

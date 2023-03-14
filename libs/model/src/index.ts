@@ -16,3 +16,6 @@ export * from './lib/cost-estimator-config';
 export * from './lib/cost-estimator-result';
 export * from './lib/openai-model';
 export * from './lib/cost-per-token';
+export * from './lib/form-prompt.model';
+
+export * from './lib/enums/usecase.enum';

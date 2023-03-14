@@ -11,6 +11,7 @@ import { IUseCase } from './usecase.interface';
 import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
+import { OpenaiService } from '@andika/services';
 
 
 @Component({
@@ -154,7 +155,8 @@ export class WriteFormComponent implements OnInit {
   form!: FormGroup;
 
   // TODO: service to comunicate with OPEN AI API private _openAIService: OpenAIService,  
-  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar) {
+  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar,
+    private _openAIService: OpenaiService) {
     this.selectedUseCase = this.useCaseData[0];
   }
 
@@ -258,6 +260,7 @@ export class WriteFormComponent implements OnInit {
   onSubmit(){
     const payload = this._sharedForm.getFormValues(this.form)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
+    console.log(payload)
     // If empty values dont submitt show a prompt 
     // alert(hasAllValues)
     if(!hasAllValues){
@@ -267,6 +270,10 @@ export class WriteFormComponent implements OnInit {
     }
     this.isLoading.emit(true);
     // after retrieving the data is loading will be false 
+    this._openAIService.post(payload, UseCase.BlogIdeaAndOutline).subscribe(res=>{
+
+      console.log(res)
+    })
     // this.isLoading.emit(false);
     // To enable the typing effect when waiting for data from server.
     // this.isLoading.emit(true);

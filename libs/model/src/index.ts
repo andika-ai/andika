@@ -19,3 +19,8 @@ export * from './lib/cost-per-token';
 export * from './lib/form-prompt.model';
 
 export * from './lib/enums/usecase.enum';
+export * from './lib/endpoint/endpoint.interface';
+
+export * from './lib/writeform/write-form.interface';
+
+export * from './lib/responses/chat-gpt-response.model';

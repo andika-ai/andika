@@ -75,7 +75,7 @@ export class EditorComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const data = this.promptResponseData?.data;
+    const data = this.promptResponseData;
     this.form.get('editor')?.patchValue(data)
   }
 

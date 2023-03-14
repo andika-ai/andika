@@ -12,6 +12,7 @@ import { SharedWriteFormService } from '../../services/shared-write-form/shared-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 import { OpenaiService } from '@andika/services';
+import { ChatGPTResponse, WriteFormInterface } from '@andika/model';
 
 
 @Component({
@@ -150,7 +151,7 @@ export class WriteFormComponent implements OnInit {
        img: 'assets/icons/content-writing.png'
     }
 ];
-
+  isTyping = false;
   selectedUseCase: any;
   form!: FormGroup;
 
@@ -235,8 +236,6 @@ export class WriteFormComponent implements OnInit {
 
   onClickUseCase(val: IUseCase){
     this.selectedUseCase = val;
-    alert('hello')
-
   }
 
   getInfo(){
@@ -258,30 +257,37 @@ export class WriteFormComponent implements OnInit {
    * on submit emit value to the quill editor. 
    */
   onSubmit(){
+    this.isTyping = true;
     const payload = this._sharedForm.getFormValues(this.form)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
-    console.log(payload)
+
     // If empty values dont submitt show a prompt 
     // alert(hasAllValues)
     if(!hasAllValues){
       this.emptyFieldsDetected=true;
       this.showAlert();
       this.isLoading.emit(false);
+      this.isTyping = false;
     }
-    this.isLoading.emit(true);
-    // after retrieving the data is loading will be false 
-    this._openAIService.post(payload, UseCase.BlogIdeaAndOutline).subscribe(res=>{
 
-      console.log(res)
-    })
-    // this.isLoading.emit(false);
     // To enable the typing effect when waiting for data from server.
-    // this.isLoading.emit(true);
+    this.isLoading.emit(true);
+
+    console.log(payload)
+
     // Make a request to Open AI API  depending on the selected use case.
-    // this._openAIService.postCorrectGrammer(JSON.stringify({"text": 'me love you'})).subscribe(response=>{
-    //   this.promptResponse.emit(response)
-    //   this.isLoading.emit(false);
-    // })
+    this._openAIService.post(payload).subscribe((response: ChatGPTResponse )=>{
+
+      //Emit Chat GPT response data to be accessed by the Quill Editor
+      this.promptResponse.emit(response.data.choices[0].text)
+
+      // When the response is recieved emit isLoading=false
+      this.isLoading.emit(false)
+      // disable typing animation
+      this.isTyping = false;
+      
+    })
+    
   }
 
   showAlert(){

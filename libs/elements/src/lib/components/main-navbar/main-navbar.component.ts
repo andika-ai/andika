@@ -1,6 +1,6 @@
 import { AuthService } from '@andika/libs/utilities';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 import {
   faTeletype,
@@ -21,23 +21,27 @@ import {
   templateUrl: './main-navbar.component.html',
   styleUrls: ['./main-navbar.component.scss']
 })
-export class MainNavbarComponent implements OnInit, AfterViewInit {
+export class MainNavbarComponent implements OnInit {
   showOptions = false;
   faArrowLeft = faArrowLeft;
-  constructor(private _router: Router, private _authService: AuthService) {}
+  constructor(private _router: Router, private _authService: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  ngAfterViewInit(): void {
-  }
 
-  loggedIn(){
+  /**
+   * Check if the user is logged in
+   * @returns boolean 
+   */
+  loggedIn() {
     return this._authService.isLoggedIn;
   }
 
+  /**
+   * Navigate to the login page
+   */
   navigateToLogin() {
-      this._router.navigate(['/login']);
+    this._router.navigate(['/login']);
   }
 
   navigateToRegister() {
@@ -54,7 +58,7 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
   /**
    * Sign out user
    */
-  signOut(){
+  signOut() {
     this._authService.signOut();
   }
 

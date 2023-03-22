@@ -1,3 +1,5 @@
+import { OrgOpenAISubscription } from '@andika/model';
+import { OrgTokenManagementService } from './../../../../../services/src/lib/org-token-management/org-token-management.service';
 import { AuthService } from '@andika/libs/utilities';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
@@ -24,7 +26,7 @@ import {
 export class MainNavbarComponent implements OnInit {
   showOptions = false;
   faArrowLeft = faArrowLeft;
-  constructor(private _router: Router, private _authService: AuthService) { }
+  constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService) { }
 
   ngOnInit() { }
 
@@ -61,5 +63,8 @@ export class MainNavbarComponent implements OnInit {
   signOut() {
     this._authService.signOut();
   }
+
+
+
 
 }

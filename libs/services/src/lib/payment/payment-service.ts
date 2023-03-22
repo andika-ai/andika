@@ -31,7 +31,7 @@ export class PaymentService {
 
         return PaymentStatus.SUCCESS;
     }
-    
+     
       async handleBankPayment(
     amount: number,
     currency: string,

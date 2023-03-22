@@ -10,6 +10,7 @@ export interface User {
     isSubscribed?: boolean;
     subscriptionDate?: Date;
     tokens?: number;
+    default_token_limit?: number;
     username?: string;
     password?: string;
     subscription_status?: SubscriptionStatus;

@@ -1,3 +1,4 @@
+import { OrgTokenManagementService } from './../../../../../services/src/lib/org-token-management/org-token-management.service';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { AlertComponent } from '../snackbar/alert/alert.component';
 
@@ -12,7 +13,7 @@ import { SharedWriteFormService } from '../../services/shared-write-form/shared-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 import { OpenaiService } from '@andika/services';
-import { ChatGPTResponse, WriteFormInterface } from '@andika/model';
+import { ChatGPTResponse, OrgOpenAISubscription, WriteFormInterface } from '@andika/model';
 
 
 @Component({
@@ -157,7 +158,7 @@ export class WriteFormComponent implements OnInit {
 
   // TODO: service to comunicate with OPEN AI API private _openAIService: OpenAIService,  
   constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar,
-    private _openAIService: OpenaiService) {
+    private _openAIService: OpenaiService, private org: OrgTokenManagementService) {
     this.selectedUseCase = this.useCaseData[0];
   }
 
@@ -275,18 +276,31 @@ export class WriteFormComponent implements OnInit {
 
     console.log(payload)
 
+
+    const item = {
+        apiKey: 'abc',
+        totalTokens: 1000,
+        remainingTokens: 750,
+        monthlyLimit: 500,
+        lastTopUp: new Date('2023-03-20'),
+        created: new Date('2023-03-20')
+      } as  OrgOpenAISubscription;
+      this.org.addSubscription(item)
+    
+
     // Make a request to Open AI API  depending on the selected use case.
-    this._openAIService.post(payload).subscribe((response: ChatGPTResponse )=>{
-
-      //Emit Chat GPT response data to be accessed by the Quill Editor
-      this.promptResponse.emit(response.data.choices[0].text)
-
-      // When the response is recieved emit isLoading=false
-      this.isLoading.emit(false)
-      // disable typing animation
-      this.isTyping = false;
+    // this._openAIService.post(payload).subscribe((response: ChatGPTResponse )=>{
+    //   console.log(response)
+     
+    //   //Emit Chat GPT response data to be accessed by the Quill Editor
+    //   this.promptResponse.emit(response.data.choices[0].text)
       
-    })
+    //   // When the response is recieved emit isLoading=false
+    //   this.isLoading.emit(false)
+    //   // disable typing animation
+    //   this.isTyping = false;
+      
+    // })
     
   }
 

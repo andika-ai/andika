@@ -24,3 +24,5 @@ export * from './lib/endpoint/endpoint.interface';
 export * from './lib/writeform/write-form.interface';
 
 export * from './lib/responses/chat-gpt-response.model';
+
+export * from './lib/subscriptions/org-openai-subscription';

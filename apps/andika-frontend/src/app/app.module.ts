@@ -1,3 +1,4 @@
+import { PagesRoutingModule } from './../../../../libs/pages/src/lib/pages-routing.module';
 
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
@@ -28,6 +29,7 @@ import { USE_EMULATOR } from '@angular/fire/compat/functions';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 // ✨ New 👇
 import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
+import { PagesModule } from '@andika/pages';
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
@@ -41,6 +43,7 @@ import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
     MaterialModule,
     ElementsModule,
     FeaturesHomeModule,
+    PagesModule,
     FeaturesAuthenticationModule,
     NgxMatSelectSearchModule,
 

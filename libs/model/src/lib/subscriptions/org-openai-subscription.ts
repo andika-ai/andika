@@ -15,5 +15,6 @@ export interface OrgOpenAISubscription {
     created?: Date,
     modified?: Date,
     createdBy?: string,
+    amountPaid?: number
     // updateRemainingTokens(tokensUsed: number): void; // A method to update the remaining tokens when tokens are used
 }

@@ -15,7 +15,8 @@ import {
   faClockRotateLeft,
   faUser,
   faBackwardStep,
-  faArrowLeft
+  faArrowLeft,
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -26,6 +27,7 @@ import {
 export class MainNavbarComponent implements OnInit {
   showOptions = false;
   faArrowLeft = faArrowLeft;
+  faArrowRight = faArrowRight;
   constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService) { }
 
   ngOnInit() { }

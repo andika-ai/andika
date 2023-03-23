@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faTeletype,
+  faTimes,
+  faExpand,
+  faQuestionCircle,
+  faLightbulb,
+  faPen,
+  faPenNib,
+  faClockRotateLeft,
+  faUser,
+  faBackwardStep,
+  faArrowRight
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'andika-hero',
@@ -22,6 +35,7 @@ export class HeroComponent implements OnInit {
     'story plots','instagram posts',
     'YouTube descriptions','taglines & headlines'];
   randomText: string = this.text[0];
+  faArrowRight = faArrowRight;
   constructor() { }
 
   ngOnInit() {

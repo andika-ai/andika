@@ -1,4 +1,4 @@
-import { SubscriptionStatus } from "./subscription-status.interface";
+import { SubscriptionStatus } from "./subscriptions/subscription-status.interface";
 
 
 export interface User {
@@ -13,6 +13,7 @@ export interface User {
     default_token_limit?: number;
     username?: string;
     password?: string;
+    subscription_plan?: string;
     subscription_status?: SubscriptionStatus;
     subscription_start_date?: Date;
     subscription_end_date?: Date;

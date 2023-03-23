@@ -105,3 +105,12 @@ body {
 .cookie-font {
   font-family: 'Cookie', cursive;
 }
+
+rect {
+  fill: #FFD600; /* fallback color */
+  fill: $mustard-500; /* actual color to use */
+}
+
+.border-yellow {
+  border: 1px solid $mustard-400;
+}

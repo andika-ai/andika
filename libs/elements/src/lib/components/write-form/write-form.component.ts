@@ -279,11 +279,11 @@ export class WriteFormComponent implements OnInit {
 
     const item = {
         apiKey: 'abc',
-        totalTokens: 1000,
-        remainingTokens: 750,
+        totalTokens: 8000,
+        remainingTokens: 8000,
         monthlyLimit: 500,
-        lastTopUp: new Date('2023-03-20'),
-        created: new Date('2023-03-20')
+        lastTopUp: new Date('2023-03-22'),
+        created: new Date('2023-03-22')
       } as  OrgOpenAISubscription;
       this.org.addSubscription(item)
     

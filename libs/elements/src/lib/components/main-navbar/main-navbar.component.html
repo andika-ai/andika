@@ -167,7 +167,7 @@
                     </div>
                 </li>
                 <li *ngIf="!loggedIn()">
-                    <a href="#"
+                    <a href='/pricing' routerLinkActive="active"
                         class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-yellow-600 md:p-0 dark:text-gray-400 md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-yellow-500 md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
                 </li>
                 <li *ngIf="!loggedIn()">
@@ -189,8 +189,8 @@
             <a *ngIf="!loggedIn()" (click)="navigateToLogin()"
                 class="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
             <a *ngIf="!loggedIn()" (click)="navigateToRegister()"
-                class="cursor-pointer text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">Sign
-                up</a>
+                class="cursor-pointer text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">Try Andika Free&nbsp;&nbsp;&nbsp;<fa-icon [icon]="faArrowRight"></fa-icon>
+                </a>
             <!--            profile menu panel when user logged in they will see this menu-->
 
         </div>

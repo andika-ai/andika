@@ -1,4 +1,7 @@
 
+
+
+
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 // import { EditorComponent } from '@andika/features';
 import { NgModule } from '@angular/core';
@@ -27,6 +30,11 @@ export const BASE_ROUTES: Route[] = [
     {
         path: '', // Home routes
         loadChildren: () => import('libs/features/home/src/lib/home.module').then(m => m.FeaturesHomeModule),
+
+    },
+    {
+        path: '', // Page routes
+        loadChildren: () => import('libs/pages/src/lib/pages.module').then(m => m.PagesModule),
 
     },
 

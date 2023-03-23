@@ -2,10 +2,10 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { last, map } from 'rxjs/operators';
 
 import { OrgOpenAISubscription } from '@andika/model';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/compat/firestore';
 
 
 
@@ -17,8 +17,11 @@ export class OrgTokenManagementService {
     lastTopUp = 0;
 
 
+    // private subscriptionsCollection: AngularFirestoreCollection<OrgOpenAISubscription>;
+    // subscriptions$: Observable<OrgOpenAISubscription[]>;
     private subscriptionsCollection: AngularFirestoreCollection<OrgOpenAISubscription>;
     subscriptions$: Observable<OrgOpenAISubscription[]>;
+
     constructor(private _afs: AngularFirestore) {
         this.subscriptionsCollection = this._afs.collection<OrgOpenAISubscription>('org_subscriptions');
         this.subscriptions$ = this.subscriptionsCollection.snapshotChanges().pipe(
@@ -30,22 +33,34 @@ export class OrgTokenManagementService {
                 })
             )
         );
-
     }
 
-    addSubscription(subscription: OrgOpenAISubscription) {
+    addSubscription(subscription: OrgOpenAISubscription): Promise<DocumentReference<OrgOpenAISubscription>> {
         const subscriptionId = this._afs.createId();
-        return this._afs.collection('/org_subscriptions').add(subscription)
+        return this.subscriptionsCollection.doc(subscriptionId).set(subscription).then(() => {
+            return this.subscriptionsCollection.doc(subscriptionId).ref;
+        });
     }
 
-
-    updateSubscription(item: OrgOpenAISubscription) {
-        this.subscriptionsCollection.doc(item.id).update(item);
+    getAllSubscription(): Observable<OrgOpenAISubscription[]> {
+        return this.subscriptions$;
     }
 
-    deleteSubscription(item: OrgOpenAISubscription) {
-        this.subscriptionsCollection.doc(item.id).delete();
+    updateSubscription(subscription: OrgOpenAISubscription): Promise<void> {
+        return this.subscriptionsCollection.doc(subscription.id).update(subscription);
     }
+
+    deleteSubscription(subscription: OrgOpenAISubscription): Promise<void> {
+        return this.subscriptionsCollection.doc(subscription.id).delete();
+    }
+
+    getLatestSubscription(): Observable<OrgOpenAISubscription> {
+        return this.subscriptions$.pipe(
+            last(),
+            map(subscriptions => subscriptions[0])
+        );
+    }
+
 
     // private _updateRemainingTokens(tokensUsed: number): void {
     //     const currentDate = new Date();
@@ -55,11 +70,14 @@ export class OrgTokenManagementService {
     //     const newRemainingTokens = Math.max(0, this.remainingTokens - tokensUsed);
 
     //     if (daysSinceLastTopUp > 30 && tokensToAdd > 0) {
-    //       this.remainingTokens += tokensToAdd;
-    //       this.lastTopUp = currentDate;
+    //         this.remainingTokens += tokensToAdd;
+    //         this.lastTopUp = currentDate;
     //     }
 
     //     this.remainingTokens = newRemainingTokens;
-    //   }
+    // }
 
 }
+
+
+

@@ -1,3 +1,4 @@
+import { CheckoutComponent } from './components/checkout/checkout/checkout.component';
 import { IntergrationComponent } from './components/intergration/intergration.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
@@ -22,9 +23,10 @@ import { SupportComponent } from './components/support/support.component';
   declarations: [
     IntergrationComponent,
     PricingComponent,
+    CheckoutComponent,
     ResourcesComponent,
     SupportComponent
 
   ]
 })
-export class FeaturesHomeModule {}
+export class PagesModule {}

@@ -20,10 +20,10 @@
       "port": 4401
     },
     "firestore": {
-      "port": 6200
+      "port": 6201
     },
     "database": {
-      "port": 9300
+      "port": 9303
     },
     "ui": {
       "enabled": true

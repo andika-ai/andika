@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminRouterModule } from './admin-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilitiesModule } from '@andika/libs/utilities';
+import { SettingsComponent } from './pages/admin-dashboard/settings/settings.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { UtilitiesModule } from '@andika/libs/utilities';
   ],
 
   declarations: [
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    SettingsComponent
   ]
 })
 export class AdminModule {}

@@ -39,6 +39,7 @@ export class MainNavbarComponent implements OnInit {
    * @returns boolean 
    */
   loggedIn() {
+    console.log(this._authService.isLoggedIn)
     return this._authService.isLoggedIn;
   }
 

@@ -13,3 +13,6 @@ export * from './lib/components/snackbar/alert/alert.component';
 export * from './lib/services/snackbar/snack-bar.service';
 export * from './lib/components/select-usecase/select-usecase.component';
 export * from './lib/components/top-editor-toolbar/top-editor-toolbar.component';
+
+export * from './lib/components/admin-navbar/admin-navbar.component';
+

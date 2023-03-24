@@ -38,7 +38,7 @@ export const BASE_ROUTES: Route[] = [
 
     },
     {
-        path: '', // Page routes
+        path: 'admin', // Page routes
         loadChildren: () => import('libs/features/admin/src/lib/admin.module').then(m => m.AdminModule),
 
     },

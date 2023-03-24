@@ -634,12 +634,12 @@ section {
   border-radius: 4px;
   transition: 0.5s;
   color: var(--color-white);
-  background: var(--color-primary);
+  background: #844D0F;
   font-family: var(--font-secondary);
 }
 
 .hero-animated .btn-get-started:hover {
-  background: rgba(var(--color-primary-rgb), 0.8);
+  background: #723b11;
 }
 
 .hero-animated .btn-watch-video {

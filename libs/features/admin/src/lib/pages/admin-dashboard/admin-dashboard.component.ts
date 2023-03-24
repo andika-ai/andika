@@ -1,4 +1,3 @@
-import { DarkModeService } from '@andika/libs/utilities';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,22 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  private isDarkModeEnabled = false;
-  toggleText = 'Toggle Dark Mode'
-  constructor(private darkModeService: DarkModeService) {}
+  constructor() {}
 
   ngOnInit() {
   }
 
-  toggleDarkMode(): void {
-    const darkModeEnabled = this.darkModeService.getIsDarkModeEnabled();
-    this.darkModeService.toggleDarkMode(!darkModeEnabled);
-    if(darkModeEnabled){
-      this.toggleText = 'Toggle Dark Mode';
-    } else {
-      this.toggleText = 'Toggle Light Mode';
-    }
-    
-  }
+
 
 }

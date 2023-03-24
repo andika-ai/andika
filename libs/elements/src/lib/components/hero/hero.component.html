@@ -1,12 +1,17 @@
-<div id="hero-animated" class="hero-animated d-flex align-items-center">
+<div id="hero-animated" class="mb-5 hero-animated d-flex align-items-center">
   <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-    <!-- <img src="assets/img/hero-carousel/hero-carousel-3.svg" class="h-40 img-fluid animated"> -->
-    <h2> {{heroTitleSubTxt}} <span class="hero-random-text mt-1 text-lg random-text">{{randomText}}</span> <br>{{heroTitleSubTxt2}}</h2>
-    <p>{{heroSubTitle}}</p>
+    <img src="assets/img/hero-carousel/hero-carousel-3.svg" class="h-40 img-fluid animated">
+    <h2 class="text-base"> {{heroTitleSubTxt}} <span class="hero-random-text text-base random-text">{{randomText}}</span> </h2>
+    <h2 class="text-base"><br>{{heroTitleSubTxt2}}</h2>
+    <span class="mt-5 font-thin text-lg text-grey-800">{{heroSubTitle}}</span>
     
-    <div class="d-flex mt-2">
-      <a href="#about" class="btn-get-started  scrollto">Get Started&nbsp;&nbsp;&nbsp;<fa-icon [icon]="faArrowRight"></fa-icon></a>
+    <div class="d-flex mt-4">
+      <a href="#about" class="cursor-pointer btn-get-started scrollto">Let's Begin Writing&nbsp;&nbsp;&nbsp;<fa-icon [icon]="faArrowRight"></fa-icon></a>
       <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+    </div>
+
+    <div>
+      <span class="font-thin text-sm mt-2">Free forever, upgrade as you scale!</span>
     </div>
   </div>
 </div>

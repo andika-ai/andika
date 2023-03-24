@@ -10,6 +10,7 @@ import { EditorComponent } from './pages/editor/editor.component';
 import { MaterialModule } from '@andika/libs/material'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AccountComponent } from './pages/account/account.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +25,8 @@ import { AccountComponent } from './pages/account/account.component';
     EditorComponent,
     DashboardComponent,
     UserHistoryComponent,
-    AccountComponent
+    AccountComponent,
+
   ]
 })
 export class FeaturesHomeModule {}

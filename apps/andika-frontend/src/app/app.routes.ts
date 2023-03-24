@@ -37,6 +37,12 @@ export const BASE_ROUTES: Route[] = [
         loadChildren: () => import('libs/pages/src/lib/pages.module').then(m => m.PagesModule),
 
     },
+    {
+        path: '', // Page routes
+        loadChildren: () => import('libs/features/admin/src/lib/admin.module').then(m => m.AdminModule),
+
+    },
+
 
 ];
 // Add features/domain/module(library)

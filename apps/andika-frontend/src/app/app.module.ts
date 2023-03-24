@@ -1,5 +1,5 @@
-import { PagesRoutingModule } from './../../../../libs/pages/src/lib/pages-routing.module';
-
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { AdminModule } from './../../../../libs/features/admin/src/lib/admin.module';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
 import { FeaturesAuthenticationModule } from '@andika/features/authentication';
@@ -44,6 +44,7 @@ import { PagesModule } from '@andika/pages';
     ElementsModule,
     FeaturesHomeModule,
     PagesModule,
+    AdminModule,
     FeaturesAuthenticationModule,
     NgxMatSelectSearchModule,
 

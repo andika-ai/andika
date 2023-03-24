@@ -1,6 +1,6 @@
 import { OrgOpenAISubscription } from '@andika/model';
 import { OrgTokenManagementService } from './../../../../../services/src/lib/org-token-management/org-token-management.service';
-import { AuthService } from '@andika/libs/utilities';
+import { AuthService, DarkModeService } from '@andika/libs/utilities';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
@@ -25,10 +25,11 @@ import {
   styleUrls: ['./main-navbar.component.scss']
 })
 export class MainNavbarComponent implements OnInit {
+  toggleText = 'Toggle Dark Mode';
   showOptions = false;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService) { }
+  constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService, private darkModeService: DarkModeService) { }
 
   ngOnInit() { }
 
@@ -64,6 +65,17 @@ export class MainNavbarComponent implements OnInit {
    */
   signOut() {
     this._authService.signOut();
+  }
+
+  toggleDarkMode(): void {
+    const darkModeEnabled = this.darkModeService.getIsDarkModeEnabled();
+    this.darkModeService.toggleDarkMode(!darkModeEnabled);
+    if(darkModeEnabled){
+      this.toggleText = 'Toggle Dark Mode';
+    } else {
+      this.toggleText = 'Toggle Light Mode';
+    }
+    
   }
 
 

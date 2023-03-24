@@ -5,10 +5,12 @@ import { Route, RouterModule } from '@angular/router';
 import { EditorComponent } from './pages/editor/editor.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AccountComponent } from './pages/account/account.component';
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
 
 const HOME_ROUTES: Route[] = [
     { path: 'dashboard', component: DashboardComponent}, 
     { path: 'account', component: AccountComponent}, 
+    { path: 'history', component: UserHistoryComponent}, 
     { path: '', component: LandingComponent}, // Home when user not logged in
     { path: 'edit', component: EditorComponent }, //home when user loggged in
 ];

@@ -40,7 +40,7 @@ import { PagesModule } from '@andika/pages';
     // FormsModule,    //added here too
     // ReactiveFormsModule,//added here too
     HttpClientModule,
-    MaterialModule,
+    MaterialModule, // TODO: no neccessarily to be added here can be remove only use it when needed
     ElementsModule,
     FeaturesHomeModule,
     PagesModule,

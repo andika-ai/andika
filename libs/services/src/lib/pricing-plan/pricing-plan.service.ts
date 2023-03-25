@@ -9,12 +9,12 @@ export class PricingPlanService {
     private pricingPlans: Observable<PricingPlan[]>;
     private pricingPlanCollection: AngularFirestoreCollection<PricingPlan>;
     constructor(private readonly afs: AngularFirestore) {
-        this.pricingPlanCollection = this.afs.collection<PricingPlan>('pricingPlans');
+        this.pricingPlanCollection = this.afs.collection<PricingPlan>('pricing_plans');
         this.pricingPlans = this.pricingPlanCollection.snapshotChanges().pipe(
             map(actions => actions.map(a => {
-                const data = a.payload.doc.data();
+                const data = a.payload.doc.data() as PricingPlan;
                 const id = a.payload.doc.id;
-                return { id, ...data };
+                return { ...data, id }; // Use object destructuring to remove the `id` property before spreading the remaining properties
             }))
         );
     }

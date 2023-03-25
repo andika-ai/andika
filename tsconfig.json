@@ -21,6 +21,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "@andika-frontend/gcp-function-tests": [
         "libs/gcp-function-tests/src/index.ts"

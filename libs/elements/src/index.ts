@@ -16,3 +16,7 @@ export * from './lib/components/top-editor-toolbar/top-editor-toolbar.component'
 
 export * from './lib/components/admin-navbar/admin-navbar.component';
 
+export * from './lib/components/admin/settings/pricing-plan/pricing-plan.component';
+
+export * from './lib/components/tables/pricing-plan-table/pricing-plan-table.component';
+

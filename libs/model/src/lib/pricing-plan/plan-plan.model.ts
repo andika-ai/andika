@@ -20,6 +20,7 @@ export interface PricingPlan {
     renewalDiscountPercentage?: number; // optional property indicating the percentage discount being offered for plan renewals, if applicable
     upgradeFee?: number; // optional property indicating the fee for upgrading to this plan from a lower-tier plan
     downgradeFee?: number; // optional property indicating the fee for downgrading to this plan from a higher-tier plan
+    unlimitedCharacters?: boolean; // optional property indicating whether the plan has unlimited characters
 }
 
 

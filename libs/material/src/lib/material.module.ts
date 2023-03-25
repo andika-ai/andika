@@ -13,6 +13,10 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   imports: [
     MatInputModule,
@@ -28,7 +32,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatSelectModule,
     MatTabsModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatStepperModule,
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   exports: [
     MatInputModule,
@@ -44,7 +51,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatSelectModule,
     MatTabsModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatStepperModule,
+    MatCheckboxModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {}

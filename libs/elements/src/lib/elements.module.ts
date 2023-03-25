@@ -1,3 +1,6 @@
+import { PricingPlanTableComponent } from './components/tables/pricing-plan-table/pricing-plan-table.component';
+import { PricingComponent } from './../../../pages/src/lib/components/pricing/pricing.component';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
 import { TopEditorToolbarComponent } from './components/top-editor-toolbar/top-editor-toolbar.component';
 import { SelectUsecaseComponent } from './components/select-usecase/select-usecase.component';
@@ -39,9 +42,20 @@ import { AppFooterComponent } from './components/app-footer/app-footer.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ServicesModule } from '@andika/services';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PricingPlanComponent } from './components/admin/settings/pricing-plan/pricing-plan.component';
 
 @NgModule({
-  imports: [CommonModule,ServicesModule,  NgxMatSelectSearchModule, FontAwesomeModule, MaterialModule, QuillModule, ReactiveFormsModule,  FormsModule, ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ServicesModule,
+    NgxMatSelectSearchModule,
+    FontAwesomeModule,
+    MaterialModule,
+    QuillModule,
+    ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,
     HeroComponent,
@@ -74,7 +88,11 @@ import { ServicesModule } from '@andika/services';
     AlertComponent,
     SelectUsecaseComponent,
     TopEditorToolbarComponent,
-    MainNavbarComponent
+    MainNavbarComponent,
+    AdminNavbarComponent,
+    BreadcrumbComponent,
+    PricingPlanComponent,
+    PricingPlanTableComponent
   ],
   exports: [
     PreloaderComponent,
@@ -108,7 +126,11 @@ import { ServicesModule } from '@andika/services';
     AlertComponent,
     SelectUsecaseComponent,
     TopEditorToolbarComponent,
-    MainNavbarComponent
+    MainNavbarComponent,
+    AdminNavbarComponent,
+    BreadcrumbComponent,
+    PricingPlanComponent,
+    PricingPlanTableComponent
   ]
 })
 export class ElementsModule {}

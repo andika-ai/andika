@@ -1,3 +1,4 @@
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
@@ -8,6 +9,8 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { MaterialModule } from '@andika/libs/material'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AccountComponent } from './pages/account/account.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +23,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     LandingComponent,
     EditorComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserHistoryComponent,
+    AccountComponent,
+
   ]
 })
 export class FeaturesHomeModule {}

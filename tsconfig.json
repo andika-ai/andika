@@ -21,6 +21,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "@andika-frontend/gcp-function-tests": [
         "libs/gcp-function-tests/src/index.ts"
@@ -38,7 +39,8 @@
       "@andika/model": ["libs/model/src/index.ts"],
       "@andika/pages": ["libs/pages/src/index.ts"],
       "@andika/services": ["libs/services/src/index.ts"],
-      "@andika/user": ["libs/state/user/src/index.ts"]
+      "@andika/user": ["libs/state/user/src/index.ts"],
+      "@andika/admin": ["libs/features/admin/src/index.ts"]
     }
   },
   "files": [],

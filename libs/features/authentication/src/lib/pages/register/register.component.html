@@ -1,42 +1,65 @@
+<div class="bg-white font-family-karla h-screen">
 
-<section class="h-screen d-flex align-items-center">
-  <div class="px-6 h-full text-gray-800">
-    <div class="row">
-      <div class="col-md-6 mb-12">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="w-100"
-          alt="Sample image" />
+  <div class="w-full flex flex-wrap">
+
+    <!-- Register Section -->
+    <div class="w-full md:w-1/2 flex flex-col">
+      <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
+        <a href="/" class="flex items-center justify-center bg-yellow-500 text-black font-bold text-xl p-4">
+          <span class="cookie-font text-4xl whitespace-nowrap dark:text-white" alt="Logo">Andika</span>
+          <sup><img src="assets/images/quill-pen.svg" class="h-8 sm:h-8 ml-0" alt="Andika Logo" /></sup>
+        </a>
       </div>
-      <div class="col-md-6 mb-12 mt-20">
-        <form [formGroup]="form">
-          <div class="d-flex align-items-center">
-            <p class="text-lg mb-0 mr-4">Sign in with</p>
-            <button mat-button  (click)="authService.googleAuth()" type="button" class="btn btn-primary mx-1">
-              <fa-icon [icon]="['fab', 'google']"></fa-icon>
+
+      <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+        <p class="text-center text-3xl">Join Us.</p>
+        <div class="d-flex align-items-center mt-4">
+          <p class="text-lg mb-0 mr-4">Sign in with</p>
+          <button mat-button (click)="authService.googleAuth()" type="button" class="btn hover:bg-yellow-500  btn-primary mx-1">
+            <fa-icon [icon]="['fab', 'google']"></fa-icon>
           </button>
-            <!-- <button (click)="authService.facebookAuth()" type="button" class="btn btn-primary mx-1">Facebook</button> -->
+          <!-- <button (click)="authService.facebookAuth()" type="button" class="btn btn-primary mx-1"> <fa-icon [icon]="['fab', 'facebook']"></fa-icon></button> -->
+        </div>
+        <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();">
+          <div class="flex flex-col pt-4">
+            <label for="name" class="text-lg">Name</label>
+            <input type="text" id="name" placeholder="John Smith"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email">
-            <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
-            <mat-error *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+
+          <div class="flex flex-col pt-4">
+            <label for="email" class="text-lg">Email</label>
+            <input type="email" id="email" placeholder="your@email.com"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password">
-            <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
-            <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 6 characters long</mat-error>
+
+          <div class="flex flex-col pt-4">
+            <label for="password" class="text-lg">Password</label>
+            <input formControlName="password" type="password" id="password" placeholder="Password"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Sign in</button>
-            <a routerLink="/forgot-password" class="text-blue-600">Forgot password?</a>
+
+          <div class="flex flex-col pt-4">
+            <label for="confirm-password" class="text-lg">Confirm Password</label>
+            <input formControlName="password2" type="password" id="confirm-password" placeholder="Password"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
+
+          <input type="submit" value="Register"
+            class="bg-yellow-500 text-black font-bold text-lg hover:bg-yellow-600 p-2 mt-8" />
         </form>
-        <div class="text-center mt-6">
-          <span class="text-sm">Don't have an account?</span>
-          <a routerLink="/signup" class="text-blue-600">Sign up</a>
+        <div class="text-center pt-12 pb-12">
+          <p>Already have an account? <a routerLink="/login" class="underline font-semibold">Log in here.</a></p>
         </div>
       </div>
+
     </div>
+
+    <!-- TODO: Add image in the future (illustration etc )Image Section -->
+    <div class="wrapper-bg w-1/2 shadow-2xl">
+      <!-- <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0"
+        alt="Background" />
+    </div> -->
   </div>
-</section>
+
+</div>

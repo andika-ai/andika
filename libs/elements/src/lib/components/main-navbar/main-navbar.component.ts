@@ -1,8 +1,7 @@
-import { OrgOpenAISubscription } from '@andika/model';
-import { OrgTokenManagementService } from './../../../../../services/src/lib/org-token-management/org-token-management.service';
-import { AuthService } from '@andika/libs/utilities';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
+import { AuthService, DarkModeService } from '@andika/libs/utilities';
+
 
 import {
   faTeletype,
@@ -25,12 +24,27 @@ import {
   styleUrls: ['./main-navbar.component.scss']
 })
 export class MainNavbarComponent implements OnInit {
-  showOptions = false;
+  toggleText = 'Toggle Dark Mode';
+  showOptions: boolean | undefined;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService) { }
+  constructor(private elementRef: ElementRef,
+              private _router: Router,
+              private _authService: AuthService,
+              private darkModeService: DarkModeService) { }
 
   ngOnInit() { }
+
+  /**
+   * Detects click event
+   */
+  @HostListener('document:click', ['$event.target'])
+  onClick(targetElement: HTMLElement) {
+    const clickedInside = this.elementRef.nativeElement.contains(targetElement);
+    if (!clickedInside) {
+      this.showOptions = false;
+    }
+  }
 
 
   /**
@@ -38,6 +52,7 @@ export class MainNavbarComponent implements OnInit {
    * @returns boolean 
    */
   loggedIn() {
+    console.log(this._authService.isLoggedIn)
     return this._authService.isLoggedIn;
   }
 
@@ -51,6 +66,13 @@ export class MainNavbarComponent implements OnInit {
   navigateToRegister() {
     this._router.navigate(['/register']);
   }
+  navigateToAccount() {
+    this._router.navigate(['/account']);
+  }
+  navigateToHistory() {
+    this._router.navigate(['/history']);
+  }
+
 
   /**
    * Toggle User menu
@@ -64,6 +86,17 @@ export class MainNavbarComponent implements OnInit {
    */
   signOut() {
     this._authService.signOut();
+  }
+
+  toggleDarkMode(): void {
+    const darkModeEnabled = this.darkModeService.getIsDarkModeEnabled();
+    this.darkModeService.toggleDarkMode(!darkModeEnabled);
+    if(darkModeEnabled){
+      this.toggleText = 'Toggle Dark Mode';
+    } else {
+      this.toggleText = 'Toggle Light Mode';
+    }
+    
   }
 
 

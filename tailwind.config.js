@@ -2,7 +2,7 @@ module.exports = {
   prefix: '',
   mode: process.env.TAILWIND_MODE ? 'jit' : '',
   content: ['./apps/**/*.{html,ts}', './libs/**/*.{html,ts}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     // screens: {
     //   'sm': '640px',
@@ -19,7 +19,7 @@ module.exports = {
         topBar: '60px',
         nowPlayingBar: '90px'
       },
-      colors: {
+      light: {
 
         "primary": "#Ecab06",
 
@@ -38,6 +38,17 @@ module.exports = {
         "warning": "#ffa500",
 
         "error": "#F87272",
+      },
+      dark: {
+        100: '#111827',
+        200: '#1F2937',
+        300: '#374151',
+        400: '#4B5563',
+        500: '#6B7280',
+        600: '#9CA3AF',
+        700: '#D1D5DB',
+        800: '#E5E7EB',
+        900: '#F3F4F6',
       }
     }
   },

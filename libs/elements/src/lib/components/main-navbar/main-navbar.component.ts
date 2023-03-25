@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { Observable } from 'rxjs';
+// import { UserService } from '@andika/services';
+import { AuthService } from "@andika/libs/utilities";
+
+
 
 @Component({
   selector: 'app-main-navbar',
@@ -8,10 +13,13 @@ import {Router} from "@angular/router";
 })
 export class MainNavbarComponent implements OnInit {
 
+
+
   constructor(private _router: Router) { }
 
   ngOnInit() {
   }
+ 
 
   navigateToLogin() {
       this._router.navigate(['/login']);
@@ -20,5 +28,8 @@ export class MainNavbarComponent implements OnInit {
   navigateToRegister() {
     this._router.navigate(['/register']);
   }
+
+
+  
 
 }

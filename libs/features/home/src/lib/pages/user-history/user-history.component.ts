@@ -12,4 +12,5 @@ export class UserHistoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  //TODO: change this compknent to document manager 
 }

@@ -1,13 +1,12 @@
 <div class="w-full flex items-center justify-between h-14 text-white z-10">
-    <div
-        class="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-yellow-500 dark:bg-gray-800 border-none text-black dark:text-gray-300">
-        <a href="/" class="flex items-center">
+    <div class="w-full flex items-center pl-3 w-14 md:w-64 h-14 sm:flex justify-evenly bg-yellow-500 dark:bg-gray-800 border-none text-black dark:text-gray-300">
+        <a href="/" class="flex">
             <span
-                class="text-black dark:text-yellow-600 cookie-font self-center text-3xl whitespace-nowrap">Andika</span>
-            <sup><img src="assets/images/quill-pen.svg" class="h-6 sm:h-6" alt="Andika Logo" /></sup>
+                class="text-black flex justify-start dark:text-yellow-600 cookie-font self-center text-3xl">Andika</span>
+            <sup><img src="assets/images/quill-pen.svg" class="h-6" alt="Andika Logo" /></sup>
         </a>
     </div>
-    <div class="flex justify-between items-center h-14 bg-yellow-500 dark:bg-gray-800 header-right">
+    <div class="flex items-center h-14 bg-yellow-500 dark:bg-gray-800 header-right">
         <div *ngIf="false" class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
             <button class="outline-none focus:outline-none">
                 <svg class="w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round"
@@ -201,7 +200,7 @@
             </li>
             <li *ngIf="loggedIn()">
                 <a (click)="navigateToHistory()"
-                    class="cursor-pointer mr-4 block py-2 pl-3 pr-4 text-gray-800 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-yellow-600 md:p-0 dark:text-gray-400 md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-yellow-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                    class="cursor-pointer mr-4 block py-2 pl-3 pr-4 text-gray-800 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-yellow-600 md:p-0 dark:text-gray-400 md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-yellow-500 md:dark:hover:bg-transparent dark:border-gray-700 "
                     aria-current="page"><i class="bi bi-clock-history"></i>&nbsp;History</a>
             </li>
             <li *ngIf="loggedIn()">

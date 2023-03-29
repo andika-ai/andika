@@ -1,5 +1,5 @@
-<div class="w-full flex items-center justify-between h-14 text-white z-10">
-    <div class="w-full flex items-center pl-3 w-14 md:w-64 h-14 sm:flex justify-evenly bg-yellow-500 dark:bg-gray-800 border-none text-black dark:text-gray-300">
+<div [ngClass]="screenType" class="w-full flex items-center justify-between h-14 text-white z-10">
+    <div class="w-full  flex items-center pl-3 w-14 md:w-64 h-14 sm:flex justify-evenly bg-yellow-500 dark:bg-gray-800 border-none text-black dark:text-gray-300">
         <a href="/" class="flex">
             <span
                 class="text-black flex justify-start dark:text-yellow-600 cookie-font self-center text-3xl">Andika</span>
@@ -256,8 +256,11 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-1" role="none">
                             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            
                             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                id="menu-item-0">Account settings</a>
+                                id="menu-item-0">History</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                id="menu-item-0">Account</a>
                             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                 id="menu-item-1">Support</a>
                             <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"

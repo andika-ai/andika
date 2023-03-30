@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService, DarkModeService, ScreenService } from '@andika/libs/utilities';
-import { BreakpointState } from '@angular/cdk/layout';
+import { BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 
 import {
   faTeletype,
@@ -40,11 +40,11 @@ private _sbS = new SubSink();
               private screenService: ScreenService,
               private darkModeService: DarkModeService) { }
 
-      ngOnInit(): void {
-        this.checkIsBelowSm();
-        this.checkIsBelowMd();
-        this.checkIsOverMd();
-      }
+    ngOnInit(): void {
+      this.checkIsBelowSm();
+      this.checkIsBelowMd();
+      this.checkIsOverMd();
+    }
 
 
       checkIsBelowSm() {
@@ -94,7 +94,7 @@ private _sbS = new SubSink();
   onClick(targetElement: HTMLElement) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.showOptions = false;
+      this.showOptions = true;
     }
   }
 

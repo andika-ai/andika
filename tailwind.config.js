@@ -4,13 +4,13 @@ module.exports = {
   content: ['./apps/**/*.{html,ts}', './libs/**/*.{html,ts}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    // screens: {
-    //   'sm': '640px',
-    //   'md': '768px',
-    //   'lg': '1024px',
-    //   'xl': '1280px',
-    //   '2xl': '1536px',
-    // },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       width: {
         navBar: '232px'

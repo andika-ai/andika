@@ -211,17 +211,16 @@
             </li>
         </ul>
     </div>
-    <div class="flex justify-end items-center h-14 bg-yellow-500 dark:bg-gray-800 header-right">
+    <div class="flex justify-evenly items-center h-14 bg-yellow-500 dark:bg-gray-800 header-right">
         <ul class="flex items-center">
             <li>
-                <div class="relative inline-flex items-end mr-5 cursor-pointer">
+                <div class="relative inline-flex items-center mr-5 cursor-pointer">
                     <a *ngIf="!loggedIn()" (click)="navigateToLogin()"
                         class="cursor-pointer text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
                 </div>
                 <div class="relative inline-flex items-center mr-5 cursor-pointer">
                     <a *ngIf="!loggedIn()" (click)="navigateToRegister()"
-                        class="cursor-pointer text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">Try
-                        Andika Free&nbsp;&nbsp;&nbsp;<fa-icon [icon]="faArrowRight"></fa-icon>
+                        class="cursor-pointer text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">Free Trial&nbsp;&nbsp;&nbsp;<fa-icon [icon]="faArrowRight"></fa-icon>
                     </a>
                 </div>
             </li>

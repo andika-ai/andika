@@ -88,13 +88,15 @@ private _sbS = new SubSink();
     // # unsubscribe to avoid memory leaks
       ngOnDestroy = () => this._sbS.unsubscribe();
   /**
+   * 
+   * 
    * Detects click event
    */
   @HostListener('document:click', ['$event.target'])
   onClick(targetElement: HTMLElement) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.showOptions = true;
+      this.showOptions = false;
     }
   }
 
@@ -150,8 +152,5 @@ private _sbS = new SubSink();
     }
     
   }
-
-
-
 
 }

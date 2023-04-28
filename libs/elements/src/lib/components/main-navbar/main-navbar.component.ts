@@ -35,6 +35,7 @@ export class MainNavbarComponent implements OnInit {
   showOptions: boolean | undefined;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
+  hidden=false;
   constructor(private elementRef: ElementRef,
               private _router: Router,
               private _authService: AuthService,
@@ -62,7 +63,8 @@ export class MainNavbarComponent implements OnInit {
    */
   loggedIn() {
     console.log(this._authService.isLoggedIn)
-    return this._authService.isLoggedIn;
+    this.hidden = this._authService.isLoggedIn;
+    return this.hidden;
   }
 
   /**

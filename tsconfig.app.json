@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "types": [],
+    
+  },
+  "files": ["apps/andika-frontend/src/main.ts"],
+  "include": ["apps/andika-frontend/src/**/*.d.ts"],
+  "exclude": ["jest.config.ts", "apps/andika-frontend/src/**/*.test.ts", "apps/andika-frontend/src/**/*.spec.ts"]
+}

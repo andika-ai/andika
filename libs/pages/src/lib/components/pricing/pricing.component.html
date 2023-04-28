@@ -1,0 +1,149 @@
+
+
+<app-main-navbar></app-main-navbar>
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+    <div>
+      <p
+        class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-yellow-400">
+        Our Pricing
+      </p>
+    </div>
+    <h2
+      class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+      <span class="relative inline-block">
+        <svg viewBox="0 0 52 24" fill="currentColor"
+          class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+          <defs>
+            <pattern id="7e5e8ff8-1960-4094-a63a-2a0c0f922d69" x="0" y="0" width=".135" height=".30">
+              <circle cx="1" cy="1" r=".7"></circle>
+            </pattern>
+          </defs>
+          <!-- TODO: fix this  -->
+          <rect fill="url(#7e5e8ff8-1960-4094-a63a-2a0c0f922d69)" width="52" height="24"></rect>
+        </svg>
+        <span class="relative">Transparent</span>
+      </span>
+      pricing. Pay as you grow.
+    </h2>
+    <p class="text-base text-gray-700 md:text-lg">
+      Generate 10k characters per month on the free plan and upgrade to the premium plan for unlimited usage — with prices starting at $9/m, Andika provides one of the most cost-effective solutions on the market, giving you complete value for money!
+    </p>
+  </div>
+  <div
+    class="grid max-w-md gap-10 row-gap-5 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
+    <div
+      class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-white border rounded shadow-sm sm:items-center hover:shadow">
+      <div class="text-left">
+        <div class="text-lg font-semibold">Start</div>
+        <div class="flex items-center justify-center mt-2">
+          <div class="mr-1 text-5xl font-bold">Free</div>
+        </div>
+        <div class="mt-2 space-y-3">
+          <div class="text-gray-700">📝 Generate 10k* characters per month</div>
+          <div class="text-gray-700">📜 Access 40+ use-cases</div>
+          <div class="text-gray-700">🇺🇸
+            Write in 30+ languages</div>
+          <div class="text-gray-700">🔊 Access 20+ tones</div>
+        </div>
+      </div>
+      <div>
+        <a 
+          (click)="addSubscription('basic')"
+          class="cursor-pointer inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
+          Start for free
+        </a>
+        <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
+          Upgrade as you scale.
+        </p>
+      </div>
+    </div>
+    <div
+      class="border-yellow relative flex flex-col justify-between p-8 transition-shadow duration-300 bg-white rounded shadow-sm sm:items-center hover:shadow">
+      <div class="absolute inset-x-0 top-0 flex justify-center -mt-3">
+        <div
+          class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase rounded bg-yellow-500">
+          Most Popular
+        </div>
+      </div>
+      <div class="text-left">
+        <div class="text-lg font-semibold">Saver Plan</div>
+        <div class="flex items-center justify-center mt-2">
+          <div class="mr-1 text-5xl font-bold">$9</div>
+          <div class="text-gray-700">/ mo</div>
+        </div>
+        <div class="mt-2 space-y-3">
+          <div class="text-gray-700">📝
+            Generate 100k* characters per month</div>
+          <div class="text-gray-700">📜
+            Access 40+ use-cases</div>
+          <div class="text-gray-700">🇺🇸
+            Write in 30+ languages</div>
+          <div class="text-gray-700">🔊
+            Access 20+ tones</div>
+        </div>
+      </div>
+      <div>
+        <a 
+          (click)="addSubscription('standard')"
+          class="cursor-pointer inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-yellow-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
+          Saver Plan
+        </a>
+        <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
+          $90/year (Get 2 months free!)
+        </p>
+      </div>
+    </div>
+    <div
+      class="bg-yellow-50 flex flex-col justify-between p-8 transition-shadow duration-300 border rounded shadow-sm sm:items-center hover:shadow">
+      <div class="text-left">
+        <div class="text-lg font-semibold">Unlimited Plan</div>
+        <div class="flex items-center justify-center mt-2">
+          <div class="mr-1 text-5xl font-bold">$29</div>
+          <div class="text-gray-700">/ mo</div>
+        </div>
+        <div class="mt-2 space-y-3">
+          <div class="text-gray-700">📝
+            Generate UNLIMITED* characters per month</div>
+          <div class="text-gray-700">📜
+            Access 40+ use-cases</div>
+
+          <div class="text-gray-700">🇺🇸
+            Write in 30+ languages</div>
+
+          <div class="text-gray-700">🔊
+            Access 20+ tones</div>
+
+
+          <div class="text-gray-700">🔧
+            Create your own custom use-case</div>
+          <div class="text-gray-700">‍👩‍💼
+            Dedicated account manager</div>
+
+          <div class="text-gray-700">🔧
+            Create your own custom use-case</div>
+
+
+
+          <div class="text-gray-700">💬
+            Priority email & chat support</div>
+        </div>
+      </div>
+      <div>
+        
+        <a 
+          (click)="addSubscription('premium')"
+          class="cursor-pointer inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-gray-800 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
+          Unlimited Plan
+        </a>
+        <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
+          $290/year (Get 2 months free!)
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<andika-footer></andika-footer>

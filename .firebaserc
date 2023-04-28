@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "andika-16cf6"
+  },
+  "targets": {
+    "andika-16cf6": {
+      "hosting": {
+        "andika": [
+          "andika-16cf6"
+        ]
+      }
+    }
+  }
+}

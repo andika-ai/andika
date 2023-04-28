@@ -1,0 +1,107 @@
+{
+  "name": "andika",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./apps/andika-frontend/src",
+  "prefix": "andika",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/andika",
+        "index": "./apps/andika-frontend/src/index.html",
+        "main": "./apps/andika-frontend/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "./tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "./apps/andika-frontend/src/favicon.ico",
+          "./apps/andika-frontend/src/assets"
+        ],
+        "styles": [
+          "./node_modules/font-awesome/css/font-awesome.css",
+          "./node_modules/quill/dist/quill.core.css",
+          "./node_modules/quill/dist/quill.snow.css",
+          "./apps/andika-frontend/src/styles.scss",
+          "./apps/andika-frontend/src/assets/vendor/glightbox/css/glightbox.min.css",
+          "./apps/andika-frontend/src/assets/vendor/swiper/swiper-bundle.min.css",
+          "./apps/andika-frontend/src/assets/css/variables.css",
+          "./apps/andika-frontend/src/assets/css/variables-theme.css",
+          "./apps/andika-frontend/src/assets/css/main.css"
+        ],
+        "scripts": ["./node_modules/quill/dist/quill.js"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2.5mb",
+              "maximumError": "3mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "10kb",
+              "maximumError": "10kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "andika:build:production"
+        },
+        "development": {
+          "browserTarget": "andika:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "andika:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src/**/*.ts", "./src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "options": {
+        "jestConfig": "jest.config.app.ts",
+        "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "andika:build:production",
+        "firebaseProject": "andika-16cf6",
+        "firebaseHostingSite": "andika-16cf6"
+      }
+    }
+  },
+  "tags": []
+}

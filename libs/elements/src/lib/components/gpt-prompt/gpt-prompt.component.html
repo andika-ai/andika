@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row container">
+    <div  class="col-md-4 mt-4">
+      <h1>Generate a Prompt</h1>
+      <form id="prompt-form card bg-light">
+        <div class="form-group">
+          <textarea type="textarea" rows="10" class="form-control" id="description" placeholder="Enter a description" ></textarea>
+        </div>
+
+
+      </form>
+    </div>
+
+    <div class="col-md-8 mt-4">
+      <h1>Prompt Preview</h1>
+      <div id="prompt" class="card bg-light p-4">
+        <div id="prompt-description" class="mb-3"></div>
+        <div id="prompt-tones" class="mb-3"></div>
+        <div id="prompt-audience" class="mb-3"></div>
+        <div id="prompt-style" class="mb-3"></div>
+        <div id="prompt-context" class="mb-3"></div>
+        <div id="prompt-language" class="mb-3"></div>
+        <div id="prompt-length"></div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col mt-4">
+          <label for="tones">Tones</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>select tone</option>
+            <option value="insightful">Insightful</option>
+            <option value="inspirational">Inspirational</option>
+            <option value="motivational">Motivational</option>
+            <option value="thought-provoking">Thought-provoking</option>
+            <option value="uplifting">Uplifting</option>
+          </select>
+        </div>
+        <div class="form-group col mt-4">
+          <label for="tones">Audiences:</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>select audience</option>
+            <option value="all levels">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="form-group col mt-4">
+          <label for="style">Styles:</label>
+          <select class="form-select" aria-label="Default select example">
+            <option value="informative">Informative</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="entertaining">Entertaining</option>
+          </select>
+        </div>
+        <div class="form-group col mt-4">
+          <label for="context">Contexts:</label>
+          <select class="form-select" aria-label="Default select example">
+            <option value="informative">Informative</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="entertaining">Entertaining</option>
+          </select>
+        </div>
+        <div class="form-group col mt-4">
+          <label for="language">Languages:</label>
+          <select class="form-select" aria-label="Default select example">
+            <option value="informative">Informative</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="entertaining">Entertaining</option>
+          </select>
+        </div>
+        <div class="form-group col mt-4">
+          <label for="length">Length:</label>
+          <input type="number" class="form-control" id="length" placeholder="Enter a length" />
+        </div>
+      </div>
+      <div class="col-12 mt-4">
+        <div class="btn-block text-end">
+          <button id="save-prompt-btn" class="btn btn-primary btn-block mt-4">
+            Save Prompt
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <div class="d-flex align-items-center">
+        <h1 class="mb-0">Prompt Result</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="copy-btn" class="btn btn-primary" data-tooltip="Copy to clipboard" [cdkCopyToClipboard]="longText" [cdkCopyToClipboardAttempts]="5">
+          <i class="fa fa-copy"></i>
+        </button>
+      </div>
+        <div id="prompt" class="card bg-light p-4">
+          <div id="prompt-description" class="mb-3"></div>
+          <div id="prompt-tones" class="mb-3"></div>
+          <div id="prompt-audience" class="mb-3"></div>
+          <div id="prompt-style" class="mb-3"></div>
+          <div id="prompt-context" class="mb-3"></div>
+          <div id="prompt-language" class="mb-3"></div>
+          <div id="prompt-length"></div>
+    </div>
+  </div>
+</div>

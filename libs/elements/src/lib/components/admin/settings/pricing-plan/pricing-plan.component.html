@@ -1,0 +1,199 @@
+<mat-toolbar class="bg-primary-dark">
+  <span class="text-white">Create Pricing Plan</span>
+</mat-toolbar>
+
+<div class="max-w-full rounded overflow-hidden shadow-lg">
+
+<div class="text-white m-2  p-2">
+  <label for="duration" style="display:none">Pricing Plan Setup</label>
+  <input id="duration" value="1000" type="number" min="0" step="100" #duration hidden="true">
+</div>
+
+<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="duration.value">
+  <mat-step [stepControl]="pricingPlanForm">
+    <form [formGroup]="pricingPlanForm">
+      <ng-template matStepLabel>Pricing Plan</ng-template>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Pricing Plan</mat-label> -->
+        <mat-select formControlName="name">
+          <mat-option value="{{ subscriptionPlan.FREE }}">{{ subscriptionPlan.FREE }}</mat-option>
+          <mat-option value="{{ subscriptionPlan.STANDARD }}">{{ subscriptionPlan.STANDARD }}</mat-option>
+          <mat-option value="{{ subscriptionPlan.PREMIUM }}">{{ subscriptionPlan.PREMIUM  }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button class="hover:bg-yellow-500" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="pricingPlanForm">
+    <form [formGroup]="pricingPlanForm">
+      <ng-template matStepLabel>Fill out a description</ng-template>
+      <mat-form-field appearance="outline" class="mt-2">
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="hover:bg-yellow-500" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="pricingPlanForm">
+    <form [formGroup]="pricingPlanForm">
+      <ng-template matStepLabel>Fill out features separated with a comma (,)</ng-template>
+      <mat-form-field  class="mt-2" appearance="outline">
+        <textarea matInput placeholder="Features" formControlName="features" required></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="hover:bg-yellow-500" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="pricingPlanForm">
+    <form [formGroup]="pricingPlanForm">
+      <ng-template matStepLabel>Fill out pricing and duration in months</ng-template>
+      <div class="row mt-2">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="durationMonths" formControlName="durationMonths" type="number" required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="price" formControlName="price" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row col-12">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="freeTrialDays" formControlName="freeTrialDays" required>
+          </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="hover:bg-yellow-500" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="pricingPlanForm">
+    <form [formGroup]="pricingPlanForm">
+      <ng-template matStepLabel>Fill out other options</ng-template>
+      <div class="row mt-2">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="charactersPerMonth" formControlName="charactersPerMonth" type="number"
+              required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="imagesPerMonth" formControlName="imagesPerMonth" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="fileStorageLimit:" formControlName="fileStorageLimit" required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="teamSize" formControlName="teamSize" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="discountPercentage" formControlName="discountPercentage"
+              required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="renewalDiscountPercentage"
+              formControlName="renewalDiscountPercentage" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="upgradeFee" formControlName="upgradeFee" required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput placeholder="downgradeFee" formControlName="downgradeFee" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-checkbox formControlName="isRecommended" class="example-margin">Is recommended</mat-checkbox>
+        </div>
+        <div class="col-6">
+          <mat-checkbox formControlName="isPopular" class="example-margin">Is Popular</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-checkbox formControlName="customBranding" class="example-margin">Custom Branding</mat-checkbox>
+        </div>
+        <div class="col-6">
+          <mat-checkbox formControlName="prioritySupport" class="example-margin">Priority Support</mat-checkbox>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-6">
+          <mat-checkbox formControlName="customBranding" class="example-margin">Custom Branding</mat-checkbox>
+        </div>
+        <div class="col-6">
+          <mat-checkbox formControlName="customerSuccessManager" class="example-margin">Customer SuccessManager
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-checkbox formControlName="isRecommended" class="example-margin">Is recommended</mat-checkbox>
+        </div>
+        <div class="col-6">
+          <mat-checkbox formControlName="isPopular" class="example-margin">Is Popular</mat-checkbox>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-6">
+          <mat-checkbox formControlName="isDiscounted" class="example-margin">Is Discounted</mat-checkbox>
+        </div>
+
+        <div class="col-6">
+          <mat-checkbox formControlName="unlimitedCharacters" class="example-margin">Unlimited Characters</mat-checkbox>
+        </div>
+
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="hover:bg-yellow-500" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button (click)="onSubmit()" class="bg-primary-light hover:bg-yellow-500" mat-button >Save</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+</div>

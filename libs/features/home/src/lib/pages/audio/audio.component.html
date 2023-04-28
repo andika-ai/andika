@@ -1,0 +1,65 @@
+<div class="dark:bg-dark-500">
+  <div class="">
+    <!-- Header -->
+
+    <!-- ./Header -->
+    <app-main-navbar></app-main-navbar>
+    <!-- Sidebar -->
+    <andika-sidebar></andika-sidebar>
+    <!-- ./Sidebar -->
+
+    <!-- Sidebar -->
+    <div class="h-full m-20">
+      <!-- Breadcrumb  -->
+      
+      <!-- Text to Audio area  -->
+      <div class="container mx-auto py-8">
+        <!-- <app-breadcrumb></app-breadcrumb> -->
+        <div class="w-full max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+          <h1 class="text-2xl font-bold mb-4">AI Writing App</h1>
+          <form [formGroup]="form" (ngSubmit)="synthesizeTextToSpeech()" class="w-full">
+            <div class="flex flex-col mb-4">
+              <label for="text" class="text-lg font-medium mb-2">Enter Text:</label>
+              <textarea formControlName="text" name="text" id="text" rows="8" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-300"></textarea>
+              <div class="flex items-center justify-between mt-2">
+                <p class="text-sm text-gray-500">Character Limit: {{ characterLimit - form.value['text'].length }}</p>
+                <button type="submit" class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Convert to Speech</button>
+              </div>
+            </div>
+            <div class="flex flex-row items-center justify-between mb-4">
+              <div class="flex flex-col w-full mr-2">
+                <label for="voice_code" class="text-lg font-medium mb-2">Voice Code:</label>
+                <select formControlName="voice_code" name="voice_code" id="voice_code" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-300">
+                  <option value="en-US-1">English (US)</option>
+                  <option value="en-GB-1">English (UK)</option>
+                  <option value="es-ES-1">Spanish (Spain)</option>
+                </select>
+              </div>
+              <div class="flex flex-col w-full mx-2">
+                <label for="speed" class="text-lg font-medium mb-2">Speed:</label>
+                <select formControlName="speed" name="speed" id="speed" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-300">
+                  <option value="0.5">0.5x</option>
+                  <option value="1.0">1.0x</option>
+                  <option value="1.5">1.5x</option>
+                </select>
+              </div>
+              <div class="flex flex-col w-full ml-2">
+                <label for="pitch" class="text-lg font-medium mb-2">Pitch:</label>
+                <select formControlName="pitch" name="pitch" id="pitch" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-300">
+                  <option value="0.5">0.5</option>
+                  <option value="1.0">1.0</option>
+                  <option value="1.5">1.5</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <div class="mt-4" *ngIf="audioUrl">
+            <audio controls>
+              <source [src]="audioUrl" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            <a [href]="audioUrl" download="speech.mp3" class="block mt-2 text-sm text-gray-500 hover:underline">Download Audio</a>
+          </div>
+    </div>
+  </div>
+</div>

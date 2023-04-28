@@ -18,6 +18,13 @@ import {
   faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
 
+// Initialization for ES Users
+import {
+  Collapse,
+  Dropdown,
+  Ripple,
+  initTE,
+} from "tw-elements";
 @Component({
   selector: 'app-main-navbar',
   templateUrl: './main-navbar.component.html',
@@ -33,7 +40,9 @@ export class MainNavbarComponent implements OnInit {
               private _authService: AuthService,
               private darkModeService: DarkModeService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    initTE({ Collapse, Dropdown, Ripple });
+   }
 
   /**
    * Detects click event

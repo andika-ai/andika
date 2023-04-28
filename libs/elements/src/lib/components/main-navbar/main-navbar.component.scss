@@ -1,6 +1,3 @@
-
-
-
 .d-none {
     display: none;
 }
@@ -8,3 +5,20 @@
 .display {
     display: block;
 }
+
+a {
+  color:black !important;
+}
+
+#logo{
+  line-height: 0.3px;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }

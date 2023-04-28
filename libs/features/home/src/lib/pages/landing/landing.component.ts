@@ -26,6 +26,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.randomizeText();
+   
   }
 
   randomizeText(){

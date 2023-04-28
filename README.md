@@ -1,5 +1,6 @@
 # Andika
 
+However, after turning the workspace to Nx, run the build command against all apps and libraries: yarn nx run-many --target=build --all Notice it will take much less time the 2nd run.
 Full stack  project for andika
 
 ## Prerquisites 
@@ -216,7 +217,23 @@ TODO: provide attributions for the assets in use to:
 <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/marketing" title="marketing icons">Marketing icons created by Freepik - Flaticon</a>
 
+<a href="https://www.flaticon.com/free-icons/send-mail" title="send mail icons">Send mail icons created by Md Tanvirul Haque - Flaticon</a>
 
+<a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Pixel perfect - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/speak" title="speak icons">Speak icons created by Mayor Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/personalization" title="personalization icons">Personalization icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/seo-and-web" title="seo and web icons">Seo and web icons created by paonkz - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/typing" title="typing icons">Typing icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/data-analysis" title="data analysis icons">Data analysis icons created by orvipixel - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/landing-page" title="landing page icons">Landing page icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/description" title="description icons">Description icons created by phatplus - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/content-copy" title="content copy icons">Content copy icons created by juicy_fish - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/letter" title="letter icons">Letter icons created by srip - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/newsletter" title="newsletter icons">Newsletter icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/copywriting" title="copywriting icons">Copywriting icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/caption" title="caption icons">Caption icons created by Eucalyp - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/marketing" title="marketing icons">Marketing icons created by Freepik - Flaticon</a>
 # Target
 Based on my research, the following professionals in Kenya could potentially benefit from an AI writing tool:
 

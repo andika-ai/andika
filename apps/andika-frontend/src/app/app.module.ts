@@ -31,6 +31,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { PagesModule } from '@andika/pages';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
@@ -70,7 +72,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
   providers: [
     ScreenTrackingService,UserTrackingService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] },
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
   bootstrap: [AppComponent],
 })

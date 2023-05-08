@@ -24,7 +24,10 @@ import {
   Dropdown,
   Ripple,
   initTE,
+  Sidenav,
 } from "tw-elements";
+
+
 @Component({
   selector: 'app-main-navbar',
   templateUrl: './main-navbar.component.html',
@@ -42,7 +45,7 @@ export class MainNavbarComponent implements OnInit {
               private darkModeService: DarkModeService) { }
 
   ngOnInit() {
-    initTE({ Collapse, Dropdown, Ripple });
+    initTE({ Collapse, Dropdown, Ripple, Sidenav });
    }
 
   /**

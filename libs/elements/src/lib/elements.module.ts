@@ -56,6 +56,7 @@ import { PricingPlanComponent } from './components/admin/settings/pricing-plan/p
     ClipboardModule,
     FontAwesomeModule,
     MaterialModule,
+    
     QuillModule,
     ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [

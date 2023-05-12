@@ -91,6 +91,7 @@ export class TopNavbarComponent implements OnInit {
     this._router.navigate(['/audio']);
   }
 
+
   openMenu(){
     this.isMenuHidden= !this.isMenuHidden;
   }

@@ -1,4 +1,4 @@
-<div class="bg-white font-family-karla h-screen">
+<div class="bg-grey-400 font-family-karla h-screen">
 
   <div class="w-full flex flex-wrap">
 
@@ -12,20 +12,21 @@
       </div>
 
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-        <p class="text-center text-3xl">Join Us.</p>
-        <div class="d-flex align-items-center mt-4">
+        <p class="text-center text-3xl">Start writing.</p>
+        <!-- <div class="d-flex align-items-center mt-4">
           <p class="text-lg mb-0 mr-4">Sign in with</p>
           <button mat-button (click)="authService.googleAuth()" type="button" class="btn hover:bg-yellow-500  btn-primary mx-1">
             <fa-icon [icon]="['fab', 'google']"></fa-icon>
           </button>
-          <!-- <button (click)="authService.facebookAuth()" type="button" class="btn btn-primary mx-1"> <fa-icon [icon]="['fab', 'facebook']"></fa-icon></button> -->
-        </div>
+          <button (click)="authService.facebookAuth()" type="button" class="btn btn-primary mx-1"> 
+            <fa-icon [icon]="['fab', 'facebook']"></fa-icon></button>
+        </div> -->
         <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();">
-          <div class="flex flex-col pt-4">
+          <!-- <div class="flex flex-col pt-4">
             <label for="name" class="text-lg">Name</label>
             <input type="text" id="name" placeholder="John Smith"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-          </div>
+          </div> -->
 
           <div class="flex flex-col pt-4">
             <label for="email" class="text-lg">Email</label>
@@ -46,7 +47,7 @@
           </div>
 
           <input type="submit" value="Register"
-            class="bg-yellow-500 text-black font-bold text-lg hover:bg-yellow-600 p-2 mt-8" />
+            class="bg-yellow-500 text-black font-bold text-lg text-sm  hover:text-white hover:bg-yellow-500 p-2 mt-8" />
         </form>
         <div class="text-center pt-12 pb-12">
           <p>Already have an account? <a routerLink="/login" class="underline font-semibold">Log in here.</a></p>
@@ -56,9 +57,9 @@
     </div>
 
     <!-- TODO: Add image in the future (illustration etc )Image Section -->
-    <div class="wrapper-bg w-1/2 shadow-2xl">
-      <img class="object-cover w-full h-screen hidden md:block" src="assets/images/andika-logo-bg.png"
-        alt="Background" />
+    <div class="bg-zinc-800 w-1/2 shadow-2xl">
+      <!-- <img class="object-cover w-full h-screen hidden md:block" src="assets/images/andika-logo-bg.png"
+        alt="Background" /> -->
     </div>
   </div>
 

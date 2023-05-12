@@ -22,7 +22,7 @@ import {
   styleUrls: ['./top-navbar.component.css'],
 })
 export class TopNavbarComponent implements OnInit {
-  isMenuHidden=false;
+  isMenuHidden=true;
   toggleText = 'Toggle Dark Mode';
   showOptions: boolean | undefined;
   faArrowLeft = faArrowLeft;
@@ -93,6 +93,5 @@ export class TopNavbarComponent implements OnInit {
 
   openMenu(){
     this.isMenuHidden= !this.isMenuHidden;
-    console.log('test')
   }
 }

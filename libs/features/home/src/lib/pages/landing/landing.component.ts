@@ -69,7 +69,7 @@ export class LandingComponent implements OnInit {
   loggedIn() {
     console.log(this._authService.isLoggedIn)
     this.hidden = this._authService.isLoggedIn;
-    return this.hidden;
+    return false;
   }
 
   /**

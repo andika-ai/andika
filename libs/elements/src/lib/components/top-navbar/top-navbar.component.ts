@@ -22,6 +22,7 @@ import {
   styleUrls: ['./top-navbar.component.css'],
 })
 export class TopNavbarComponent implements OnInit {
+  isMenuHidden=false;
   toggleText = 'Toggle Dark Mode';
   showOptions: boolean | undefined;
   faArrowLeft = faArrowLeft;
@@ -88,5 +89,10 @@ export class TopNavbarComponent implements OnInit {
 
   navigateToAudio() {
     this._router.navigate(['/audio']);
+  }
+
+  openMenu(){
+    this.isMenuHidden= !this.isMenuHidden;
+    console.log('test')
   }
 }

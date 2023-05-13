@@ -8,6 +8,21 @@ import {
   Sidenav,
 } from "tw-elements";
 
+import {
+  faTeletype,
+  faTimes,
+  faExpand,
+  faQuestionCircle,
+  faLightbulb,
+  faPen,
+  faPenNib,
+  faClockRotateLeft,
+  faArchive,
+  faDatabase,
+  faFolder,
+  faSignOut
+
+} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -16,6 +31,10 @@ import {
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit, AfterViewInit {
+  faArchive = faArchive;
+  faDatabase = faDatabase;
+  faFolder =  faFolder;
+  faSignOut = faSignOut;
   @ViewChild('sidenav', { static: true }) sidenav: ElementRef;
   constructor(private _router: Router, private elementRef: ElementRef) { }
 

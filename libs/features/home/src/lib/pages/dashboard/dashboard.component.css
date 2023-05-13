@@ -1,0 +1,4 @@
+.usecases-scroll {
+    overflow-y: auto;
+    max-height: 400px; 
+}

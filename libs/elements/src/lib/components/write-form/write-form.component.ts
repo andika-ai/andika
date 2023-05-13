@@ -1,3 +1,4 @@
+import { BlogIdeaInterface } from './../../../../../model/src/lib/writeform/write-form.interface';
 import { OrgTokenManagementService } from './../../../../../services/src/lib/org-token-management/org-token-management.service';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { AlertComponent } from '../snackbar/alert/alert.component';
@@ -14,6 +15,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 import { OpenaiService } from '@andika/services';
 import { ChatGPTResponse, OrgOpenAISubscription, WriteFormInterface } from '@andika/model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormService } from '@andika/libs/shared';
+
 
 
 @Component({
@@ -22,6 +26,9 @@ import { ChatGPTResponse, OrgOpenAISubscription, WriteFormInterface } from '@and
   styleUrls: ['./write-form.component.scss']
 })
 export class WriteFormComponent implements OnInit {
+  useCase = UseCase;
+  currentFormType: any;
+
   emptyFieldsDetected = false;
   @Output() isLoading = new EventEmitter<boolean>(false);
   @Output() promptResponse = new EventEmitter<any>();
@@ -157,13 +164,15 @@ export class WriteFormComponent implements OnInit {
   form!: FormGroup;
 
   // TODO: service to comunicate with OPEN AI API private _openAIService: OpenAIService,  
-  constructor(private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar,
+  constructor(private formService: FormService, private router: Router, private route: ActivatedRoute, private _snackBarService: SnackBarService, private _fb: FormBuilder, private _sharedForm: SharedWriteFormService, private _snackBar: MatSnackBar,
     private _openAIService: OpenaiService, private org: OrgTokenManagementService) {
     this.selectedUseCase = this.useCaseData[0];
   }
 
   
   ngOnInit() {
+    this.determineUsecase();
+    
     this.form = new FormGroup({
       language: new FormControl(this.languages[0].name),
       tone: new FormControl(this.tones[1].name),
@@ -311,6 +320,32 @@ export class WriteFormComponent implements OnInit {
   }
 
 
+  setFormType(formType: number) {
+    this.currentFormType = formType;
+  }
+
+  determineUsecase(){
+    this.formService.formType$.subscribe((formType: UseCase) => {
+      // Use the formType to determine which form to render
+ 
+      switch (formType) {
+        case UseCase.BlogIdeaAndOutline:
+          console.log('checkout form type')
+          console.log(formType)
+          this.setFormType(formType) 
+          // Render GenerateBlogFormComponent
+          break;
+        case UseCase.BusinessIdeaPitch:
+          // Render GenerateYouTubeIdeaFormComponent
+          break;
+        // Add more cases for other form types
+        default:
+          // Handle unknown form type or show a default form
+          break;
+      }
+    });
+
+  }
+
+
 }
-
-

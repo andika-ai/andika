@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UseCase } from '@andika/model';
+import { BehaviorSubject } from 'rxjs';
 import {
   faTeletype,
   faTimes,
@@ -11,6 +14,8 @@ import {
   faPlus
 
 } from '@fortawesome/free-solid-svg-icons';
+
+import { FormService } from '@andika/libs/shared';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,9 +23,17 @@ import {
 })
 export class DashboardComponent implements OnInit {
   faPlus = faPlus;
-  constructor() { }
+  usecase = UseCase;
+
+  
+  constructor(private router: Router, private formService: FormService) { }
 
   ngOnInit() {
+  }
+
+  navigateToEditor(formType: UseCase) {
+    this.formService.setFormType(formType);
+    this.router.navigate(['/editor']);
   }
 
 }

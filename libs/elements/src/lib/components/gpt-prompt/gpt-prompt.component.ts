@@ -13,18 +13,18 @@ export class GptPromptComponent implements OnInit {
   }
 
     copyAchievements() {
-    const pending = this.clipboard.beginCopy(this.promptResult);
-    let remainingAttempts = 3;
-    const attempt = () => {
-      const result = pending.copy();
-      if (!result && --remainingAttempts) {
-        setTimeout(attempt);
-      } else {
-        // Remember to destroy when you're done!
-        pending.destroy();
-      }
-    };
-    attempt();
+    // const pending = this.clipboard.beginCopy(this.promptResult);
+    // let remainingAttempts = 3;
+    // const attempt = () => {
+    //   const result = pending.copy();
+    //   if (!result && --remainingAttempts) {
+    //     setTimeout(attempt);
+    //   } else {
+    //     // Remember to destroy when you're done!
+    //     pending.destroy();
+    //   }
+    // };
+    // attempt();
   }
 
 

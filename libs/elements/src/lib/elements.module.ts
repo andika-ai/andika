@@ -45,6 +45,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ServicesModule } from '@andika/services';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PricingPlanComponent } from './components/admin/settings/pricing-plan/pricing-plan.component';
+import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component';
 
 @NgModule({
   imports: [
@@ -95,7 +96,8 @@ import { PricingPlanComponent } from './components/admin/settings/pricing-plan/p
     AdminNavbarComponent,
     BreadcrumbComponent,
     PricingPlanComponent,
-    PricingPlanTableComponent
+    PricingPlanTableComponent,
+    GptPromptComponent
   ],
   exports: [
     PreloaderComponent,
@@ -133,7 +135,8 @@ import { PricingPlanComponent } from './components/admin/settings/pricing-plan/p
     AdminNavbarComponent,
     BreadcrumbComponent,
     PricingPlanComponent,
-    PricingPlanTableComponent
+    PricingPlanTableComponent,
+    GptPromptComponent
   ]
 })
 export class ElementsModule {}

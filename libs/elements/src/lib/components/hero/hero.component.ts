@@ -24,6 +24,16 @@ export class HeroComponent implements OnInit {
   heroSubTitle = 'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
 
   text = [
+    'Engage with captivating content',
+    'Craft persuasive emails effortlessly.',
+    'Boost your brand with impactful ad copy.',
+    'Attract customers with captivating descriptions.',
+    'Prepare accurate legal documents with ease.',
+    'Tell powerful stories and raise awareness.',
+    'Improve writing skills with tailored exercises',
+    'Create precise technical documentation effortlessly',
+    'Unleash your creativity with writing prompts.',
+    'Stay informed, engage your audience.',
     'Blog and Article Writing',
     'Academic Writing Support',
     'Business Proposal and Report Writing',

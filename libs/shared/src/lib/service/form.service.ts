@@ -6,10 +6,12 @@ import { UseCase } from '@andika/model';
   providedIn: 'root'
 })
 export class FormService {
+  characterCount=0;
   private formTypeSubject = new BehaviorSubject<UseCase>(UseCase.BlogIdeaAndOutline);
   public formType$ = this.formTypeSubject.asObservable();
 
   setFormType(formType: UseCase) {
     this.formTypeSubject.next(formType);
   }
+
 }

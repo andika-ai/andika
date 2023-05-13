@@ -1,7 +1,7 @@
-<div class="m-2 bg-yellow-100 card dark:bg-gray-700 dark:text-white">
+<div class="m-1 p-1  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
   <form class="w-full max-w-lg" [formGroup]="form">
     <div class="flex flex-wrap p-2">
-      <div class="w-full md:w-1/2 px-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-4">
         <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-first-name">
           Select Language
         </label>
@@ -16,10 +16,11 @@
         </label>
         <select formControlName="tone"
           class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-          <option *ngFor="let tone of tones" [value]="tone.name">{{ tone.name}}</option>
+          <option *ngFor="let tone of tones" [value]="tone.name">{{tone.name}}</option>
         </select>
       </div>
     </div>
+    
     <div class="flex flex-wrap p-2">
       <div class="w-full px-2">
         <div class="mt-2" [ngSwitch]="currentFormType">
@@ -105,31 +106,11 @@
         </div>
       </div>
     </div>
-    <div class="mt-10 m-4 flex flex-wrap">
-      <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-first-name">
-          Number of variants
-        </label>
-        <select formControlName="numberOfVariants"
-          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-          <option *ngFor="let num of [1,2,3]" [value]="num">{{num}}</option>
-        </select>
-      </div>
-      <div class="w-full md:w-1/2 px-2">
-        <label class="block uppercase tracking-wide text-neutral text-xs font-bold mb-2" for="grid-last-name">
-          Creativity level
-        </label>
-        <select formControlName="creativityLevel"
-          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-          <option *ngFor="let clv of  creativityLevels" [value]="clv.name">{{clv.name}}</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-12 mb-4 text-center">
         <button type="submit" (click)="onSubmit()"
-          class="w-auto px-24 py-2 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded-full shadow-md hover:bg-yellow-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out">
+          class="w-auto px-24 py-2 bg-zinc-700 text-white font-medium text-xs leading-normal uppercase rounded-full shadow-md hover:bg-yellow-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out">
           <div *ngIf="!isTyping">
             Write for me&nbsp;<svg aria-hidden="true" class="inline-block w-5 h-5" fill="currentColor"
               viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

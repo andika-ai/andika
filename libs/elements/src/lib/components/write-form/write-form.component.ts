@@ -177,8 +177,8 @@ export class WriteFormComponent implements OnInit {
       language: new FormControl(this.languages[0].name),
       tone: new FormControl(this.tones[1].name),
       usecase: new FormControl(this.useCaseData[0].id),
-      creativityLevel: new FormControl(this.creativityLevels[1].name),
-      numberOfVariants: new FormControl(1),
+      // creativityLevel: new FormControl(this.creativityLevels[1].name),
+      // numberOfVariants: new FormControl(1),
       youtubeIdea: this._fb.group({
         keywords: []
       }),

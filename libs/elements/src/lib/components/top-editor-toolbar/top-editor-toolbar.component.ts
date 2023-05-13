@@ -10,7 +10,9 @@ import {
   faClockRotateLeft,
   faUser,
   faBackwardStep,
-  faArrowLeft
+  faArrowLeft,
+  faList,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -20,7 +22,10 @@ import {
 })
 export class TopEditorToolbarComponent implements OnInit {
   faArrowLeft = faArrowLeft;
+  faList = faList;
+  faHeart =  faHeart;
   showOptions=false;
+  
   constructor() { }
 
   ngOnInit() {

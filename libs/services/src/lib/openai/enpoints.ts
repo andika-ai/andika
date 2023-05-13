@@ -26,7 +26,7 @@ export const ENDPOINTS = [
         usecase: UseCase.SmsAndNotifications,
         endpoint: `${baseUrl}generateSmsAndNotification`,
     },
-    { usecase: UseCase.Email, endpoint: `${baseUrl}generateEmail` },
+    // { usecase: UseCase.Email, endpoint: `${baseUrl}generateEmail` },
     {
         usecase: UseCase.JobDescription,
         endpoint: `${baseUrl}generateJobDescription`,

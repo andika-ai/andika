@@ -13,7 +13,7 @@ export enum UseCase {
     StoryPlots = 6,
     SongLyrics = 7,
     SmsAndNotifications = 8,
-    Email = 9,
+    EmailSubjectLine = 9,
     JobDescription = 10,
     BlogIdeaAndOutline= 11,
     CoverLetter = 12,
@@ -27,7 +27,7 @@ export enum UseCase {
     GoogleSearchAd = 20,
     InterviewQuestions = 21,
     KeywordsExtractor = 22,
-    LandingPage = 23,
+    LandingPage = 23, 
     ParaphraseText = 24,
     PostAndCaptionIdea = 25,
     ProductDescriptionWithBulletPoints = 26,
@@ -55,5 +55,12 @@ export enum UseCase {
     GenerateCourseLectureTitles = 48,
     GenerateCourseQuizQuestions = 49,
     GenerateCourseExercises = 50,
-    GenerateCourseArticles = 51
+    GenerateCourseArticles = 51,
+    SummarizeText = 52,
+    AdCopy = 53,
+    EmailBody = 54,
+    EmailToneAdjustment = 55,
+    SocialMediaPost = 56,
+    SocialMediaAdGenerator = 57,
+    GoogleSearchAdsGenerator = 58
 }

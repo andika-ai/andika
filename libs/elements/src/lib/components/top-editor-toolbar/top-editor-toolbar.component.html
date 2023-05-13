@@ -1,11 +1,18 @@
 <div>
   <div class="flex items-center justify-between">
     <div class="flex items-center justify-start">
-      <a href="#">
-        <fa-icon [icon]="faArrowLeft"></fa-icon>&nbsp;&nbsp;&nbsp; <span class="font-semibold">Go Back To Home </span>
-      </a>
+      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>&nbsp; <span class="text-sm">Home</span>
+      </button>
+      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        <fa-icon [icon]="faList"></fa-icon>&nbsp; <span class="text-sm">My projects</span>
+      </button>
+
+      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        <fa-icon [icon]="faHeart"></fa-icon>&nbsp; <span class="text-sm">Save project</span>
+      </button>
     
-      &nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;
       <input class="font-semibold hover:underline text-lg bg-transparent outline-none" value="Draft-First Document.doc"  />
     </div>
   </div>

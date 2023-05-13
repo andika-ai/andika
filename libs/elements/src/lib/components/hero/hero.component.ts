@@ -24,14 +24,32 @@ export class HeroComponent implements OnInit {
   heroSubTitle = 'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
 
   text = [
-    'Email',
-    'Blogs',
-    'profile bio',
-    'Facebook ads',
-    'SEO titles',
-    'product descriptions',
-    'story plots','instagram posts',
-    'YouTube descriptions','taglines','headlines'];
+    'Blog and Article Writing',
+    'Academic Writing Support',
+    'Business Proposal and Report Writing',
+    'Social Media Content Creation',
+    'Language Translation and Localization',
+    'CV and Resume Writing',
+    'News and Content Summarization',
+    'Creative Writing Prompts',
+    'Content Marketing',
+    'Email Communication',
+    'Copywriting and Advertisements',
+    'E-commerce Product Descriptions',
+    'Legal Document Drafting',
+    'Social Impact Initiatives',
+    'Language Learning and Education',
+    'Technical Writing',
+    'Fiction and Creative Writing',
+    'Generate a Profile Bio',
+    'Generate Facebook Ads',
+    'Generate SEO Titles',
+    'Generate Story Plots',
+    'Generate Song Lyrics',
+    'Generate Cnstagram Posts',
+    'Generate YouTube Descriptions',
+    'Generate Captivating Taglines',
+    'Generate Captivating Headlines'];
 
   randomText: string;
   randomAnimation: string;
@@ -53,7 +71,7 @@ export class HeroComponent implements OnInit {
       } while (text === previousText);
       previousText = text;
       this.randomText = text;
-    }, 7000);
+    }, 1000);
   }
 
 

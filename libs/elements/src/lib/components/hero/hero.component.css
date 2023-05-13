@@ -34,3 +34,12 @@
 #w{
   
 }
+
+
+.uniform-text {
+  display: inline-block;
+  width: 250px; /* Adjust the width as needed */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

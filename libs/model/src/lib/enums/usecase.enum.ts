@@ -62,5 +62,6 @@ export enum UseCase {
     EmailToneAdjustment = 55,
     SocialMediaPost = 56,
     SocialMediaAdGenerator = 57,
-    GoogleSearchAdsGenerator = 58
+    GoogleSearchAdsGenerator = 58,
+    Email = 59
 }

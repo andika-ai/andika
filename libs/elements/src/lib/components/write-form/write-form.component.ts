@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 
 // import * as __ from 'lodash';
 
-import { UseCase } from './usecase.enum';
+import { UseCase } from '@andika/model';
 import { IUseCase } from './usecase.interface';
 import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

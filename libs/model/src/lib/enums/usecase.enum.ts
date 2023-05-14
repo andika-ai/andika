@@ -18,7 +18,7 @@ export enum UseCase {
     BlogIdeaAndOutline= 11,
     CoverLetter = 12,
     ProfileBio=13,
-    ReplyToReviewsAndMassages = 14,
+    ReplyToReviewsAndMessages = 14,
     GrammarCorrection = 15,
     BusinessIdea = 16,
     BusinessIdeaPitch = 17,

@@ -100,11 +100,11 @@ export class SharedWriteFormService {
           usecase: UseCase.Email
         }
 
-      case UseCase.ReplyToReviewsAndMassages:
+      case UseCase.ReplyToReviewsAndMessages:
         return {
           ...payload,
           message: formValues.replyToReviewsOrEmail.message,
-          usecase: UseCase.ReplyToReviewsAndMassages
+          usecase: UseCase.ReplyToReviewsAndMessages
         }
 
       case UseCase.BlogIdeaAndOutline:

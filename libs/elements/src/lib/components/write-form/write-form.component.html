@@ -20,84 +20,84 @@
         </select>
       </div>
     </div>
-    
+
     <div class="flex flex-wrap p-2">
       <div class="w-full px-2">
         <div class="mt-2" [ngSwitch]="currentFormType">
           <div *ngSwitchCase="useCase.YoutubeIdea">
             <andika-youtube-idea-form formGroupName="youtubeIdea"></andika-youtube-idea-form>
           </div>
-          <div *ngSwitchCase="'2'">
+          <div *ngSwitchCase="useCase.YoutubeDescription">
 
             <andika-youtube-video-description-form formGroupName="youtubeDescription">
             </andika-youtube-video-description-form>
           </div>
-          <div *ngSwitchCase="'3'">
+          <div *ngSwitchCase="useCase.YoutubeChannelDescription">
 
             <andika-youtube-channel-description-form formGroupName="youtubeChannelDescription">
             </andika-youtube-channel-description-form>
           </div>
 
-          <div *ngSwitchCase="'4'">
+          <div *ngSwitchCase="useCase.TestimonialAndReview">
 
             <andika-testimonial-and-review-form
               formGroupName="testimonialAndReview"></andika-testimonial-and-review-form>
 
           </div>
-          <div *ngSwitchCase="'5'">
+          <div *ngSwitchCase="useCase.TagLineAndHeadline">
 
             <andika-tagline-headline-form formGroupName="taglineHeadline"></andika-tagline-headline-form>
 
           </div>
 
-          <div *ngSwitchCase="'12'">
+          <div *ngSwitchCase="useCase.CoverLetter">
 
             <andika-cover-letter-form formGroupName="coverLetter"></andika-cover-letter-form>
           </div>
 
-          <div *ngSwitchCase="'10'">
+          <div *ngSwitchCase="useCase.JobDescription">
 
             <andika-job-description-form formGroupName="jobDescription"></andika-job-description-form>
           </div>
 
-          <div *ngSwitchCase="'13'">
+          <div *ngSwitchCase="useCase.ProfileBio">
 
             <andika-profile-bio-form formGroupName="profileBio"></andika-profile-bio-form>
 
           </div>
-          <div *ngSwitchCase="'6'">
+          <div *ngSwitchCase="useCase.StoryPlots">
 
             <andika-story-plots-form formGroupName="storyPlot"></andika-story-plots-form>
 
           </div>
 
-          <div *ngSwitchCase="'7'">
+          <div *ngSwitchCase="useCase.SongLyrics">
 
             <andika-song-idea-form formGroupName="songIdea"></andika-song-idea-form>
 
           </div>
 
-          <div *ngSwitchCase="'9'">
+          <div *ngSwitchCase="useCase.EmailBody">
 
             <andika-email-form formGroupName="email"></andika-email-form>
           </div>
 
-          <div *ngSwitchCase="'8'">
+          <div *ngSwitchCase="useCase.SmsAndNotifications">
 
             <andika-sms-and-notifications-form formGroupName="smsAndNotifications"></andika-sms-and-notifications-form>
           </div>
 
-          <div *ngSwitchCase="'14'">
+          <div *ngSwitchCase="useCase.ReplyToReviewsAndMessages">
             <andika-reply-to-reviews-or-email-form formGroupName="replyToReviewsOrEmail">
             </andika-reply-to-reviews-or-email-form>
           </div>
           <div *ngSwitchCase="useCase.BlogIdeaAndOutline">
             <andika-blog-idea-form formGroupName="blogIdea"></andika-blog-idea-form>
           </div>
-          <div *ngSwitchCase="'15'">
+          <div *ngSwitchCase="useCase.GrammarCorrection">
             <andika-grammer-correction-form formGroupName="grammarCorrection"></andika-grammer-correction-form>
           </div>
-  
+
           <div *ngSwitchDefault>
             <!-- //Show some info message to the user  -->
             <div></div>

@@ -145,7 +145,7 @@ export class WriteFormComponent implements OnInit {
        img: 'assets/icons/content-writing.png'
     },
     {
-      id: UseCase.ReplyToReviewsAndMassages,
+      id: UseCase.ReplyToReviewsAndMessages,
       name: 'Reply to Reviews & Messages',
       info: 'Write responses for messages, reviews, emails & more',
       message: '>>> paste information here and let the bot reply',

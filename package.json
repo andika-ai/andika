@@ -8,7 +8,7 @@
     "build": "nx build",
     "lint": "eslint --ext .js,.ts .",
     "build:watch": "tsc --watch",
-    "deploy": "firebase deploy --only hosting",
+    "deploy": "npm run build && firebase deploy --only hosting",
     "prepare": "is-ci || husky install"
   },
   "private": true,

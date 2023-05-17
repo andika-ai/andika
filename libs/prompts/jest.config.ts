@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'functions',
+  displayName: 'prompts',
   preset: '../../jest.preset.js',
   globals: {},
   transform: {
@@ -12,5 +12,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/functions',
+  coverageDirectory: '../../coverage/libs/prompts',
 };

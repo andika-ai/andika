@@ -33,7 +33,7 @@
         "libs/features/authentication/src/index.ts"
       ],
       "@andika/features/home": ["libs/features/home/src/index.ts"],
-      "@andika/libs/functions": ["libs/functions/src/index.ts"],
+      "@andika/libs/prompts": ["libs/prompts/src/index.ts"],
       "@andika/libs/material": ["libs/material/src/index.ts"],
       "@andika/libs/shared": ["libs/shared/src/index.ts"],
       "@andika/libs/utilities": ["libs/utilities/src/index.ts"],

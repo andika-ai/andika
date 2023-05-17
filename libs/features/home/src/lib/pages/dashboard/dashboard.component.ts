@@ -16,6 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { FormService } from '@andika/libs/shared';
+import { UsecaseService } from '@andika/services';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -24,11 +25,36 @@ import { FormService } from '@andika/libs/shared';
 export class DashboardComponent implements OnInit {
   faPlus = faPlus;
   usecase = UseCase;
-
+  usecases: any[];
   
-  constructor(private router: Router, private formService: FormService) { }
+
+  filterCategory = '';
+  
+  constructor(
+    private router: Router,
+    private formService: FormService,
+    private _usecaseService: UsecaseService) { }
 
   ngOnInit() {
+    this.getUseCaseData();
+  }
+
+  get filteredUseCases() {
+    if (this.filterCategory.trim() === '') {
+      return this.usecases;
+    } else {
+      return this.usecases.filter(usecase =>
+        usecase.category.toLowerCase().includes(this.filterCategory.toLowerCase())
+      );
+    }
+  }
+
+  getUseCaseData() {
+    this._usecaseService.getData().subscribe((data: any) => {
+      // Handle the API response here
+      this.usecases = data;
+      console.log(data);
+    });
   }
 
   navigateToEditor(formType: UseCase) {

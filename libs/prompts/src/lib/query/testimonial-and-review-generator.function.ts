@@ -12,9 +12,9 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const generateTagLineHeadline = (req: any, res: Response) => {
+const generateTestimonialAndReview = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { keyPoints, tone, variants, creativityLevel, language  } = req.body;
+        const { productName, reviewTitle, tone, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
@@ -22,11 +22,11 @@ const generateTagLineHeadline = (req: any, res: Response) => {
     
         const prompt=
         // `Please paraphrase the following text:\n\n${text}\n\n
-                `Generate a tagline and headline based on the following key points ${keyPoints}, in the language of ${language}, with a tone that is ${tone}.
-                Generate ${variants} variants of the tagline and headline, with a creativity level of ${creativityLevel}.
-                Make sure to include key words and phrases that accurately reflect the brand or product being promoted.
-                Also, make sure that the tagline and headline are concise and easily understandable by the target audience. Use persuasive language to create a sense of urgency and inspire the audience to take action.
-                Lastly, ensure that the tagline and headline are unique and memorable in order to make a lasting impression.`
+                `Generate a testimonial or review  for ${productName} with a review title of ${reviewTitle}, in the language of ${language}, with a tone that is ${tone}.
+                Generate ${variants} variants of the testimonial or review, with a creativity level of ${creativityLevel}.
+                Make sure to include specific details and examples about the product or service being reviewed.
+                Also, highlight the key benefits and features of the product or service that you found useful.
+                Use persuasive language to encourage others to try the product or service. Lastly, include your overall rating and recommendation for the product or service.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -49,4 +49,4 @@ const generateTagLineHeadline = (req: any, res: Response) => {
 
 };
 
-exports.generateTagLineHeadline  = functions.https.onRequest(generateTagLineHeadline);
+exports.generateTestimonialAndReview  = functions.https.onRequest(generateTestimonialAndReview);

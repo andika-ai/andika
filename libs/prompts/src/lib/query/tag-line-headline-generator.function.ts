@@ -12,20 +12,21 @@ const configuration = new Configuration({
 const openAI = new OpenAIApi(configuration);
 
 
-const generateBrandName = (req: any, res: Response) => {
+const generateTagLineHeadline = (req: any, res: Response) => {
     cors(req,res, async() => {
-        const { description, tone, usecase, variants, creativityLevel, language  } = req.body;
+        const { keyPoints, tone, language  } = req.body;
         if(!req.body) {
             res.status(400).json({status: 'error', message: 'text is missing in request'});
             return;
         }
     
-        const prompt =`Please generate ${variants} brand names in ${language} that align with the tone and message of ${description}.
-                        The brand names should be suitable for ${usecase}.
-                        In terms of tone, the brand name should be ${tone}.
-                        Please make sure that the brand name is unique and not already in use by another company. Additionally, please provide a brief explanation for each brand name, describing how it aligns with the ${description}.
-                        In terms of creativity, please aim for a level of ${creativityLevel} to ensure that the brand names are unique and memorable.
-                        Please make sure that the brand name should be easy to pronounce and spell and it should be easy to remember and easy to be registered as a domain name.`
+        const prompt=
+        // `Please paraphrase the following text:\n\n${text}\n\n
+                `Generate a tagline and headline based on the following key points ${keyPoints}, in the language of ${language}, with a tone that is ${tone}.
+                Generate ${variants} variants of the tagline and headline, with a creativity level of ${creativityLevel}.
+                Make sure to include key words and phrases that accurately reflect the brand or product being promoted.
+                Also, make sure that the tagline and headline are concise and easily understandable by the target audience. Use persuasive language to create a sense of urgency and inspire the audience to take action.
+                Lastly, ensure that the tagline and headline are unique and memorable in order to make a lasting impression.`
         try {
             const completion = await openAI.createCompletion({
                 model: "text-davinci-003",
@@ -34,8 +35,7 @@ const generateBrandName = (req: any, res: Response) => {
                 max_tokens: 60,
                 top_p: 1.0,
                 frequency_penalty: 0.0,
-                presence_penalty: 0.0,
-                // n: number of variations
+                presence_penalty: 0.0
             });
             res.status(200).send({
                 status: 'success',
@@ -49,4 +49,4 @@ const generateBrandName = (req: any, res: Response) => {
 
 };
 
-exports.generateBrandName = functions.https.onRequest(generateBrandName);
+exports.generateTagLineHeadline  = functions.https.onRequest(generateTagLineHeadline);

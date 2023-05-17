@@ -1,21 +1,21 @@
 {
-  "name": "functions",
+  "name": "prompts",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/functions/src",
+  "sourceRoot": "libs/prompts/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/functions/**/*.ts"]
+        "lintFilePatterns": ["libs/prompts/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/functions/jest.config.ts",
+        "jestConfig": "libs/prompts/jest.config.ts",
         "passWithNoTests": true
       }
     },

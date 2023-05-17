@@ -17,8 +17,7 @@ export class SharedWriteFormService {
       language: formValues.language,
       tone: formValues.tone,
       usecase: formValues.usecase,
-      creativityLevel: formValues.creativityLevel,
-      numberOfVariants: formValues.numberOfVariants,
+
     };
 
     switch (Number(usecase)) {

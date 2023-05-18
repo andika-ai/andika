@@ -20,9 +20,11 @@ export class RegisterComponent implements OnInit {
   }
 
   _initializeForm() {
-    this.form = this._fb.group({
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-    });
+    // this.form = this._fb.group({
+    //   email: new FormControl(null, Validators.required),
+    //   password: new FormControl(null, Validators.required),
+    // });
+    // google auth token
+    // this.authService.getToken()
   }
 }

@@ -1,3 +1,4 @@
+
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '@andika/model';
 import * as auth from 'firebase/auth';
@@ -7,14 +8,19 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+
+import {GoogleUserProfile} from '@andika/model';
+import {BackendUserService} from  '@andika/services'
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  googleCurrentUser: any;
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
+    private _backendUserService: BackendUserService,
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
@@ -31,6 +37,8 @@ export class AuthService {
       }
     });
   }
+
+
   // Sign in with email/password
   signIn(email: string, password: string) {
     return this.afAuth
@@ -50,18 +58,44 @@ export class AuthService {
   }
   // Sign up with email/password
   signUp(email: string, password: string) {
+    // we dont want to createuser in firebase so this should be scrapped
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
+      .then((result: any) => {
+        // Call the sendVerificationMail() function when a new user signs up and returns a promise
         this.sendVerificationMail();
-        this.setUserData(result.user);
+        
+        // Save user data to your server or make API requests
+        // const userData = {
+        //   email: result.user.email,
+        //   userId: result.user.uid,
+        //   // Include any additional user data you want to save
+        //   auth_token: result.user.getIdToken() // Include the authentication token as part of the user data
+        // };
+  
+        // Make an API request to save user data
+
+        // this._backendUserService.saveUserData(userData).subscribe({
+        //   next: (response) => {
+        //     // Handle the response from the API call
+        //     console.log(response);
+        //     // Perform any additional actions or logic based on the response
+        //   },
+        //   error: (error) => {
+        //     // Handle errors that occurred during the API call
+        //     console.error(error);
+        //     window.alert(error.message);
+        //     // Display error messages or perform error-specific actions
+        //   }
+        // });
+
+
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
+  
   // Send email verfificaiton when new user sign up
   sendVerificationMail() {
     return this.afAuth.currentUser
@@ -87,13 +121,39 @@ export class AuthService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
   // Sign in with Google
-  googleAuth() {
-    return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['editor']);
-    }, err=>{
-      alert(err.message)
+googleAuth() {
+  return this.authLogin(new auth.GoogleAuthProvider())
+    .then((res: any) => {
+      this.afAuth.currentUser.then((res: any)=>{
+            const token = JSON.parse(JSON.stringify(res))?.stsTokenManager.accessToken;
+            const email = JSON.parse(JSON.stringify(res))?.email;
+      
+            const userData = {
+              email: email,
+              auth_token: token
+            };
+
+            this._backendUserService.saveUserData(userData).subscribe({
+              next: (response) => {
+                console.log(response);
+                // Perform any additional actions or logic based on the response
+              },
+              error: (error) => {
+                console.error(error);
+                window.alert(error.message);
+                // Display error messages or perform error-specific actions
+              },
+              complete: () => {
+                // Code to execute after the subscription is complete
+                this.router.navigate(['dashboard']);
+              }
+            });
+      });
+    })
+    .catch(err => {
+      alert(err.message);
     });
-  }
+}
 
   // Sign in with Facebook
   facebookAuth() {
@@ -124,10 +184,13 @@ export class AuthService {
         window.alert(error);
       });
   }
-  /* Setting up user data when sign in with username/password, 
+  /* 
+  @description: Dave the use to the database in the server
+  Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   setUserData(user: any) {
+
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );

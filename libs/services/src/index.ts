@@ -9,3 +9,6 @@ export * from './lib/pricing-plan/pricing-plan.service';
 export * from './lib/usecase/usecase.service';
 
 export * from './lib/prompt/prompt.service';
+
+
+export * from './lib/authentication/backend-user.service'

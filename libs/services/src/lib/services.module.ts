@@ -8,6 +8,7 @@ import { UserService } from './user/user.service';
 import { PricingPlanService } from './pricing-plan/pricing-plan.service';
 import { UsecaseService } from './usecase/usecase.service';
 import { PromptService } from './prompt/prompt.service';
+import { BackendUserService } from './authentication/backend-user.service';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PromptService } from './prompt/prompt.service';
     UserService,
     PricingPlanService,
     UsecaseService,
-    PromptService
+    PromptService,
+    BackendUserService
   ]
 })
 export class ServicesModule {}

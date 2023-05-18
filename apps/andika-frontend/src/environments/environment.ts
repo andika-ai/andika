@@ -8,10 +8,10 @@ const FB_PROJECT_ID = '<FIREBASE_PROJECT_ID>';
 export const environment = {
     production: false,
     auth: {
-        clientId: '<AUTH0_CLIENT_ID>',
-        clientDomain: '<AUTH0_DOMAIN>', // e.g., you.auth0.com
+        clientId: '805088813720-92a4bja15dmce0hj1g4ru29t7ghgm938.apps.googleusercontent.com',
+        clientDomain: 'https://andika-16cf6.web.app/', // e.g., you.auth0.com
         audience: '<AUTH0_API_AUDIENCE>', // e.g., http://localhost:1337/
-        redirect: 'http://localhost:4200/callback',
+        redirect: 'http://localhost:4200/dashboard',
         scope: 'openid profile email'
     },
   firebase: {

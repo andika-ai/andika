@@ -1,4 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { RouterModule } from '@angular/router';
 import { PricingPlanTableComponent } from './components/tables/pricing-plan-table/pricing-plan-table.component';
 import { PricingComponent } from './../../../pages/src/lib/components/pricing/pricing.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
@@ -57,7 +58,7 @@ import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component
     ClipboardModule,
     FontAwesomeModule,
     MaterialModule,
-    
+    RouterModule,
     QuillModule,
     ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [

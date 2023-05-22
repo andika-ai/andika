@@ -1,4 +1,3 @@
-
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '@andika/model';
 import * as auth from 'firebase/auth';
@@ -9,14 +8,21 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 
-import {GoogleUserProfile} from '@andika/model';
-import {BackendUserService} from  '@andika/services'
+import { GoogleUserProfile } from '@andika/model';
+import { BackendUserService } from '@andika/services';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
   googleCurrentUser: any;
+
+  private actionCodeSettings = {
+    // Customize the URL where the user will be redirected after clicking the sign-in link
+    url: 'https://https://andika-16cf6.web.app/login',
+    // This must be set to true for email link sign-in
+    handleCodeInApp: true,
+  };
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -38,22 +44,61 @@ export class AuthService {
     });
   }
 
+  getToken() {
+    // this.afAuth.idToken.subscribe(tk=>{
+    //   console.log(tk)
+    // })
+
+    // Create a new instance of the FacebookAuthProvider
+    const provider = new auth.FacebookAuthProvider();
+    // Sign in with Facebook using a popup window
+    this.afAuth.signInWithPopup(provider).then((result) => {
+      // The user has been successfully authenticated with Facebook
+      // You can access the user's information through the `result` object
+      const user = result.user;
+      console.log('Authenticated user:', user);
+    });
+  }
+
+  sendSignInLink(email: any){
+    return this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings)
+    .then(() => {
+      // The link was successfully sent. Inform the user.
+      // Save the email locally so you don't need to ask the user for it again
+      // if they open the link on the same device.
+      window.localStorage.setItem('emailForSignIn', email);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // Handle the error appropriately
+      // ...
+    });
+
+  }
+
+
 
   // Sign in with email/password
   signIn(email: string, password: string) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.setUserData(result.user);
-        this.afAuth.authState.subscribe((user) => {
-          if (user) {
-            this.router.navigate(['editor']);
-          }
-        });
-      })
-      .catch((error) => {
-        // window.alert(error.message);
-        window.alert('Try Log In with Google button Instead')
+    return this._backendUserService
+      .userEmailLogin({ email: email, password: password })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          alert('success');
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {},
+
+        // this.afAuth.authState.subscribe((user) => {
+        //   if (user) {
+        //     this.router.navigate(['editor']);
+        //   }
+        // });
       });
   }
   // Sign up with email/password
@@ -64,7 +109,7 @@ export class AuthService {
       .then((result: any) => {
         // Call the sendVerificationMail() function when a new user signs up and returns a promise
         this.sendVerificationMail();
-        
+
         // Save user data to your server or make API requests
         // const userData = {
         //   email: result.user.email,
@@ -72,7 +117,7 @@ export class AuthService {
         //   // Include any additional user data you want to save
         //   auth_token: result.user.getIdToken() // Include the authentication token as part of the user data
         // };
-  
+
         // Make an API request to save user data
 
         // this._backendUserService.saveUserData(userData).subscribe({
@@ -88,14 +133,12 @@ export class AuthService {
         //     // Display error messages or perform error-specific actions
         //   }
         // });
-
-
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
-  
+
   // Send email verfificaiton when new user sign up
   sendVerificationMail() {
     return this.afAuth.currentUser
@@ -121,88 +164,111 @@ export class AuthService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
   // Sign in with Google
-googleAuth() {
-  return this.authLogin(new auth.GoogleAuthProvider())
-    .then((res: any) => {
-      this.afAuth.currentUser.then((res: any)=>{
-            const token = JSON.parse(JSON.stringify(res))?.stsTokenManager.accessToken;
-            const email = JSON.parse(JSON.stringify(res))?.email;
-      
-            const userData = {
-              email: email,
-              auth_token: token
-            };
+  googleAuth() {
+    return this.afAuth
+      .signInWithPopup(new auth.GoogleAuthProvider())
+      .then((res: any) => {
+        this.afAuth.currentUser.then((res: any) => {
+          const token = JSON.parse(JSON.stringify(res))?.stsTokenManager
+            .accessToken;
+          const email = JSON.parse(JSON.stringify(res))?.email;
+          console.log(token);
+          console.log(email);
+          const userData = {
+            pricing_plan: 'BASIC',
+            auth_token: token,
+          };
 
-            this._backendUserService.saveUserData(userData).subscribe({
-              next: (response) => {
-                console.log(response);
-                // Perform any additional actions or logic based on the response
-              },
-              error: (error) => {
-                console.error(error);
-                window.alert(error.message);
-                // Display error messages or perform error-specific actions
-              },
-              complete: () => {
-                // Code to execute after the subscription is complete
-                this.router.navigate(['dashboard']);
-              }
-            });
+          this.setUserData(userData);
+        });
+      })
+      .catch((err) => {
+        alert(err.message);
       });
-    })
-    .catch(err => {
-      alert(err.message);
-    });
-}
+  }
 
   // Sign in with Facebook
   facebookAuth() {
-    return this.authLogin(new auth.FacebookAuthProvider()).then((res: any) => {
-      this.router.navigate(['editor']);
-    }, err=>{
-      alert(err.message)
-    });
+    // Create a new instance of the FacebookAuthProvider
+    const provider = new auth.FacebookAuthProvider();
+    // Sign in with Facebook using a popup window
+    return this.afAuth
+      .signInWithPopup(provider)
+      .then((result) => {
+        // The user has been successfully authenticated with Facebook
+        // You can access the user's information through the `result` object
+        const user = result.user;
+        const token = JSON.parse(JSON.stringify(user))?.stsTokenManager
+          .accessToken;
+        // console.log("Authenticated user:", user);
+        const userData = {
+          pricing_plan: 'BASIC',
+          auth_token: token,
+        };
+        // ///set user data
+        this.setUserData(userData);
+        // Perform any additional actions or navigate to a new page if needed
+        // ...
+      })
+      .catch((error) => {
+        // An error occurred during the Facebook authentication process
+        console.error('Facebook authentication error:', error);
+      });
   }
 
   // Sign in with twitter
   twitterAuth() {
-    return this.authLogin(new auth.TwitterAuthProvider()).then((res: any) => {
-      this.router.navigate(['editor']);
-    }, err=>{
-      alert(err.message)
-    });
-  }
-  // Auth logic to run auth providers
-  authLogin(provider: any) {
+    const provider = new auth.TwitterAuthProvider();
+    // Sign in with Twitter using a popup window
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['editor']);
-        this.setUserData(result.user);
+        // The user has been successfully authenticated with Facebook
+        // You can access the user's information through the `result` object
+        const user = result.user;
+        const token = JSON.parse(JSON.stringify(user))?.stsTokenManager
+          .accessToken;
+        // console.log("Authenticated user:", user);
+        const userData = {
+          pricing_plan: 'BASIC',
+          auth_token: token,
+        };
+        // ///set user data
+        this.setUserData(userData);
+        // Perform any additional actions or navigate to a new page if needed
+        // ...
       })
       .catch((error) => {
-        window.alert(error);
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // An error occurred during the Facebook authentication process
+        console.error('Facebook authentication error:', error);
       });
   }
+
   /* 
   @description: Dave the use to the database in the server
   Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  setUserData(user: any) {
-
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
-    return userRef.set(userData, {
-      merge: true,
+  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service SAVE TO DATABASE*/
+  setUserData(userData: any) {
+    this._backendUserService.saveNewSocialUser(userData).subscribe({
+      next: (response) => {
+        console.log(response);
+        // Perform any additional actions or logic based on the response
+      },
+      error: (error) => {
+        console.error(error);
+        window.alert(error.message);
+        // Display error messages or perform error-specific actions
+      },
+      complete: () => {
+        // Code to execute after the subscription is complete
+        this.router.navigate(['dashboard']);
+      },
     });
   }
   // Sign out
@@ -212,5 +278,4 @@ googleAuth() {
       this.router.navigate(['login']);
     });
   }
-
 }

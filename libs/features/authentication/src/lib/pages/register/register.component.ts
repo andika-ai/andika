@@ -25,6 +25,6 @@ export class RegisterComponent implements OnInit {
     //   password: new FormControl(null, Validators.required),
     // });
     // google auth token
-    // this.authService.getToken()
+    this.authService.getToken()
   }
 }

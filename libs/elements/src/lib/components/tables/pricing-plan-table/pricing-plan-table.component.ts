@@ -88,16 +88,16 @@ export class PricingPlanTableComponent implements OnInit, AfterViewInit, OnDestr
   }
 
 getPricingPlanList(){
-  this._sbS.sink =  this._pricingPlanService.getPricingPlans().subscribe((plans: PricingPlan[])=>{
-    this.pricingPlans = plans;
-    this.dataSource = new MatTableDataSource(this.pricingPlans);
-  });
+  // this._sbS.sink =  this._pricingPlanService.getPricingPlans().subscribe((plans: PricingPlan[])=>{
+  //   this.pricingPlans = plans;
+  //   this.dataSource = new MatTableDataSource(this.pricingPlans);
+  // });
 }
 
 ngOnDestroy(): void {
   //Called once, before the instance is destroyed.
   //Add 'implements OnDestroy' to the class.
-  this._sbS.unsubscribe();
+  // this._sbS.unsubscribe();
 }
 
 

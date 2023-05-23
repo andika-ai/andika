@@ -10,7 +10,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
-  constructor(private _fb: FormBuilder, public authService: AuthService) { 
+  constructor(private _fb: FormBuilder) { 
     this._initializeForm();
   }
 
@@ -25,6 +25,6 @@ export class RegisterComponent implements OnInit {
     //   password: new FormControl(null, Validators.required),
     // });
     // google auth token
-    this.authService.getToken()
+    // this.authService.getToken()
   }
 }

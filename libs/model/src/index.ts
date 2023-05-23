@@ -4,7 +4,7 @@ export * from './lib/subscriptions/subscription-status.interface';
 export * from './lib/subscriptions/subscription.interface';
 export * from './lib/token-transaction.interface';
 export * from './lib/token-usage.interface';
-export * from './lib/user.interface';
+export * from './lib/users/user.interface';
 export * from './lib/subscriptions/subscription-period.interface';
 export * from './lib/payment-status.interface';
 export * from './lib/subscriptions/subscription-plan.interface';
@@ -31,4 +31,4 @@ export * from './lib/pricing-plan/plan-plan.model';
 
 
 
-export * from './lib/google/user-profile.interface';
+

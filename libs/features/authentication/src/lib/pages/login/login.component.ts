@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,64 +15,31 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SubSink } from 'subsink';
+import { User } from '@andika/model';
 
 @Component({
   selector: 'andika-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   faCoffee = faCoffee;
   form!: FormGroup;
   email: string;
+  submitting = false;
+  _subs  = new SubSink();
   constructor(
     private _fb: FormBuilder,
     public authService: AuthService,
     private afAuth: AngularFireAuth,
-    private route: ActivatedRoute,
-    private router: Router
+    private _router: Router
   ) {
-    this._initializeForm();
+    
   }
 
-  async ngOnInit() {
-    // Check if the email link is a sign-in with email link
-    if (await this.afAuth.isSignInWithEmailLink(window.location.href)) {
-      // Get the saved email from local storage
-      const email = window.localStorage.getItem('emailForSignIn');
-
-      if (!email) {
-        // Redirect to error page or show an error message if the email is not available
-        this.router.navigate(['error']);
-        return;
-      }
-
-      try {
-        // Sign in with the email link
-        const result = await this.afAuth.signInWithEmailLink(
-          email,
-          window.location.href
-        );
-
-        // Clear email from storage
-        window.localStorage.removeItem('emailForSignIn');
-
-        // Retrieve user details from result.user
-        const user = result.user;
-        // Access user properties like user.displayName, user.email, etc.
-
-        // Redirect to desired page
-        this.router.navigate(['dashboard']);
-      } catch (error) {
-        // Handle the error appropriately
-        console.error(error);
-        // Redirect to error page or show an error message
-        this.router.navigate(['error']);
-      }
-    } else {
-      // Redirect to error page or show an error message if the link is not a valid sign-in with email link
-      this.router.navigate(['error']);
-    }
+  ngOnInit() {
+    this._initializeForm();
   }
 
   // Other methods and properties for regular email/password sign-in
@@ -86,7 +53,37 @@ export class LoginComponent implements OnInit {
     return this.form;
   }
 
-  login() {
-    this.authService.signIn(this.form.value.email, this.form.value.password);
+
+  submitForm() {
+    if (this.form.valid) {
+      this.submitting = true; // Set the submitting flag to true
+
+      // Perform the form submission or API call
+      const sub = this.authService
+        .signIn(this.form.value.email, this.form.value.password)
+        .subscribe({
+          next: (res: User) => {
+            window.localStorage.setItem('user', JSON.stringify(res));
+            // Handle the success scenario
+            this.submitting = false; // Set the submitting flag back to false
+            this._subs.add(sub)
+            // Handle the result or redirect to a new page
+            //set items user then redirect
+            this._router.navigate(['dashboard']);
+          },
+          error: (error) => {
+            console.log(error);
+          },
+        });
+    }
   }
+
+  ngOnDestroy(){
+    this.authService.unsubscribeAll(); 
+    this._subs.unsubscribe();
+  }
+
+
+
+
 }

@@ -1,4 +1,4 @@
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 import { SubscriptionPeriod } from './subscription-period.interface';
 
 export interface Invoice {
@@ -7,8 +7,8 @@ export interface Invoice {
     amount: number;
     subscription_id: number;
     paymentMethod: string;
-    date: firebase.firestore.Timestamp;
-    dateDue: firebase.firestore.Timestamp;
+    date: Date;
+    dateDue: Date;
     isPaid: boolean;
     subscriptionPeriod: SubscriptionPeriod;
   }

@@ -1,14 +1,13 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '@andika/model';
 import * as auth from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
 
-import { GoogleUserProfile } from '@andika/model';
+import { from } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { SubSink } from 'subsink';
+
 import { BackendUserService } from '@andika/services';
 @Injectable({
   providedIn: 'root',
@@ -17,12 +16,8 @@ export class AuthService {
   userData: any; // Save logged in user data
   googleCurrentUser: any;
 
-  private actionCodeSettings = {
-    // Customize the URL where the user will be redirected after clicking the sign-in link
-    url: 'https://https://andika-16cf6.web.app/login',
-    // This must be set to true for email link sign-in
-    handleCodeInApp: true,
-  };
+  private _subs = new SubSink();
+
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -60,48 +55,11 @@ export class AuthService {
     });
   }
 
-  sendSignInLink(email: any){
-    return this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings)
-    .then(() => {
-      // The link was successfully sent. Inform the user.
-      // Save the email locally so you don't need to ask the user for it again
-      // if they open the link on the same device.
-      window.localStorage.setItem('emailForSignIn', email);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // Handle the error appropriately
-      // ...
-    });
-
-  }
-
-
-
   // Sign in with email/password
   signIn(email: string, password: string) {
-    return this._backendUserService
-      .userEmailLogin({ email: email, password: password })
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          alert('success');
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {},
-
-        // this.afAuth.authState.subscribe((user) => {
-        //   if (user) {
-        //     this.router.navigate(['editor']);
-        //   }
-        // });
-      });
+    return from(this._backendUserService.userEmailLogin({ email, password }));
   }
-  // Sign up with email/password
+  // Sign up with email/password when user is registering
   signUp(email: string, password: string) {
     // we dont want to createuser in firebase so this should be scrapped
     return this.afAuth
@@ -161,7 +119,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.is_verified !== false ? true : false;
   }
   // Sign in with Google
   googleAuth() {
@@ -206,9 +164,7 @@ export class AuthService {
           auth_token: token,
         };
         // ///set user data
-        this.setUserData(userData);
-        // Perform any additional actions or navigate to a new page if needed
-        // ...
+        return this._backendUserService.saveNewSocialUser(userData);
       })
       .catch((error) => {
         // An error occurred during the Facebook authentication process
@@ -217,47 +173,44 @@ export class AuthService {
   }
 
   // Sign in with twitter
-  twitterAuth() {
-    const provider = new auth.TwitterAuthProvider();
-    // Sign in with Twitter using a popup window
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        // The user has been successfully authenticated with Facebook
-        // You can access the user's information through the `result` object
-        const user = result.user;
-        const token = JSON.parse(JSON.stringify(user))?.stsTokenManager
-          .accessToken;
-        // console.log("Authenticated user:", user);
-        const userData = {
-          pricing_plan: 'BASIC',
-          auth_token: token,
-        };
-        // ///set user data
-        this.setUserData(userData);
-        // Perform any additional actions or navigate to a new page if needed
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // An error occurred during the Facebook authentication process
-        console.error('Facebook authentication error:', error);
-      });
-  }
+  // twitterAuth() {
+  //   const provider = new auth.TwitterAuthProvider();
+  //   // Sign in with Twitter using a popup window
+  //   return this.afAuth
+  //     .signInWithPopup(provider)
+  //     .then((result) => {
+  //       // The user has been successfully authenticated with Facebook
+  //       // You can access the user's information through the `result` object
+  //       const user = result.user;
+  //       const token = JSON.parse(JSON.stringify(user))?.stsTokenManager
+  //         .accessToken;
+  //       // console.log("Authenticated user:", user);
+  //       const userData = {
+  //         pricing_plan: 'BASIC',
+  //         auth_token: token,
+  //       };
+  //       // ///set user data
+  //       this.setUserData(userData);
+  //       // Perform any additional actions or navigate to a new page if needed
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       const email = error.customData.email;
+  //       // An error occurred during the Facebook authentication process
+  //       console.error('Facebook authentication error:', error);
+  //     });
+  // }
 
-  /* 
-  @description: Dave the use to the database in the server
-  Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service SAVE TO DATABASE*/
+  /* @description: Dave the use to the database in the server*/
   setUserData(userData: any) {
-    this._backendUserService.saveNewSocialUser(userData).subscribe({
+    const sub = this._backendUserService.saveNewSocialUser(userData).subscribe({
       next: (response) => {
         console.log(response);
+        this._subs.add(sub);
         // Perform any additional actions or logic based on the response
       },
       error: (error) => {
@@ -271,11 +224,19 @@ export class AuthService {
       },
     });
   }
-  // Sign out
+  /**
+   *
+   * @description signout the user
+   */
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });
+  }
+
+  // Call this method to unsubscribe from all subscriptions
+  public unsubscribeAll() {
+    this._subs.unsubscribe();
   }
 }

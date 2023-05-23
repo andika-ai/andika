@@ -9,8 +9,8 @@ import { MaterialModule } from '@andika/libs/material'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PricingComponent } from './components/pricing/pricing.component';
-import { ResourcesComponent } from './components/resources/resources.component';
-import { SupportComponent } from './components/support/support.component';
+// import { ResourcesComponent } from './components/resources/resources.component';
+// import { SupportComponent } from './components/support/support.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,11 +21,11 @@ import { SupportComponent } from './components/support/support.component';
   ],
 
   declarations: [
-    IntergrationComponent,
+    // IntergrationComponent,
     PricingComponent,
-    CheckoutComponent,
-    ResourcesComponent,
-    SupportComponent
+    // CheckoutComponent,
+    // ResourcesComponent,
+    // SupportComponent
 
   ]
 })

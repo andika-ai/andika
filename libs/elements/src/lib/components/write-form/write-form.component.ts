@@ -7,7 +7,7 @@ import { IUseCase } from './usecase.interface';
 import { SharedWriteFormService } from '../../services/shared-write-form/shared-write-form.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../services/snackbar/snack-bar.service';
-import { OpenaiService, PromptService } from '@andika/services';
+// import { OpenaiService, PromptService } from '@andika/services';
 
 import { FormService } from '@andika/libs/shared';
 
@@ -47,7 +47,7 @@ export class WriteFormComponent implements OnInit {
     private formService: FormService,
     private router: Router,
     private route: ActivatedRoute,
-    private _promptService: PromptService,
+    // private _promptService: PromptService,
     private _snackBarService: SnackBarService,
     private _fb: FormBuilder,
     private _sharedForm: SharedWriteFormService,
@@ -144,28 +144,28 @@ export class WriteFormComponent implements OnInit {
       complete: The complete parameter is a function that handles the completion of the Observable. When the Observable completes its emission of values, this function is called. It signifies that the Observable has finished its execution. You can use this function to perform any cleanup tasks or final actions after the Observable completes.
      */
     this.isTyping = true;
-    this._promptService.postPrompt(payload).subscribe({
-      next: (res: any) => {
-        // Handle next value
-        if(res){
-          this.isTyping = false;
-          this.promptResponse.emit(res.choices[0].message.content)
-        }
+    // this._promptService.postPrompt(payload).subscribe({
+    //   next: (res: any) => {
+    //     // Handle next value
+    //     if(res){
+    //       this.isTyping = false;
+    //       this.promptResponse.emit(res.choices[0].message.content)
+    //     }
       
-      },
-      error: (msg: any) => {
-        // Handle error
-        this.isTyping = false;
-        console.log('---------------------')
-        console.log(msg.error.data.detail)
-        this._snackBarService.openSnackBar(
-          'Token Limit Exceeded!',` ${msg.error.data.detail}`,
-          'Okey', 'center', 'top', 'red-snackbar');
-      },
-      complete: () => {
-        // Handle completion
-      }
-    });
+    //   },
+    //   error: (msg: any) => {
+    //     // Handle error
+    //     this.isTyping = false;
+    //     console.log('---------------------')
+    //     console.log(msg.error.data.detail)
+    //     this._snackBarService.openSnackBar(
+    //       'Token Limit Exceeded!',` ${msg.error.data.detail}`,
+    //       'Okey', 'center', 'top', 'red-snackbar');
+    //   },
+    //   complete: () => {
+    //     // Handle completion
+    //   }
+    // });
     }
 
 

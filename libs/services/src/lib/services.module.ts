@@ -1,8 +1,8 @@
-import { OrgTokenManagementService } from './org-token-management/org-token-management.service';
+// import { OrgTokenManagementService } from './org-token-management/org-token-management.service';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { OpenaiService } from './openai/openai.service';
+// import { OpenaiService } from './openai/openai.service';
 import { SubscriptionService } from './subscription/subscription.service';
 import { UserService } from './user/user.service';
 import { PricingPlanService } from './pricing-plan/pricing-plan.service';
@@ -14,8 +14,8 @@ import { BackendUserService } from './authentication/backend-user.service';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
-    OpenaiService,
-    OrgTokenManagementService,
+    // OpenaiService,
+    // OrgTokenManagementService,
     SubscriptionService,
     UserService,
     PricingPlanService,

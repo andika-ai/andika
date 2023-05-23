@@ -18,7 +18,7 @@ import {
   faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { OrgTokenManagementService } from 'libs/services/src/lib/org-token-management/org-token-management.service';
+// import { OrgTokenManagementService } from 'libs/services/src/lib/org-token-management/org-token-management.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -32,7 +32,7 @@ export class AdminNavbarComponent implements OnInit {
   showOptions = false;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  constructor(private _router: Router, private _authService: AuthService, private org: OrgTokenManagementService, private darkModeService: DarkModeService) { }
+  constructor(private _router: Router, private _authService: AuthService, private darkModeService: DarkModeService) { }
 
   ngOnInit() {
   }

@@ -77,14 +77,14 @@ export class PricingPlanComponent implements OnInit {
   onSubmit() {
     const pricingPlan: PricingPlan = this.pricingPlanForm?.value;
     
-    this._pricingPlanService.addPricingPlan(pricingPlan)
-      .then(res=>{
-        console.log('created')
-        console.log(res)
-      })
-      .catch(error=>{
-        this.responseMessage = error.message;
-      })
+    // this._pricingPlanService.addPricingPlan(pricingPlan)
+    //   .then(res=>{
+    //     console.log('created')
+    //     console.log(res)
+    //   })
+    //   .catch(error=>{
+    //     this.responseMessage = error.message;
+    //   })
   }
 
 

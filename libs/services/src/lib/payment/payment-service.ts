@@ -1,11 +1,14 @@
+// import { Injectable } from '@angular/core';
 import { PaymentMethod, PaymentStatus, SubscriptionPlan } from "@andika/model";
-import { UserService } from "../user/user.service";
+// import { UserService } from "../user/user.service";
 
 export class PaymentService {
-    private userService: UserService;
+    // private userService: UserService;
 
-    constructor(userService: UserService) {
-        this.userService = userService;
+    constructor(
+        // userService: UserService
+        ) {
+        // this.userService = userService;
     }
 
     /**
@@ -15,51 +18,51 @@ export class PaymentService {
      * @param paymentMethod - the payment method the user is using (Stripe or Mpesa)
      * @returns a PaymentStatus indicating the success or failure of the payment
      */
-    public async processPayment(userId: string, subscriptionPlan: string, paymentMethod: string): Promise<PaymentStatus> {
-        const user = await this.userService.getUserById(userId);
-        // if (!user) {
-        //     return PaymentStatus.UserNotFound;
-        // }
+  //   public async processPayment(userId: string, subscriptionPlan: string, paymentMethod: string): Promise<PaymentStatus> {
+  //       const user = await this.userService.getUserById(userId);
+  //       // if (!user) {
+  //       //     return PaymentStatus.UserNotFound;
+  //       // }
 
-        if (paymentMethod === PaymentMethod.BANK) {
-            // implement logic to process payment with Stripe
-        } else if (paymentMethod === PaymentMethod.MPESA) {
-            // implement logic to process payment with Mpesa
-        }
+  //       if (paymentMethod === PaymentMethod.BANK) {
+  //           // implement logic to process payment with Stripe
+  //       } else if (paymentMethod === PaymentMethod.MPESA) {
+  //           // implement logic to process payment with Mpesa
+  //       }
 
-        // update user's subscription status and subscription dates in the database
+  //       // update user's subscription status and subscription dates in the database
 
-        return PaymentStatus.SUCCESS;
-    }
+  //       return PaymentStatus.SUCCESS;
+  //   }
      
-      async handleBankPayment(
-    amount: number,
-    currency: string,
-    source: string
-  ): Promise<void> {
-    // const charge = await this.stripe.charges.create({
-    //   amount,
-    //   currency,
-    //   source,
-    //   description: 'AI Writing Assistant Subscription',
-    // });
+  //     async handleBankPayment(
+  //   amount: number,
+  //   currency: string,
+  //   source: string
+  // ): Promise<void> {
+  //   // const charge = await this.stripe.charges.create({
+  //   //   amount,
+  //   //   currency,
+  //   //   source,
+  //   //   description: 'AI Writing Assistant Subscription',
+  //   // });
 
-    // console.log(`Stripe payment succeeded with charge id: ${charge.id}`);
-  }
+  //   // console.log(`Stripe payment succeeded with charge id: ${charge.id}`);
+  // }
     
     
-      async handleMpesaPayment(phoneNumber: string, amount: number): Promise<void> {
-    // try {
-    //   const response = await axios.post(process.env.MPESA_API_URL, {
-    //     phoneNumber,
-    //     amount,
-    //   });
+  //     async handleMpesaPayment(phoneNumber: string, amount: number): Promise<void> {
+  //   // try {
+  //   //   const response = await axios.post(process.env.MPESA_API_URL, {
+  //   //     phoneNumber,
+  //   //     amount,
+  //   //   });
 
-    //   console.log(`MPESA payment succeeded with transaction id: ${response.data.transactionId}`);
-    // } catch (error) {
-    //   console.error(`MPESA payment failed: ${error.message}`);
-    // }
-  }
+  //   //   console.log(`MPESA payment succeeded with transaction id: ${response.data.transactionId}`);
+  //   // } catch (error) {
+  //   //   console.error(`MPESA payment failed: ${error.message}`);
+  //   // }
+  // }
 }
 
 

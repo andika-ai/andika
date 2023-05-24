@@ -342,3 +342,7 @@ https://svdoscience.com/2020-10-31/versioning-with-semantic-release
 ```shell
 nx g @nrwl/workspace:library pages --import-path=@andika/pages  --dry-run 
 ```
+
+
+
+this.openSnackBar('Information', 'Additional details', 'OK', 'center', 'top', 'info-snackbar');

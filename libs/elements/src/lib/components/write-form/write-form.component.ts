@@ -184,7 +184,7 @@ export class WriteFormComponent implements OnInit {
   alertNoInput(){
     this._snackBarService.openSnackBar(
       'Invalid input!',' No Input provided',
-      'Okey', 'center', 'top', 'red-snackbar');
+      'Okey', 'center', 'top', ['snackbar-error']);
   }
 
 

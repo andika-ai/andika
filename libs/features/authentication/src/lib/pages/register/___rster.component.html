@@ -3,7 +3,7 @@
     <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
       <div class="mt-2 flex flex-col items-center">
         <h1 class="text-2xl xl:text-3xl font-extrabold">
-          Login to Andika
+          Log in or Sign up to Andika
         </h1>
         <div class="w-full flex-1 mt-4">
           <div class="flex flex-col items-center">
@@ -30,7 +30,7 @@
             </button>
 
             <button (click)="authService.facebookAuth()"
-              class="w-full max-w-xs font-bold shadow-sm rounded-lg py-1 bg-yellow-50 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
+              class="w-full max-w-xs font-bold shadow-sm rounded-lg py-1 bg-yellow-50 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-2">
               <div class="bg-white p-1 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48">
                   <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993"
@@ -54,28 +54,41 @@
           <div class="my-8 border-b text-center">
             <div
               class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-              Or Continue with e-mail
+              Or
             </div>
           </div>
 
           <div class="mx-auto max-w-xs">
-              
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+              <input
+                formControlName="email"
+                type="text"
+                placeholder="name@example.com"
+                class="w-full max-w-xs px-2 mb-4 font-bold shadow-sm rounded-lg py-2 bg-yellow-50 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+              />
+              <input
+              formControlName="password"
+              type="password"
+              placeholder="Your password here"
+              class="w-full max-w-xs px-2 font-bold shadow-sm rounded-lg py-2 bg-yellow-50 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+            />
+              <div class="w-full text-center pt-4 pb-0">
+                <p class="font-thin text-xs">We’ll email you a login link for a password-free registration.</p>
+              </div>
               <button
-                class="mt-4 tracking-wide font-semibold bg-yellow-500 text-black w-full py-2 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="8.5" cy="7" r="4" />
-                  <path d="M20 8v6M23 11h-6" />
-                </svg>
-                <span class="ml-3">
-                  Signup with Email
-                </span>
+                type="submit"
+                [disabled]="form.invalid || submitting"
+                class="cursor-pointer mt-4 tracking-wide font-semibold bg-yellow-500 text-black w-full py-2 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              >
+                <ng-container *ngIf="submitting; else defaultContent">
+                  Submitting Email&nbsp;<i class=" w-5 h-5 mr-2 fa fa-spinner fa-spin" style="font-size:24px"></i>
+                </ng-container>
+                <ng-template #defaultContent>
+                  Continue with Email
+                </ng-template>
               </button>
-            <div class="text-center pt-12 pb-12">
-              <p>We’ll email you a magic code for a password-free registration. <a routerLink="/login" class="underline font-semibold">Log in here.</a></p>
-            </div>
-            <p class="mt-4 text-xs text-gray-600 text-center">
+            </form>
+            <p class="w-full mt-4 text-xs text-gray-600 text-center">
               I agree to abide by andika's
               <a href="#" class="border-b border-gray-500 border-dotted">
                 Terms of Service
@@ -86,6 +99,7 @@
               </a>
             </p>
           </div>
+          
         </div>
       </div>
     </div>

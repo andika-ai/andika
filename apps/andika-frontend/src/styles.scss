@@ -269,3 +269,26 @@ rect {
 }
 
 ////////////////////////////////// END 
+/// SNACK BAR 
+.snackbar-success {
+  background-color: #4caf50 !important; /* Green background color for success */
+  color: #ffffff !important; /* White text color for success */
+}
+
+
+.mat-mdc-snack-bar-container {
+  &.snackbar-error  {
+    --mdc-snackbar-container-color: #f44336;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+// .snackbar-error {
+//   background-color: #f44336 !important; /* Red background color for error */
+//   color: #ffffff !important; /* White text color for error */
+// }
+
+.snackbar-info {
+  background-color: #2196f3 !important; /* Blue background color for information */
+  color: #ffffff !important; /* White text color for information */
+}

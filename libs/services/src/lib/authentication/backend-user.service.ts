@@ -24,4 +24,11 @@ saveNewSocialUser(payload: any) {
     return this._http.post('http://localhost:8000/api/v1/get_token/', payload, { headers });
   }
 
+  userEmailRegister(payload: any) {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+
+    return this._http.post('http://localhost:8000/api/v1/register/', payload, { headers });
+  }
+
 }

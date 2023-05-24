@@ -4,9 +4,7 @@
   >
     <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
       <div class="mt-2 flex flex-col items-center">
-        <h1 class="text-2xl xl:text-3xl font-extrabold">
-          Log in or Sign up to Andika
-        </h1>
+        <h1 class="text-2xl xl:text-3xl font-extrabold">Log in</h1>
         <div class="w-full flex-1 mt-4">
           <div class="flex flex-col items-center">
             <button
@@ -102,14 +100,14 @@
             <p class="w-full mt-4 text-xs text-gray-600 text-center">
               I agree to abide by andika's
               <a
-                routerLink='/terms-of-service'
+                routerLink="/terms-of-service"
                 class="cursor-pointer border-b border-gray-500 border-dotted"
               >
                 Terms of Service
               </a>
               and its
               <a
-                routerLink='/privacy-notice'
+                routerLink="/privacy-notice"
                 class="cursor-pointer border-b border-gray-500 border-dotted"
               >
                 Privacy Policy
@@ -119,13 +117,36 @@
         </div>
       </div>
     </div>
-    <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
+    <div class="bg-zinc-800 flex-1 text-center hidden lg:flex">
       <div
-        class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-        style="
-          background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');
-        "
-      ></div>
+        class="m-12 xl:m-16 w-full text-black bg-contain bg-center flex flex-col items-center justify-center"
+      >
+        <div class="flex items-center mb-4">
+          <h2 class="text-3xl font-bold text-white">Welcome back to</h2>
+          <a
+            routerLink="/"
+            class="flex items-center bg-yellow-500 py-1 px-1 ml-2"
+          >
+            <span
+              id="logo"
+              class="font-semibold text-black dark:text-yellow-600 cookie-font text-2xl whitespace-nowrap"
+              >Andika</span
+            >
+            <sup
+              ><img
+                src="assets/images/quill-pen.svg"
+                class="h-8 sm:h-6 ml-1"
+                alt="Andika Logo"
+                loading="lazy"
+            /></sup>
+          </a>
+        </div>
+        <p class="text-lg text-white mb-6">
+          Unlock the full potential of your writing with Andika. Whether you're
+          a seasoned writer or just starting out, our tool is designed to
+          enhance your creativity and streamline your writing process.
+        </p>
+      </div>
     </div>
   </div>
 </div>

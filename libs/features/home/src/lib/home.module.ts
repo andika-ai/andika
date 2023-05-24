@@ -15,6 +15,8 @@ import { AccountComponent } from './pages/account/account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
+import { FeaturesComponent } from './pages/features/features.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
     UserHistoryComponent,
     AccountComponent,
     TermsOfServiceComponent,
-    PrivacyNoticeComponent
+    PrivacyNoticeComponent,
+    FeaturesComponent,
+    ContactComponent
 
     // StudioComponent,
     // AudioComponent

@@ -30,20 +30,20 @@ body {
 
 
 .hero-random-text {
-    // color: #ff6f00 !important;
-    font-size: 40.2px;
-    font-family: Nunito, sans-serif;
-    spacing:normal
+  // color: #ff6f00 !important;
+  font-size: 40.2px;
+  font-family: Nunito, sans-serif;
+  spacing: normal
 }
 
-.text_link:hover{
+.text_link:hover {
   text-decoration: underline;
   text-decoration-color: rgb(250, 114, 64);
   -moz-text-decoration-color: rgb(250, 114, 64);
   text-decoration-thickness: 5px;
 }
 
-.center-screen{
+.center-screen {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,17 +57,17 @@ body {
   background-color: #e91b22;
 }
 
-::ng-deep .snackbar{
+::ng-deep .snackbar {
   max-width: auto !important;
   // margin-left: auto !important; // center align from left
   // margin-right: auto !important; // center align from right
-  margin: 0px !important; 
+  margin: 0px !important;
   padding: 0px !important; // spacing between the text and boundary
   background-color: green;
   color: white;
 
   .mat-button-wrapper {
-      color: black !important; // action text color
+    color: black !important; // action text color
   }
 }
 
@@ -76,18 +76,21 @@ body {
   background: rgb(65, 252, 134);
   color: white;
 }
+
 .green-snackbar button {
   background-color: rgb(65, 252, 134);
   color: white;
   border: none;
 }
+
 .red-snackbar {
   background: #F44336;
   color: white;
-  margin: 0px !important; 
+  margin: 0px !important;
   padding: 0px !important; // spacing between the text and boundary
   background-color: red;
 }
+
 // .red-snackbar button {
 //   background-color: #F44336;
 //   color: white !important;
@@ -103,8 +106,10 @@ body {
 }
 
 rect {
-  fill: #FFD600; /* fallback color */
-  fill: $mustard-500; /* actual color to use */
+  fill: #FFD600;
+  /* fallback color */
+  fill: $mustard-500;
+  /* actual color to use */
 }
 
 .border-yellow {
@@ -270,25 +275,27 @@ rect {
 
 ////////////////////////////////// END 
 /// SNACK BAR 
-.snackbar-success {
-  background-color: #4caf50 !important; /* Green background color for success */
-  color: #ffffff !important; /* White text color for success */
+.mat-mdc-snack-bar-container {
+  &.snackbar-success {
+    --mdc-snackbar-container-color: #4caf50;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
 }
 
 
 .mat-mdc-snack-bar-container {
-  &.snackbar-error  {
+  &.snackbar-error {
     --mdc-snackbar-container-color: #f44336;
     --mat-mdc-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #fff;
   }
 }
-// .snackbar-error {
-//   background-color: #f44336 !important; /* Red background color for error */
-//   color: #ffffff !important; /* White text color for error */
-// }
 
-.snackbar-info {
-  background-color: #2196f3 !important; /* Blue background color for information */
-  color: #ffffff !important; /* White text color for information */
+.mat-mdc-snack-bar-container {
+  &.snackbar-info {
+    --mdc-snackbar-container-color: #2196f3;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
 }

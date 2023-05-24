@@ -105,9 +105,6 @@ export class AuthService {
         this.afAuth.currentUser.then((res: any) => {
           const token = JSON.parse(JSON.stringify(res))?.stsTokenManager
             .accessToken;
-          const email = JSON.parse(JSON.stringify(res))?.email;
-          console.log(token);
-          console.log(email);
           const userData = {
             pricing_plan: 'BASIC',
             auth_token: token,
@@ -126,30 +123,29 @@ export class AuthService {
    * Signs in with Facebook using Firebase authentication.
    * @returns A Promise that represents the sign-in process.
    */
-  facebookAuth(): Promise<any> {
-    // Create a new instance of the FacebookAuthProvider
-    const provider = new auth.FacebookAuthProvider();
-    // Sign in with Facebook using a popup window
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result: any) => {
-        // The user has been successfully authenticated with Facebook
-        // You can access the user's information through the `result` object
-        const user = result.user;
-        const token = JSON.parse(JSON.stringify(user))?.stsTokenManager
-          .accessToken;
-        const userData = {
-          pricing_plan: 'BASIC',
-          auth_token: token,
-        };
-        // Set user data
-        return this._backendUserService.saveNewSocialUser(userData);
-      })
-      .catch((error: any) => {
-        // An error occurred during the Facebook authentication process
-        console.error('Facebook authentication error:', error);
-      });
-  }
+  // facebookAuth(): Promise<any> {
+  //   // Create a new instance of the FacebookAuthProvider
+  //   const provider = new auth.FacebookAuthProvider();
+  //   // Sign in with Facebook using a popup window
+  //   return this.afAuth
+  //     .signInWithPopup(provider)
+  //     .then((result: any) => {
+  //       // The user has been successfully authenticated with Facebook
+  //       // You can access the user's information through the `result` object
+  //       const user = result.user;
+  //       const token = JSON.parse(JSON.stringify(user))?.stsTokenManager.accessToken;
+  //       const userData = {
+  //         pricing_plan: 'BASIC',
+  //         auth_token: token,
+  //       };
+  //       // Set user data
+  //       return this._backendUserService.saveNewSocialUser(userData);
+  //     })
+  //     .catch((error: any) => {
+  //       // An error occurred during the Facebook authentication process
+  //       console.error('Facebook authentication error:', error);
+  //     });
+  // }
 
 
 
@@ -194,12 +190,11 @@ export class AuthService {
   setUserData(userData: any): void {
     const sub: Subscription = this._backendUserService.saveNewSocialUser(userData).subscribe({
       next: (response: any) => {
-        console.log(response);
         this._subs.add(sub);
         // Perform any additional actions or logic based on the response
+        this.router.navigate(['dashboard']);
       },
       error: (error: any) => {
-        console.error(error);
         window.alert(error.message);
         // Display error messages or perform error-specific actions
       },

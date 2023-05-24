@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   submitting = false;
   _subs = new SubSink();
   successMsg =  'Congratulations! You have successfully registered.'
+  submitButtonDisabled = false;
   constructor(
     private _fb: FormBuilder,
     public authService: AuthService,
@@ -57,6 +58,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (res: User) => {
             this.submitting = false;
+            this.submitButtonDisabled = true;
 
             this._snackBarService.openSnackBar('Success!',` ${this.successMsg}`,'OK', 'center', 'top', ['snackbar-success']);
 
@@ -67,6 +69,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             // this._redirectToDashboard();
           },
           error: (msg: any) => {
+            this.submitting = false; 
             const errorMsg = msg.error.data['error'];
             const errorMessage = "An error occurred. Additional information: " + errorMsg;
             this._snackBarService.openSnackBar(errorMessage, '', 'OK', 'center', 'top', ['snackbar-error']);
@@ -75,6 +78,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             // This callback is triggered when the API call is complete
             // regardless of success or failure
             this.submitting = false; // Set the submitting flag back to false
+            this.submitButtonDisabled = true;
             
           },
         });

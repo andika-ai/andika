@@ -13,6 +13,8 @@ import { AccountComponent } from './pages/account/account.component';
 // import { StudioComponent } from './pages/studio/studio.component';
 // import { AudioComponent } from './pages/audio/audio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
+import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 
 @NgModule({
   imports: [
@@ -32,6 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     UserHistoryComponent,
     AccountComponent,
+    TermsOfServiceComponent,
+    PrivacyNoticeComponent
+
     // StudioComponent,
     // AudioComponent
 

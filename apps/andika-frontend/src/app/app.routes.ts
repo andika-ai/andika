@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, Route, RouterModule } from '@angular/router';
 
 import { ForgotPasswordComponent, LoginComponent, RegisterComponent, VerifyEmailComponent} from '@andika/features/authentication';
-import { EditorComponent } from '@andika/features/home';
+import { EditorComponent, PrivacyNoticeComponent, TermsOfServiceComponent } from '@andika/features/home';
 import { AuthGuard } from '@andika/libs/shared';
 
 //import { ADMIN_ROUTES }  from '@s4y/admin/home';
@@ -19,6 +19,8 @@ export const BASE_ROUTES: Route[] = [
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
+    // { path: 'terms-of-service', component: TermsOfServiceComponent}, 
+    // { path: 'privacy-notice', component: PrivacyNoticeComponent}, 
     { path: 'editor', component: EditorComponent } ,// canActivate: [AuthGuard]
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'verify-email-address', component: VerifyEmailComponent },

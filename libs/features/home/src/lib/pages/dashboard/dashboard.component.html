@@ -1,37 +1,38 @@
-<app-main-navbar></app-main-navbar>
+<andika-top-navbar></andika-top-navbar>
 <andika-sidebar></andika-sidebar>
 
-<div class="p-4 sm:ml-0">
-   <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-5">
-     <div class="flex flex-col sm:flex-row justify-between items-center">
-       <h2 class="text-2xl font-semibold sm:text-3xl lg:text-4xl mb-4 sm:mb-0">Use Cases</h2>
-       <input type="text" id="categoryFilter" [(ngModel)]="filterCategory" placeholder="Filter by category" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-     </div>
+<div class="fixed left-0 top-0 z-[5] md:left-60">
+   <div class="p-3 sm:ml-0 mt-10">
+      <div class="p-3 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-5">
+         <div class="flex flex-col sm:flex-row justify-between items-center">
+            <h2 class="text-2xl font-semibold sm:text-3xl lg:text-4xl mb-3 sm:mb-0">Use Cases</h2>
+            <input type="text" id="categoryFilter" [(ngModel)]="filterCategory" placeholder="Filter by category"
+               class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+         </div>
+      </div>
    </div>
- </div>
- 
-<!-- Content -->
-<div class="p-4 sm:ml-0">
-   <div class="usecases-scroll p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-0">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-         <div *ngFor="let usecase of filteredUseCases"
-            class="items-center justify-center mb-4 block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-            <h5 class="mb-2 text-xl font-semibold leading-tight text-neutral-800 dark:text-neutral-50">
-               {{ usecase.title }}
-            </h5>
-            <div class="flex flex-wrap mb-2">
-               <span class="px-2 py-1 mr-1 text-xs font-semibold text-gray-600 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                  {{ usecase.category }}
-               </span>
+
+   <!-- Content -->
+   <div class="ml-auto p-4 sm:ml-0">
+      <div class="usecases-scroll p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-0">
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            <div *ngFor="let usecase of filteredUseCases"
+               class="items-center justify-center mb-4 block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+               <h5 class="mb-2 text-xl font-semibold leading-tight text-neutral-800 dark:text-neutral-50">{{
+                  usecase.title }}</h5>
+               <div class="flex flex-wrap mb-2">
+                  <span
+                     class="px-2 py-1 mr-1 text-xs font-semibold text-gray-600 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">{{
+                     usecase.category }}</span>
+               </div>
+               <p class="text-base font-light leading-relaxed text-neutral-600 dark:text-neutral-200">{{
+                  usecase.description }}</p>
+               <button (click)="navigateToEditor(usecase.navigateTo)" type="button"
+                  class="mt-2 inline-block rounded bg-zinc-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  data-te-ripple-init data-te-ripple-color="light">
+                  <fa-icon [icon]="faPlus"></fa-icon>&nbsp;Start New project
+               </button>
             </div>
-            <p class="text-base font-light leading-relaxed text-neutral-600 dark:text-neutral-200">
-               {{ usecase.description }}
-            </p>
-            <button (click)="navigateToEditor(usecase.navigateTo)" type="button"
-               class="mt-2 inline-block rounded bg-zinc-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-               data-te-ripple-init data-te-ripple-color="light">
-               <fa-icon [icon]="faPlus"></fa-icon>&nbsp;Start New project
-            </button>
          </div>
       </div>
    </div>

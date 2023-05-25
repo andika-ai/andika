@@ -8,11 +8,13 @@ import { AccountComponent } from './pages/account/account.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
+import { UsageComponent } from './pages/usage/usage.component';
 // import { StudioComponent } from './pages/studio/studio.component';
 // import { AudioComponent } from './pages/audio/audio.component';
 
 const HOME_ROUTES: Route[] = [
     { path: 'dashboard', component: DashboardComponent}, 
+    { path: 'usage', component: UsageComponent}, 
     { path: 'terms-of-service', component: TermsOfServiceComponent}, 
     { path: 'privacy-notice', component: PrivacyNoticeComponent}, 
     { path: 'account', component: AccountComponent}, 

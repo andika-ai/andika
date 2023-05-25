@@ -5,6 +5,7 @@ import { ElementsModule } from '@andika/elements';
 import { HomeRouterModule } from './home-router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgChartsModule } from 'ng2-charts';
 import { LandingComponent } from './pages/landing/landing.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { MaterialModule } from '@andika/libs/material'
@@ -17,6 +18,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { UsageComponent } from './pages/usage/usage.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    NgChartsModule,
     
   ],
 
@@ -39,7 +42,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     TermsOfServiceComponent,
     PrivacyNoticeComponent,
     FeaturesComponent,
-    ContactComponent
+    ContactComponent,
+    UsageComponent
 
     // StudioComponent,
     // AudioComponent

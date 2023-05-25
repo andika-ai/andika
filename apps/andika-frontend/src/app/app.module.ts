@@ -27,6 +27,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { USE_EMULATOR } from '@angular/fire/compat/functions';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
 // ✨ New 👇
 import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { PagesModule } from '@andika/pages';
@@ -51,8 +52,6 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     FeaturesAuthenticationModule,
     NgxMatSelectSearchModule,
     ClipboardModule,
-
-    /////
     AppRoutingModule,
     QuillModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

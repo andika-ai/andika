@@ -56,7 +56,7 @@ export class HeroComponent implements OnInit {
     'Generate SEO Titles',
     'Generate Story Plots',
     'Generate Song Lyrics',
-    'Generate Cnstagram Posts',
+    'Generate Instagram Posts',
     'Generate YouTube Descriptions',
     'Generate Captivating Taglines',
     'Generate Captivating Headlines'];

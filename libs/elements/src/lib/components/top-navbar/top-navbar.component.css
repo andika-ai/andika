@@ -3,5 +3,25 @@
     .desktop-mode {
         display:none;
     }
+
+    button {
+        margin-top: 10px;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
   }
+  
+
+
+@media screen and (max-width: 360px) {
+.desktop-mode {
+    display:none;
+}
+
+button {
+    margin-top: 10px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+}
   

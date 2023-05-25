@@ -1,5 +1,5 @@
 import { AuthService } from '@andika/libs/utilities';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   faTeletype,
@@ -14,6 +14,7 @@ import {
   faBackwardStep,
   faArrowLeft,
   faArrowRight,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -27,6 +28,7 @@ export class TopNavbarComponent implements OnInit {
   showOptions: boolean | undefined;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
+  faSearch = faSearch;
   heroTitle = 'A better, 10x faster way to write.';
   aboutTxt =
     'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
@@ -47,7 +49,13 @@ export class TopNavbarComponent implements OnInit {
   ];
   randomText: string = this.text[0];
   hidden = false;
-  constructor(private _router: Router, private _authService: AuthService) {}
+  /**Usecase data to handle search fucntionality */
+  dataUseCase: any[]
+  @Input() useCaseData: any[] // default all data loaded
+  @Input() usecases: any[];
+  @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
+  filterCategory = '';
+  constructor(private _router: Router, private _authService: AuthService,) {}
 
   ngOnInit() {
     this.randomizeText();
@@ -65,7 +73,7 @@ export class TopNavbarComponent implements OnInit {
    * @returns boolean
    */
   loggedIn() {
-    console.log(this._authService.isLoggedIn);
+    // console.log(this._authService.isLoggedIn);
     this.hidden = this._authService.isLoggedIn;
     return false;
   }
@@ -95,4 +103,26 @@ export class TopNavbarComponent implements OnInit {
   openMenu(){
     this.isMenuHidden= !this.isMenuHidden;
   }
+
+
+
+  /*Search functionality*/
+  filterUsecases() {
+    if (this.filterCategory.trim() === '') {
+      this.usecaseDataEvent.emit(this.useCaseData);
+      return this.usecases;
+    } else {
+      const filteredData = this.usecases.filter((usecase) =>
+        usecase.category
+          .toLowerCase()
+          .includes(this.filterCategory.toLowerCase())
+      );
+      this.usecaseDataEvent.emit(filteredData);
+      console.log(filteredData)
+      console.log(filteredData)
+      return filteredData;
+    }
+  }
+
+  
 }

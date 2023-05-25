@@ -25,10 +25,11 @@ import { UsecaseService } from '@andika/services';
 export class DashboardComponent implements OnInit, OnDestroy {
   // Create a Subject to manage the subscription lifecycle
   private unsubscribe$: Subject<void> = new Subject<void>();
-  
+
   faPlus = faPlus;
   usecase = UseCase;
   usecases: any[];
+  useCaseData: any[]; // default all data loaded incases filtering happens get all usecases fron this.
 
   filterCategory = '';
 
@@ -42,18 +43,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getUseCaseData();
   }
 
-  get filteredUseCases() {
-    if (this.filterCategory.trim() === '') {
-      return this.usecases;
-    } else {
-      return this.usecases.filter((usecase) =>
-        usecase.category
-          .toLowerCase()
-          .includes(this.filterCategory.toLowerCase())
-      );
-    }
-  }
-
   // Call this method to fetch the initial data and subscribe to updates
   getUseCaseData() {
     this._usecaseService
@@ -62,8 +51,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => {
         // Handle the API response here
         this.usecases = data;
-        console.log(data);
+        this.useCaseData = data;
       });
+  }
+
+  // Recieves filtered data that has been filtered
+  receiveSearchDataFromNavbar(data: any) {
+    //updatedata
+    console.log(data);
+    this.usecases = data;
   }
 
   navigateToEditor(formType: UseCase) {

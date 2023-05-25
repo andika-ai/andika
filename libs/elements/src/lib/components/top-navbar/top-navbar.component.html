@@ -52,6 +52,15 @@
           <a routerLink='/login'
             class="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Support</a>
         </li>
+        <li>
+          <div class="relative">
+            <input type="text" id="categoryFilter" [(ngModel)]="filterCategory" (ngModelChange)="filterUsecases()" class="p-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <i class="fa fa-search text-gray-400"></i>
+            </span>
+            <label class="absolute left-10 top-2 text-gray-500 pointer-events-none" for="categoryFilter">Search Writing Tool</label>
+          </div>
+        </li>
       </ul>
     </div>
 

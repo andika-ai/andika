@@ -7,7 +7,8 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatTableDataSource } from '@angular/material/table';
 import {
   faSearch,
-  faStar
+  faStar,
+  faFile
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface Document {
@@ -48,6 +49,7 @@ const paginatedData = ELEMENT_DATA.slice(startIndex, endIndex);
 export class DocumentsComponent implements OnInit, AfterViewInit {
   faSearch = faSearch;
   faStar = faStar;
+  faFile = faFile;
   displayedColumns: string[] = ['name', 'words', 'modified', 'favourite','actions'];
   dataSource = new MatTableDataSource<Document>(ELEMENT_DATA);
 

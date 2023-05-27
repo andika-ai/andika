@@ -27,7 +27,7 @@
     <div class="flex md:order-2 flex-grow justify-end">
       <!-- Modified this line -->
       <button
-        *ngIf="!loggedIn()"
+        *ngIf="isHomeRoute()"
         (click)="navigateToLogin()"
         type="button"
         class="border border-yellow-400 mr-5 text-black bg-transparent hover:bg-yellow-500 hover:text-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800"
@@ -35,7 +35,7 @@
         Login
       </button>
       <button
-        *ngIf="!loggedIn()"
+      *ngIf="isHomeRoute()"
         (click)="navigateToRegister()"
         type="button"
         class="mr-5 px-4 text-black bg-yellow-500 hover:bg-yellow-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800"
@@ -46,7 +46,7 @@
       </button>
 
       <!-- Button for toggling mode -->
-      <button mat-icon-button (click)="toggleDarkMode = !toggleDarkMode">
+      <button *ngIf="!isHomeRoute()" mat-icon-button (click)="toggleDarkMode = !toggleDarkMode">
         <mat-icon [ngClass]="{'text-yellow-500': toggleDarkMode, 'text-white': !toggleDarkMode}">
           lightbulb
         </mat-icon>
@@ -69,7 +69,7 @@
           <span>Send Us an Email</span>
         </button>
       </mat-menu>
-      <button mat-icon-button [matMenuTriggerFor]="helpMenu">
+      <button *ngIf="!isHomeRoute()" mat-icon-button [matMenuTriggerFor]="helpMenu">
         <mat-icon class="text-white">help_outline</mat-icon>
       </button>
       <button
@@ -110,22 +110,20 @@
         [ngClass]="{ 'bg-white': isHomeRoute(), 'bg-zinc-800': !isHomeRoute() }"
         class="flex flex-col font-medium p-0 md:p-0 mt-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900"
       >
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="isHomeRoute()">
           <a
             routerLink="/usecases"
             [ngClass]="{
-              'text-grey-900': isHomeRoute(),
-              'text-white': !isHomeRoute()
+              'text-grey-900': isHomeRoute()
             }"
             class="block py-2 pl-3 pr-4 rounded md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
             >Use Cases</a
           >
         </li>
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="isHomeRoute()">
           <a
             [ngClass]="{
-              'text-grey-900': isHomeRoute(),
-              'text-white': !isHomeRoute()
+              'text-grey-900': isHomeRoute()
             }"
             routerLink="/pricing"
             routerLinkActive="active"
@@ -133,41 +131,38 @@
             >Pricing</a
           >
         </li>
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="isHomeRoute()">
           <a
             routerLink="/resources"
             [ngClass]="{
-              'text-grey-900': isHomeRoute(),
-              'text-white': !isHomeRoute()
+              'text-grey-900': isHomeRoute()
             }"
             class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
             aria-current="page"
             >Resources</a
           >
         </li>
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="isHomeRoute()">
           <a
             routerLink="/integration"
             [ngClass]="{
-              'text-grey-900': isHomeRoute(),
-              'text-white': !isHomeRoute()
+              'text-grey-900': isHomeRoute()
             }"
             class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
             >Integration</a
           >
         </li>
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="isHomeRoute()">
           <a
             routerLink="/login"
             [ngClass]="{
-              'text-grey-900': isHomeRoute(),
-              'text-white': !isHomeRoute()
+              'text-grey-900': isHomeRoute()
             }"
             class="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
             >Support</a
           >
         </li>
-        <li *ngIf="!loggedIn()">
+        <li *ngIf="!isHomeRoute()">
           <div class="relative">
             <input
               type="text"

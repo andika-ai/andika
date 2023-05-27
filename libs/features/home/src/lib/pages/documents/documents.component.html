@@ -2,7 +2,6 @@
 <andika-sidebar></andika-sidebar>
 <div class="fixed inset-0 z-5 md:left-60 overflow-x-hidden">
   <div class="p-6 mt-20 container mx-auto">
-    <app-breadcrumb></app-breadcrumb>
     <mat-form-field class="w-full" appearance="outline">
       <mat-label>Search document</mat-label>
       <input
@@ -18,6 +17,17 @@
         aria-hidden="true"
       ></fa-icon>
     </mat-form-field>
+
+    <div class="demo-button-container">
+      <button mat-raised-button class="demo-button">
+        <fa-icon [icon]="faStar" class="mr-2"></fa-icon>
+        Favourites
+      </button>
+      <button mat-raised-button [disabled]="false" class="demo-button">
+        <fa-icon [icon]="faFile" class="mr-2"></fa-icon>
+        New Document
+      </button>
+    </div>
     
     <div class="border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-70">
       <div
@@ -30,6 +40,7 @@
           minute.
         </div>
       </div>
+
       <table mat-table [dataSource]="dataSource">
         <!-- Position Column -->
         <ng-container matColumnDef="name">

@@ -55,10 +55,13 @@ export class TopNavbarComponent implements OnInit {
   @Input() usecases: any[];
   @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
   filterCategory = '';
+  toggleDarkMode = false;
   constructor(private _router: Router, private _authService: AuthService,) {}
 
   ngOnInit() {
+    this.isHomeRoute();
     this.randomizeText();
+   
   }
 
   randomizeText() {
@@ -75,8 +78,9 @@ export class TopNavbarComponent implements OnInit {
   loggedIn() {
     // console.log(this._authService.isLoggedIn);
     this.hidden = this._authService.isLoggedIn;
-    return false;
+    return this.hidden;
   }
+
 
   /**
    * Navigate to the login page
@@ -97,6 +101,10 @@ export class TopNavbarComponent implements OnInit {
 
   navigateToAudio() {
     this._router.navigate(['/audio']);
+  }
+
+  isHomeRoute(): boolean {
+    return this._router.url === '/';
   }
 
 

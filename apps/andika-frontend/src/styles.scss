@@ -299,3 +299,8 @@ rect {
     --mdc-snackbar-supporting-text-color: #fff;
   }
 }
+
+.mdc-notched-outline__notch
+{
+  border-right: none;
+}

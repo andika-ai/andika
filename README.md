@@ -406,4 +406,5 @@ Remember to maintain a consistent visual hierarchy and ensure that the color cho
 
 
 
-Regenerate response
+TODO:
+Documents component exists in elements and pages move from documents to the element

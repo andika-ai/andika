@@ -1,68 +1,192 @@
-<nav class="fixed w-full z-20 top-0 left-0 bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a  id="andika-logo" routerLink='/' class="mr-10 flex items-center bg-yellow-500 py-1 px-1 hidden md:flex">
-      <span id="logo"
-        class="font-semibold text-black dark:text-yellow-600 cookie-font self-center text-2xl whitespace-nowrap">Andika</span>
+<nav
+  class="fixed w-full z-20 top-0 left-0"
+  [ngClass]="{ 'bg-white': isHomeRoute(), 'bg-zinc-800': !isHomeRoute() }"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a
+      id="andika-logo"
+      routerLink="/"
+      class="mr-10 flex items-center bg-yellow-500 py-1 px-1 hidden md:flex"
+    >
+      <span
+        id="logo"
+        class="font-semibold text-black dark:text-yellow-600 cookie-font self-center text-2xl whitespace-nowrap"
+        >Andika</span
+      >
       <sup>
-        <img src="assets/images/quill-pen.svg" class="h-8 sm:h-6 mr-3" alt="Andika Logo" loading="lazy" />
+        <img
+          src="assets/images/quill-pen.svg"
+          class="h-8 sm:h-6 mr-3"
+          alt="Andika Logo"
+          loading="lazy"
+        />
       </sup>
     </a>
-    <div class="flex md:order-2 flex-grow justify-end"> <!-- Modified this line -->
-      <button (click)="navigateToLogin()" type="button"
-        class="border border-yellow-400 mr-5 text-black bg-transparent hover:bg-yellow-500 hover:text-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">Login</button>
-      <button (click)="navigateToRegister()" type="button"
-        class="mr-5 px-4 text-black bg-yellow-500 hover:bg-yellow-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">
-        <span class="btn-txt hover:text-white">Try Andika for Free&nbsp;<i class="fa fa-arrow-right"></i></span>
+    <div class="flex md:order-2 flex-grow justify-end">
+      <!-- Modified this line -->
+      <button
+        *ngIf="!loggedIn()"
+        (click)="navigateToLogin()"
+        type="button"
+        class="border border-yellow-400 mr-5 text-black bg-transparent hover:bg-yellow-500 hover:text-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800"
+      >
+        Login
       </button>
-      <button id="menu-btn" (click)="openMenu()" data-collapse-toggle="navbar-cta" type="button"
+      <button
+        *ngIf="!loggedIn()"
+        (click)="navigateToRegister()"
+        type="button"
+        class="mr-5 px-4 text-black bg-yellow-500 hover:bg-yellow-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm py-2 text-center dark:bg-yellow-600 dark:hover:bg-yellow-500 dark:focus:ring-yellow-800"
+      >
+        <span class="btn-txt hover:text-white"
+          >Try Andika for Free&nbsp;<i class="fa fa-arrow-right"></i
+        ></span>
+      </button>
+
+      <!-- Button for toggling mode -->
+      <button mat-icon-button (click)="toggleDarkMode = !toggleDarkMode">
+        <mat-icon [ngClass]="{'text-yellow-500': toggleDarkMode, 'text-white': !toggleDarkMode}">
+          lightbulb
+        </mat-icon>
+      </button>
+      <!-- Help button -->
+      <mat-menu #helpMenu="matMenu">
+        <button mat-menu-item>
+          <span>Watch Video Tutorial</span>
+        </button>
+        <button mat-menu-item>
+          <span>Resources and Guide</span>
+        </button>
+        <button mat-menu-item>
+          <span>Community</span>
+        </button>
+        <button mat-menu-item>
+          <span>Live Chat</span>
+        </button>
+        <button mat-menu-item>
+          <span>Send Us an Email</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="helpMenu">
+        <mat-icon class="text-white">help_outline</mat-icon>
+      </button>
+      <button
+        id="menu-btn"
+        (click)="openMenu()"
+        data-collapse-toggle="navbar-cta"
+        type="button"
         class="ml-5 inline-flex items-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-cta" aria-expanded="false">
+        aria-controls="navbar-cta"
+        aria-expanded="false"
+      >
         <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
+        <svg
+          class="w-6 h-6"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"></path>
+            clip-rule="evenodd"
+          ></path>
         </svg>
       </button>
     </div>
-    <div [ngClass]="{'hidden': isMenuHidden, 'w-full': !isMenuHidden, 'md:block md:w-auto': !isMenuHidden}"
-      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+    <div
+      [ngClass]="{
+        hidden: isMenuHidden,
+        'w-full': !isMenuHidden,
+        'md:block md:w-auto': !isMenuHidden
+      }"
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-cta"
+    >
       <ul
-        class="flex flex-col font-medium p-0 md:p-0 mt-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900">
-        <li>
-          <a routerLink='/usecases'
-            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Use
-            Cases</a>
+        [ngClass]="{ 'bg-white': isHomeRoute(), 'bg-zinc-800': !isHomeRoute() }"
+        class="flex flex-col font-medium p-0 md:p-0 mt-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900"
+      >
+        <li *ngIf="!loggedIn()">
+          <a
+            routerLink="/usecases"
+            [ngClass]="{
+              'text-grey-900': isHomeRoute(),
+              'text-white': !isHomeRoute()
+            }"
+            class="block py-2 pl-3 pr-4 rounded md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Use Cases</a
+          >
         </li>
         <li *ngIf="!loggedIn()">
-          <a routerLink='/pricing' routerLinkActive="active"
-            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-        </li>
-        <li *ngIf="!loggedIn()">
-          <a routerLink='/resources'
+          <a
+            [ngClass]="{
+              'text-grey-900': isHomeRoute(),
+              'text-white': !isHomeRoute()
+            }"
+            routerLink="/pricing"
+            routerLinkActive="active"
             class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            aria-current="page">Resources</a>
+            >Pricing</a
+          >
         </li>
         <li *ngIf="!loggedIn()">
-          <a routerLink='/integration'
-            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Integration</a>
+          <a
+            routerLink="/resources"
+            [ngClass]="{
+              'text-grey-900': isHomeRoute(),
+              'text-white': !isHomeRoute()
+            }"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            aria-current="page"
+            >Resources</a
+          >
         </li>
         <li *ngIf="!loggedIn()">
-          <a routerLink='/login'
-            class="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Support</a>
+          <a
+            routerLink="/integration"
+            [ngClass]="{
+              'text-grey-900': isHomeRoute(),
+              'text-white': !isHomeRoute()
+            }"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Integration</a
+          >
+        </li>
+        <li *ngIf="!loggedIn()">
+          <a
+            routerLink="/login"
+            [ngClass]="{
+              'text-grey-900': isHomeRoute(),
+              'text-white': !isHomeRoute()
+            }"
+            class="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Support</a
+          >
         </li>
         <li>
           <div class="relative">
-            <input type="text" id="categoryFilter" [(ngModel)]="filterCategory" (ngModelChange)="filterUsecases()" class="p-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <input
+              type="text"
+              id="categoryFilter"
+              [(ngModel)]="filterCategory"
+              (ngModelChange)="filterUsecases()"
+              class="p-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+            />
             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
               <i class="fa fa-search text-gray-400"></i>
             </span>
-            <label class="absolute left-10 top-2 text-gray-500 pointer-events-none" for="categoryFilter">Search Writing Tool</label>
+            <label
+              class="absolute left-10 top-2 text-gray-500 pointer-events-none"
+              for="categoryFilter"
+              >Search Writing Tool</label
+            >
           </div>
         </li>
       </ul>
     </div>
-
   </div>
 </nav>

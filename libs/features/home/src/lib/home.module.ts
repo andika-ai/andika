@@ -21,6 +21,7 @@ import { FeaturesComponent } from './pages/features/features.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UsageComponent } from './pages/usage/usage.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { DocumentsComponent } from './pages/documents/documents.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     ContactComponent,
     UsageComponent,
     UserProfileComponent,
+    DocumentsComponent
 
     // StudioComponent,
     // AudioComponent

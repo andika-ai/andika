@@ -1,4 +1,3 @@
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
@@ -10,6 +9,8 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { UsageComponent } from './pages/usage/usage.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { DocumentsComponent } from './pages/documents/documents.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 // import { StudioComponent } from './pages/studio/studio.component';
 // import { AudioComponent } from './pages/audio/audio.component';
 
@@ -17,6 +18,7 @@ const HOME_ROUTES: Route[] = [
     { path: 'dashboard', component: DashboardComponent}, 
     { path: 'usage', component: UsageComponent}, 
     { path: 'profile', component: UserProfileComponent},
+    { path: 'documents', component: DocumentsComponent},
     { path: 'terms-of-service', component: TermsOfServiceComponent}, 
     { path: 'privacy-notice', component: PrivacyNoticeComponent}, 
     { path: 'account', component: AccountComponent}, 

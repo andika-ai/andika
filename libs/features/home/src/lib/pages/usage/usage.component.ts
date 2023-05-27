@@ -3,12 +3,24 @@ import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ChartConfiguration, ChartType } from 'chart.js';
 
+
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { CreditCard, CreditCardValidators } from 'angular-cc-library';
+import { defer } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+
+import {
+  faCreditCard
+} from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-usage',
   templateUrl: './usage.component.html',
   styleUrls: ['./usage.component.css']
 })
 export class UsageComponent implements OnInit {
+  submitted = false;
   plans = [
     {
       name: 'Start',
@@ -94,14 +106,30 @@ export class UsageComponent implements OnInit {
   };
 
 
+  faCreditCard = faCreditCard;
+  public form: FormGroup;
 
-  constructor() { }
+  
+  constructor(private _fb: FormBuilder) { }
 
   togglePlan(plan: any): void {
     // Add your logic here to handle the plan selection
     console.log(plan);
   }
   ngOnInit() {
+    this.form = this._fb.group({
+      cardNumber: ['', [CreditCardValidators.validateCCNumber]],
+      expirationDate: ['', [CreditCardValidators.validateExpDate]],
+      cvc: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]]
+    });
+  }
+
+
+
+
+  onSubmit(form: FormGroup) {
+    this.submitted = true;
+    console.log(form);
   }
 
 }

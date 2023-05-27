@@ -6,6 +6,7 @@ import { HomeRouterModule } from './home-router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { LandingComponent } from './pages/landing/landing.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { MaterialModule } from '@andika/libs/material'
@@ -19,6 +20,7 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
 import { FeaturesComponent } from './pages/features/features.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UsageComponent } from './pages/usage/usage.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -30,6 +32,7 @@ import { UsageComponent } from './pages/usage/usage.component';
     FormsModule,
     ReactiveFormsModule,
     NgChartsModule,
+    CreditCardDirectivesModule
     
   ],
 
@@ -43,7 +46,8 @@ import { UsageComponent } from './pages/usage/usage.component';
     PrivacyNoticeComponent,
     FeaturesComponent,
     ContactComponent,
-    UsageComponent
+    UsageComponent,
+    UserProfileComponent,
 
     // StudioComponent,
     // AudioComponent

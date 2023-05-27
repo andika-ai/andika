@@ -1,41 +1,15 @@
-<nav
-  class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-3 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start"
-  data-te-navbar-ref>
-  <div class="flex w-full flex-wrap items-center justify-between px-6">
-    <nav class="bg-grey-light w-full rounded-md" aria-label="breadcrumb">
+<div class="mb-5 flex w-full items-center justify-between py-3 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start" data-te-navbar-ref>
+  <div class="flex w-full items-center justify-between px-6">
       <ol class="list-reset flex">
-        <li>
-          <a
-            href="#"
-            class="text-yellow-900 hover:text-neutral-600 dark:text-neutral-200"
-            >Home</a
-          >
-        </li>
-        <li>
-          <span class="mx-2 text-yellow-900 dark:text-neutral-200"
-            >/</span
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="text-yellow-900 hover:text-neutral-600 dark:text-neutral-200"
-            >Library</a
-          >
-        </li>
-        <li>
-          <span class="mx-2 text-neutral-500 dark:text-neutral-200"
-            >/</span
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="text-yellow-900 hover:text-neutral-600 dark:text-neutral-200"
-            >Data</a
-          >
+        <li *ngFor="let crumb of breadcrumbs$ | async; let last = last; let first = first">
+          <a routerLink="{{crumb}}" class="py-3 text-yellow-900 hover:text-neutral-600 dark:text-neutral-200">
+            <ng-container *ngIf="first">
+              <fa-icon [icon]="faHome" class="mr-2"></fa-icon>Home
+            </ng-container>
+            <ng-container *ngIf="!first">{{ crumb }}</ng-container>
+          </a>
+          <span *ngIf="!last" class="mx-2 text-yellow-900 dark:text-neutral-200">/</span>
         </li>
       </ol>
-    </nav>
   </div>
-</nav>
+</div>

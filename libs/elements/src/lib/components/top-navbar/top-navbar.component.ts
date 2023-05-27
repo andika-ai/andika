@@ -107,7 +107,11 @@ export class TopNavbarComponent implements OnInit {
   }
 
   isHomeRoute(): boolean {
-    return this._router.url === '/';
+    const home  = this._router.url === '/';
+    const pricing = this._router.url === '/pricing';
+    const terms = this._router.url === '/terms-of-service';
+    const privacy = this._router.url === '/privacy-notice';
+    return home || pricing || terms || privacy;
   }
 
   showDashboardLink(){

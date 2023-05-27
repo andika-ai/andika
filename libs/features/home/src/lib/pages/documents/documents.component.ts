@@ -14,21 +14,21 @@ export interface Document {
   name: string;
   words: number;
   modified: string;
-  favorite: boolean;
+  favourite: boolean;
 }
 
 
 const ELEMENT_DATA: Document[] = [
-  { name: 'Document 1', words: 100, modified: '2023-05-01', favorite: true },
-  { name: 'Document 2', words: 200, modified: '2023-05-02', favorite: false },
-  { name: 'Document 3', words: 150, modified: '2023-05-03', favorite: true },
-  { name: 'Document 4', words: 120, modified: '2023-05-04', favorite: false },
-  { name: 'Document 5', words: 180, modified: '2023-05-05', favorite: true },
-  { name: 'Document 6', words: 220, modified: '2023-05-06', favorite: false },
-  { name: 'Document 7', words: 160, modified: '2023-05-07', favorite: true },
-  { name: 'Document 8', words: 240, modified: '2023-05-08', favorite: false },
-  { name: 'Document 9', words: 130, modified: '2023-05-09', favorite: true },
-  { name: 'Document 10', words: 190, modified: '2023-05-10', favorite: false },
+  { name: 'Document 1', words: 100, modified: '2023-05-01', favourite: true },
+  { name: 'Document 2', words: 200, modified: '2023-05-02', favourite: false },
+  { name: 'Document 3', words: 150, modified: '2023-05-03', favourite: true },
+  { name: 'Document 4', words: 120, modified: '2023-05-04', favourite: true },
+  { name: 'Document 5', words: 180, modified: '2023-05-05', favourite: true },
+  { name: 'Document 6', words: 220, modified: '2023-05-06', favourite: false },
+  { name: 'Document 7', words: 160, modified: '2023-05-07', favourite: true },
+  { name: 'Document 8', words: 240, modified: '2023-05-08', favourite: false },
+  { name: 'Document 9', words: 130, modified: '2023-05-09', favourite: true },
+  { name: 'Document 10', words: 190, modified: '2023-05-10', favourite: false },
 ];
 
 

@@ -22,7 +22,9 @@ import {
   faFolder,
   faSignOut,
   faUser,
-  faGauge
+  faGauge,
+  faHome,
+  faPencilAlt
 
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,6 +41,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   faSignOut = faSignOut;
   faUser =  faUser;
   faGauge = faGauge;
+  faPencilAlt = faPencilAlt;
   @ViewChild('sidenav', { static: true }) sidenav: ElementRef;
   constructor(private _router: Router, private elementRef: ElementRef) { }
 

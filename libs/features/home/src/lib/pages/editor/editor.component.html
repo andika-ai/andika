@@ -1,13 +1,8 @@
 
-<app-main-navbar></app-main-navbar>
-<andika-sidebar></andika-sidebar>
+<andika-top-navbar></andika-top-navbar>
 
-<div class="row mt-10">
-
-</div>
-
-<div class="row continer-fluid">
-  <div class="col-md-4 col-lg-4 col-sm-12">
+<div class="mt-28 row continer-fluid fixed inset-0 z-50">
+  <div class="mt-2 col-md-4 col-lg-4 col-sm-12">
     <andika-write-form (isLoading)="isLoading($event)" (promptResponse)="promptResponse($event)"></andika-write-form>
   </div>
   <div class="col-md-8 col-lg-8 col-sm-12">

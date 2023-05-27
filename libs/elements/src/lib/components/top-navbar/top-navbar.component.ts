@@ -14,7 +14,8 @@ import {
   faBackwardStep,
   faArrowLeft,
   faArrowRight,
-  faSearch
+  faSearch,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -29,6 +30,7 @@ export class TopNavbarComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
   faSearch = faSearch;
+  faHome = faHome;
   heroTitle = 'A better, 10x faster way to write.';
   aboutTxt =
     'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';
@@ -56,6 +58,7 @@ export class TopNavbarComponent implements OnInit {
   @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
   filterCategory = '';
   toggleDarkMode = false;
+  showWritingToolsOnToNav = false;
   constructor(private _router: Router, private _authService: AuthService,) {}
 
   ngOnInit() {
@@ -105,6 +108,11 @@ export class TopNavbarComponent implements OnInit {
 
   isHomeRoute(): boolean {
     return this._router.url === '/';
+  }
+
+  showDashboardLink(){
+    return this._router.url === '/editor';
+    
   }
 
 

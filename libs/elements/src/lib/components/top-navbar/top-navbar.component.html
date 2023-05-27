@@ -167,7 +167,7 @@
             >Support</a
           >
         </li>
-        <li>
+        <li *ngIf="!loggedIn()">
           <div class="relative">
             <input
               type="text"

@@ -116,8 +116,13 @@ export class TopNavbarComponent implements OnInit {
     return home || pricing || terms || privacy;
   }
 
-  showDashboardLink(){
+  isEditorLink(){
     return this._router.url === '/editor';
+    
+  }
+
+  isDashboardLink(){
+    return this._router.url === '/dashboard';
     
   }
 

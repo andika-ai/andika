@@ -29,6 +29,8 @@ export * from './lib/subscriptions/org-openai-subscription';
 
 export * from './lib/pricing-plan/plan-plan.model';
 
+export  * from './lib/usecases/usecase.interface';
+
 
 
 

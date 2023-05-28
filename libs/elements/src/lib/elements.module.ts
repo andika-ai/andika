@@ -47,6 +47,8 @@ import { ServicesModule } from '@andika/services';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PricingPlanComponent } from './components/admin/settings/pricing-plan/pricing-plan.component';
 import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component';
+import { SearchAiToolComponent } from './components/search/search-ai-tool/search-ai-tool.component';
+import { UsecaseService } from './components/search/services/usecase.service';
 
 @NgModule({
   imports: [
@@ -98,7 +100,8 @@ import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component
     BreadcrumbComponent,
     PricingPlanComponent,
     PricingPlanTableComponent,
-    GptPromptComponent
+    GptPromptComponent,
+    SearchAiToolComponent
   ],
   exports: [
     PreloaderComponent,
@@ -137,7 +140,11 @@ import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component
     BreadcrumbComponent,
     PricingPlanComponent,
     PricingPlanTableComponent,
-    GptPromptComponent
+    GptPromptComponent,
+    SearchAiToolComponent
+  ],
+  providers: [
+    UsecaseService
   ]
 })
 export class ElementsModule {}

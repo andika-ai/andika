@@ -1,0 +1,17 @@
+/* Add this CSS code to your styles.css file or equivalent */
+
+/* Change outline color */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+    border-color: white;
+  }
+  
+  /* Change text color */
+  .mat-select-value {
+    color: white;
+  }
+  
+  /* Change placeholder color */
+  ::ng-deep .mat-select-placeholder {
+    color: white;
+  }

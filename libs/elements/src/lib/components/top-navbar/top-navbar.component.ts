@@ -15,7 +15,8 @@ import {
   faArrowLeft,
   faArrowRight,
   faSearch,
-  faHome
+  faHome,
+  faFolder
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -31,6 +32,7 @@ export class TopNavbarComponent implements OnInit {
   faArrowRight = faArrowRight;
   faSearch = faSearch;
   faHome = faHome;
+  faFolder = faFolder;
   heroTitle = 'A better, 10x faster way to write.';
   aboutTxt =
     'Andika is an AI writing assistant that helps you create high-quality content, in just a few seconds, at a fraction of the cost!';

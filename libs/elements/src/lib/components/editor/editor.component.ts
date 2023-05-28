@@ -1,10 +1,15 @@
-import { Component, OnInit, ViewChild , Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, ViewChild , Input, OnChanges, SimpleChanges, HostListener, AfterViewInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ThemePalette } from '@angular/material/core';
+
+import {
+  faSave
+
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'andika-element-editor',
@@ -22,7 +27,14 @@ import { ThemePalette } from '@angular/material/core';
     ])
   ]
 })
-export class EditorComponent implements OnInit, OnChanges{
+export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
+  /**save icon behaviour */
+
+  isSaveIconVisible  = false;
+  typingTimer: any;
+  readonly typingTimeout: number = 1500; // Adjust timeout duration as needed
+
+  //end
   color: ThemePalette = 'warn';
   @Input() loading = false;
   @Input() promptResponseData: any = null;
@@ -89,6 +101,16 @@ export class EditorComponent implements OnInit, OnChanges{
     
   }
 
+  ngAfterViewInit() {
+    // if (this.editor) {
+    //   this.editor.quillEditor.options = {
+    //     scrollingContainer: '.content-container'
+    //     // other options...
+    //   };
+    // }
+  }
+  
+
   initializeForm(){
     return this.fb.group({
       editor: [this.content, []]
@@ -115,7 +137,11 @@ export class EditorComponent implements OnInit, OnChanges{
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
     // tslint:disable-next-line:no-console
-    console.log('editor-change', event)
+    clearTimeout(this.typingTimer);
+    this.isSaveIconVisible = false;
+    this.typingTimer = setTimeout(() => {
+      this.isSaveIconVisible = true;
+    }, this.typingTimeout);
   }
 
   focus($event: any) {
@@ -128,8 +154,10 @@ export class EditorComponent implements OnInit, OnChanges{
   blur($event: any) {
     // tslint:disable-next-line:no-console
     console.log('blur', $event)
-    this.focused = false
-    this.blured = true
+    clearTimeout(this.typingTimer);
+    this.typingTimer = setTimeout(() => {
+      this.isSaveIconVisible = true;
+    }, this.typingTimeout);
   }
 
 
@@ -140,7 +168,6 @@ export class EditorComponent implements OnInit, OnChanges{
   //   this.content = data;
   //   this.isLoading = false;
   // });
-
 
   
 }

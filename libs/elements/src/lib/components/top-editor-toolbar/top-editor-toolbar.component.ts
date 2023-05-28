@@ -12,7 +12,8 @@ import {
   faBackwardStep,
   faArrowLeft,
   faList,
-  faHeart,
+  faSave,
+  faFile
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -23,7 +24,8 @@ import {
 export class TopEditorToolbarComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faList = faList;
-  faHeart =  faHeart;
+  faSave =  faSave;
+  faFile = faFile;
   showOptions=false;
   
   constructor() { }

@@ -1,16 +1,16 @@
 <div>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between mb-2">
     <div class="flex items-center justify-start">
-      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+      <a routerLink="/dashboard" button class="cursor-pointer mr-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded">
         <fa-icon [icon]="faArrowLeft"></fa-icon>&nbsp; <span class="text-sm">Home</span>
-      </button>
-      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-        <fa-icon [icon]="faList"></fa-icon>&nbsp; <span class="text-sm">My projects</span>
-      </button>
+      </a>
+      <a routerLink="/documents" button class="cursor-pointer mr-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded">
+        <fa-icon [icon]="faFile"></fa-icon>&nbsp; <span class="text-sm">Documents</span>
+      </a>
 
-      <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-        <fa-icon [icon]="faHeart"></fa-icon>&nbsp; <span class="text-sm">Save project</span>
-      </button>
+      <a button class="cursor-pointer mr-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded">
+        <fa-icon [icon]="faSave"></fa-icon>&nbsp; <span class="text-sm">Save project</span>
+      </a>
     
       &nbsp;&nbsp;&nbsp;
       <!-- TODO: position somewhere else and also fix button size when in responsive mode <input class="font-semibold hover:underline text-lg bg-transparent outline-none" value="Draft-First Document.doc"  /> -->

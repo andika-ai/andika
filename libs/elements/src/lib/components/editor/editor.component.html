@@ -1,13 +1,18 @@
-
-
-<div class="m-2 m-0">
-<andika-top-editor-toolbar></andika-top-editor-toolbar>
-<form [formGroup]="form" >
-  <mat-progress-bar *ngIf="loading" color="primary" mode="query"></mat-progress-bar>
-  <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
-    [styles]="{'min-height': '360px', background: 'white'}" (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)"
-    (onBlur)="blur($event)" (onEditorCreated)="created($event)" formControlName="editor">
-    <div class="center-screen dot-elastic"></div>
-  </quill-editor>
-</form>
+<div class="relative m-2 m-0">
+  <form [formGroup]="form">
+    <mat-progress-bar *ngIf="loading" color="primary" mode="query"></mat-progress-bar>
+    <div class="h-96 overflow-y-auto">
+      <quill-editor #editor [style.display]="hide ? 'none' : 'block'" class="content-editor" [placeholder]="''"
+        [styles]="{'min-height': '300px', background: 'white'}" (onFocus)="focus($event)"
+        (onEditorChanged)="changedEditor($event)" (onBlur)="blur($event)" (onEditorCreated)="created($event)"
+        formControlName="editor">
+        <div class="center-screen dot-elastic"></div>
+      </quill-editor>
+    </div>
+  </form>
+  <div id="save-icon" class="absolute bottom-4 right-4" [ngClass]="{'hidden': !isSaveIconVisible}">
+    <button mat-fab color="primary" aria-label="Example icon button with a home icon" matTooltip="Save Document">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
 </div>

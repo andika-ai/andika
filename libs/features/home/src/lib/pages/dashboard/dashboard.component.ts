@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UseCase } from '@andika/model';
 import { Subject } from 'rxjs';
@@ -15,10 +15,14 @@ import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import * as introJs  from 'intro.js';
+
 import { FormService } from '@andika/libs/shared';
 import { UsecaseService } from '@andika/services';
+import { TourService } from '@andika/libs/utilities';
 @Component({
-  selector: 'app-dashboard',
+  selector: 'andika-app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -76,4 +80,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe();
   }
+
 }

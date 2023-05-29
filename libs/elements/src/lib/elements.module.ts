@@ -49,6 +49,7 @@ import { PricingPlanComponent } from './components/admin/settings/pricing-plan/p
 import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component';
 import { SearchAiToolComponent } from './components/search/search-ai-tool/search-ai-tool.component';
 import { UsecaseService } from './components/search/services/usecase.service';
+import { UtilitiesModule } from '@andika/libs/utilities';
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { UsecaseService } from './components/search/services/usecase.service';
     MaterialModule,
     RouterModule,
     QuillModule,
+    UtilitiesModule,
     ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,

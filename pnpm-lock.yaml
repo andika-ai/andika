@@ -52,6 +52,9 @@ dependencies:
   '@nrwl/angular':
     specifier: 15.9.2
     version: 15.9.2(@angular-devkit/build-angular@15.0.0)(@angular-devkit/core@15.0.0)(@angular-devkit/schematics@15.0.0)(@babel/core@7.21.8)(@schematics/angular@15.0.0)(@types/node@18.7.1)(cypress@12.2.0)(eslint@8.15.0)(nx@15.9.2)(rxjs@7.8.0)(typescript@4.8.2)
+  '@types/intro.js':
+    specifier: ^5.1.1
+    version: 5.1.1
   '@types/supertest':
     specifier: ^2.0.12
     version: 2.0.12
@@ -85,6 +88,9 @@ dependencies:
   gpt3-tokenizer:
     specifier: ^1.1.5
     version: 1.1.5
+  intro.js:
+    specifier: ^7.0.1
+    version: 7.0.1
   is-ci:
     specifier: ^3.0.1
     version: 3.0.1
@@ -6386,6 +6392,10 @@ packages:
     dependencies:
       '@types/node': 18.7.1
 
+  /@types/intro.js@5.1.1:
+    resolution: {integrity: sha512-gxrfhzwHeCZI8PoucIVRCe5cX0j29YYB1YLIfPb87HN1HiAhrl0CGMFuYPzo6Gvn5diAPCHF6XW2SR+Lqxexlg==}
+    dev: false
+
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
 
@@ -11633,6 +11643,10 @@ packages:
       from2: 2.3.0
       p-is-promise: 3.0.0
     dev: true
+
+  /intro.js@7.0.1:
+    resolution: {integrity: sha512-1oqz6aOz9cGQ3CrtVYhCSo6AkjnXUn302kcIWLaZ3TI4kKssRXDwDSz4VRoGcfC1jN+WfaSJXRBrITz+QVEBzg==}
+    dev: false
 
   /ip@2.0.0:
     resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}

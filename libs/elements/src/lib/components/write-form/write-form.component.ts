@@ -27,9 +27,35 @@ export class WriteFormComponent implements OnInit {
   @Output() promptResponse = new EventEmitter<any>();
 
   languages = [
-    {id: 1, name: 'English', code: 'en'},
-    {id: 2, name: 'Swahili', code: 'sw'}
-  ]
+    { id: 1, name: 'English', code: 'en' },
+    { id: 2, name: 'Swahili', code: 'sw' },
+    { id: 3, name: 'Spanish', code: 'es' },
+    { id: 4, name: 'French', code: 'fr' },
+    { id: 5, name: 'German', code: 'de' },
+    { id: 6, name: 'Italian', code: 'it' },
+    { id: 7, name: 'Portuguese', code: 'pt' },
+    { id: 8, name: 'Dutch', code: 'nl' },
+    { id: 9, name: 'Russian', code: 'ru' },
+    { id: 10, name: 'Chinese (Simplified and Traditional)', code: 'zh' },
+    { id: 11, name: 'Japanese', code: 'ja' },
+    { id: 12, name: 'Korean', code: 'ko' },
+    { id: 13, name: 'Arabic', code: 'ar' },
+    { id: 14, name: 'Hindi', code: 'hi' },
+    { id: 15, name: 'Bengali', code: 'bn' },
+    { id: 16, name: 'Turkish', code: 'tr' },
+    { id: 17, name: 'Polish', code: 'pl' },
+    { id: 18, name: 'Swedish', code: 'sv' },
+    { id: 19, name: 'Norwegian', code: 'no' },
+    { id: 20, name: 'Danish', code: 'da' },
+    { id: 21, name: 'Finnish', code: 'fi' },
+    { id: 22, name: 'Greek', code: 'el' },
+    { id: 23, name: 'Hebrew', code: 'he' },
+    { id: 24, name: 'Indonesian', code: 'id' },
+    { id: 25, name: 'Malay', code: 'ms' },
+    { id: 26, name: 'Thai', code: 'th' },
+    { id: 27, name: 'Vietnamese', code: 'vi' }
+];
+
 
   tones = [
     {id: 1, name: 'friendly'},

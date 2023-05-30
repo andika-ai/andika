@@ -1,0 +1,157 @@
+<div class="flex-1">
+    <!-- Left Column -->
+    <form name="card" class="cc-form" [formGroup]="form">
+      <div class="p-6 mt-4 bg-white rounded-lg">
+        <div class="mb-4 relative">
+          <label
+            for="cardNumber"
+            class="block mb-2 text-sm font-medium text-gray-700"
+            >Card Number</label
+          >
+          <span class="scheme">{{
+            ccNumber.resolvedScheme$ | async
+          }}</span>
+          <div class="grid grid-cols-1 md:grid-cols-3">
+            <div class="relative col-span-3 md:flex md:items-center">
+              <input
+                type="text"
+                id="cc-number"
+                formControlName="cardNumber"
+                type="tel"
+                autocomplete="cc-number"
+                ccNumber
+                #ccNumber="ccNumber"
+                class="card-input w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 pr-3 pl-10"
+                placeholder="Card Number"
+              />
+              <fa-icon
+                [icon]="faCreditCard"
+                class="absolute top-2 left-3 text-gray-400"
+                aria-hidden="true"
+              ></fa-icon>
+              <input
+             
+              type="text"
+              id="cc-exp-date"
+              formControlName="expirationDate"
+              type="tel"
+              autocomplete="cc-exp"
+              ccExp
+              class="w-15 md:w-14 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              placeholder="MM / YY"
+            />
+            <input
+            type="text"
+            id="cc-cvc"
+            formControlName="cvc"
+            type="tel"
+            autocomplete="off"
+            ccCvc
+            class="w-15 md:w-14 px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            placeholder="CVC"
+          />
+              
+            </div>
+          
+          </div>
+          
+        </div>
+
+        <button
+          (click)="togglePlan(plan)"
+          [disabled]="plan.disabled"
+          [ngClass]="{
+            'bg-yellow-500 text-black': !plan.disabled,
+            'bg-gray-300 text-gray-500 cursor-default': plan.disabled
+          }"
+          class="card-input w-full px-4 py-2 text-lg font-semibold text-white bg-yellow-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          {{ plan.buttonText }}
+        </button>
+      </div>
+    </form>
+    <p class="mt-4 text-sm text-gray-500">
+      Safe and secure. Cancel anytime. No strings attached. Powered by
+      Stripe.
+    </p>
+  </div>
+
+
+
+
+  <!-- ///////////////////////second form option -->
+
+  
+
+<!-- <div class="flex-1 p-8 bg-gray-100 dark:bg-gray-800 flex flex-col lg:w-full xl:w-full">
+    <button class="h-10 px-4 py-4 m-2 text-sm  border border-transparent hover:border-gray-300 bg-gray-900 dark:bg-white dark:hover:bg-gray-900 dark:hover:border-gray-900 dark:text-gray-900 dark:hover:text-white hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 rounded w-full">
+        <div>
+          <img src="/assets/img/logos/paypal.svg" alt="paypal logo" class="h-20" >
+        </div>
+        <div>
+            <p class="text-base leading-4 hover:text-gray-900">Pay</p>
+        </div>
+    </button>
+
+    <div class="flex flex-row justify-center items-center mt-6">
+        <hr class="border w-full" />
+        <p class="flex flex-shrink-0 px-4 py-2 text-base leading-4 text-gray-600 dark:text-white">or pay with mpesa</p>
+        <hr class="border w-full" />
+    </div>
+
+    <button class="h-10 px-4 py-4 m-2 text-sm  border border-transparent hover:border-gray-300 bg-gray-900 dark:bg-white dark:hover:bg-gray-900 dark:hover:border-gray-900 dark:text-gray-900 dark:hover:text-white hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 rounded w-full">
+      <div>
+        <img src="/assets/img/logos/M-Pesa-01.png" alt="mpesa logo" class="h-10" >
+      </div>
+      <div>
+          <p class="text-base leading-4 hover:text-gray-900">Pay</p>
+      </div>
+  </button> -->
+<!-- 
+    <div class="mt-8">
+        <input class="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="email" name="" id="" placeholder="Email" />
+    </div> -->
+
+    <!-- <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Card details</label>
+    <div class="mt-2 flex-col">
+        <div>
+            <input class="border rounded-tl rounded-tr border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="email" name="" id="" placeholder="0000 1234 6549 15151" />
+        </div>
+        <div class="flex-row flex">
+            <input class="border rounded-bl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="email" name="" id="" placeholder="MM/YY" />
+            <input class="border rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="email" name="" id="" placeholder="CVC" />
+        </div>
+    </div>
+
+    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Name on card</label>
+    <div class="mt-2 flex-col">
+        <div>
+            <input class="border rounded border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="email" name="" id="" placeholder="Name on card" />
+        </div>
+    </div> -->
+<!-- 
+    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Country or region</label>
+    <div class="mt-2 flex-col">
+        <div class="relative">
+            <button id="changetext" class="text-left border rounded-tr rounded-tl border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600 bg-white" type="email" name="" id="">United States</button>
+            <svg onclick="showMenu(true)" id="closeIcon" class="cursor-pointer absolute top-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 5.75L8 10.25L12.5 5.75" stroke="#27272A" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg onclick="showMenu(true)" id="openIcon" class="cursor-pointer hidden transform rotate-180 absolute top-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 5.75L8 10.25L12.5 5.75" stroke="#27272A" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div id="dropdown" class="mt-1 hidden absolute z-10 w-full flex bg-gray-50 justify-start flex-col text-gray-600">
+                <div onclick="changeText('China')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">China</div>
+                <div onclick="changeText('Russia')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">Russia</div>
+                <div onclick="changeText('UK')" class="cursor-pointer hover:bg-gray-800 hover:text-white px-4 py-2">UK</div>
+            </div>
+        </div>
+        <input class="border rounded-bl rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600" type="text" name="" id="" placeholder="ZIP" />
+    </div> -->
+
+    <!-- <button class="mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
+        <div>
+            <p class="text-base leading-4">Pay </p>
+        </div>
+    </button>
+</div> -->

@@ -90,83 +90,9 @@
             {{ plan.name }}
           </ng-template>
           <div class="flex flex-col lg:flex-row">
-            <div class="flex-1">
-              <!-- Left Column -->
-              <form name="card" class="cc-form" [formGroup]="form">
-                <div class="p-6 mt-4 bg-white rounded-lg">
-                  <div class="mb-4 relative">
-                    <label
-                      for="cardNumber"
-                      class="block mb-2 text-sm font-medium text-gray-700"
-                      >Card Number</label
-                    >
-                    <span class="scheme">{{
-                      ccNumber.resolvedScheme$ | async
-                    }}</span>
-                    <div class="grid grid-cols-1 md:grid-cols-3">
-                      <div class="relative col-span-3 md:flex md:items-center">
-                        <input
-                          type="text"
-                          id="cc-number"
-                          formControlName="cardNumber"
-                          type="tel"
-                          autocomplete="cc-number"
-                          ccNumber
-                          #ccNumber="ccNumber"
-                          class="card-input w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 pr-3 pl-10"
-                          placeholder="Card Number"
-                        />
-                        <fa-icon
-                          [icon]="faCreditCard"
-                          class="absolute top-2 left-3 text-gray-400"
-                          aria-hidden="true"
-                        ></fa-icon>
-                        <input
-                       
-                        type="text"
-                        id="cc-exp-date"
-                        formControlName="expirationDate"
-                        type="tel"
-                        autocomplete="cc-exp"
-                        ccExp
-                        class="w-15 md:w-14 px-4 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="MM / YY"
-                      />
-                      <input
-                      type="text"
-                      id="cc-cvc"
-                      formControlName="cvc"
-                      type="tel"
-                      autocomplete="off"
-                      ccCvc
-                      class="w-15 md:w-14 px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="CVC"
-                    />
-                        
-                      </div>
-                    
-                    </div>
-                    
-                  </div>
 
-                  <button
-                    (click)="togglePlan(plan)"
-                    [disabled]="plan.disabled"
-                    [ngClass]="{
-                      'bg-yellow-500 text-black': !plan.disabled,
-                      'bg-gray-300 text-gray-500 cursor-default': plan.disabled
-                    }"
-                    class="card-input w-full px-4 py-2 text-lg font-semibold text-white bg-yellow-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  >
-                    {{ plan.buttonText }}
-                  </button>
-                </div>
-              </form>
-              <p class="mt-4 text-sm text-gray-500">
-                Safe and secure. Cancel anytime. No strings attached. Powered by
-                Stripe.
-              </p>
-            </div>
+            <andika-app-checkout></andika-app-checkout>
+
             <div class="flex-1">
               <!-- Right Column -->
               <div class="p-6 mt-4 rounded-lg bg-indigo-500">

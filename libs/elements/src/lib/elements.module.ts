@@ -50,6 +50,7 @@ import { GptPromptComponent } from './components/gpt-prompt/gpt-prompt.component
 import { SearchAiToolComponent } from './components/search/search-ai-tool/search-ai-tool.component';
 import { UsecaseService } from './components/search/services/usecase.service';
 import { UtilitiesModule } from '@andika/libs/utilities';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   imports: [
@@ -103,7 +104,8 @@ import { UtilitiesModule } from '@andika/libs/utilities';
     PricingPlanComponent,
     PricingPlanTableComponent,
     GptPromptComponent,
-    SearchAiToolComponent
+    SearchAiToolComponent,
+    CheckoutComponent
   ],
   exports: [
     PreloaderComponent,
@@ -143,7 +145,8 @@ import { UtilitiesModule } from '@andika/libs/utilities';
     PricingPlanComponent,
     PricingPlanTableComponent,
     GptPromptComponent,
-    SearchAiToolComponent
+    SearchAiToolComponent,
+    CheckoutComponent
   ],
   providers: [
     UsecaseService

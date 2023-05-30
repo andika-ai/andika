@@ -15,7 +15,7 @@ import { TourService } from './ui/services/tour.service';
   providers: [
     DarkModeService,
     BreadcrumbService,
-    TourService
+    TourService,
   ]
 
 })

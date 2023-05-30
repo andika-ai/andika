@@ -34,7 +34,7 @@
         ],
         "scripts": [
           "./node_modules/quill/dist/quill.js",
-          "node_modules/intro.js/intro.js"
+          "./node_modules/intro.js/intro.js"
         ]
       },
       "configurations": {

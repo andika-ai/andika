@@ -27,7 +27,9 @@ import {
   faPencilAlt
 
 } from '@fortawesome/free-solid-svg-icons';
-import { TourService } from '@andika/libs/utilities';
+// import { TourService } from '@andika/libs/utilities';
+
+import * as Driver from 'driver.js';
 
 
 @Component({
@@ -64,6 +66,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     this._router.navigate(['admin/settings'])
   }
 
+
+  
   
 
 }

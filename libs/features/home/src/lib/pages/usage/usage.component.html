@@ -84,34 +84,8 @@
           </div>
         </div>
       </div>
-      <mat-tab-group>
-        <mat-tab *ngFor="let plan of plans" [disabled]="plan.disabled">
-          <ng-template mat-tab-label>
-            {{ plan.name }}
-          </ng-template>
-          <div class="flex flex-col lg:flex-row">
+      <andika-app-checkout></andika-app-checkout>
 
-            <andika-app-checkout></andika-app-checkout>
-
-            <div class="flex-1">
-              <!-- Right Column -->
-              <div class="p-6 mt-4 rounded-lg bg-indigo-500">
-                <h4 class="text-lg font-bold text-white">{{ plan.name }}</h4>
-                <p class="text-white">{{ plan.description }}</p>
-                <ul class="mt-4 list-disc list-inside text-white">
-                  <li *ngFor="let feature of plan.features">{{ feature }}</li>
-                </ul>
-                <div class="flex justify-between items-center mt-4">
-                  <div class="flex items-center">
-                    <p class="text-lg font-semibold text-white">{{ plan.price }}</p>
-                    <p class="ml-2 text-white">{{ plan.duration }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
     </div>
   </div>
 </div>

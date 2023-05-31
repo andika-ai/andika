@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import //
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import {
+  IPayPalConfig,
+  ICreateOrderRequest 
+} from 'ngx-paypal';
 
-'@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'andika-app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, AfterViewInit {
+  public payPalConfig ? : IPayPalConfig;
+  showSuccess = false;
+  showError = false;
+  showCancel = false;
   closeIcon: HTMLElement;
   openIcon: HTMLElement;
   dropdown: HTMLElement;
@@ -63,13 +70,22 @@ export class CheckoutComponent implements OnInit {
   ];
   selectedPaymentOption = '';
 
-  constructor() {}
+  constructor() {
+
+  }
 
   ngOnInit() {
     this.closeIcon = document.getElementById('closeIcon') as HTMLElement;
     this.openIcon = document.getElementById('openIcon') as HTMLElement;
     this.dropdown = document.getElementById('dropdown') as HTMLElement;
     this.text = document.getElementById('changetext') as HTMLElement;
+
+
+    
+  }
+
+  ngAfterViewInit(){
+    this.initConfig();
   }
 
   showMenu(flag: boolean): void {
@@ -109,6 +125,69 @@ export class CheckoutComponent implements OnInit {
   getPlanPrice(plan: any): string {
     return this.selectedPaymentOption === 'monthly' ? plan.monthly_price : plan.yearly_price;
   }
+
+
+  private initConfig(): void {
+    this.payPalConfig = {
+        currency: 'EUR',
+        clientId: "AQYGpLH6EZhencgQY2F66zyTI0sRtns9IJwAkKSAz2EdrboUE5BMc7OWikcoOWmN2SWw6VfzwJ8_I9gD",
+        createOrderOnClient: (data) => < ICreateOrderRequest > {
+            intent: 'CAPTURE',
+            purchase_units: [{
+                amount: {
+                    currency_code: 'EUR',
+                    value: '9.99',
+                    breakdown: {
+                        item_total: {
+                            currency_code: 'EUR',
+                            value: '9.99'
+                        }
+                    }
+                },
+                items: [{
+                    name: 'Enterprise Subscription',
+                    quantity: '1',
+                    category: 'DIGITAL_GOODS',
+                    unit_amount: {
+                        currency_code: 'EUR',
+                        value: '9.99',
+                    },
+                }]
+            }]
+        },
+        advanced: {
+            commit: 'true'
+        },
+        style: {
+            label: 'paypal',
+            layout: 'vertical'
+        },
+        onApprove: (data, actions) => {
+            console.log('onApprove - transaction was approved, but not authorized', data, actions);
+            actions.order.get().then((details: any) => {
+                console.log('onApprove - you can get full order details inside onApprove: ', details);
+            });
+
+        },
+        onClientAuthorization: (data) => {
+            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+            this.showSuccess = true;
+        },
+        onCancel: (data, actions) => {
+            console.log('OnCancel', data, actions);
+            this.showCancel = true;
+
+        },
+        onError: err => {
+            console.log('OnError', err);
+            this.showError = true;
+        },
+        onClick: (data, actions) => {
+            console.log('onClick', data, actions);
+            // this.resetStatus();
+        }
+    };
+}
 }
 
 

@@ -43,6 +43,7 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { ServicesModule } from '@andika/services';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PricingPlanComponent } from './components/admin/settings/pricing-plan/pricing-plan.component';
@@ -65,6 +66,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     RouterModule,
     QuillModule,
     UtilitiesModule,
+    NgxPayPalModule,
     ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,

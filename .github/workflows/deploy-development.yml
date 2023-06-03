@@ -70,6 +70,9 @@ jobs:
       
       - name: Display JSON content
         run: cat $GITHUB_WORKSPACE/keys.json
+
+      - name: Configure App environments
+        run : yarn run env-config
       
       - name: Build
         run: yarn run build

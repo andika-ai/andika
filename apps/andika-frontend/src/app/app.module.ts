@@ -25,7 +25,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat'
 import { MaterialModule } from '@andika/libs/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
-import { USE_EMULATOR } from '@angular/fire/compat/functions';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 // ✨ New 👇
@@ -71,7 +70,6 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
   providers: [
     ScreenTrackingService,UserTrackingService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    { provide: USE_EMULATOR, useValue: ['localhost', 5001] },
     { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
   bootstrap: [AppComponent],

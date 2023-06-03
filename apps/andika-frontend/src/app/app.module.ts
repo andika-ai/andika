@@ -13,7 +13,6 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { AppRoutingModule } from './app.routes';
 import { QuillModule } from 'ngx-quill';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../../../../tools/scripts/environments/environment';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -32,6 +31,7 @@ import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { PagesModule } from '@andika/pages';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],

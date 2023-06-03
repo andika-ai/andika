@@ -6,11 +6,14 @@
   "prefix": "andika",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": [
         "{options.outputPath}"
       ],
       "options": {
+        "customWebpackConfig": {
+          "path": "apps/andika-frontend/webpack.config.js"
+        },
         "outputPath": "dist/apps/andika-frontend",
         "index": "apps/andika-frontend/src/index.html",
         "main": "apps/andika-frontend/src/main.ts",
@@ -58,7 +61,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "andika-frontend:build:production"

@@ -13,7 +13,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { AppRoutingModule } from './app.routes';
 import { QuillModule } from 'ngx-quill';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+import { environment } from '../../../../tools/scripts/environments/environment';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -53,7 +53,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     ClipboardModule,
     AppRoutingModule,
     QuillModule.forRoot(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -69,7 +69,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
   ],
   providers: [
     ScreenTrackingService,UserTrackingService,
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
     { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
   bootstrap: [AppComponent],

@@ -3,6 +3,20 @@ on:
     branches:
       - development
 
+env:
+  ## Sets environment variable
+  NODE_ENV: "development"
+  NEXIA_API_BASE_URL: ${{ secrets.NEXIA_API_BASE_URL}}
+  FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY}}
+  FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+  FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+  FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+  FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+  FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+  GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+  GOOGLE_CLIENT_DOMAIN: ${{ secrets.GOOGLE_CLIENT_DOMAIN }}
+  GOOGLE_CLIENT_REDIRECT_URL: ${{ secrets.GOOGLE_CLIENT_REDIRECT_URL }}
+  
 permissions:
   checks: write
   contents: read
@@ -46,3 +60,5 @@ jobs:
           expires: 30d
           projectId: andika-16cf6
           channelId: live
+
+

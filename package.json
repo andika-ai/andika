@@ -5,7 +5,7 @@
   "scripts": {
     "cm": "cz",
     "start": "nx serve",
-    "add_envs": "node tools/scripts/generate-env.js",
+    "env-config": "node tools/scripts/update-environment-config.js",
     "build": "nx build",
     "lint": "eslint --ext .js,.ts .",
     "build:watch": "tsc --watch",
@@ -95,6 +95,7 @@
     "commitizen": "^4.3.0",
     "cypress": "^12.2.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^16.1.3",
     "eslint": "~8.15.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "8.1.0",

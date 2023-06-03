@@ -6,7 +6,7 @@
     "cm": "cz",
     "start": "nx serve",
     "add_envs": "node tools/scripts/generate-env.js",
-    "build": "yarn run add_envs && nx build",
+    "build": "nx build",
     "lint": "eslint --ext .js,.ts .",
     "build:watch": "tsc --watch",
     "deploy": "npm run build && firebase deploy --only hosting",

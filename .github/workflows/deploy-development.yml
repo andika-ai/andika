@@ -49,6 +49,9 @@ jobs:
       - name: Install Packages
         run: yarn --prefer-offline
 
+      - name: Inject Environment Variables
+        run: yarn run add_envs
+
       - name: Build
         run: yarn run build
 

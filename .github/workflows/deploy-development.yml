@@ -1,3 +1,5 @@
+name: Deploy to Firebase Hosting
+
 on:
   push:
     branches:
@@ -49,31 +51,29 @@ jobs:
       - name: Install Packages
         run: yarn --prefer-offline
 
-      - name: Generate JSON file
-        run: |
-          touch $GITHUB_WORKSPACE/keys.json
-      
       - name: Write key-value pairs to JSON file
         run: |
-          echo '{
-            "NEXIA_API_BASE_URL": "'"${{ secrets.NEXIA_API_BASE_URL }}"'",
-            "FIREBASE_API_KEY": "'"${{ secrets.FIREBASE_API_KEY }}"'",
-            "FIREBASE_AUTH_DOMAIN": "'"${{ secrets.FIREBASE_AUTH_DOMAIN }}"'",
-            "FIREBASE_PROJECT_ID": "'"${{ secrets.FIREBASE_PROJECT_ID }}"'",
-            "FIREBASE_MEASUREMENT_ID": "'"${{ secrets.FIREBASE_MEASUREMENT_ID }}"'",
-            "FIREBASE_MESSAGING_SENDER_ID": "'"${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}"'",
-            "FIREBASE_APP_ID": "'"${{ secrets.FIREBASE_APP_ID }}"'",
-            "GOOGLE_CLIENT_ID": "'"${{ secrets.GOOGLE_CLIENT_ID }}"'",
-            "GOOGLE_CLIENT_DOMAIN": "'"${{ secrets.GOOGLE_CLIENT_DOMAIN }}"'",
-            "GOOGLE_CLIENT_REDIRECT_URL": "'"${{ secrets.GOOGLE_CLIENT_REDIRECT_URL }}"'"
-          }' > $GITHUB_WORKSPACE/keys.json
-      
+          cat << EOF > $GITHUB_WORKSPACE/keys.json
+          {
+            "NEXIA_API_BASE_URL": "${{ secrets.NEXIA_API_BASE_URL }}",
+            "FIREBASE_API_KEY": "${{ secrets.FIREBASE_API_KEY }}",
+            "FIREBASE_AUTH_DOMAIN": "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
+            "FIREBASE_PROJECT_ID": "${{ secrets.FIREBASE_PROJECT_ID }}",
+            "FIREBASE_MEASUREMENT_ID": "${{ secrets.FIREBASE_MEASUREMENT_ID }}",
+            "FIREBASE_MESSAGING_SENDER_ID": "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}",
+            "FIREBASE_APP_ID": "${{ secrets.FIREBASE_APP_ID }}",
+            "GOOGLE_CLIENT_ID": "${{ secrets.GOOGLE_CLIENT_ID }}",
+            "GOOGLE_CLIENT_DOMAIN": "${{ secrets.GOOGLE_CLIENT_DOMAIN }}",
+            "GOOGLE_CLIENT_REDIRECT_URL": "${{ secrets.GOOGLE_CLIENT_REDIRECT_URL }}"
+          }
+          EOF
+
       - name: Display JSON content
         run: cat $GITHUB_WORKSPACE/keys.json
 
       - name: Configure App environments
         run : yarn run env-config
-      
+
       - name: Build
         run: yarn run build
 
@@ -85,5 +85,3 @@ jobs:
           expires: 30d
           projectId: andika-16cf6
           channelId: live
-
-

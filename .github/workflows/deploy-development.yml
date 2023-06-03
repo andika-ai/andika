@@ -1,5 +1,3 @@
-name: Development Deployment CI
-
 on:
   push:
     branches:
@@ -16,18 +14,30 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
           node-version: 18
 
-      - name: Install PNPM
-        run: npm install -g pnpm
+      - name: Set up PNPM
+        run: |
+          export PNPM_HOME=~/.pnpm-global
+          export PATH=$PNPM_HOME/bin:$PATH
+          npm install -g pnpm
+          pnpm setup
 
       - name: Install NX
         run: pnpm add -g nx
 
+      - name: Cache PNPM packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - name: Install Packages
-        run: pnpm install
+        run: pnpm install --prefer-offline
 
       - name: Build
         run: pnpm run build

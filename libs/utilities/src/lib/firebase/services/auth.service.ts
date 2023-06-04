@@ -29,14 +29,23 @@ export class AuthService {
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {}
 
+    setUser(user: User): void {
+      this._cacheService.setItem('user', user);
+    }
+
+    getUser(user: string): string {
+      return this._cacheService.getItem(user);
+    }
+
+    // TODO have a method to get active user from server
+
   /**
    * Returns true when the user is logged in and their email is verified.
    * @returns A boolean value indicating the login and email verification status.
    */
   get isLoggedIn(): boolean {
-    const cachedUser = this._cacheService.getItem('user')
-    const user = JSON.parse(cachedUser);
-    return user !== null && user.is_verified !== false;
+    const user = this._cacheService.getItem('user')
+    return user !== null && user.is_verified !== "false";
   }
 
 

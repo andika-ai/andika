@@ -65,8 +65,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       const sub = this.authService
         .signIn(this.form.value.email, this.form.value.password)
         .subscribe({
-          next: (res: User) => {
-            this._cacheService.setItem('user', JSON.stringify(res))
+          next: (res: any) => {
+            const userDetails = res.data as User;
+            this._cacheService.setItem('user',  userDetails)
             // Handle the success scenario
             this.submitting = false; // Set the submitting flag back to false
             this._subs.add(sub)

@@ -23,7 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat'
 import { MaterialModule } from '@andika/libs/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 // ✨ New 👇
@@ -32,6 +32,7 @@ import { PagesModule } from '@andika/pages';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { environment } from '../environments/environment';
+import { JwtInterceptor } from '@andika/libs/utilities';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -70,7 +71,12 @@ import { environment } from '../environments/environment';
   providers: [
     ScreenTrackingService,UserTrackingService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

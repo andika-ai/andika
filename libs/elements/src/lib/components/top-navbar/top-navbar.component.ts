@@ -51,6 +51,66 @@ export class TopNavbarComponent implements OnInit {
     'YouTube descriptions',
     'taglines & headlines',
   ];
+  categories = [
+    'Youtube Idea',
+    'Youtube Description',
+    'Youtube Channel Description',
+    'Testimonial and Review',
+    'Tagline and Headline',
+    'Story Plots',
+    'Song Lyrics',
+    'SMS and Notifications',
+    'Email Subject Line',
+    'Job Description',
+    'Blog Idea and Outline',
+    'Cover Letter',
+    'Profile Bio',
+    'Reply to Reviews and Messages',
+    'Grammar Correction',
+    'Business Idea',
+    'Business Idea Pitch',
+    'Citation',
+    'Copywriting Framework AIDA',
+    'Google Search Ad',
+    'Interview Questions',
+    'Keywords Extractor',
+    'Landing Page',
+    'Paraphrase Text',
+    'Post and Caption Idea',
+    'Product Description with Bullet Points',
+    'Product Description',
+    'SEO Meta Title',
+    'Generate Call to Action',
+    'Generate Brand Name',
+    'Generate Question Answer',
+    'Social Media Ad',
+    'Generate Landing Page Copy',
+    'Generate Facebook Ad',
+    'Generate Instagram Caption',
+    'Generate Podcast Idea',
+    'GeneratePresentation',
+    'GeneratePressRelease',
+    'GenerateVideoScript',
+    'GenerateWebsiteCopy',
+    'GenerateNewsletterIdea',
+    'GenerateNewsletterTitle',
+    'GenerateSalesCopy',
+    'GenerateCourseTitle',
+    'GenerateCourseSubtitle',
+    'GenerateCourseDescription',
+    'GenerateCourseLectureTitles',
+    'GenerateCourseQuizQuestions',
+    'GenerateCourseExercises',
+    'GenerateCourseArticles',
+    'SummarizeText',
+    'AdCopy',
+    'EmailBody',
+    'EmailToneAdjustment',
+    'SocialMediaPost',
+    'SocialMediaAdGenerator',
+    'GoogleSearchAdsGenerator'
+  ]
+  
   randomText: string = this.text[0];
   filterCategory = '';
   toggleDarkMode = false;
@@ -138,6 +198,7 @@ export class TopNavbarComponent implements OnInit {
 
   toggleUsecaseDropdown() {
     this.isUsecaseDropdownOpen = !this.isUsecaseDropdownOpen;
+    this.usecases = this.useCaseData;
   }
 
   onDocumentClick(event: MouseEvent) {
@@ -160,10 +221,19 @@ export class TopNavbarComponent implements OnInit {
           .includes(this.filterCategory.toLowerCase())
       );
       this.usecaseDataEvent.emit(filteredData);
-      console.log(filteredData)
-      console.log(filteredData)
       return filteredData;
     }
+  }
+
+  onClickUsecaseCategory(title: string){
+      // search by use case title
+      const filteredData = this.usecases.filter((usecase) =>
+      usecase.title
+        .toLowerCase()
+        .includes(title.toLowerCase())
+    );
+    this.usecaseDataEvent.emit(filteredData);
+    return filteredData;
   }
 
   

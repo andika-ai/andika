@@ -52,15 +52,17 @@ export class TopNavbarComponent implements OnInit {
     'taglines & headlines',
   ];
   randomText: string = this.text[0];
+  filterCategory = '';
+  toggleDarkMode = false;
+  showWritingToolsOnToNav = false;
+  isUsecaseDropdownOpen = false;
   hidden = false;
   /**Usecase data to handle search fucntionality */
   dataUseCase: any[]
   @Input() useCaseData: any[] // default all data loaded
   @Input() usecases: any[];
   @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
-  filterCategory = '';
-  toggleDarkMode = false;
-  showWritingToolsOnToNav = false;
+
   constructor(private _router: Router, private _authService: AuthService,) {}
 
   ngOnInit() {
@@ -131,6 +133,19 @@ export class TopNavbarComponent implements OnInit {
     this.isMenuHidden= !this.isMenuHidden;
   }
 
+
+  
+
+  toggleUsecaseDropdown() {
+    this.isUsecaseDropdownOpen = !this.isUsecaseDropdownOpen;
+  }
+
+  onDocumentClick(event: MouseEvent) {
+    const dropdownButton = document.getElementById('dropdown-button');
+    if (dropdownButton && !dropdownButton.contains(event.target as Node)) {
+      this.isUsecaseDropdownOpen = false;
+    }
+  }
 
 
   /*Search functionality*/

@@ -2,9 +2,11 @@ import { CheckoutComponent } from './components/checkout/checkout/checkout.compo
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { PricingComponent } from './components/pricing/pricing.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 const PAGES_ROUTES: Route[] = [
+    { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: 'pricing', component: PricingComponent},
     { path: 'checkout', component: CheckoutComponent},
     // { path: 'intergration', component: RegisterComponent},

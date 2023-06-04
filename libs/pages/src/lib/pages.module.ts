@@ -1,3 +1,4 @@
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CheckoutComponent } from './components/checkout/checkout/checkout.component';
 import { IntergrationComponent } from './components/intergration/intergration.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
@@ -23,6 +24,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
   declarations: [
     // IntergrationComponent,
     PricingComponent,
+    ForgotPasswordComponent,
     // CheckoutComponent,
     // ResourcesComponent,
     // SupportComponent

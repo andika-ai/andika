@@ -17,6 +17,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubSink } from 'subsink';
 import { User } from '@andika/model';
+import { SnackBarService } from '@andika/elements';
 
 @Component({
   selector: 'andika-login',
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private _fb: FormBuilder,
     public authService: AuthService,
     private afAuth: AngularFireAuth,
-    private _router: Router
+    private _router: Router,
+    private _snackBarService: SnackBarService,
   ) {
     
   }
@@ -67,12 +69,16 @@ export class LoginComponent implements OnInit, OnDestroy {
             // Handle the success scenario
             this.submitting = false; // Set the submitting flag back to false
             this._subs.add(sub)
+            this._snackBarService.openSnackBar('Success!', 'Login success','OK', 'center', 'top', ['snackbar-success']);
             // Handle the result or redirect to a new page
             //set items user then redirect
             this._router.navigate(['dashboard']);
           },
-          error: (error) => {
-            console.log(error);
+          error: (msg: any) => {
+            this.submitting = false; 
+            const errorMsg = msg.error.data['error'];
+            const errorMessage = "An error occurred. Additional information: " + errorMsg;
+            this._snackBarService.openSnackBar(errorMessage, '', 'OK', 'center', 'top', ['snackbar-error']);
           },
         });
     }

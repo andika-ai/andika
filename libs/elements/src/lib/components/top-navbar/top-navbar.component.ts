@@ -211,6 +211,8 @@ export class TopNavbarComponent implements OnInit {
 
   /*Search functionality*/
   filterUsecases() {
+    // load data 
+    this.usecases = this.useCaseData;
     if (this.filterCategory.trim() === '') {
       this.usecaseDataEvent.emit(this.useCaseData);
       return this.usecases;

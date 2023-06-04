@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   useCaseData: any[]; // default all data loaded incases filtering happens get all usecases fron this.
 
   filterCategory = '';
-
+  isLoading = true;
   constructor(
     private router: Router,
     private formService: FormService,
@@ -56,13 +56,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // Handle the API response here
         this.usecases = data;
         this.useCaseData = data;
+        this.isLoading = false;
       });
   }
 
   // Recieves filtered data that has been filtered
   receiveSearchDataFromNavbar(data: any) {
     //updatedata
-    console.log(data);
     this.usecases = data;
   }
 

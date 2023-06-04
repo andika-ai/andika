@@ -66,12 +66,17 @@
                 </p>
               </div>
               <button type="submit" [disabled]="form.invalid || submitting"
-                class="cursor-pointer mt-4 tracking-wide font-semibold bg-yellow-500 text-black w-full py-2 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                <ng-container *ngIf="submitting; else defaultContent">
+              [ngClass]="{
+                  'bg-yellow-500': form.valid,
+                  'bg-zinc-500': form.invalid
+              }"
+              class="cursor-pointer mt-4 tracking-wide font-semibold text-black w-full py-2 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+              <ng-container *ngIf="submitting; else defaultContent">
                   Submitting Email&nbsp;<i class="w-5 h-5 mr-2 fa fa-spinner fa-spin" style="font-size: 24px"></i>
-                </ng-container>
-                <ng-template #defaultContent> Continue with Email </ng-template>
-              </button>
+              </ng-container>
+              <ng-template #defaultContent> Continue with Email </ng-template>
+          </button>
+          
             </form>
             <p class="w-full mt-4 text-xs text-gray-600 text-center">
               I agree to abide by andika's

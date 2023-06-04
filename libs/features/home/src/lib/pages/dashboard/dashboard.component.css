@@ -3,3 +3,8 @@
     max-height: 480px; 
 }
 
+.spinner {
+    width: 24px;
+    height: 24px;
+  }
+  

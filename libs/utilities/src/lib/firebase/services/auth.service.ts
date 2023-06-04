@@ -33,9 +33,20 @@ export class AuthService {
       this._cacheService.setItem('user', user);
     }
 
-    getUser(user: string): string {
-      return this._cacheService.getItem(user);
+    getUser(): User | null {
+      /**
+       * TODO
+       * Check if the user is authenticated
+       * Return the authenticated user object
+       * Return null or a default user object
+       */
+      const user = this._cacheService.getItem('user');
+      if(!user){
+        return null
+      } else {
+        return user
     }
+  }
 
     // TODO have a method to get active user from server
 
@@ -44,8 +55,8 @@ export class AuthService {
    * @returns A boolean value indicating the login and email verification status.
    */
   get isLoggedIn(): boolean {
-    const user = this._cacheService.getItem('user')
-    return user !== null && user.is_verified !== "false";
+    const user = this._cacheService.getItem('user') as User;
+    return user !== null;
   }
 
 

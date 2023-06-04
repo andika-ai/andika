@@ -60,31 +60,32 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitForm() {
     if (this.form.valid) {
       this.submitting = true; // Set the submitting flag to true
-
+  
       // Perform the form submission or API call
       const sub = this.authService
         .signIn(this.form.value.email, this.form.value.password)
         .subscribe({
           next: (res: any) => {
-            const userDetails = res.data as User;
-            this._cacheService.setItem('user',  userDetails)
+            this._cacheService.setItem('user', res.data);
             // Handle the success scenario
             this.submitting = false; // Set the submitting flag back to false
-            this._subs.add(sub)
+            this._subs.add(sub);
             this._snackBarService.openSnackBar('Success!', 'Login success','OK', 'center', 'top', ['snackbar-success']);
             // Handle the result or redirect to a new page
             //set items user then redirect
             this._router.navigate(['dashboard']);
           },
-          error: (msg: any) => {
+          error: (error: any) => {
             this.submitting = false; 
-            const errorMsg = msg.error.data['error'];
+            console.log(error)
+            const errorMsg = error?.error?.data?.error;
             const errorMessage = "An error occurred. Additional information: " + errorMsg;
             this._snackBarService.openSnackBar(errorMessage, '', 'OK', 'center', 'top', ['snackbar-error']);
           },
         });
     }
   }
+  
 
   ngOnDestroy(){
     this.authService.unsubscribeAll(); 

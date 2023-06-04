@@ -2,29 +2,24 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
 import { EditorComponent } from './pages/editor/editor.component';
-import { LandingComponent } from './pages/landing/landing.component';
 import { AccountComponent } from './pages/account/account.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
-import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
-import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { UsageComponent } from './pages/usage/usage.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { DocumentsComponent } from './pages/documents/documents.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from '@andika/libs/shared';
 // import { StudioComponent } from './pages/studio/studio.component';
 // import { AudioComponent } from './pages/audio/audio.component';
 
 const HOME_ROUTES: Route[] = [
-    { path: 'dashboard', component: DashboardComponent}, 
-    { path: 'usage', component: UsageComponent}, 
-    { path: 'profile', component: UserProfileComponent},
-    { path: 'documents', component: DocumentsComponent},
-    { path: 'terms-of-service', component: TermsOfServiceComponent}, 
-    { path: 'privacy-notice', component: PrivacyNoticeComponent}, 
-    { path: 'account', component: AccountComponent}, 
-    { path: 'history', component: UserHistoryComponent}, 
-    { path: '', component: LandingComponent}, // Home when user not logged in
-    { path: 'edit', component: EditorComponent }, //home when user loggged in
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}, 
+    { path: 'usage', component: UsageComponent, canActivate: [AuthGuard]}, 
+    { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+    { path: 'documents', component: DocumentsComponent, canActivate: [AuthGuard]},
+    { path: 'account', component: AccountComponent,canActivate: [AuthGuard]}, 
+    { path: 'history', component: UserHistoryComponent, canActivate: [AuthGuard]}, 
+    { path: 'edit', component: EditorComponent, canActivate: [AuthGuard]}, //home when user loggged in
     // { path: 'studio', component: StudioComponent }, //home when user loggged in
     // { path: 'audio', component: AudioComponent }, //home when user loggged in
 ];

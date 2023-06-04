@@ -1,36 +1,37 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  Collapse,
-  Dropdown,
-  Ripple,
-  initTE,
+  // Collapse,
+  // Dropdown,
+  // Ripple,
+  // initTE,
   Sidenav,
 } from "tw-elements";
 
 import {
-  faTeletype,
-  faTimes,
-  faExpand,
-  faQuestionCircle,
-  faLightbulb,
-  faPen,
-  faPenNib,
-  faClockRotateLeft,
+  // faTeletype,
+  // faTimes,
+  // faExpand,
+  // faQuestionCircle,
+  // faLightbulb,
+  // faPen,
+  // faPenNib,
+  // faClockRotateLeft,
   faArchive,
   faDatabase,
   faFolder,
   faSignOut,
   faUser,
   faGauge,
-  faHome,
+  // faHome,
   faPencilAlt
 
 } from '@fortawesome/free-solid-svg-icons';
 // import { TourService } from '@andika/libs/utilities';
 
-import * as Driver from 'driver.js';
+// import * as Driver from 'driver.js';
 
+import { AuthService } from '@andika/libs/utilities';
 
 @Component({
   selector: 'andika-sidebar',
@@ -46,10 +47,14 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   faGauge = faGauge;
   faPencilAlt = faPencilAlt;
   @ViewChild('sidenav', { static: true }) sidenav: ElementRef;
-  constructor(private _router: Router, private elementRef: ElementRef) { }
+  constructor(
+    private _router: Router,
+    private elementRef: ElementRef,
+    private _authService: AuthService
+    ) { }
 
   ngOnInit() {
-
+    
   }
 
   ngAfterViewInit() {
@@ -67,6 +72,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   }
 
 
+  logout(){
+    this._authService.signOut();
+  }
   
   
 

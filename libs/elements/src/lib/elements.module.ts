@@ -1,7 +1,6 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { RouterModule } from '@angular/router';
 import { PricingPlanTableComponent } from './components/tables/pricing-plan-table/pricing-plan-table.component';
-import { PricingComponent } from './../../../pages/src/lib/components/pricing/pricing.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { MainNavbarComponent } from './components/main-navbar/main-navbar.component';
 import { TopEditorToolbarComponent } from './components/top-editor-toolbar/top-editor-toolbar.component';

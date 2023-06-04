@@ -4,8 +4,6 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 @Injectable()
 export class UsecaseService {
 private apiUrl = 'http://localhost:8000/api/v1'; // Replace with your API URL
-private rapidApiHost = 'RAPID_API_HOST'; // Replace with your RapidAPI host
-private rapidApiKey = 'RAPID_API_KEY'; // Replace with your RapidAPI key
 constructor(private http: HttpClient) { }
 
 

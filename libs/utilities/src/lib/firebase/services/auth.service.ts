@@ -10,6 +10,7 @@ import { SubSink } from 'subsink';
 
 import { BackendUserService } from '@andika/services';
 import { Observable, Subscription } from 'rxjs';
+import { CacheService } from '../../localstorage/cache.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,28 +24,18 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     private _backendUserService: BackendUserService,
+    private  _cacheService: CacheService,
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
-  ) {
-
-    /* Saving user data in localstorage when  logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe((user: any) => {
-      if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
-        JSON.parse(localStorage.getItem('user')!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-      }
-    });
-  }
+  ) {}
 
   /**
    * Returns true when the user is logged in and their email is verified.
    * @returns A boolean value indicating the login and email verification status.
    */
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const cachedUser = this._cacheService.getItem('user')
+    const user = JSON.parse(cachedUser);
     return user !== null && user.is_verified !== false;
   }
 
@@ -56,7 +47,7 @@ export class AuthService {
    * @returns An Observable that represents the sign-in process.
    */
   signIn(email: string, password: string): Observable<any> {
-    return from(this._backendUserService.userEmailLogin({ email, password }));
+    return from(this._backendUserService.userEmailLogin({ email: email, password: password }));
   }
   /**
    * Sign up with email and password when the user is registering.
@@ -109,8 +100,8 @@ export class AuthService {
             pricing_plan: 'BASIC',
             auth_token: token,
           };
-
-          this.setUserData(userData);
+          // send to server
+          this.sendUserData(userData);
         });
       })
       .catch((error: any) => {
@@ -187,10 +178,12 @@ export class AuthService {
    * Saves user data to the server database.
    * @param userData - The user data to be saved.
    */
-  setUserData(userData: any): void {
+  sendUserData(userData: any): void {
     const sub: Subscription = this._backendUserService.saveNewSocialUser(userData).subscribe({
       next: (response: any) => {
         this._subs.add(sub);
+        console.log('-----------user.data')
+        console.log(response)
         // Perform any additional actions or logic based on the response
         this.router.navigate(['dashboard']);
       },

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { DarkModeService } from './ui/services/dark-mode.service';
 import { BreadcrumbService } from './ui/services/bread-crumb.service';
 import { TourService } from './ui/services/tour.service';
+import { CacheService } from './localstorage/cache.service';
+
 @NgModule({
   declarations: [
   ],
@@ -13,6 +15,7 @@ import { TourService } from './ui/services/tour.service';
   exports:[
   ],
   providers: [
+    CacheService,
     DarkModeService,
     BreadcrumbService,
     TourService,

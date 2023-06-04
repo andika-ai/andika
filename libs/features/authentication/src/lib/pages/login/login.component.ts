@@ -5,7 +5,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '@andika/libs/utilities';
+import { AuthService, CacheService } from '@andika/libs/utilities';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {
   faStackOverflow,
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private afAuth: AngularFireAuth,
     private _router: Router,
     private _snackBarService: SnackBarService,
+    private  _cacheService: CacheService
   ) {
     
   }
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .signIn(this.form.value.email, this.form.value.password)
         .subscribe({
           next: (res: User) => {
-            window.localStorage.setItem('user', JSON.stringify(res));
+            this._cacheService.setItem('user', JSON.stringify(res))
             // Handle the success scenario
             this.submitting = false; // Set the submitting flag back to false
             this._subs.add(sub)

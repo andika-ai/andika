@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             window.localStorage.setItem('user', JSON.stringify(res));
 
             this._subs.add(signUpSubscription);
+            this._router.navigate(['/login'])
 
             // this._redirectToDashboard();
           },

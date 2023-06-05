@@ -14,8 +14,6 @@ import { BackendUserService } from './authentication/backend-user.service';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
-    // OpenaiService,
-    // OrgTokenManagementService,
     SubscriptionService,
     UserService,
     PricingPlanService,

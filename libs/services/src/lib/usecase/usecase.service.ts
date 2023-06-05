@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { EnvironmentProvider } from '@andika/config';
 
 
 @Injectable()
 export class UsecaseService {
-private apiUrl = 'http://localhost:8000/api/v1'; // Replace with your API URL
-constructor(private http: HttpClient) { }
+private apiBaseUrl = this._environmentProvider.environment.apiRoot;
+constructor(private http: HttpClient,  private _environmentProvider: EnvironmentProvider) { }
 
 
 
 getData() {
     const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    return this.http.get(`${this.apiUrl}/usecases/`, { headers });
+    return this.http.get(`${this.apiBaseUrl}/usecases/`, { headers });
   }
 
 }

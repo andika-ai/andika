@@ -24,9 +24,6 @@
     "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "@andika-frontend/gcp-function-tests": [
-        "libs/gcp-function-tests/src/index.ts"
-      ],
       "@andika/admin": ["libs/features/admin/src/index.ts"],
       "@andika/config": ["libs/app/config/src/index.ts"],
       "@andika/elements": ["libs/elements/src/index.ts"],
@@ -34,14 +31,13 @@
         "libs/features/authentication/src/index.ts"
       ],
       "@andika/features/home": ["libs/features/home/src/index.ts"],
-      "@andika/libs/prompts": ["libs/prompts/src/index.ts"],
       "@andika/libs/material": ["libs/material/src/index.ts"],
+      "@andika/libs/prompts": ["libs/prompts/src/index.ts"],
       "@andika/libs/shared": ["libs/shared/src/index.ts"],
       "@andika/libs/utilities": ["libs/utilities/src/index.ts"],
       "@andika/model": ["libs/model/src/index.ts"],
       "@andika/pages": ["libs/pages/src/index.ts"],
-      "@andika/services": ["libs/services/src/index.ts"],
-      "@andika/user": ["libs/state/user/src/index.ts"]
+      "@andika/services": ["libs/services/src/index.ts"]
     }
   },
   "files": [],

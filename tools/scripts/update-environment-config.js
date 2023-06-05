@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const keysFilePath = path.join(__dirname, '../../keys.json');
-const environmentFilePath = path.join(__dirname, '../../apps/andika-frontend/src/environments/environment.ts');
+const environmentFilePath = path.join(__dirname, '../../libs/app/config/src/lib/environments/environment.ts');
 
 const keysData = fs.readFileSync(keysFilePath, 'utf8');
 const keys = JSON.parse(keysData);

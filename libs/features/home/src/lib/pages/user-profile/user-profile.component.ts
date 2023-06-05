@@ -1,4 +1,4 @@
-import { ChangeEmailModalComponent, ChangePasswordModalComponent, SnackBarService } from '@andika/elements';
+import { ChangeEmailModalComponent, ChangePasswordModalComponent, DeleteConfirmModalComponent, SnackBarService } from '@andika/elements';
 import { CacheService } from '@andika/libs/utilities';
 import { EnvironmentProvider } from '@andika/config';
 import { User } from '@andika/model';
@@ -92,6 +92,23 @@ export class UserProfileComponent implements OnInit {
 
   openChangePasswordDialog(){
     this._dialog.open(ChangePasswordModalComponent, {
+    });
+  }
+
+
+
+  openDeleteConfirmationModal(): void {
+    const dialogRef = this._dialog.open(DeleteConfirmModalComponent, {
+      width: '400px',
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User confirmed the delete action
+        // Perform the delete operation
+      } else {
+        // User cancelled the delete action
+      }
     });
   }
 

@@ -31,7 +31,7 @@ import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { PagesModule } from '@andika/pages';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { environment } from '../environments/environment';
+import { environment } from '@andika/config';
 import { JwtInterceptor } from '@andika/libs/utilities';
 
 @NgModule({

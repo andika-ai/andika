@@ -25,3 +25,4 @@ export * from './lib/components/modals/change-password-modal/change-password-mod
 
 export * from './lib/components/modals/change-email-modal/change-email-modal.component';
 
+export * from './lib/components/modals/delete-confirm-modal/delete-confirm-modal.component';

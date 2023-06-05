@@ -53,6 +53,7 @@ import { UtilitiesModule } from '@andika/libs/utilities';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ChangePasswordModalComponent } from './components/modals/change-password-modal/change-password-modal.component';
 import { ChangeEmailModalComponent } from './components/modals/change-email-modal/change-email-modal.component';
+import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-modal/delete-confirm-modal.component';
 
 @NgModule({
   imports: [
@@ -110,7 +111,8 @@ import { ChangeEmailModalComponent } from './components/modals/change-email-moda
     SearchAiToolComponent,
     CheckoutComponent,
     ChangePasswordModalComponent,
-    ChangeEmailModalComponent
+    ChangeEmailModalComponent,
+    DeleteConfirmModalComponent
   ],
   exports: [
     PreloaderComponent,
@@ -153,7 +155,8 @@ import { ChangeEmailModalComponent } from './components/modals/change-email-moda
     SearchAiToolComponent,
     CheckoutComponent,
     ChangePasswordModalComponent,
-    ChangeEmailModalComponent
+    ChangeEmailModalComponent,
+    DeleteConfirmModalComponent
   ],
   providers: [
     UsecaseService

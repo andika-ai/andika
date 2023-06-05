@@ -1,8 +1,13 @@
 <andika-top-navbar></andika-top-navbar>
 <andika-sidebar></andika-sidebar>
 <div class="fixed inset-0 z-5 md:left-60 overflow-x-hidden">
-  <div class="p-6 mt-20 grid grid-flow-row auto-rows-max">    
+   <div *ngIf="loading">
+      <svg class="animate-spin h-5 w-5 mt-20 ml-4" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_6kVp{transform-origin:center;animation:spinner_irSm .75s infinite linear}@keyframes spinner_irSm{100%{transform:rotate(360deg)}}</style><path d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z" class="spinner_6kVp"/></svg>
+      <span class="ml-4">Loading basic details...</span>
+   </div>
+  <div *ngIf="!loading" class="p-6 mt-20 grid grid-flow-row auto-rows-max">    
     <form
+      [formGroup]="form"
       class="w-full max-w-lg block border border-zinc-800 px-3 py-3 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
       <h5
@@ -15,35 +20,36 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
             class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
-            for="grid-first-name"
+            for="grid-name"
           >
-            First Name
+            Name
           </label>
           <input
+            formControlName="name"
             class="appearance-none block text-sm w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
-            placeholder="Jane"
+            placeholder="Full Name"
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+          <p *ngIf="(form.get('name')?.value==='') || (form.get('name')?.value===null)" class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
-        <div class="w-full md:w-1/2 px-3">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
-            class="block uppercase text-sm tracking-wide text-gray-700 font-bold mb-2"
-            for="grid-last-name"
+            class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2"
+            for="grid-email"
           >
-            Last Name
+            Email
           </label>
           <input
             class="appearance-none block text-sm w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-last-name"
+            id="grid-email"
             type="text"
-            placeholder="Doe"
+            [value]="email"
+            readonly
           />
-          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
         </div>
-        
       </div>
+      
     </form>
     <div class="flex flex-col items-right pb-10 justify-between">
       <div class="flex mt-4 md:mt-6">

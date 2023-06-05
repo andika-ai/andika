@@ -2,6 +2,8 @@ export interface User {
     id?: string;
     is_verified?: string;
     display_name?: string;
+    first_name?: string;
+    last_name?: string;
     photo_url?: string;
     pricing_plan?: string;
     email?: string;

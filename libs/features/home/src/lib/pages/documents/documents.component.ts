@@ -56,7 +56,7 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
-
+  isLoading = true;
 
 
 
@@ -65,6 +65,8 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
+
+    this.isLoading = false;
   }
 
   ngAfterViewInit() {

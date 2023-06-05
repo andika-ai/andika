@@ -21,6 +21,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UsageComponent implements OnInit {
   submitted = false;
+  loading=true;
   plans = [
     {
       name: 'Start',
@@ -122,6 +123,8 @@ export class UsageComponent implements OnInit {
       expirationDate: ['', [CreditCardValidators.validateExpDate]],
       cvc: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]]
     });
+
+    this.loading=false;
   }
 
 

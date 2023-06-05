@@ -50,3 +50,6 @@
   .demo-button + .demo-button {
     margin-left: 8px;
   }
+
+  /*loader*/
+.spinner_6kVp{transform-origin:center;animation:spinner_irSm .75s infinite linear}@keyframes spinner_irSm{100%{transform:rotate(360deg)}}

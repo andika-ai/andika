@@ -1,11 +1,15 @@
 <andika-top-navbar></andika-top-navbar>
 <andika-sidebar></andika-sidebar>
-<div class="fixed inset-0 z-5 md:left-60 overflow-x-hidden">
-   <div *ngIf="loading">
-      <svg class="animate-spin h-5 w-5 mt-20 ml-4" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_6kVp{transform-origin:center;animation:spinner_irSm .75s infinite linear}@keyframes spinner_irSm{100%{transform:rotate(360deg)}}</style><path d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z" class="spinner_6kVp"/></svg>
-      <span class="ml-4">Loading basic details...</span>
-   </div>
-  <div *ngIf="!loading" class="p-6 mt-20 grid grid-flow-row auto-rows-max">    
+
+<div *ngIf="loading" class="fixed inset-0 flex items-center justify-center z-50">
+  <div class="flex items-center">
+    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-primary"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z" class="spinner_6kVp"/></svg>
+    <span>Loading basic details...</span>
+  </div>
+</div>
+
+<div  *ngIf="!loading" class="fixed inset-0 z-5 md:left-60 overflow-x-hidden">
+  <div  class="p-6 mt-20 grid grid-flow-row auto-rows-max">    
     <form
       [formGroup]="form"
       class="w-full max-w-lg block border border-zinc-800 px-3 py-3 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"

@@ -8,29 +8,7 @@
 <div class="fixed left-0 top-0 bottom-50 z-[5] md:left-60">
   <!-- Loading spinner -->
   <div *ngIf="isLoading" class="ml-auto p-2 sm:ml-0 mt-20">
-    <svg
-      class="animate-spin h-5 w-5 mr-3"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <style>
-        .spinner_6kVp {
-          transform-origin: center;
-          animation: spinner_irSm 0.75s infinite linear;
-        }
-        @keyframes spinner_irSm {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      </style>
-      <path
-        d="M10.72,19.9a8,8,0,0,1-6.5-9.79A7.77,7.77,0,0,1,10.4,4.16a8,8,0,0,1,9.49,6.52A1.54,1.54,0,0,0,21.38,12h.13a1.37,1.37,0,0,0,1.38-1.54,11,11,0,1,0-12.7,12.39A1.54,1.54,0,0,0,12,21.34h0A1.47,1.47,0,0,0,10.72,19.9Z"
-        class="spinner_6kVp"
-      />
-    </svg>
+   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_b2T7{animation:spinner_xe7Q .8s linear infinite}.spinner_YRVV{animation-delay:-.65s}.spinner_c9oY{animation-delay:-.5s}@keyframes spinner_xe7Q{93.75%,100%{r:3px}46.875%{r:.2px}}</style><circle class="spinner_b2T7" cx="4" cy="12" r="3"/><circle class="spinner_b2T7 spinner_YRVV" cx="12" cy="12" r="3"/><circle class="spinner_b2T7 spinner_c9oY" cx="20" cy="12" r="3"/></svg>
     Loading...
   </div>
 

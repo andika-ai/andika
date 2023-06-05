@@ -1,31 +1,33 @@
-
-// import { Observable } from 'rxjs';
-
-// import { last, map } from 'rxjs/operators';
-// import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/compat/firestore';
-// import { User } from '@andika/model'
 import { Injectable } from '@angular/core';
+import { HttpClient  } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
     // private usersCollection: AngularFirestoreCollection<User>;
     // users$: Observable<User[]>;
     constructor(
-        // private _afs: AngularFirestore
-        ) {
-        // this.usersCollection = this._afs.collection<User>('users');
-        // this.users$ = this.usersCollection.snapshotChanges().pipe(
-        //     map(actions =>
-        //         actions.map(a => {
-        //             const data = a.payload.doc.data() as User;
-        //             const id = a.payload.doc.id;
-        //             return { id, ...data };
-        //         })
-        //     )
-        // );
+        private _http: HttpClient
+        ) {}
+
+
+    updateUser(userId: string, payload: any, baseUrl: string): Observable<Object> {
+        const url = `${baseUrl}/users/detail/${userId}/`;
+        return this._http.put(url, payload);
+    }
+
+    userChangePassword(userId: string, payload: any, baseUrl: string): Observable<Object> {
+        // verify email
+        const url = `${baseUrl}/change-password/`;
+        return this._http.post(url, payload);
     }
 
 
+    userChangeEmail(userId: string, payload: any, baseUrl: string): Observable<Object> {
+        // verify email
+        const url = `${baseUrl}/change-email/`;
+        return this._http.post(url, payload);
+    }
     // get activeUser(){
     //     const user = JSON.parse(localStorage.getItem('user')!);
     //     if(user!==null){

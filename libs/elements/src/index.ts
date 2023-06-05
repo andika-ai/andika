@@ -20,3 +20,8 @@ export * from './lib/components/admin/settings/pricing-plan/pricing-plan.compone
 
 export * from './lib/components/tables/pricing-plan-table/pricing-plan-table.component';
 
+
+export * from './lib/components/modals/change-password-modal/change-password-modal.component';
+
+export * from './lib/components/modals/change-email-modal/change-email-modal.component';
+

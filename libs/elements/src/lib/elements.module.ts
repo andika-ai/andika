@@ -51,6 +51,8 @@ import { SearchAiToolComponent } from './components/search/search-ai-tool/search
 import { UsecaseService } from './components/search/services/usecase.service';
 import { UtilitiesModule } from '@andika/libs/utilities';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ChangePasswordModalComponent } from './components/modals/change-password-modal/change-password-modal.component';
+import { ChangeEmailModalComponent } from './components/modals/change-email-modal/change-email-modal.component';
 
 @NgModule({
   imports: [
@@ -106,7 +108,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     PricingPlanTableComponent,
     GptPromptComponent,
     SearchAiToolComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ChangePasswordModalComponent,
+    ChangeEmailModalComponent
   ],
   exports: [
     PreloaderComponent,
@@ -147,7 +151,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     PricingPlanTableComponent,
     GptPromptComponent,
     SearchAiToolComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ChangePasswordModalComponent,
+    ChangeEmailModalComponent
   ],
   providers: [
     UsecaseService

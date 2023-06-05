@@ -44,8 +44,8 @@ import { JwtInterceptor } from '@andika/libs/utilities';
     // FormsModule,    //added here too
     // ReactiveFormsModule,//added here too
     HttpClientModule,
-    MaterialModule, // TODO: no neccessarily to be added here can be remove only use it when needed
-    ElementsModule,
+    // MaterialModule,
+    // ElementsModule,
     FeaturesHomeModule,
     PagesModule,
     AdminModule,

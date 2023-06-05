@@ -13,5 +13,5 @@ export const environment = {
     "messagingSenderId": "805088813720",
     "measurementId": "G-N0WGT4SFDF"
   },
-  "apiRoot": "http://example.com/api"
+  "apiRoot": "http://localhost:8000/api/v1"
 };

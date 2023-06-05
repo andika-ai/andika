@@ -1,11 +1,15 @@
-import { ChangeEmailModalComponent, ChangePasswordModalComponent, DeleteConfirmModalComponent, SnackBarService } from '@andika/elements';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatDialog } from '@angular/material/dialog';
 import { CacheService } from '@andika/libs/utilities';
 import { EnvironmentProvider } from '@andika/config';
 import { User } from '@andika/model';
 import { UserService } from '@andika/services';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import {MatDialog } from '@angular/material/dialog';
+import { ChangeEmailModalComponent, 
+  ChangePasswordModalComponent,
+  DeleteConfirmModalComponent,
+  SnackBarService } from '@andika/elements';
+
 
 import {
   faCheck
@@ -104,12 +108,14 @@ export class UserProfileComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // User confirmed the delete action
-        // Perform the delete operation
+        this._userService.userDeleteAccount
+
       } else {
         // User cancelled the delete action
       }
     });
   }
+
+
 
 }

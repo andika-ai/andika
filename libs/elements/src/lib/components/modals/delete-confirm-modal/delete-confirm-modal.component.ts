@@ -20,8 +20,6 @@ export class DeleteConfirmModalComponent implements OnInit {
   confirmDelete(): void {
     this.dialogRef.close(true);
   }
-  onCancelDelete(): void {
-    this.dialogRef.close(true);
-  }
+
 
 }

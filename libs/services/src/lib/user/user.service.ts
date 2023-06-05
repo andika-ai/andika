@@ -32,6 +32,11 @@ export class UserService {
         return this._http.post(url, payload);
     }
 
+    userDeleteAccount(payload: any): Observable<Object> {
+        const url = `${this._environmentProvider.environment.apiRoot}/delete-account/`;
+        return this._http.post(url, payload);
+    }
+
     get activeUser(): Observable<Object> {
         const url = `${this._environmentProvider.environment.apiRoot}/active-user/`;
         return this._http.get(url);

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 export class UserService {
     // private usersCollection: AngularFirestoreCollection<User>;
     // users$: Observable<User[]>;
+    private baseUrl = this._environmentProvider.environment.apiRoot;
     constructor(
         private _http: HttpClient,
         private _environmentProvider: EnvironmentProvider
@@ -18,16 +19,16 @@ export class UserService {
         return this._http.post(url, payload);
     }
 
-    userChangePassword(userId: string, payload: any, baseUrl: string): Observable<Object> {
+    userChangePassword(payload: any): Observable<Object> {
         // verify email
-        const url = `${baseUrl}/change-password/`;
+        const url = `${this.baseUrl}/change-password/`;
         return this._http.post(url, payload);
     }
 
 
-    userChangeEmail(userId: string, payload: any, baseUrl: string): Observable<Object> {
+    userChangeEmail(payload: any): Observable<Object> {
         // verify email
-        const url = `${baseUrl}/change-email/`;
+        const url = `${this.baseUrl}/change-email/`;
         return this._http.post(url, payload);
     }
 

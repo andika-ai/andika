@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatDialog } from '@angular/material/dialog';
 
+import {
+  faCheck
+  
+  } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'andika-app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  faCheck=faCheck;
   updateProfileSubmitting = false;
   form: FormGroup;
   user: User;

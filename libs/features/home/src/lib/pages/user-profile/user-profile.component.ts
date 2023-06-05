@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatDialog } from '@angular/material/dialog';
-import { CacheService } from '@andika/libs/utilities';
+import { CacheService, AuthService } from '@andika/libs/utilities';
 import { EnvironmentProvider } from '@andika/config';
 import { User } from '@andika/model';
 import { UserService } from '@andika/services';
@@ -15,6 +15,7 @@ import {
   faCheck
   
   } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'andika-app-user-profile',
@@ -35,7 +36,9 @@ export class UserProfileComponent implements OnInit {
     private _userService: UserService,
     private _cacheService: CacheService,
     private _environmentProvider: EnvironmentProvider,
-    private _snackBarService: SnackBarService
+    private _snackBarService: SnackBarService,
+    private _router: Router,
+    private _authService: AuthService
     ) {
     
       this.activeUser$.subscribe({
@@ -108,7 +111,15 @@ export class UserProfileComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this._userService.userDeleteAccount
+        this._userService.userDeleteAccount().subscribe({
+          next: (res)=>{
+            this._snackBarService.openSnackBar('Success!','Acccount deleted successfully','OK', 'center', 'top', ['snackbar-success']);
+            this._authService.signOut();
+          },
+           error: (res)=>{
+            this._snackBarService.openSnackBar('Error!', 'An error occured try later','OK', 'center', 'top', ['snackbar-error']);
+           }
+        })
 
       } else {
         // User cancelled the delete action

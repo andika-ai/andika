@@ -5,14 +5,14 @@ import { PricingComponent } from './components/pricing/pricing.component';
 import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 import { PrivacyNoticeComponent } from './components/privacy-notice/privacy-notice.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { IntergrationComponent } from './components/intergration/intergration.component';
+import { IntegrationComponent } from './components/intergration/integration.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { FAQComponent } from './components/FAQ/FAQ.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { OnboardingComponent } from './components/onboarding/onboarding.component';
 import { AuthGuard } from '@andika/libs/shared';
-
+//TODO circular dependency 
 
 const PAGES_ROUTES: Route[] = [
     { path: 'onboarding', component: OnboardingComponent, canActivate: [AuthGuard]}, 
@@ -21,7 +21,7 @@ const PAGES_ROUTES: Route[] = [
     { path: '', component: LandingComponent},
     { path: 'pricing', component: PricingComponent},
     { path: 'checkout', component: CheckoutComponent},
-    { path: 'intergration', component:IntergrationComponent},
+    { path: 'integration', component:IntegrationComponent},
     { path: 'support', component: ContactUsComponent},
     { path: 'faq', component: FAQComponent},
     { path: 'features', component: FeaturesComponent},

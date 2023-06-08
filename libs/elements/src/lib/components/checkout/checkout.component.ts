@@ -1,18 +1,17 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import {
-  IPayPalConfig,
-  ICreateOrderRequest 
-} from 'ngx-paypal';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { loadScript } from "@paypal/paypal-js";
 
 @Component({
   selector: 'andika-app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
-export class CheckoutComponent implements OnInit, AfterViewInit {
-  public payPalConfig ? : IPayPalConfig;
+export class CheckoutComponent implements OnInit {
+  // public payPalConfig ? : IPayPalConfig;
+  @ViewChild('paypalRef', { static: true }) private paypalRef: Element
   showSuccess = false;
   showError = false;
   showCancel = false;
@@ -68,51 +67,38 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       buttonText: 'Upgrade',
     },
   ];
-  selectedPaymentOption = '';
+  // selectedPaymentOption = '';
 
-  constructor() {
+  @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
+
+  product = {
+    price: 777.77,
+    description: 'used couch, decent condition',
+    img: 'assets/couch.jpg'
+  };
+
+  paidFor = false;
+
+  public selectedPaymentOption = 'monthly';
+  // public payPalConfig: PayPalScriptOptions
+
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    this.closeIcon = document.getElementById('closeIcon') as HTMLElement;
-    this.openIcon = document.getElementById('openIcon') as HTMLElement;
-    this.dropdown = document.getElementById('dropdown') as HTMLElement;
-    this.text = document.getElementById('changetext') as HTMLElement;
-
-
+  console.log('-----')
     
   }
 
-  ngAfterViewInit(){
-    this.initConfig();
-  }
-
-  showMenu(flag: boolean): void {
-    if (flag) {
-      this.closeIcon.classList.toggle('hidden');
-      this.openIcon.classList.toggle('hidden');
-      this.dropdown.classList.toggle('hidden');
-    } else {
-      this.closeIcon.classList.toggle('hidden');
-      this.openIcon.classList.toggle('hidden');
-      this.dropdown.classList.toggle('hidden');
-    }
-  }
-
-  changeText(country: string): void {
-    this.text.innerHTML = country;
-    this.closeIcon.classList.toggle('hidden');
-    this.openIcon.classList.toggle('hidden');
-    this.dropdown.classList.toggle('hidden');
-  }
 
 
 
-  updatePlans(paymentOption: string) {
-    this.selectedPaymentOption = paymentOption;
-    this.filterPlans();
-  }
+
+  // updatePlans(paymentOption: string) {
+  //   this.selectedPaymentOption = paymentOption;
+  //   this.filterPlans();
+  // }
 
   filterPlans() {
     if (this.selectedPaymentOption === 'monthly') {
@@ -122,72 +108,89 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getPlanPrice(plan: any): string {
+  // getPlanPrice(plan: any): string {
+  //   return this.selectedPaymentOption === 'monthly' ? plan.monthly_price : plan.yearly_price;
+  // }
+
+
+  public updatePlans(paymentOption: string): void {
+    this.selectedPaymentOption = paymentOption;
+  }
+
+  public getPlanPrice(plan: any): string {
     return this.selectedPaymentOption === 'monthly' ? plan.monthly_price : plan.yearly_price;
   }
 
 
-  private initConfig(): void {
-    this.payPalConfig = {
-        currency: 'EUR',
-        clientId: "AQYGpLH6EZhencgQY2F66zyTI0sRtns9IJwAkKSAz2EdrboUE5BMc7OWikcoOWmN2SWw6VfzwJ8_I9gD",
-        createOrderOnClient: (data) => < ICreateOrderRequest > {
-            intent: 'CAPTURE',
-            purchase_units: [{
-                amount: {
-                    currency_code: 'EUR',
-                    value: '9.99',
-                    breakdown: {
-                        item_total: {
-                            currency_code: 'EUR',
-                            value: '9.99'
-                        }
-                    }
-                },
-                items: [{
-                    name: 'Enterprise Subscription',
-                    quantity: '1',
-                    category: 'DIGITAL_GOODS',
-                    unit_amount: {
-                        currency_code: 'EUR',
-                        value: '9.99',
-                    },
-                }]
-            }]
-        },
-        advanced: {
-            commit: 'true'
-        },
+  renderPaypalButton() {
+     
+    loadScript({ clientId: "AQYGpLH6EZhencgQY2F66zyTI0sRtns9IJwAkKSAz2EdrboUE5BMc7OWikcoOWmN2SWw6VfzwJ8_I9gD", currency: 'USD'})
+    .then((paypal: any) => {
+      
+      paypal.Buttons({
         style: {
-            label: 'paypal',
-            layout: 'vertical'
+          layout: 'vertical',
+          color:  'blue',
+          shape:  'rect',
+          label:  'paypal'
         },
-        onApprove: (data, actions) => {
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
-            actions.order.get().then((details: any) => {
-                console.log('onApprove - you can get full order details inside onApprove: ', details);
-            });
+      }).render(this.paypalElement.nativeElement);
+    })
+    .catch((error) => {
+        console.error("failed to load the PayPal JS SDK script", error);
+    });
+ 
+    
+  }
 
-        },
-        onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-            this.showSuccess = true;
-        },
-        onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-            this.showCancel = true;
 
-        },
-        onError: err => {
-            console.log('OnError', err);
-            this.showError = true;
-        },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-            // this.resetStatus();
-        }
-    };
-}
+//   paypal.Buttons({
+//     createSubscription: function (data, actions) {
+//         return actions.subscription.create(
+//             'plan_id': 'P-xxxx',
+//             'subscriber': {
+//                 'name': {
+//                     'given_name': 'customer',
+//                     'surname': 'customer'
+//                 },
+//                 'email_address': 'customer@example.com'
+//             }
+//         });
+//     },
+//     onApprove: function (data, actions) {
+//         console.log('subscription id: ', data.subscriptionID)
+//     }
+// }).render('#paypal-button-container');
+    
+  // paypalRedirect(status: any, orderRef) {
+    
+  //   switch (status) {
+  //     case 'COMPLETED':
+  //       this.router.navigate(['/result/success/' + orderRef]);
+  //       break;       
+  //     case 'ERROR':
+  //       this.router.navigate(['/result/error/' + orderRef]);
+  //       break;
+  //     default:
+  //       this.router.navigate(['/result/error/' + orderRef]);
+  //       break;
+  //   }
+   
+// }
+
+
+  // createSubscription(paymentOption: string) {
+  //   this.paypalService.createSubscription()
+  //     .then(response => {
+  //       // Subscription created successfully
+  //       console.log('Subscription created:', response);
+  //     })
+  //     .catch(error: any => {
+  //       // Error occurred during subscription creation
+  //       console.error('Error creating subscription:', error);
+  //     });
+  // }
+
 }
 
 

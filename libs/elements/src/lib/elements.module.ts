@@ -1,3 +1,4 @@
+
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { RouterModule } from '@angular/router';
 import { PricingPlanTableComponent } from './components/tables/pricing-plan-table/pricing-plan-table.component';
@@ -42,7 +43,6 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { NgxPayPalModule } from 'ngx-paypal';
 import { ServicesModule } from '@andika/services';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PricingPlanComponent } from './components/admin/settings/pricing-plan/pricing-plan.component';
@@ -68,7 +68,6 @@ import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-
     RouterModule,
     QuillModule,
     UtilitiesModule,
-    NgxPayPalModule,
     ServicesModule ],// do we need quill module here and the rest i think they should be in shared modules?
   declarations: [
     PreloaderComponent,

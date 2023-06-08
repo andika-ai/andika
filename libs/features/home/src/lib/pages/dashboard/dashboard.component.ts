@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$)) // Unsubscribe when the component is destroyed
       .subscribe((data: any) => {
         // Handle the API response here
+        console.log(data)
         this.usecases = data;
         this.useCaseData = data;
         this.isLoading = false;

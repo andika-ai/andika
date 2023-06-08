@@ -10,6 +10,20 @@ import { SnackBarService } from '../../services/snackbar/snack-bar.service';
 // import { OpenaiService, PromptService } from '@andika/services';
 
 import { FormService } from '@andika/libs/shared';
+import { PromptService } from '@andika/services';
+
+export interface ChatCompletionResponse {
+  status_code: number;
+  data: {
+    result: {
+      role: string;
+      content: string;
+    };
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens_used: number;
+  };
+}
 
 
 
@@ -73,7 +87,7 @@ export class WriteFormComponent implements OnInit {
     private formService: FormService,
     private router: Router,
     private route: ActivatedRoute,
-    // private _promptService: PromptService,
+    private _promptService: PromptService,
     private _snackBarService: SnackBarService,
     private _fb: FormBuilder,
     private _sharedForm: SharedWriteFormService,
@@ -89,7 +103,9 @@ export class WriteFormComponent implements OnInit {
       tone: new FormControl(this.tones[1].name),
       usecase: new FormControl(this.currentFormType),
       youtubeIdea: this._fb.group({
-        keywords: []
+        channelName: [],
+        channelTheme: [],
+        previousVideoTopics:[],
       }),
       youtubeDescription: this._fb.group({
         videoTitle: []
@@ -147,7 +163,7 @@ export class WriteFormComponent implements OnInit {
    * on submit emit value to the quill editor. 
    */
   onSubmit(){
-    
+    // to decide which form to use
     const payload = this._sharedForm.getFormValues(this.form)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
 
@@ -170,28 +186,33 @@ export class WriteFormComponent implements OnInit {
       complete: The complete parameter is a function that handles the completion of the Observable. When the Observable completes its emission of values, this function is called. It signifies that the Observable has finished its execution. You can use this function to perform any cleanup tasks or final actions after the Observable completes.
      */
     this.isTyping = true;
-    // this._promptService.postPrompt(payload).subscribe({
-    //   next: (res: any) => {
-    //     // Handle next value
-    //     if(res){
-    //       this.isTyping = false;
-    //       this.promptResponse.emit(res.choices[0].message.content)
-    //     }
+
+    this._promptService.postPrompt(payload).subscribe({
       
-    //   },
-    //   error: (msg: any) => {
-    //     // Handle error
-    //     this.isTyping = false;
-    //     console.log('---------------------')
-    //     console.log(msg.error.data.detail)
-    //     this._snackBarService.openSnackBar(
-    //       'Token Limit Exceeded!',` ${msg.error.data.detail}`,
-    //       'Okey', 'center', 'top', 'red-snackbar');
-    //   },
-    //   complete: () => {
-    //     // Handle completion
-    //   }
-    // });
+      next: (res: any) => {
+        // Handle next value
+        
+        if(res){
+          this.isTyping = false;
+
+          const content = res.data.result.content;
+          this.promptResponse.emit(content)
+        }
+      
+      },
+      error: (msg: any) => {
+        // Handle error
+        this.isTyping = false;
+        console.log('---------------------')
+        console.log(msg)
+        this._snackBarService.openSnackBar(
+          'Token Limit Exceeded!',` ${msg.error.data.detail}`,
+          'Okey', 'center', 'top', ['red-snackbar']);
+      },
+      complete: () => {
+        // Handle completion
+      }
+    });
     }
 
 
@@ -215,7 +236,7 @@ export class WriteFormComponent implements OnInit {
 
 
   // sets the current usecase in use
-  setFormType(formType: number) {
+  setFormType(formType: string) {
     this.currentFormType = formType;
   }
 

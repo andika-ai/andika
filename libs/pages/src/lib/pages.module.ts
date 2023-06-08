@@ -1,5 +1,4 @@
 import { CheckoutComponent } from './components/checkout/checkout/checkout.component';
-import { IntergrationComponent } from './components/intergration/intergration.component';
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { ElementsModule } from '@andika/elements';
 import { NgModule } from '@angular/core';
@@ -18,6 +17,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { FAQComponent } from './components/FAQ/FAQ.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
+import { IntegrationComponent } from './components/intergration/integration.component';
 
 @NgModule({
   imports: [
@@ -29,7 +29,7 @@ import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-
   ],
 
   declarations: [
-    IntergrationComponent,
+    IntegrationComponent,
     PricingComponent,
     ResourcesComponent,
     SupportComponent,
@@ -39,7 +39,7 @@ import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-
     LandingComponent, 
     PricingComponent,
     CheckoutComponent,
-    IntergrationComponent,
+    IntegrationComponent,
     ContactUsComponent,
     FAQComponent,
     FeaturesComponent,

@@ -20,18 +20,19 @@ export class SharedWriteFormService {
 
     };
 
-    switch (Number(usecase)) {
+    switch (usecase) {
       case UseCase.YoutubeIdea:
         return {
           ...payload,
-          youtubeIdea: formValues.youtubeIdea.keywords,
-          usecase: UseCase.YoutubeIdea
+          channelName: formValues.youtubeIdea.channelName,
+          channelTheme: formValues.youtubeIdea.channelTheme,
+          previousVideoTopics: formValues.youtubeIdea.previousVideoTopics,
         }
-      case UseCase.YoutubeDescription:
+      case UseCase.YoutubeVideoDescription:
         return {
           ...payload,
           videoTitle: formValues.youtubeDescription.videoTitle,
-          usecase: UseCase.YoutubeDescription
+          usecase: UseCase.YoutubeVideoDescription
         }
       case UseCase.YoutubeChannelDescription:
         return {
@@ -109,7 +110,7 @@ export class SharedWriteFormService {
       case UseCase.BlogIdeaAndOutline:
         return {
           ...payload,
-          blogIdea: formValues.blogIdea.blogIdea,
+          keyword: formValues.blogIdea.blogIdea,
           usecase: UseCase.BlogIdeaAndOutline
         }
 

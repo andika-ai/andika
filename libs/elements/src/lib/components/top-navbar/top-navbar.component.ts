@@ -1,6 +1,6 @@
 import { AuthService } from '@andika/libs/utilities';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   faTeletype,
   faTimes,
@@ -12,6 +12,7 @@ import {
   faClockRotateLeft,
   faUser,
   faBackwardStep,
+  faCircleArrowLeft,
   faArrowLeft,
   faArrowRight,
   faSearch,
@@ -28,7 +29,7 @@ export class TopNavbarComponent implements OnInit {
   isMenuHidden=true;
   toggleText = 'Toggle Dark Mode';
   showOptions: boolean | undefined;
-  faArrowLeft = faArrowLeft;
+  faCircleArrowLeft = faCircleArrowLeft;
   faArrowRight = faArrowRight;
   faSearch = faSearch;
   faHome = faHome;
@@ -123,7 +124,7 @@ export class TopNavbarComponent implements OnInit {
   @Input() usecases: any[];
   @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor(private _router: Router, private _authService: AuthService,) {}
+  constructor(private _router: Router, private _authService: AuthService, private _activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.isHomeRoute();
@@ -178,9 +179,11 @@ export class TopNavbarComponent implements OnInit {
     return home || pricing || terms || privacy;
   }
 
-  isEditorLink(){
-    return this._router.url === '/editor';
-    
+  isEditorLink() {
+    const url = this._router.url;
+    const id = this._activatedRoute.snapshot.paramMap.get('id');
+  
+    return url.startsWith('/editor/') && !!id;
   }
 
   isDashboardLink(){

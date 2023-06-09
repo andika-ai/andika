@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild , Input, OnChanges, SimpleChanges, HostListener, AfterViewInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { MatDialog } from '@angular/material/dialog';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 
@@ -10,6 +13,9 @@ import {
   faSave
 
 } from '@fortawesome/free-solid-svg-icons';
+import { FormService } from '@andika/libs/shared';
+import { Draft, getUseCaseFromString } from '@andika/model';
+import { SaveDocumentModalComponent } from '../modals/save-document-modal/save-document-modal.component';
 
 @Component({
   selector: 'andika-element-editor',
@@ -29,7 +35,7 @@ import {
 })
 export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
   /**save icon behaviour */
-
+  id: string | null;
   isSaveIconVisible  = false;
   typingTimer: any;
   readonly typingTimeout: number = 1500; // Adjust timeout duration as needed
@@ -81,7 +87,12 @@ export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
     ],
   }
 
-  constructor(private fb: FormBuilder) { 
+  constructor(
+    private fb: FormBuilder,
+    private _activatedRoute: ActivatedRoute,
+    private _formService: FormService,
+    private _dialog: MatDialog
+    ) { 
     this.control = new FormControl()
     this.form = this.initializeForm();
   }
@@ -92,14 +103,28 @@ export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
   }
 
   ngOnInit() {
-    console.log(
-     'e'
-    )
+    this._activatedRoute.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (!id) {
+        throw new Error('ID parameter is missing');
+      }
+      this.id = decodeURIComponent(id);
+  
+      // from Usecase enum, get the usecase
+      const usecase = getUseCaseFromString(this.id);
+      if (!usecase) {
+        throw new Error('Invalid use case');
+      }
+  
+      this._formService.setFormType(usecase);
+
+  });
+}
     // this.initializeForm()
     // let icons = Quill.import('ui/icons');
     // icons['source'] = '[source]';
     
-  }
+  
 
   ngAfterViewInit() {
     // if (this.editor) {
@@ -169,5 +194,18 @@ export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
   //   this.isLoading = false;
   // });
 
+
+  saveDocument(){
+    const payload ={
+      use_case: this.id,
+      title:'',
+      content:  this.form.get('editor')?.value
+    }
+
+    this._dialog.open(SaveDocumentModalComponent, {
+      width: '400px',
+      data: payload as Draft
+    });
+  }
   
 }

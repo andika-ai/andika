@@ -11,4 +11,6 @@ export * from './lib/usecase/usecase.service';
 export * from './lib/prompt/prompt.service';
 
 
-export * from './lib/authentication/backend-user.service'
+export * from './lib/authentication/backend-user.service';
+
+export * from './lib/documents/document.service';

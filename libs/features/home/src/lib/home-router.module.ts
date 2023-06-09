@@ -19,7 +19,7 @@ const HOME_ROUTES: Route[] = [
     { path: 'documents', component: DocumentsComponent, canActivate: [AuthGuard]},
     { path: 'account', component: AccountComponent,canActivate: [AuthGuard]}, 
     { path: 'history', component: UserHistoryComponent, canActivate: [AuthGuard]}, 
-    { path: 'editor', component: EditorComponent, canActivate: [AuthGuard]}, //home when user loggged in
+    { path: 'editor/:id', component: EditorComponent, canActivate: [AuthGuard]}, //home when user loggged in
     // { path: 'studio', component: StudioComponent }, //home when user loggged in
     // { path: 'audio', component: AudioComponent }, //home when user loggged in
 ];

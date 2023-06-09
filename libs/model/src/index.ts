@@ -32,5 +32,6 @@ export * from './lib/pricing-plan/plan-plan.model';
 export  * from './lib/usecases/usecase.interface';
 
 
+export * from './lib/enums/get_usecase';
 
-
+export * from './lib/documents/draft.model';

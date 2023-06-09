@@ -9,11 +9,13 @@ import { PricingPlanService } from './pricing-plan/pricing-plan.service';
 import { UsecaseService } from './usecase/usecase.service';
 import { PromptService } from './prompt/prompt.service';
 import { BackendUserService } from './authentication/backend-user.service';
+import { DocumentService } from './documents/document.service';
 
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
+    DocumentService,
     SubscriptionService,
     UserService,
     PricingPlanService,

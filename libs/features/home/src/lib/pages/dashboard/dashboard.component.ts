@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   navigateToEditor(formType: UseCase) {
     this.formService.setFormType(formType);
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/editor', encodeURIComponent(formType)]);
   }
 
   // Call this method when the component is about to be destroyed (e.g., in ngOnDestroy)

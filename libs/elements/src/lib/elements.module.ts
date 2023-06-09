@@ -54,6 +54,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ChangePasswordModalComponent } from './components/modals/change-password-modal/change-password-modal.component';
 import { ChangeEmailModalComponent } from './components/modals/change-email-modal/change-email-modal.component';
 import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-modal/delete-confirm-modal.component';
+import { SaveDocumentModalComponent } from './components/modals/save-document-modal/save-document-modal.component';
 
 @NgModule({
   imports: [
@@ -111,7 +112,8 @@ import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-
     CheckoutComponent,
     ChangePasswordModalComponent,
     ChangeEmailModalComponent,
-    DeleteConfirmModalComponent
+    DeleteConfirmModalComponent,
+    SaveDocumentModalComponent
   ],
   exports: [
     PreloaderComponent,
@@ -155,7 +157,8 @@ import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-
     CheckoutComponent,
     ChangePasswordModalComponent,
     ChangeEmailModalComponent,
-    DeleteConfirmModalComponent
+    DeleteConfirmModalComponent,
+    SaveDocumentModalComponent
   ],
   providers: [
     UsecaseService

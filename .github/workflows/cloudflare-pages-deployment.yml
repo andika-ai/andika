@@ -46,7 +46,7 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: Install Packages
-        run: pnpm --prefer-offline
+        run: pnpm install
 
       - name: Write key-value pairs to JSON file
         run: |

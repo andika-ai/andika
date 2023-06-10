@@ -38,7 +38,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install NX
-        run: pnpm add -g nx
+        run:  npm install -g nx
 
       - name: Cache pnpm store
         uses: actions/cache@v2

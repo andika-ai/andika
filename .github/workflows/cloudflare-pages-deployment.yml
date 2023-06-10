@@ -30,23 +30,25 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          registry-url: "https://registry.npmjs.org/"
+          cache: "pnpm"
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      - name: Install PNPM
+        run: npm install -g pnpm
 
       - name: Install NX
-        run: yarn global add nx
+        run: pnpm add -g nx
 
-      - name: Cache Yarn packages
-        uses: actions/cache@v3
+      - name: Cache pnpm store
+        uses: actions/cache@v2
         with:
-          path: ~/.yarn-cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
 
       - name: Install Packages
-        run: yarn --prefer-offline
+        run: pnpm --prefer-offline
 
       - name: Write key-value pairs to JSON file
         run: |
@@ -71,8 +73,8 @@ jobs:
 
       - name: Configure App environments and Build
         run: |
-          yarn run env-config
-          yarn run build
+          pnpm run env-config
+          pnpm run build
 
       # - name: Deploy to Firebase Hosting
       #   uses: FirebaseExtended/action-hosting-deploy@v0

@@ -118,132 +118,137 @@ rect {
 
 
 ////////////////////////////////// Dark mode Styling ////////////////////////////////// 
+/// 
+.dark .mat-mdc-text-field-wrapper {
+  background: white;
+}
+
 .dark .dark\:divide-gray-700> :not([hidden])~ :not([hidden]) {
-  border-color: rgba(55, 65, 81);
+  border-color: rgba(55, 65, 81) !important;
 }
 
 .dark .dark\:bg-gray-50 {
-  background-color: rgba(249, 250, 251);
+  background-color: rgba(249, 250, 251) !important;
 }
 
 .dark .dark\:bg-gray-100 {
-  background-color: rgba(243, 244, 246);
+  background-color: rgba(243, 244, 246) !important;
 }
 
 .dark .dark\:bg-gray-600 {
-  background-color: rgba(75, 85, 99);
+  background-color: rgba(75, 85, 99) !important;
 }
 
 .dark .dark\:bg-gray-700 {
-  background-color: rgba(55, 65, 81);
+  background-color: rgba(55, 65, 81) !important;
 }
 
 .dark .dark\:bg-gray-800 {
-  background-color: rgba(31, 41, 55);
+  background-color: rgba(31, 41, 55) !important;
 }
 
 .dark .dark\:bg-gray-900 {
-  background-color: rgba(17, 24, 39);
+  background-color: rgba(17, 24, 39) !important;
 }
 
 .dark .dark\:bg-red-700 {
-  background-color: rgba(185, 28, 28);
+  background-color: rgba(185, 28, 28) !important;
 }
 
 .dark .dark\:bg-green-700 {
-  background-color: rgba(4, 120, 87);
+  background-color: rgba(4, 120, 87) !important;
 }
 
 .dark .dark\:hover\:bg-gray-200:hover {
-  background-color: rgba(229, 231, 235);
+  background-color: rgba(229, 231, 235) !important;
 }
 
 .dark .dark\:hover\:bg-gray-600:hover {
-  background-color: rgba(75, 85, 99);
+  background-color: rgba(75, 85, 99) !important;
 }
 
 .dark .dark\:hover\:bg-gray-700:hover {
-  background-color: rgba(55, 65, 81);
+  background-color: rgba(55, 65, 81) !important;
 }
 
 .dark .dark\:hover\:bg-gray-900:hover {
-  background-color: rgba(17, 24, 39);
+  background-color: rgba(17, 24, 39) !important;
 }
 
 .dark .dark\:border-gray-100 {
-  border-color: rgba(243, 244, 246);
+  border-color: rgba(243, 244, 246) !important;
 }
 
 .dark .dark\:border-gray-400 {
-  border-color: rgba(156, 163, 175);
+  border-color: rgba(156, 163, 175) !important;
 }
 
 .dark .dark\:border-gray-500 {
-  border-color: rgba(107, 114, 128);
+  border-color: rgba(107, 114, 128) !important;
 }
 
 .dark .dark\:border-gray-600 {
-  border-color: rgba(75, 85, 99);
+  border-color: rgba(75, 85, 99) !important;
 }
 
 .dark .dark\:border-gray-700 {
-  border-color: rgba(55, 65, 81);
+  border-color: rgba(55, 65, 81) !important;
 }
 
 .dark .dark\:border-gray-900 {
-  border-color: rgba(17, 24, 39);
+  border-color: rgba(17, 24, 39) !important;
 }
 
 .dark .dark\:hover\:border-gray-800:hover {
-  border-color: rgba(31, 41, 55);
+  border-color: rgba(31, 41, 55) !important;
 }
 
 .dark .dark\:text-white {
-  color: rgba(255, 255, 255);
+  color: rgba(255, 255, 255) !important;
 }
 
 .dark .dark\:text-gray-50 {
-  color: rgba(249, 250, 251);
+  color: rgba(249, 250, 251) !important;
 }
 
 .dark .dark\:text-gray-100 {
-  color: rgba(243, 244, 246);
+  color: rgba(243, 244, 246) !important;
 }
 
 .dark .dark\:text-gray-200 {
-  color: rgba(229, 231, 235);
+  color: rgba(229, 231, 235) !important;
 }
 
 .dark .dark\:text-gray-400 {
-  color: rgba(156, 163, 175);
+  color: rgba(156, 163, 175) !important;
 }
 
 .dark .dark\:text-gray-500 {
-  color: rgba(107, 114, 128);
+  color: rgba(107, 114, 128) !important;
 }
 
 .dark .dark\:text-gray-700 {
-  color: rgba(55, 65, 81);
+  color: rgba(55, 65, 81) !important;
 }
 
 .dark .dark\:text-gray-800 {
-  color: rgba(31, 41, 55);
+  color: rgba(31, 41, 55) !important;
 }
 
 .dark .dark\:text-red-100 {
-  color: rgba(254, 226, 226);
+  color: rgba(254, 226, 226) !important;
 }
 
 .dark .dark\:text-green-100 {
-  color: rgba(209, 250, 229);
+  color: rgba(209, 250, 229) !important;
 }
 
 .dark .dark\:text-blue-400 {
-  color: rgba(96, 165, 250);
+  color: rgba(96, 165, 250) !important;
 }
 
 .dark .group:hover .dark\:group-hover\:text-gray-500 {
-  color: rgba(107, 114, 128);
+  color: rgba(107, 114, 128) !important;
 }
 
 .dark .group:focus .dark\:group-focus\:text-gray-700 {
@@ -251,11 +256,11 @@ rect {
 }
 
 .dark .dark\:hover\:text-gray-100:hover {
-  color: rgba(243, 244, 246);
+  color: rgba(243, 244, 246) !important;
 }
 
 .dark .dark\:hover\:text-blue-500:hover {
-  color: rgba(59, 130, 246);
+  color: rgba(59, 130, 246) !important;
 }
 
 /* Custom style */

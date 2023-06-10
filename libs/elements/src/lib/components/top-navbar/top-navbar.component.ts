@@ -1,4 +1,4 @@
-import { AuthService } from '@andika/libs/utilities';
+import { AuthService, DarkModeService } from '@andika/libs/utilities';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -114,7 +114,7 @@ export class TopNavbarComponent implements OnInit {
   
   randomText: string = this.text[0];
   filterCategory = '';
-  toggleDarkMode = false;
+  isDarkModeOff = false;
   showWritingToolsOnToNav = false;
   isUsecaseDropdownOpen = false;
   hidden = false;
@@ -124,7 +124,11 @@ export class TopNavbarComponent implements OnInit {
   @Input() usecases: any[];
   @Output() usecaseDataEvent: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor(private _router: Router, private _authService: AuthService, private _activatedRoute: ActivatedRoute) {}
+  constructor(
+    private _router: Router,
+    private _authService: AuthService,
+    private _activatedRoute: ActivatedRoute,
+    private _darkModeService: DarkModeService ) {}
 
   ngOnInit() {
     this.isHomeRoute();
@@ -147,6 +151,16 @@ export class TopNavbarComponent implements OnInit {
     // console.log(this._authService.isLoggedIn);
     this.hidden = this._authService.isLoggedIn;
     return this.hidden;
+  }
+
+  toggleDarkMode(): void {
+    const darkModeEnabled = this._darkModeService.getIsDarkModeEnabled();
+    this._darkModeService.toggleDarkMode(!darkModeEnabled);
+    if(darkModeEnabled){
+      this.isDarkModeOff = false;
+    } else {
+      this.isDarkModeOff = true;
+    }
   }
 
 
@@ -195,6 +209,8 @@ export class TopNavbarComponent implements OnInit {
   openMenu(){
     this.isMenuHidden= !this.isMenuHidden;
   }
+
+  
 
 
   

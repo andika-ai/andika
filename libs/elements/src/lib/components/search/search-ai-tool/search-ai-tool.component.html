@@ -1,18 +1,19 @@
-<div class="flex items-center -m-2">
-  <mat-form-field appearance="outline" class="w-56 h-5">
+<div class="flex items-center -m-2 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+  <mat-form-field appearance="outline" class="w-56 h-5 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-60">
     <mat-select
       [formControl]="usecaseCtrl"
       placeholder="Search writing tools"
       (selectionChange)="navigateToForm(usecaseCtrl.value.navigateTo)"
-      class="w-full h-full text-white"
+      class="w-full h-full text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-60"
     >
       <!-- place ngx-mat-select-search inside mat-option to allow opening without initial selection -->
-      <mat-option>
+      <mat-option class="dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-60">
         <ngx-mat-select-search
           placeholderLabel="Find writing tool..."
           noEntriesFoundLabel="'no matching tool found'"
           [formControl]="usecaseFilteringCtrl"
           [searching]="searching"
+          class="dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-60"
         ></ngx-mat-select-search>
       </mat-option>
       <mat-option

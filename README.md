@@ -1,5 +1,8 @@
 # Andika
 
+
+[![.github/workflows/cloudflare-pages-deployment.yml](https://github.com/andika-ai/andika/actions/workflows/cloudflare-pages-deployment.yml/badge.svg)](https://github.com/andika-ai/andika/actions/workflows/cloudflare-pages-deployment.yml)
+
 However, after turning the workspace to Nx, run the build command against all apps and libraries: yarn nx run-many --target=build --all Notice it will take much less time the 2nd run.
 Full stack  project for andika
 

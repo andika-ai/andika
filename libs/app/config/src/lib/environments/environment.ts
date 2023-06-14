@@ -13,5 +13,5 @@ export const environment = {
     "messagingSenderId": "805088813720",
     "measurementId": "G-N0WGT4SFDF"
   },
-  "apiRoot": "http://localhost:8000/api/v1"
+  "apiRoot": "https://nexia.applikuapp.com/api/v1"
 };

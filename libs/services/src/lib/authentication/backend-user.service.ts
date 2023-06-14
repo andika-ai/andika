@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { EnvironmentProvider } from '@andika/config';
 
 @Injectable()
 export class BackendUserService {
-private apiUrl = 'http://localhost:8000/api/v1/social_auth/'; // Replace with your API URL
-
-constructor(private _http: HttpClient) { }
+private baseUrl = this._environmentProvider.environment.apiRoot;
+constructor(private _http: HttpClient, private _environmentProvider: EnvironmentProvider) { }
 
 
 saveNewSocialUser(payload: any) {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
-    return this._http.post(`${this.apiUrl}`, payload, { headers });
+    return this._http.post(`${this.baseUrl}`, payload, { headers });
   }
 
 
@@ -20,14 +20,14 @@ saveNewSocialUser(payload: any) {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
-    return this._http.post('http://localhost:8000/api/v1/get_token/', payload, { headers });
+    return this._http.post(`${this.baseUrl}/get_token/`, payload, { headers });
   }
 
   userEmailRegister(payload: any) {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
-    return this._http.post('http://localhost:8000/api/v1/register/', payload, { headers });
+    return this._http.post(`${this.baseUrl}/register/`, payload, { headers });
   }
 
 }

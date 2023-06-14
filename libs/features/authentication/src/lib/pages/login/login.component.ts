@@ -75,11 +75,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             //set items user then redirect
             this._router.navigate(['dashboard']);
           },
-          error: (error: any) => {
+          error: (res: any) => {
             this.submitting = false; 
-            console.log(error)
-            const errorMsg = error?.error?.data?.error;
-            const errorMessage = "An error occurred. Additional information: " + errorMsg;
+  
+            const errorMsg = res?.error?.data?.detail;
+            const errorMessage = `${errorMsg}`;
             this._snackBarService.openSnackBar(errorMessage, '', 'OK', 'center', 'top', ['snackbar-error']);
           },
         });

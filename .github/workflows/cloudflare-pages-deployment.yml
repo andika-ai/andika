@@ -50,7 +50,7 @@ jobs:
 
       - name: Create environment.ts file
         run: |
-          cat << EOF > $GITHUB_WORKSPACE/libs/app/config/src/lib/environments/environment.ts
+          cat << EOF > libs/app/config/src/lib/environments/environment.ts
           EOF
 
       - name: Write key-value pairs to JSON file

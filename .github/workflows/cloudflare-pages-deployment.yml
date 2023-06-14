@@ -48,11 +48,6 @@ jobs:
       - name: Install Packages
         run: pnpm install
 
-      - name: Create environment.ts file
-        run: |
-          cat << EOF > libs/app/config/src/lib/environments/environment.ts
-          EOF
-
       - name: Write key-value pairs to JSON file
         run: |
           cat << EOF > $GITHUB_WORKSPACE/keys.json

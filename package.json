@@ -5,6 +5,7 @@
   "scripts": {
     "cm": "cz",
     "start": "nx serve",
+    "verify-env": "node tools/scripts/verify-env.js",
     "env-config": "node tools/scripts/update-environment-config.js",
     "build": "nx build",
     "lint": "eslint --ext .js,.ts .",

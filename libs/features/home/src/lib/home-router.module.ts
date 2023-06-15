@@ -13,13 +13,13 @@ import { AuthGuard } from '@andika/libs/shared';
 // import { AudioComponent } from './pages/audio/audio.component';
 
 const HOME_ROUTES: Route[] = [
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}, 
+    { path: 'dashboard', component: DashboardComponent}, 
     { path: 'usage', component: UsageComponent, canActivate: [AuthGuard]}, 
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
     { path: 'documents', component: DocumentsComponent, canActivate: [AuthGuard]},
     { path: 'account', component: AccountComponent,canActivate: [AuthGuard]}, 
-    { path: 'history', component: UserHistoryComponent, canActivate: [AuthGuard]}, 
-    { path: 'editor/:id', component: EditorComponent, canActivate: [AuthGuard]}, //home when user loggged in
+    { path: 'history', component: UserHistoryComponent}, 
+    { path: 'editor/:id', component: EditorComponent}, //home when user loggged in
     // { path: 'studio', component: StudioComponent }, //home when user loggged in
     // { path: 'audio', component: AudioComponent }, //home when user loggged in
 ];

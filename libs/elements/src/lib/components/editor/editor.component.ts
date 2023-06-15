@@ -105,11 +105,12 @@ export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe((params) => {
       const id = params.get('id');
+
       if (!id) {
         throw new Error('ID parameter is missing');
       }
       this.id = decodeURIComponent(id);
-  
+      console.log(this.id)
       // from Usecase enum, get the usecase
       const usecase = getUseCaseFromString(this.id);
       if (!usecase) {

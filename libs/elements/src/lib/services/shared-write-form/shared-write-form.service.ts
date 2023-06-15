@@ -5,6 +5,10 @@ import {UseCase} from "@andika/model";
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * TODO: Add documentation
+ * Deterimine form usecase
+ */
 export class SharedWriteFormService {
 
   constructor() { }

@@ -166,7 +166,7 @@ export class WriteFormComponent implements OnInit {
     // to decide which form to use
     const payload = this._sharedForm.getFormValues(this.form)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
-
+    this.isLoading.emit(true);
     // If empty values dont submitt show a prompt 
     // alert(hasAllValues)
     if(!hasAllValues){
@@ -194,7 +194,7 @@ export class WriteFormComponent implements OnInit {
         
         if(res){
           this.isTyping = false;
-
+          this.isLoading.emit(false);
           const content = res.data.result.content;
           this.promptResponse.emit(content)
         }

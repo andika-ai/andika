@@ -114,7 +114,7 @@ export class EditorComponent implements OnInit, AfterViewInit,OnChanges{
       // from Usecase enum, get the usecase
       const usecase = getUseCaseFromString(this.id);
       if (!usecase) {
-        throw new Error('Invalid use case');
+        throw new Error(`Invalid use case ${this.id}`);
       }
   
       this._formService.setFormType(usecase);

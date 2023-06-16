@@ -3,7 +3,7 @@ import { UseCase } from "./usecase.enum";
 export function getUseCaseFromString(useCaseString: string): UseCase {
 
   console.log(useCaseString)
-  // debugger
+  debugger
   const useCaseEntries = Object.entries(UseCase);
   for (const [key, value] of useCaseEntries) {
     if (value === useCaseString) {

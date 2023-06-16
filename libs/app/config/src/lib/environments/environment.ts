@@ -3,7 +3,7 @@ export const environment = {
   "auth": {
     "clientId": "805088813720-92a4bja15dmce0hj1g4ru29t7ghgm938.apps.googleusercontent.com",
     "clientDomain": "https://andika-16cf6.web.app",
-    "redirect": "http://localhost:4200/dashboard"
+    "redirect": "https://andika.pro/dashboard"
   },
   "firebaseConfig": {
     "projectId": "andika-16cf6",

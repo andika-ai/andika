@@ -206,7 +206,7 @@ export class WriteFormComponent implements OnInit {
         console.log('---------------------')
         console.log(msg)
         this._snackBarService.openSnackBar(
-          'Token Limit Exceeded!',` ${msg.error.data.detail}`,
+          '',` ${msg.error.data.error}`,
           'Okey', 'center', 'top', ['red-snackbar']);
       },
       complete: () => {

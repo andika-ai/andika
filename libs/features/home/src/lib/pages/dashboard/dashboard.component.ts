@@ -20,7 +20,7 @@ import * as introJs  from 'intro.js';
 
 import { FormService } from '@andika/libs/shared';
 import { UsecaseService } from '@andika/services';
-import { TourService } from '@andika/libs/utilities';
+// import { TourService } from '@andika/libs/utilities';
 @Component({
   selector: 'andika-app-dashboard',
   templateUrl: './dashboard.component.html',

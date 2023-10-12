@@ -1,0 +1,14 @@
+{
+    "PRODUCTION": false,
+    "NEXIA_API_BASE_URL": "https://andika.applikuapp.com/api/v1",
+    "FIREBASE_API_KEY": "AIzaSyA2wXmpJ6fmM9cVHud8zrRg3uf282v9t_Q",
+    "FIREBASE_AUTH_DOMAIN": "andika.pro",
+    "FIREBASE_PROJECT_ID": "andika-16cf6",
+    "FIREBASE_MEASUREMENT_ID": "G-N0WGT4SFDF",
+    "FIREBASE_MESSAGING_SENDER_ID": "805088813720",
+    "FIREBASE_APP_ID": "1:805088813720:web:e2eae03b631781ce76e6ed",
+    "GOOGLE_CLIENT_ID": "805088813720-92a4bja15dmce0hj1g4ru29t7ghgm938.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_DOMAIN": "https://andika.pro",
+    "GOOGLE_CLIENT_REDIRECT_URL": "https://andika.pro/dashboard"
+  }
+  

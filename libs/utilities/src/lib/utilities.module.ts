@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DarkModeService } from './ui/services/dark-mode.service';
 import { BreadcrumbService } from './ui/services/bread-crumb.service';
-import { TourService } from './ui/services/tour.service';
+// import { TourService } from './ui/services/tour.service';
 import { CacheService } from './localstorage/cache.service';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { CacheService } from './localstorage/cache.service';
     CacheService,
     DarkModeService,
     BreadcrumbService,
-    TourService,
+    // TourService,
   ]
 
 })

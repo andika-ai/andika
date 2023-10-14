@@ -25,7 +25,7 @@
       },
       {
         "source": "/privacy-notice",
-        "destination": "https://andika.pro/terms-of-service",
+        "destination": "https://andika.pro/privacy-notice",
         "type": 301
       },
       {
@@ -80,11 +80,11 @@
     ],
     "headers": [
       {
-        "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+        "source": "**/*.(css|js)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "public,max-age=31536000,immutable"
+            "value": "public, max-age=31536000, immutable"
           }
         ]
       },

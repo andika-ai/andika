@@ -171,6 +171,7 @@ export class WriteFormComponent implements OnInit {
   onSubmit(){
     // to decide which form to use
     const payload = this._sharedForm.getFormValues(this.form)
+    console.log(payload)
     const hasAllValues = this._sharedForm.checkAllKeysHaveValues(payload);
     this.isLoading.emit(true);
     // If empty values dont submitt show a prompt 
@@ -192,7 +193,7 @@ export class WriteFormComponent implements OnInit {
       complete: The complete parameter is a function that handles the completion of the Observable. When the Observable completes its emission of values, this function is called. It signifies that the Observable has finished its execution. You can use this function to perform any cleanup tasks or final actions after the Observable completes.
      */
     this.isTyping = true;
-    console.log(payload)
+
     this._promptService.postPrompt(payload).subscribe({
       
       next: (res: any) => {
@@ -209,10 +210,9 @@ export class WriteFormComponent implements OnInit {
       error: (msg: any) => {
         // Handle error
         this.isTyping = false;
-        console.log('---------------------')
-        console.log(msg)
+        this.isLoading.emit(false)
         this._snackBarService.openSnackBar(
-          '',` ${msg.error.data.error}`,
+          '',` ${msg.error.data.detail}`,
           'Okey', 'center', 'top', ['red-snackbar']);
       },
       complete: () => {

@@ -32,11 +32,17 @@ export class SharedWriteFormService {
           channelTheme: formValues.youtubeIdea.channelTheme,
           previousVideoTopics: formValues.youtubeIdea.previousVideoTopics,
         }
+
       case UseCase.YoutubeVideoDescription:
         return {
           ...payload,
-          videoTitle: formValues.youtubeDescription.videoTitle,
-          usecase: UseCase.YoutubeVideoDescription
+          videoDescription: formValues.youtubeVideoDescription.videoDescription,
+        }
+
+      case  UseCase.GenerateYoutubeVideoScript:
+        return {
+          ...payload,
+          videoDescription:  formValues.youtubeVideoScript.videoDescription,
         }
       case UseCase.YoutubeChannelDescription:
         return {
@@ -95,7 +101,7 @@ export class SharedWriteFormService {
       case UseCase.Email:
         return {
           ...payload,
-          description: formValues.email.description,
+          email_content: formValues.email.description,
         }
       case UseCase.SmsAndNotifications:
         return {
@@ -123,6 +129,11 @@ export class SharedWriteFormService {
           ...payload,
           text: formValues.grammarCorrection.text,
           usecase:  UseCase.GrammarCorrection
+        }
+      case UseCase.SummarizeText:
+        return {
+          ...payload,
+          text:  formValues.summarizeText.text
         }
       default:
         return '';

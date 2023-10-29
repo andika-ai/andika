@@ -107,8 +107,11 @@ export class WriteFormComponent implements OnInit {
         channelTheme: [],
         previousVideoTopics:[],
       }),
-      youtubeDescription: this._fb.group({
-        videoTitle: []
+      youtubeVideoDescription: this._fb.group({
+        videoDescription: []
+      }),
+      youtubeVideoScript: this._fb.group({
+        videoDescription: []
       }),
       youtubeChannelDescription: this._fb.group({
         channelDescription: []
@@ -151,6 +154,9 @@ export class WriteFormComponent implements OnInit {
       grammarCorrection:  this._fb.group({
         text: []
       }),
+      summarizeText:  this._fb.group({
+        text: []
+      })
     });
 
   }
@@ -186,7 +192,7 @@ export class WriteFormComponent implements OnInit {
       complete: The complete parameter is a function that handles the completion of the Observable. When the Observable completes its emission of values, this function is called. It signifies that the Observable has finished its execution. You can use this function to perform any cleanup tasks or final actions after the Observable completes.
      */
     this.isTyping = true;
-
+    console.log(payload)
     this._promptService.postPrompt(payload).subscribe({
       
       next: (res: any) => {
@@ -243,10 +249,14 @@ export class WriteFormComponent implements OnInit {
   // determine usecase case on load
   determineUsecase(){
     this.formService.formType$.subscribe((formType: UseCase) => {
+      console.log(formType)
       // Use the formType to determine which form to render
       this.setFormType(formType) // this is an ID
       // pactch the current usecase in use
       this.form.controls['usecase']?.patchValue(formType)
+
+
+      console.log(formType)
 
     });
 

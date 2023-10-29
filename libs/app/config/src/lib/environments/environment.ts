@@ -1,5 +1,6 @@
 export const environment = {
   "production": false,
+  "openAIKey": "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",
   "auth": {
     "clientId": "805088813720-92a4bja15dmce0hj1g4ru29t7ghgm938.apps.googleusercontent.com",
     "clientDomain": "https://andika.pro",
@@ -13,5 +14,6 @@ export const environment = {
     "messagingSenderId": "805088813720",
     "measurementId": "G-N0WGT4SFDF"
   },
-  "apiRoot": "https://andika.applikuapp.com/api/v1"
+  // "apiRoot": "https://andika.applikuapp.com/api/v1"
+  "apiRoot": "http://localhost:8000/api/v1"
 };

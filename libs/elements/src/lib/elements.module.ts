@@ -55,6 +55,8 @@ import { ChangePasswordModalComponent } from './components/modals/change-passwor
 import { ChangeEmailModalComponent } from './components/modals/change-email-modal/change-email-modal.component';
 import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-modal/delete-confirm-modal.component';
 import { SaveDocumentModalComponent } from './components/modals/save-document-modal/save-document-modal.component';
+import { YoutubeVideoScriptComponent } from './components/forms/youtube-video-script/youtube-video-script.component';
+import { SummarizeTextComponent } from './components/forms/summarize-text/summarize-text.component';
 
 @NgModule({
   imports: [
@@ -113,7 +115,9 @@ import { SaveDocumentModalComponent } from './components/modals/save-document-mo
     ChangePasswordModalComponent,
     ChangeEmailModalComponent,
     DeleteConfirmModalComponent,
-    SaveDocumentModalComponent
+    SaveDocumentModalComponent,
+    YoutubeVideoScriptComponent,
+    SummarizeTextComponent
   ],
   exports: [
     PreloaderComponent,
@@ -158,7 +162,9 @@ import { SaveDocumentModalComponent } from './components/modals/save-document-mo
     ChangePasswordModalComponent,
     ChangeEmailModalComponent,
     DeleteConfirmModalComponent,
-    SaveDocumentModalComponent
+    SaveDocumentModalComponent,
+    YoutubeVideoScriptComponent,
+    SummarizeTextComponent
   ],
   providers: [
     UsecaseService

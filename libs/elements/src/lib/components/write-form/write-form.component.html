@@ -29,7 +29,7 @@
           </div>
           <div *ngSwitchCase="useCase.YoutubeVideoDescription">
 
-            <andika-youtube-video-description-form formGroupName="youtubeDescription">
+            <andika-youtube-video-description-form formGroupName="youtubeVideoDescription">
             </andika-youtube-video-description-form>
           </div>
           <div *ngSwitchCase="useCase.YoutubeChannelDescription">
@@ -71,13 +71,20 @@
 
           </div>
 
+          <div *ngSwitchCase="useCase.GenerateYoutubeVideoScript">
+            <andika-youtube-video-script  formGroupName="youtubeVideoScript"></andika-youtube-video-script>
+
+          </div>
+
+          
+
           <div *ngSwitchCase="useCase.SongLyrics">
 
             <andika-song-idea-form formGroupName="songIdea"></andika-song-idea-form>
 
           </div>
 
-          <div *ngSwitchCase="useCase.EmailBody">
+          <div *ngSwitchCase="useCase.Email">
 
             <andika-email-form formGroupName="email"></andika-email-form>
           </div>
@@ -98,6 +105,9 @@
             <andika-grammer-correction-form formGroupName="grammarCorrection"></andika-grammer-correction-form>
           </div>
 
+          <div *ngSwitchCase="useCase.SummarizeText">
+            <andika-summarize-text-form formGroupName="summarizeText"></andika-summarize-text-form>
+          </div>
           <div *ngSwitchDefault>
             <!-- //Show some info message to the user  -->
             <div></div>

@@ -1,17 +1,9 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UseCase } from '@andika/model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {
-  faTeletype,
-  faTimes,
-  faExpand,
-  faQuestionCircle,
-  faLightbulb,
-  faPen,
-  faPenNib,
-  faClockRotateLeft,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 

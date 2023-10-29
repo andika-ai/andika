@@ -106,7 +106,6 @@ export class TopNavbarComponent implements OnInit {
     'SummarizeText',
     'AdCopy',
     'EmailBody',
-    'EmailToneAdjustment',
     'SocialMediaPost',
     'SocialMediaAdGenerator',
     'GoogleSearchAdsGenerator'
